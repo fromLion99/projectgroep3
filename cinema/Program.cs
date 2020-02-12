@@ -6,7 +6,7 @@ namespace cinema
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World Cinema! TEST");
+            Console.WriteLine("Hello World Cinema!");
         }
     }
 }
