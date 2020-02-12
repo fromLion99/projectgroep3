@@ -1,0 +1,11 @@
+C:\Users\niels\Documents\GitHub\projectgroep3\cinema\bin\Debug\netcoreapp3.1\cinema.exe
+C:\Users\niels\Documents\GitHub\projectgroep3\cinema\bin\Debug\netcoreapp3.1\cinema.deps.json
+C:\Users\niels\Documents\GitHub\projectgroep3\cinema\bin\Debug\netcoreapp3.1\cinema.runtimeconfig.json
+C:\Users\niels\Documents\GitHub\projectgroep3\cinema\bin\Debug\netcoreapp3.1\cinema.runtimeconfig.dev.json
+C:\Users\niels\Documents\GitHub\projectgroep3\cinema\bin\Debug\netcoreapp3.1\cinema.dll
+C:\Users\niels\Documents\GitHub\projectgroep3\cinema\bin\Debug\netcoreapp3.1\cinema.pdb
+C:\Users\niels\Documents\GitHub\projectgroep3\cinema\obj\Debug\netcoreapp3.1\cinema.csprojAssemblyReference.cache
+C:\Users\niels\Documents\GitHub\projectgroep3\cinema\obj\Debug\netcoreapp3.1\cinema.AssemblyInfoInputs.cache
+C:\Users\niels\Documents\GitHub\projectgroep3\cinema\obj\Debug\netcoreapp3.1\cinema.AssemblyInfo.cs
+C:\Users\niels\Documents\GitHub\projectgroep3\cinema\obj\Debug\netcoreapp3.1\cinema.dll
+C:\Users\niels\Documents\GitHub\projectgroep3\cinema\obj\Debug\netcoreapp3.1\cinema.pdb
