@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Text.Json;
 using System.IO;
 using System.Collections.Generic;
@@ -16,6 +15,7 @@ namespace cinema
                 //Niels: Zoekfunctie
                 //Dennis: Inlogscherm
                 //Korneel: Film informatie opvraag
+
             Program p = new Program();
             string action0, action1, action2 = "";
             Console.WriteLine("\nWhat will you do? Enter M for movies or R for rooms.");
