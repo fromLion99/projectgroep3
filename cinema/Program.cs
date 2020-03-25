@@ -6,7 +6,12 @@ namespace cinema
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Roby's takkie!");
+            //Taakverdeling:
+                //Wessel: Toevoegen van films en zalen en het weergeven van films en zalen en support bieden.
+                //Roby: Welkomsscherm
+                //Niels: Zoekfunctie
+                //Dennis: Inlogscherm
+                //Korneel: updateMovie() 
         }
     }
 }
