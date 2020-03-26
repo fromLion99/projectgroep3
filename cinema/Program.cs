@@ -42,7 +42,7 @@ namespace cinema
                 }
             }
             else{
-                Console.WriteLine("Unknown command. Please run again this application.\nIf this message keeps showing on you probily do not understand how this application works.");
+                Console.WriteLine("Unknown command. Please run again this application.\nIf this message keeps showing on you probably do not understand how this application works.");
             }
         }
     }
