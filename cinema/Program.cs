@@ -18,6 +18,7 @@ namespace cinema
                 //Iedereen: Zoekfunctie maken voor films
 
             Program p = new Program();
+
             string action0, action1, action2 = "";
             Console.WriteLine("\nWhat will you do? Enter M for movies or R for rooms.");
             action0 = Console.ReadLine();
