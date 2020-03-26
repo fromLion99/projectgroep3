@@ -17,7 +17,9 @@ namespace cinema
             Program p = new Program();
             Movie m = new Movie();
             Room r = new Room();
+            Search s = new Search();
 
+            s.searchMovie();
             string action0, action1, action2 = "";
             Console.WriteLine("\nWhat will you do? Enter M for movies or R for rooms.");
             action0 = Console.ReadLine();
