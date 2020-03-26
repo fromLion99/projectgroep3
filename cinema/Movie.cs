@@ -33,7 +33,7 @@ namespace cinema
             movie.Name = Console.ReadLine();
             Console.WriteLine("Enter a movie description: ");
             movie.Description = Console.ReadLine();
-            Console.WriteLine("Enter the start time of the movie (string, HH:MM uur): ");
+            Console.WriteLine("Enter the start time of the movie (string, HH:MM hour): ");
             movie.Time = Console.ReadLine();
             Console.WriteLine("Enter the date of the movie (string, D M Y): ");
             movie.Date = Console.ReadLine();
@@ -72,16 +72,16 @@ namespace cinema
 
             for(int i = 0; i < movieDetail.Count; i++){
                 if(movieDetail[i].Imax){
-                imax = "Ja";
+                imax = "Yes";
                 }
                 if(movieDetail[i].DrieD){
-                    drieD = "Ja";
+                    drieD = "Yes";
                 }
                 if(!movieDetail[i].Imax){
-                    imax = "Nee";
+                    imax = "No";
                 }
                 if(!movieDetail[i].DrieD){
-                    drieD = "Nee";
+                    drieD = "No";
                 }
                 Console.WriteLine("Movie ID: " + movieDetail[i].Id);
                 Console.WriteLine("Movie name: " + movieDetail[i].Name);
