@@ -15,6 +15,7 @@ namespace cinema
                 //Niels: Zoekfunctie
                 //Dennis: Inlogscherm
                 //Korneel: Film informatie opvraag
+                //Iedereen: Zoekfunctie maken voor films
 
             Program p = new Program();
             string action0, action1, action2 = "";
