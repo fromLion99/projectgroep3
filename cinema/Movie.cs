@@ -176,5 +176,22 @@ namespace cinema
             string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
             File.WriteAllText("movies.json", resultJson);
         }
+
+        public void deleteMovie(){
+            string movieDetails = File.ReadAllText("movies.json");
+            List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
+
+            string valId = "";
+            int id = 0;
+            Console.WriteLine("Enter the ID of the movie that you want to delete: ");
+            valId = Console.ReadLine();
+            id = Convert.ToInt32(valId);
+            movieDetail.Remove(movieDetail[id-1]);
+
+            string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
+            File.WriteAllText("movies.json", resultJson);
+
+            Console.WriteLine("The movie with ID " + id + " is successfully deleted.");
+        }
     }
 }
