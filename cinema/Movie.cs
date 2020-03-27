@@ -10,6 +10,7 @@ namespace cinema
         //Properties Movie
         public int Id {get; set;}
         public string Name {get; set;}
+        public string Genre {get; set;}
         public string Description {get; set;}
         public string Time {get; set;}
         public string Date {get; set;}
@@ -28,34 +29,36 @@ namespace cinema
             Console.WriteLine("Enter movie ID: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
-            movie.Id = id;
+            Id = id;
             Console.WriteLine("Enter a movie name: ");
-            movie.Name = Console.ReadLine();
+            Name = Console.ReadLine();
+            Console.WriteLine("Enter the genre of the movie: ");
+            Genre = Console.ReadLine();
             Console.WriteLine("Enter a movie description: ");
-            movie.Description = Console.ReadLine();
+            Description = Console.ReadLine();
             Console.WriteLine("Enter the start time of the movie (string, HH:MM hour): ");
-            movie.Time = Console.ReadLine();
+            Time = Console.ReadLine();
             Console.WriteLine("Enter the date of the movie (string, D M Y): ");
-            movie.Date = Console.ReadLine();
+            Date = Console.ReadLine();
             Console.WriteLine("Enter the room of the movie: ");
             valZaal = Console.ReadLine();
             zaal = Convert.ToInt32(valZaal);
-            movie.Zaal = zaal;
+            Zaal = zaal;
             Console.WriteLine("Is it a Imax movie (Y/N): ");
             valImax = Console.ReadLine();
             if(valImax == "Y" || valImax == "y"){
-                movie.Imax = true;
+                Imax = true;
             }
             else{
-                movie.Imax = false;
+                Imax = false;
             }
             Console.WriteLine("Is it a 3D movie (Y/N): ");
             val3D = Console.ReadLine();
             if(val3D == "Y" || val3D == "y"){
-                movie.DrieD = true;
+                DrieD = true;
             }
             else{
-                movie.DrieD = false;
+                DrieD = false;
             }
             movieDetail.Add(movie);
 
@@ -85,6 +88,7 @@ namespace cinema
                 }
                 Console.WriteLine("Movie ID: " + movieDetail[i].Id);
                 Console.WriteLine("Movie name: " + movieDetail[i].Name);
+                Console.WriteLine("Movie genre: " + movieDetail[i].Genre);
                 Console.WriteLine("Movie description: " + movieDetail[i].Description);
                 Console.WriteLine("Movie date and time: " + movieDetail[i].Date + " " + movieDetail[i].Time);
                 Console.WriteLine("Movie room: " + movieDetail[i].Zaal);
