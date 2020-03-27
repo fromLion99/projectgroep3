@@ -21,7 +21,7 @@ namespace cinema
 
         public void addMovie(){
             int room = 0;
-            string valId, valRoom, valImax, val3D = "";
+            string valRoom, valImax, val3D = "";
 
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
@@ -60,10 +60,10 @@ namespace cinema
             else{
                 movie.DrieD = false;
             }
-            //movieDetail.Add(movie);
 
             string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
             File.WriteAllText("movies.json", resultJson);
+            Console.WriteLine("Movie successfully added.");
         }
 
         public void viewMovie(){
@@ -103,7 +103,9 @@ namespace cinema
 
             string movieId, drieD = "";
             string imax = "";
-            int idMovie = 0;
+            string valRoom = "";
+            string valImax, val3D = "";
+            int idMovie, room = 0;
 
             for(int i = 0; i < movieDetail.Count; i++){
                 Console.WriteLine("Movie ID: " + movieDetail[i].Id);
@@ -149,7 +151,27 @@ namespace cinema
             movieDetail[idMovie].Date = Console.ReadLine();
             Console.WriteLine("Enter a new time for the movie: ");
             movieDetail[idMovie].Time = Console.ReadLine();
-            Console.WriteLine();
+            Console.WriteLine("Enter a new room for the movie: ");
+            valRoom = Console.ReadLine();
+            room = Convert.ToInt32(valRoom);
+            movieDetail[idMovie].Room = room;
+            Console.WriteLine("Is it a Imax movie (Y/N): ");
+            valImax = Console.ReadLine();
+            if(valImax == "Y" || valImax == "y"){
+                movieDetail[idMovie].Imax = true;
+            }
+            else{
+                movieDetail[idMovie].Imax = false;
+            }
+            Console.WriteLine("Is it a 3D movie (Y/N): ");
+            val3D = Console.ReadLine();
+            if(val3D == "Y" || val3D == "y"){
+                movieDetail[idMovie].DrieD = true;
+            }
+            else{
+                movieDetail[idMovie].DrieD = false;
+            }
+            Console.WriteLine("Changes successfully saved.");
 
             string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
             File.WriteAllText("movies.json", resultJson);
