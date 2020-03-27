@@ -60,6 +60,7 @@ namespace cinema
                 action1 = Console.ReadLine();
                 if(action1 == "A" || action1 == "a"){
                     m.addMovie();
+                    //m.editMovie();
                 }
                 else{
                     m.viewMovie();
