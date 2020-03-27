@@ -29,36 +29,36 @@ namespace cinema
             Console.WriteLine("Enter movie ID: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
-            Id = id;
+            movie.Id = id;
             Console.WriteLine("Enter a movie name: ");
             Name = Console.ReadLine();
             Console.WriteLine("Enter the genre of the movie: ");
-            Genre = Console.ReadLine();
+            movie.Genre = Console.ReadLine();
             Console.WriteLine("Enter a movie description: ");
-            Description = Console.ReadLine();
+            movie.Description = Console.ReadLine();
             Console.WriteLine("Enter the start time of the movie (string, HH:MM hour): ");
-            Time = Console.ReadLine();
+            movie.Time = Console.ReadLine();
             Console.WriteLine("Enter the date of the movie (string, D M Y): ");
-            Date = Console.ReadLine();
+            movie.Date = Console.ReadLine();
             Console.WriteLine("Enter the room of the movie: ");
             valZaal = Console.ReadLine();
             zaal = Convert.ToInt32(valZaal);
-            Zaal = zaal;
+            movie.Zaal = zaal;
             Console.WriteLine("Is it a Imax movie (Y/N): ");
             valImax = Console.ReadLine();
             if(valImax == "Y" || valImax == "y"){
-                Imax = true;
+                movie.Imax = true;
             }
             else{
-                Imax = false;
+                movie.Imax = false;
             }
             Console.WriteLine("Is it a 3D movie (Y/N): ");
             val3D = Console.ReadLine();
             if(val3D == "Y" || val3D == "y"){
-                DrieD = true;
+                movie.DrieD = true;
             }
             else{
-                DrieD = false;
+                movie.DrieD = false;
             }
             movieDetail.Add(movie);
 
