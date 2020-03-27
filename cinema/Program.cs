@@ -50,19 +50,22 @@ namespace cinema
                     Console.WriteLine("Sorry this feature does not exist yet, sorry :(");
                 } 
 
-            s.searchMovie();
+            //s.searchMovie();
             
             string action0, action1, action2 = "";
             Console.WriteLine("\nWhat will you do? Enter M for movies or R for rooms.");
             action0 = Console.ReadLine();
             if(action0 == "M" || action0 == "m"){
-                Console.WriteLine("For view all movies enter V. Add a movie enter A. Edit a movie enter E.");
+                Console.WriteLine("For view all movies enter V. Add a movie enter A. Edit a movie enter E. Delete a movie enter D.");
                 action1 = Console.ReadLine();
                 if(action1 == "A" || action1 == "a"){
                     m.addMovie();
                 }
                 if(action1 == "E" || action1 == "e"){
                     m.editMovie();
+                }
+                if(action1 == "D" || action1 == "d"){
+                    m.deleteMovie();
                 }
                 else{
                     m.viewMovie();
