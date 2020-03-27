@@ -10,6 +10,7 @@ namespace cinema
         //Properties Movie
         public int Id {get; set;}
         public string Name {get; set;}
+        public string Genre {get; set;}
         public string Description {get; set;}
         public string Time {get; set;}
         public string Date {get; set;}
@@ -30,7 +31,9 @@ namespace cinema
             id = Convert.ToInt32(valId);
             movie.Id = id;
             Console.WriteLine("Enter a movie name: ");
-            movie.Name = Console.ReadLine();
+            Name = Console.ReadLine();
+            Console.WriteLine("Enter the genre of the movie: ");
+            movie.Genre = Console.ReadLine();
             Console.WriteLine("Enter a movie description: ");
             movie.Description = Console.ReadLine();
             Console.WriteLine("Enter the start time of the movie (string, HH:MM hour): ");
@@ -85,12 +88,17 @@ namespace cinema
                 }
                 Console.WriteLine("Movie ID: " + movieDetail[i].Id);
                 Console.WriteLine("Movie name: " + movieDetail[i].Name);
+                Console.WriteLine("Movie genre: " + movieDetail[i].Genre);
                 Console.WriteLine("Movie description: " + movieDetail[i].Description);
                 Console.WriteLine("Movie date and time: " + movieDetail[i].Date + " " + movieDetail[i].Time);
                 Console.WriteLine("Movie room: " + movieDetail[i].Zaal);
                 Console.WriteLine("3D: " + drieD + ", IMAX: " + imax);
                 Console.WriteLine("\n===================================================================================\n");
             }
+        }
+
+        public void editMovie(){
+            //function to edit the movie properties.
         }
     }
 }
