@@ -17,14 +17,27 @@ namespace cinema
              Movie movie = new Movie();
             
             //Console.WriteLine($"The Movie {movieDetail[1].Name} will start at {movieDetail[1].Time}\n");
-            Console.WriteLine("Put in a movie to see at what time it will start");
-            string input = Console.ReadLine();
-            for(int i = 0; i < movieDetail.Count; i++){
-                if(movieDetail[i].Name == input){
-                    Console.WriteLine($"The Movie {movieDetail[i].Name} will start at {movieDetail[i].Time}\n");
-                }
-              }
+            
+            begginning:
 
+            Console.WriteLine("Put in a movie to see at what time it will start:");
+            string input = Console.ReadLine();
+            bool found = false;
+            bool gotostart = false;
+                for(int i = 0; i < movieDetail.Count; i++){
+                    if(movieDetail[i].Name == input){
+                        Console.WriteLine($"The Movie {movieDetail[i].Name} will start at {movieDetail[i].Time}\n");
+                        found = true;
+                    }
+                }
+                if(found == false){
+                    Console.WriteLine("Movie not found, try again:");
+                    gotostart = true;
+                }
+                if(gotostart){
+                    goto begginning;
+                }
+    
             
              
 
