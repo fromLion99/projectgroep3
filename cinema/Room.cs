@@ -45,6 +45,7 @@ namespace cinema
 
             string resultJson = JsonSerializer.Serialize<List<Room>>(roomDetail);
             File.WriteAllText("rooms.json", resultJson);
+            Console.WriteLine("Room successfully added.");
         }
 
         public void viewRoom(){

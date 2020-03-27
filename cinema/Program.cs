@@ -56,11 +56,13 @@ namespace cinema
             Console.WriteLine("\nWhat will you do? Enter M for movies or R for rooms.");
             action0 = Console.ReadLine();
             if(action0 == "M" || action0 == "m"){
-                Console.WriteLine("For view all movies enter V. Add a movie enter A.");
+                Console.WriteLine("For view all movies enter V. Add a movie enter A. Edit a movie enter E.");
                 action1 = Console.ReadLine();
                 if(action1 == "A" || action1 == "a"){
                     m.addMovie();
-                    //m.editMovie();
+                }
+                if(action1 == "E" || action1 == "e"){
+                    m.editMovie();
                 }
                 else{
                     m.viewMovie();
