@@ -96,5 +96,9 @@ namespace cinema
                 Console.WriteLine("\n===================================================================================\n");
             }
         }
+
+        public void editMovie(){
+            //function to edit the movie properties.
+        }
     }
 }
