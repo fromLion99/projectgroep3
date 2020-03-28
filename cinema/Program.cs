@@ -97,7 +97,7 @@ namespace cinema
             
             } 
             if(action0 == "R" || action0 == "r"){
-                Console.WriteLine("For view all rooms enter V. Add a room enter A. Edit a room enter E");
+                Console.WriteLine("For view all rooms enter V. Add a room enter A. Edit a room enter E. Delete a room enter D.");
                 action2 = Console.ReadLine();
                 if(action2 == "A" || action2 == "a"){
                     r.addRoom();
@@ -112,6 +112,9 @@ namespace cinema
                     if(gotostart){
                         goto begginning1;
                     }
+                }
+                if(action2 == "D" || action2 == "d"){
+                    r.deleteRoom();
                 }
                 else{
                     r.viewRoom();
