@@ -118,60 +118,59 @@ namespace cinema
             Console.WriteLine("Enter the movie ID of the movie you want to edit: ");
             movieId = Console.ReadLine();
             idMovie = Convert.ToInt32(movieId);
-            idMovie -= 1;
-            // var imaxQuery = from element in movieDetail where  movieDetail[6].Imax == true select element;
-            // Console.WriteLine("QUERY: " +  imaxQuery.FirstOrDefault() == null);
-            if(movieDetail[idMovie].Imax){
+            var searchedMovie = movieDetail.FirstOrDefault(m=>m.Id==idMovie);
+
+            if(searchedMovie.Imax){
                 imax = "Yes";
             }
-            if(movieDetail[idMovie].DrieD){
+            if(searchedMovie.DrieD){
                 drieD = "Yes";
             }
-            if(!movieDetail[idMovie].Imax){
+            if(!searchedMovie.Imax){
                 imax = "No";
             }
-            if(!movieDetail[idMovie].DrieD){
+            if(!searchedMovie.DrieD){
                 drieD = "No";
             }
 
-            Console.WriteLine("Movie ID: " + movieDetail[idMovie].Id);
-            Console.WriteLine("Movie name: " + movieDetail[idMovie].Name);
-            Console.WriteLine("Movie genre: " + movieDetail[idMovie].Genre);
-            Console.WriteLine("Movie description: " + movieDetail[idMovie].Description);
-            Console.WriteLine("Movie date and time: " + movieDetail[idMovie].Date + " " + movieDetail[idMovie].Time);
-            Console.WriteLine("Movie room: " + movieDetail[idMovie].Room);
+            Console.WriteLine("Movie ID: " + searchedMovie.Id);
+            Console.WriteLine("Movie name: " + searchedMovie.Name);
+            Console.WriteLine("Movie genre: " + searchedMovie.Genre);
+            Console.WriteLine("Movie description: " + searchedMovie.Description);
+            Console.WriteLine("Movie date and time: " + searchedMovie.Date + " " + searchedMovie.Time);
+            Console.WriteLine("Movie room: " + searchedMovie.Room);
             Console.WriteLine("3D: " + drieD + " IMAX: " + imax);
             Console.WriteLine("\n===================================================================================\n");
 
             Console.WriteLine("Enter the new name of the movie: ");
-            movieDetail[idMovie].Name = Console.ReadLine();
+            searchedMovie.Name = Console.ReadLine();
             Console.WriteLine("Enter a new Genre of the movie: ");
-            movieDetail[idMovie].Genre = Console.ReadLine();
+            searchedMovie.Genre = Console.ReadLine();
             Console.WriteLine("Enter a new description for the movie: ");
-            movieDetail[idMovie].Description = Console.ReadLine();
+            searchedMovie.Description = Console.ReadLine();
             Console.WriteLine("Enter a new date for the movie: ");
-            movieDetail[idMovie].Date = Console.ReadLine();
+            searchedMovie.Date = Console.ReadLine();
             Console.WriteLine("Enter a new time for the movie: ");
-            movieDetail[idMovie].Time = Console.ReadLine();
+            searchedMovie.Time = Console.ReadLine();
             Console.WriteLine("Enter a new room for the movie: ");
             valRoom = Console.ReadLine();
             room = Convert.ToInt32(valRoom);
-            movieDetail[idMovie].Room = room;
+            searchedMovie.Room = room;
             Console.WriteLine("Is it a Imax movie (Y/N): ");
             valImax = Console.ReadLine();
             if(valImax == "Y" || valImax == "y"){
-                movieDetail[idMovie].Imax = true;
+                searchedMovie.Imax = true;
             }
             else{
-                movieDetail[idMovie].Imax = false;
+                searchedMovie.Imax = false;
             }
             Console.WriteLine("Is it a 3D movie (Y/N): ");
             val3D = Console.ReadLine();
             if(val3D == "Y" || val3D == "y"){
-                movieDetail[idMovie].DrieD = true;
+                searchedMovie.DrieD = true;
             }
             else{
-                movieDetail[idMovie].DrieD = false;
+                searchedMovie.DrieD = false;
             }
             Console.WriteLine("Changes successfully saved.");
 
