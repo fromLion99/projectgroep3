@@ -74,10 +74,13 @@ namespace cinema
                 }
             }
             if(action0 == "R" || action0 == "r"){
-                Console.WriteLine("For view all rooms enter V. Add a room enter A.");
+                Console.WriteLine("For view all rooms enter V. Add a room enter A. Edit a room enter E");
                 action2 = Console.ReadLine();
                 if(action2 == "A" || action2 == "a"){
                     r.addRoom();
+                }
+                if(action2 == "E" || action2 == "e"){
+                    r.editRoom();
                 }
                 else{
                     r.viewRoom();

@@ -59,6 +59,7 @@ namespace cinema
             else{
                 movie.DrieD = false;
             }
+            movieDetail.Add(movie);
 
             string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
             File.WriteAllText("movies.json", resultJson);
@@ -185,7 +186,7 @@ namespace cinema
             Console.WriteLine("Enter the ID of the movie that you want to delete: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
-            movieDetail.Remove(movieDetail[id-1]);
+            movieDetail.Remove(movieDetail[id]);
 
             string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
             File.WriteAllText("movies.json", resultJson);
