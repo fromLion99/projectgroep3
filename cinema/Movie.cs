@@ -2,6 +2,7 @@ using System;
 using System.Text.Json;
 using System.IO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace cinema
 {
@@ -186,7 +187,7 @@ namespace cinema
             Console.WriteLine("Enter the ID of the movie that you want to delete: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
-            movieDetail.Remove(movieDetail[id]);
+            movieDetail.Remove(movieDetail.FirstOrDefault(m=>m.Id==id));
 
             string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
             File.WriteAllText("movies.json", resultJson);
