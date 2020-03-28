@@ -119,7 +119,8 @@ namespace cinema
             movieId = Console.ReadLine();
             idMovie = Convert.ToInt32(movieId);
             idMovie -= 1;
-
+            // var imaxQuery = from element in movieDetail where  movieDetail[6].Imax == true select element;
+            // Console.WriteLine("QUERY: " +  imaxQuery.FirstOrDefault() == null);
             if(movieDetail[idMovie].Imax){
                 imax = "Yes";
             }
