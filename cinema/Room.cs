@@ -15,17 +15,16 @@ namespace cinema
         public int Chair {get; set;}
 
         public void addRoom(){
-            int id, roomNumber, countChair, row, chair = 0;
-            string valId, valRoomNumber, valCountChair, valRow, valChair = "";
+            int roomNumber, countChair, row, chair = 0;
+            string valRoomNumber, valCountChair, valRow, valChair = "";
 
             string roomDetails = File.ReadAllText("rooms.json");
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
 
             Room room = new Room();
-            Console.WriteLine("Enter room ID: ");
-            valId = Console.ReadLine();
-            id = Convert.ToInt32(valId);
-            room.Id = id;
+            var item = roomDetail[roomDetail.Count -1];
+            var newId = item.Id+1;
+            room.Id = newId;
             Console.WriteLine("Enter the room number: ");
             valRoomNumber = Console.ReadLine();
             roomNumber = Convert.ToInt32(valRoomNumber);
@@ -54,12 +53,59 @@ namespace cinema
 
             for(int i = 0; i < roomDetail.Count; i++){
                 Console.WriteLine("Room ID: " + roomDetail[i].Id);
-                Console.WriteLine("Roomnumber: " + roomDetail[i].RoomNumber);
+                Console.WriteLine("Room number: " + roomDetail[i].RoomNumber);
                 Console.WriteLine("Count chairs: " + roomDetail[i].CountChair);
-                Console.WriteLine("Rows: " + roomDetail[i].Row);
-                Console.WriteLine("Chair: " + roomDetail[i].Chair);
+                Console.WriteLine("Amount of rows: " + roomDetail[i].Row);
+                Console.WriteLine("Chairs in a row: " + roomDetail[i].Chair);
                 Console.WriteLine("\n===================================================================================\n");
             }
+        }
+
+        public void editRoom(){
+            string roomDetails = File.ReadAllText("rooms.json");
+            List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
+
+            string roomId, roomNumber, countOfChair, countRow, countRowChair = "";
+            int idRoom, numberRoom, chairCount, rowCount, rowChairCount = 0;
+
+            for(int i = 0; i < roomDetail.Count; i++){
+                Console.WriteLine("Room ID: " + roomDetail[i].Id);
+                Console.WriteLine("Room number: " + roomDetail[i].RoomNumber);
+                Console.WriteLine("\n===================================================================================\n");
+            }
+
+            Console.WriteLine("Enter the ID of the room you want to edit: ");
+            roomId = Console.ReadLine();
+            idRoom = Convert.ToInt32(roomId);
+            idRoom -= 1;
+
+            Console.WriteLine("Room ID: " + roomDetail[idRoom].Id);
+            Console.WriteLine("Room number: " + roomDetail[idRoom].RoomNumber);
+            Console.WriteLine("Count chairs: " + roomDetail[idRoom].CountChair);
+            Console.WriteLine("Amount of rows: " + roomDetail[idRoom].Row);
+            Console.WriteLine("Chairs in a row: " + roomDetail[idRoom].Chair);
+            Console.WriteLine("\n===================================================================================\n");
+
+            Console.WriteLine("Enter a new room number: ");
+            roomNumber = Console.ReadLine();
+            numberRoom = Convert.ToInt32(roomNumber);
+            roomDetail[idRoom].RoomNumber = numberRoom;
+            Console.WriteLine("Enter a new count of chairs: ");
+            countOfChair = Console.ReadLine();
+            chairCount = Convert.ToInt32(countOfChair);
+            roomDetail[idRoom].CountChair = chairCount;
+            Console.WriteLine("Enter a new amount of rows: ");
+            countRow = Console.ReadLine();
+            rowCount = Convert.ToInt32(countRow);
+            roomDetail[idRoom].Row = rowCount;
+            Console.WriteLine("Enter a new amount of chair in a row: ");
+            countRowChair = Console.ReadLine();
+            rowChairCount = Convert.ToInt32(countRowChair);
+            roomDetail[idRoom].Chair = rowChairCount;
+
+            string resultJson = JsonSerializer.Serialize<List<Room>>(roomDetail);
+            File.WriteAllText("rooms.json", resultJson);
+            Console.WriteLine("Changes successfully saved.");
         }
     }
 }
