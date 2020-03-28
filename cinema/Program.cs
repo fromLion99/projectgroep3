@@ -35,6 +35,9 @@ namespace cinema
             foreach(string line in arr )
                 Console.WriteLine(line);
             Console.ReadKey();
+
+            bool gotostart = false;
+
                 Console.WriteLine("Are you a customer?, Yes or No?");
                 titleScherm = Console.ReadLine();
                 if(titleScherm == "Yes" || titleScherm == "y" || titleScherm == "Y"){
@@ -55,6 +58,7 @@ namespace cinema
 
             
             string action0, action1, action2 = "";
+            begginning1:
             Console.WriteLine("\nWhat will you do? Enter M for movies or R for rooms.");
             action0 = Console.ReadLine();
             if(action0 == "M" || action0 == "m"){
@@ -62,28 +66,59 @@ namespace cinema
                 action1 = Console.ReadLine();
                 if(action1 == "A" || action1 == "a"){
                     m.addMovie();
+                    gotostart = true;
+                    if(gotostart){
+                        goto begginning1;
+                    }
                 }
                 if(action1 == "E" || action1 == "e"){
                     m.editMovie();
+                    gotostart = true;
+                    if(gotostart){
+                        goto begginning1;
+                    }
                 }
                 if(action1 == "D" || action1 == "d"){
                     m.deleteMovie();
+                    gotostart = true;
+                    if(gotostart){
+                        goto begginning1;
+                    }
                 }
-                else{
+                if(action1 == "V" || action1 == "v"){
                     m.viewMovie();
+                    gotostart = true;
+                    if(gotostart){
+                        goto begginning1;
+                    }
+                   
                 }
-            }
+                
+            
+            } 
             if(action0 == "R" || action0 == "r"){
                 Console.WriteLine("For view all rooms enter V. Add a room enter A. Edit a room enter E");
                 action2 = Console.ReadLine();
                 if(action2 == "A" || action2 == "a"){
                     r.addRoom();
+                    gotostart = true;
+                    if(gotostart){
+                        goto begginning1;
+                    }
                 }
                 if(action2 == "E" || action2 == "e"){
                     r.editRoom();
+                    gotostart = true;
+                    if(gotostart){
+                        goto begginning1;
+                    }
                 }
                 else{
                     r.viewRoom();
+                    gotostart = true;
+                    if(gotostart){
+                        goto begginning1;
+                    }
                 }
             }
             else{
