@@ -80,6 +80,9 @@ namespace cinema
                 if(action2 == "E" || action2 == "e"){
                     r.editRoom();
                 }
+                if(action2 == "D" || action2 == "d"){
+                    r.deleteRoom();
+                }
                 else{
                     r.viewRoom();
                 }

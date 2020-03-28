@@ -2,6 +2,7 @@ using System;
 using System.Text.Json;
 using System.IO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace cinema
 {
@@ -22,6 +23,11 @@ namespace cinema
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
 
             Room room = new Room();
+            for(int i = 0; i < roomDetail.Count; i++){
+                Console.WriteLine("Room ID: " + roomDetail[i].Id);
+                Console.WriteLine("Room number: " + roomDetail[i].RoomNumber);
+                Console.WriteLine("\n===================================================================================\n");
+            }
             var item = roomDetail[roomDetail.Count -1];
             var newId = item.Id+1;
             room.Id = newId;
@@ -41,10 +47,11 @@ namespace cinema
             valChair = Console.ReadLine();
             chair = Convert.ToInt32(valChair);
             room.Chair = chair;
+            roomDetail.Add(room);
 
             string resultJson = JsonSerializer.Serialize<List<Room>>(roomDetail);
             File.WriteAllText("rooms.json", resultJson);
-            Console.WriteLine("Room successfully added.");
+            Console.WriteLine("Room successfully added.\n");
         }
 
         public void viewRoom(){
@@ -106,6 +113,29 @@ namespace cinema
             string resultJson = JsonSerializer.Serialize<List<Room>>(roomDetail);
             File.WriteAllText("rooms.json", resultJson);
             Console.WriteLine("Changes successfully saved.");
+        }
+
+        public void deleteRoom(){
+            string roomDetails = File.ReadAllText("rooms.json");
+            List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
+
+            string valId = "";
+            int id = 0;
+
+            for(int i = 0; i < roomDetail.Count; i++){
+                Console.WriteLine("Room ID: " + roomDetail[i].Id);
+                Console.WriteLine("Room number: " + roomDetail[i].RoomNumber);
+                Console.WriteLine("\n===================================================================================\n");
+            }
+
+            Console.WriteLine("Enter the ID of the room you want to delete: ");
+            valId = Console.ReadLine();
+            id = Convert.ToInt32(valId);
+            roomDetail.Remove(roomDetail.FirstOrDefault(m=>m.Id==id));
+
+            string resultJson = JsonSerializer.Serialize<List<Room>>(roomDetail);
+            File.WriteAllText("rooms.json", resultJson);
+            Console.WriteLine("Room with ID: " + id + "is successfully deleted.");
         }
     }
 }

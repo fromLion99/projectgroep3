@@ -184,6 +184,13 @@ namespace cinema
 
             string valId = "";
             int id = 0;
+
+            for(int i = 0; i < movieDetail.Count; i++){
+                Console.WriteLine("Movie ID: " + movieDetail[i].Id);
+                Console.WriteLine("Movie name: " + movieDetail[i].Name);
+                Console.WriteLine("\n===================================================================================\n");
+            }
+
             Console.WriteLine("Enter the ID of the movie that you want to delete: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
