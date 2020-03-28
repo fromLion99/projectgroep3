@@ -18,6 +18,7 @@ namespace cinema
             Movie m = new Movie();
             Room r = new Room();
             Search s = new Search();
+
           
             string titleScherm, action3 = "";
             
@@ -51,6 +52,7 @@ namespace cinema
                 } 
 
             //s.searchMovie();
+
             
             string action0, action1, action2 = "";
             Console.WriteLine("\nWhat will you do? Enter M for movies or R for rooms.");

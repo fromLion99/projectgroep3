@@ -18,26 +18,52 @@ namespace cinema
             
             //Console.WriteLine($"The Movie {movieDetail[1].Name} will start at {movieDetail[1].Time}\n");
             
-            begginning:
+            begginning_Movie:
 
             Console.WriteLine("Put in a movie to see at what time it will start:");
-            string input = Console.ReadLine();
+            string inputmovie = Console.ReadLine();
             bool found = false;
             bool gotostart = false;
-                for(int i = 0; i < movieDetail.Count; i++){
-                    if(movieDetail[i].Name == input){
-                        Console.WriteLine($"The Movie {movieDetail[i].Name} will start at {movieDetail[i].Time}\n");
-                        found = true;
-                    }
+
+            // Search when a movie will start.
+            for(int i = 0; i < movieDetail.Count; i++){
+                if(movieDetail[i].Name == inputmovie){
+                    Console.WriteLine($"The Movie {movieDetail[i].Name} will start at {movieDetail[i].Time}\n");
+                    found = true;
                 }
-                if(found == false){
-                    Console.WriteLine("Movie not found, try again:");
-                    gotostart = true;
+            }
+            if(found == false){
+                Console.WriteLine("Movie not found, try again:");
+                gotostart = true;
+            }
+            if(gotostart){
+                goto begginning_Movie;
+            }
+
+            begginning_Genre:
+
+            System.Console.WriteLine("Input a Genre to see all the movies of that genre:");
+            string inputgenre = Console.ReadLine();
+            found = false;
+            gotostart = false;
+
+            System.Console.WriteLine($"The movies with Genre {inputgenre} are:");
+            // Search for genre.
+            for(int i = 0;i<movieDetail.Count;i++){
+                if(movieDetail[i].Genre == inputgenre){
+                    Console.WriteLine(movieDetail[i].Name);
+                    found = true;
                 }
-                if(gotostart){
-                    goto begginning;
-                }
-    
+            }
+             if(found == false){
+                Console.WriteLine("Genre not found, try again:");
+                gotostart = true;
+            }
+            if(gotostart){
+                goto begginning_Genre;
+            }
+        
+
             
              
 
