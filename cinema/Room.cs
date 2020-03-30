@@ -84,31 +84,31 @@ namespace cinema
             Console.WriteLine("Enter the ID of the room you want to edit: ");
             roomId = Console.ReadLine();
             idRoom = Convert.ToInt32(roomId);
-            idRoom -= 1;
+            var searchedRoom = roomDetail.FirstOrDefault(m=>m.Id==idRoom);
 
-            Console.WriteLine("Room ID: " + roomDetail[idRoom].Id);
-            Console.WriteLine("Room number: " + roomDetail[idRoom].RoomNumber);
-            Console.WriteLine("Count chairs: " + roomDetail[idRoom].CountChair);
-            Console.WriteLine("Amount of rows: " + roomDetail[idRoom].Row);
-            Console.WriteLine("Chairs in a row: " + roomDetail[idRoom].Chair);
+            Console.WriteLine("Room ID: " + searchedRoom.Id);
+            Console.WriteLine("Room number: " + searchedRoom.RoomNumber);
+            Console.WriteLine("Count chairs: " + searchedRoom.CountChair);
+            Console.WriteLine("Amount of rows: " + searchedRoom.Row);
+            Console.WriteLine("Chairs in a row: " + searchedRoom.Chair);
             Console.WriteLine("\n===================================================================================\n");
 
             Console.WriteLine("Enter a new room number: ");
             roomNumber = Console.ReadLine();
             numberRoom = Convert.ToInt32(roomNumber);
-            roomDetail[idRoom].RoomNumber = numberRoom;
+            searchedRoom.RoomNumber = numberRoom;
             Console.WriteLine("Enter a new count of chairs: ");
             countOfChair = Console.ReadLine();
             chairCount = Convert.ToInt32(countOfChair);
-            roomDetail[idRoom].CountChair = chairCount;
+            searchedRoom.CountChair = chairCount;
             Console.WriteLine("Enter a new amount of rows: ");
             countRow = Console.ReadLine();
             rowCount = Convert.ToInt32(countRow);
-            roomDetail[idRoom].Row = rowCount;
+            searchedRoom.Row = rowCount;
             Console.WriteLine("Enter a new amount of chair in a row: ");
             countRowChair = Console.ReadLine();
             rowChairCount = Convert.ToInt32(countRowChair);
-            roomDetail[idRoom].Chair = rowChairCount;
+            searchedRoom.Chair = rowChairCount;
 
             string resultJson = JsonSerializer.Serialize<List<Room>>(roomDetail);
             File.WriteAllText("rooms.json", resultJson);
@@ -135,6 +135,7 @@ namespace cinema
 
             string resultJson = JsonSerializer.Serialize<List<Room>>(roomDetail);
             File.WriteAllText("rooms.json", resultJson);
+
             Console.WriteLine("Room with ID: " + id + "is successfully deleted.");
         }
     }
