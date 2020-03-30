@@ -2,3 +2,5 @@
 *bin/
 *obj/
 *.DS_Store
+cinema/.vs/cinema/xs/UserPrefs.xml
+cinema/.vs/cinema/xs/project-cache/cinema-Debug.json
