@@ -136,7 +136,7 @@ namespace cinema
             string resultJson = JsonSerializer.Serialize<List<Room>>(roomDetail);
             File.WriteAllText("rooms.json", resultJson);
 
-            Console.WriteLine("Room with ID: " + id + "is successfully deleted.");
+            Console.WriteLine("Room with ID: " + id + " is successfully deleted.");
         }
     }
 }
