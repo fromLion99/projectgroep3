@@ -18,8 +18,7 @@ namespace cinema
             Movie m = new Movie();
             Room r = new Room();
             Search s = new Search();
-
-          
+                  
             string titleScherm, action3 = "";
             
            var arr = new[]
