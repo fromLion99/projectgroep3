@@ -85,13 +85,12 @@ namespace cinema
                         goto begginning1;
                     }
                 }
-                if(action1 == "V" || action1 == "v"){
+                else{
                     m.viewMovie();
                     gotostart = true;
                     if(gotostart){
                         goto begginning1;
                     }
-                   
                 }
                 
             
