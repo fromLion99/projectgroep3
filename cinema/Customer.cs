@@ -17,6 +17,7 @@ namespace cinema
         public string Age {get; set;}
         public string Password {get; set;}
         //public int reservationId {get; set;}
+
         public void addCustomer(){
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
@@ -61,8 +62,6 @@ namespace cinema
                 Console.WriteLine("Password: "+ customerDetail[i].Password);
                 Console.WriteLine("\n===================================================================================\n");
             }
-
         }
-
     }
 }
