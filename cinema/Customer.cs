@@ -21,7 +21,6 @@ namespace cinema
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
-
             Customer customer = new Customer();
             var item = customerDetail[customerDetail.Count-1];
             var newId = item.Id +1;
@@ -39,12 +38,10 @@ namespace cinema
             Console.WriteLine("Please enter your password: ");
             customer.Password = Console.ReadLine();
             customerDetail.Add(customer);
+
             string resultJson = JsonSerializer.Serialize<List<Customer>>(customerDetail);
             File.WriteAllText("customers.json", resultJson);
             Console.WriteLine("Customer added");
-            
-
-
         }
     }
 }
