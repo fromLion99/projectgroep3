@@ -42,9 +42,30 @@ namespace cinema
             string resultJson = JsonSerializer.Serialize<List<Customer>>(customerDetail);
             File.WriteAllText("customers.json", resultJson);
             Console.WriteLine("Customer added");
+
             
 
 
         }
+        public void viewCustomer(){
+            string valInfix = "";
+            string customerDetails = File.ReadAllText("customers.json");
+            List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
+            for(int i = 0; i < customerDetail.Count; i++ ){
+                valInfix = customerDetail[i].Infix;
+                Console.WriteLine("Customer ID: " + customerDetail[i].Id );
+                Console.WriteLine("First name: " + customerDetail[i].FirstName);
+                if(valInfix != ""){
+                    Console.WriteLine("Infix: "+ customerDetail[i].Infix);
+                }
+                Console.WriteLine("Last name: " +customerDetail[i].LastName);
+                Console.WriteLine("Age: " + customerDetail[i].Age);
+                Console.WriteLine("Email: " + customerDetail[i].Email);
+                Console.WriteLine("Password: "+ customerDetail[i].Password);
+                Console.WriteLine("\n===================================================================================\n");
+            }
+
+        }
+
     }
 }

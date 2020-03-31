@@ -36,7 +36,7 @@ namespace cinema
             foreach(string line in arr )
                 Console.WriteLine(line);
             Console.ReadLine();
-            
+            c.viewCustomer();
 
             bool gotostart = false;
                 Console.WriteLine("Are you a customer?, Yes or No?");
