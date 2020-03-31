@@ -18,7 +18,7 @@ namespace cinema
             
             //Console.WriteLine($"The Movie {movieDetail[1].Name} will start at {movieDetail[1].Time}\n");
             
-            begginning_Movie:
+            beginning_Movie:
 
             Console.WriteLine("Put in a movie to see at what time it will start:");
             string inputmovie = Console.ReadLine();
@@ -37,10 +37,10 @@ namespace cinema
                 gotostart = true;
             }
             if(gotostart){
-                goto begginning_Movie;
+                goto beginning_Movie;
             }
 
-            begginning_Genre:
+            beginning_Genre:
 
             System.Console.WriteLine("Input a Genre to see all the movies of that genre:");
             string inputgenre = Console.ReadLine();
@@ -60,7 +60,7 @@ namespace cinema
                 gotostart = true;
             }
             if(gotostart){
-                goto begginning_Genre;
+                goto beginning_Genre;
             }
         
 
