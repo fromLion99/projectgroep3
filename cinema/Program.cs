@@ -18,6 +18,8 @@ namespace cinema
             Movie m = new Movie();
             Room r = new Room();
             Search s = new Search();
+            Login l = new Login();
+            Customer c = new Customer();
                   
             string titleScherm, action3 = "";
             
@@ -34,19 +36,22 @@ namespace cinema
             foreach(string line in arr )
                 Console.WriteLine(line);
             Console.ReadLine();
+            
 
             bool gotostart = false;
-
                 Console.WriteLine("Are you a customer?, Yes or No?");
                 titleScherm = Console.ReadLine();
                 if(titleScherm == "Yes" || titleScherm == "y" || titleScherm == "Y"){
-                    Console.WriteLine("Enter M to view all movies or L to login into your account");
+                    Console.WriteLine("Enter M to view all movies or L to login into your account.\nIf you are new, press C to make a new account");
                     action3 = Console.ReadLine();
-                    if(action3 == "M"){
+                    if(action3 == "M" || action3 == "m"){
                         m.viewMovie();
                     }
-                    if (action3 == "L"){
-                        Console.WriteLine("This feature does not exist yet, sorry :(");
+                    if (action3 == "L"|| action3 == "l" ){
+                        l.signIn();
+                    }
+                    if (action3 == "C" || action3 == "c"){
+                        c.addCustomer();
                     }  
                 }
                 else {
