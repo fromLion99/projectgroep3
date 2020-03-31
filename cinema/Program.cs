@@ -33,7 +33,7 @@ namespace cinema
             Console.WriteLine("\n\n");
             foreach(string line in arr )
                 Console.WriteLine(line);
-            Console.ReadKey();
+            Console.ReadLine();
 
             bool gotostart = false;
 
