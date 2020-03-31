@@ -2,3 +2,11 @@
 *bin/
 *obj/
 *.DS_Store
+.vs/projectgroep3/v16/.suo
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+cinema/.vs/cinema/v16/.suo
+cinema/.vs/cinema/DesignTimeBuild/.dtbcache.v2
+cinema/cinema.csproj
+cinema/cinema.sln
+cinema/cinema.csproj
