@@ -2,5 +2,8 @@
 *bin/
 *obj/
 *.DS_Store
-cinema/.vs/cinema/xs/UserPrefs.xml
-cinema/.vs/cinema/xs/project-cache/cinema-Debug.json
+.vs/projectgroep3/v16/.suo
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+cinema/.vs/cinema/v16/.suo
+cinema/.vs/cinema/DesignTimeBuild/.dtbcache.v2
