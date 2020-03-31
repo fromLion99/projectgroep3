@@ -9,14 +9,4 @@
     <None Remove="movies.json" />
     <None Remove="rooms.json" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="movies.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rooms.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>
