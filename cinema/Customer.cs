@@ -96,8 +96,34 @@ namespace cinema
 
                 string resultJson = JsonSerializer.Serialize<List<Customer>>(customerDetail);
                 File.WriteAllText("customers.json", resultJson);
+
                 Console.WriteLine("Details edited");
+            }    
+        }
+
+        public void deleteCustomer(){
+            int id = 0;
+            string valInfix, valId = "";
+            string customerDetails = File.ReadAllText("customers.json");
+            List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
+            for(int i = 0; i < customerDetail.Count; i++ ){
+                valInfix = customerDetail[i].Infix;
+                Console.WriteLine("Customer ID: " + customerDetail[i].Id );
+                Console.WriteLine("First Name: " + customerDetail[i].FirstName);
+                if(valInfix != ""){
+                    Console.WriteLine("Infix: "+ customerDetail[i].Infix);
+                }
+                Console.WriteLine("Last Name: " + customerDetail[i].LastName);
             }
+            Console.WriteLine("Please enter your Customer ID to delete your account: ");
+            valId = Console.ReadLine();
+            id = Convert.ToInt32(valId);
+            customerDetail.Remove(customerDetail.FirstOrDefault(c => c.Id == id));
+            
+            string resultJson = JsonSerializer.Serialize<List<Customer>>(customerDetail);
+            File.WriteAllText("customers.json", resultJson);
+            
+            Console.WriteLine("Account succesfully deleted, goodbye")
         }
     }
 }
