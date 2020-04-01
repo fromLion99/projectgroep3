@@ -36,7 +36,7 @@ namespace cinema
             foreach(string line in arr )
                 Console.WriteLine(line);
             Console.ReadLine();
-            
+            //c.viewCustomer();
 
             bool gotostart = false;
                 Console.WriteLine("Press M to view movies, Press L to login");
@@ -79,7 +79,7 @@ namespace cinema
 
             
             string action0, action1, action2 = "";
-            begginning1:
+            beginning1:
             Console.WriteLine("\nWhat will you do? Enter M for movies or R for rooms.");
             action0 = Console.ReadLine();
             if(action0 == "M" || action0 == "m"){
@@ -89,28 +89,28 @@ namespace cinema
                     m.addMovie();
                     gotostart = true;
                     if(gotostart){
-                        goto begginning1;
+                        goto beginning1;
                     }
                 }
                 if(action1 == "E" || action1 == "e"){
                     m.editMovie();
                     gotostart = true;
                     if(gotostart){
-                        goto begginning1;
+                        goto beginning1;
                     }
                 }
                 if(action1 == "D" || action1 == "d"){
                     m.deleteMovie();
                     gotostart = true;
                     if(gotostart){
-                        goto begginning1;
+                        goto beginning1;
                     }
                 }
                 else{
                     m.viewMovie();
                     gotostart = true;
                     if(gotostart){
-                        goto begginning1;
+                        goto beginning1;
                     }
                 }
                 
@@ -123,14 +123,14 @@ namespace cinema
                     r.addRoom();
                     gotostart = true;
                     if(gotostart){
-                        goto begginning1;
+                        goto beginning1;
                     }
                 }
                 if(action2 == "E" || action2 == "e"){
                     r.editRoom();
                     gotostart = true;
                     if(gotostart){
-                        goto begginning1;
+                        goto beginning1;
                     }
                 }
                 if(action2 == "D" || action2 == "d"){
@@ -140,7 +140,7 @@ namespace cinema
                     r.viewRoom();
                     gotostart = true;
                     if(gotostart){
-                        goto begginning1;
+                        goto beginning1;
                     }
                 }
             }
