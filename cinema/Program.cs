@@ -30,33 +30,50 @@ namespace cinema
                               @"    \ \/\/ /  / -_) | | / _| / _ \ | '  \  / -_)   |  _| / _ \    / /  | | / -_) | ' \  / -_) | '  \  / _` |", 
                               @"     \_/\_/   \___| |_| \__| \___/ |_|_|_| \___|    \__| \___/   /___| |_| \___| |_||_| \___| |_|_|_| \__,_|", 
                               @"                                                                                                            ", 
-                              @"   Press any key to start                                                                                     ",           
+                              @"   Press any key to continue                                                                                     ",           
                       };
             Console.WriteLine("\n\n");
             foreach(string line in arr )
                 Console.WriteLine(line);
             Console.ReadLine();
-            c.viewCustomer();
+            
 
             bool gotostart = false;
-                Console.WriteLine("Are you a customer?, Yes or No?");
+                Console.WriteLine("Press M to view movies, Press L to login");
                 titleScherm = Console.ReadLine();
-                if(titleScherm == "Yes" || titleScherm == "y" || titleScherm == "Y"){
-                    Console.WriteLine("Enter M to view all movies or L to login into your account.\nIf you are new, press C to make a new account");
-                    action3 = Console.ReadLine();
-                    if(action3 == "M" || action3 == "m"){
-                        m.viewMovie();
-                    }
-                    if (action3 == "L"|| action3 == "l" ){
+                if (action3 == "L"|| action3 == "l" ){
+                        Console.WriteLine("Do you already have an account? Yes or No?");
+                        
+                        action3 = Console.ReadLine();
+                        if (action3 == "yes"|| action3 == "Yes" || action3 == "y"|| action3 == "Y" ){
                         l.signIn();
-                    }
-                    if (action3 == "C" || action3 == "c"){
+                        }
+                        if (action3 == "no"|| action3 == "No" || action3 == "n"|| action3 == "N" ){
                         c.addCustomer();
-                    }  
+                        c.viewCustomer();
+                        }
                 }
-                else {
-                    Console.WriteLine("Sorry this feature does not exist yet, sorry :(");
-                } 
+                if(titleScherm == "m" || titleScherm == "M"){
+                    Console.WriteLine("Here are all the available movies, Press L to login");
+                    m.viewMovie();
+                    Console.WriteLine("Here are all the available movies, Press L to login");
+                    if (action3 == "L"|| action3 == "l" ){
+                        Console.WriteLine("Do you already have an account? Yes or No?");
+                        
+                        action3 = Console.ReadLine();
+                        if (action3 == "yes"|| action3 == "Yes" || action3 == "y"|| action3 == "Y" ){
+                        l.signIn();
+                        }
+                        if (action3 == "no"|| action3 == "No" || action3 == "n"|| action3 == "N" ){
+                        c.addCustomer();
+                        c.viewCustomer();
+                        }
+                    }
+                    }
+
+                        
+                     
+                                
 
             //s.searchMovie();
 
@@ -132,4 +149,6 @@ namespace cinema
             }
         }
     }
-}                                                                                           
+}
+    
+                                                                       
