@@ -123,7 +123,7 @@ namespace cinema
             string resultJson = JsonSerializer.Serialize<List<Customer>>(customerDetail);
             File.WriteAllText("customers.json", resultJson);
             
-            Console.WriteLine("Account succesfully deleted, goodbye")
+            Console.WriteLine("Account succesfully deleted, goodbye");
         }
     }
 }
