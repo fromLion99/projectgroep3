@@ -75,8 +75,8 @@ namespace cinema
                 if(valInfix != ""){
                     Console.WriteLine("Infix: "+ customerDetail[i].Infix);
                 }
+                Console.WriteLine("Last Name: " + customerDetail[i].LastName);
             }
-            Console.WriteLine("Last Name: " + customerDetail[i].LastName);
             Customer customer = new Customer();
             Console.WriteLine("Please enter your Customer ID to edit your details.");
             valId = Console.ReadLine();
