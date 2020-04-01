@@ -32,3 +32,8 @@ cinema/obj/project.assets.json
 Projectgroep 3/.DS_Store
 .DS_Store
 cinema/.vs/cinema/xs/project-cache/cinema-Debug.json
+cinema/.vs/cinema/DesignTimeBuild/.dtbcache.v2
+cinema/.vs/cinema/v16/.suo
+cinema/obj/Release/netcoreapp3.1/cinema.AssemblyInfoInputs.cache
+cinema/obj/Release/netcoreapp3.1/cinema.assets.cache
+cinema/obj/Release/netcoreapp3.1/cinema.AssemblyInfo.cs
