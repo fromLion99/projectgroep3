@@ -12,6 +12,7 @@ namespace cinema
             Search s = new Search();
             Login l = new Login();
             Customer c = new Customer();
+            Reservation R = new Reservation();
                   
             string start, showMovies, showRooms, addMovies, rooms, login = "";
             
@@ -31,6 +32,10 @@ namespace cinema
             //c.viewCustomer();
             bool gotoMovies = false;
             bool gotostart = false;
+
+            //R.MakeReservation();
+            //s.searchMovie();
+
                 Console.WriteLine("Press M to view movies, Press L to login");
                 start = Console.ReadLine();
                 if (start == "L"|| start == "l" ){
