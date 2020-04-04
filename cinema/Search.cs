@@ -26,9 +26,9 @@ namespace cinema
             bool gotostart = false;
 
             // Search when a movie will start.
-            for(int i = 0; i < movieDetail.Count; i++){
-                if(movieDetail[i].Name == inputmovie){
-                    Console.WriteLine($"The Movie {movieDetail[i].Name} will start at {movieDetail[i].Time}\n");
+            for(int j = 0; j < movieDetail.Count; j++){
+                if(movieDetail[j].Name == inputmovie){
+                    Console.WriteLine($"The Movie {movieDetail[j].Name} will start at {movieDetail[j].Time}\n");
                     found = true;
                 }
             }
@@ -46,23 +46,47 @@ namespace cinema
             string inputgenre = Console.ReadLine();
             found = false;
             gotostart = false;
+            
 
             System.Console.WriteLine($"The movies with Genre {inputgenre} are:");
             // Search for genre.
-            for(int i = 0;i<movieDetail.Count;i++){
+
+            for(int i=0;i<movieDetail.Count;i++){
                 if(movieDetail[i].Genre == inputgenre){
-                    Console.WriteLine(movieDetail[i].Name);
+                    Console.WriteLine($"{movieDetail[i].Id}: {movieDetail[i].Name}");
                     found = true;
                 }
+                if(!found){
+                    Console.WriteLine("Genre not found, try again:");
+                    goto beginning_Genre;
+                }
             }
-             if(found == false){
-                Console.WriteLine("Genre not found, try again:");
-                gotostart = true;
+
+            beginning_Id:
+
+            bool found2 = false;
+            System.Console.WriteLine("Press the given movie id to get more information:");
+            string pressedkey = Console.ReadLine();
+            int inputId = Convert.ToInt32(pressedkey);
+
+            for(int k=0;k<movieDetail.Count;k++){
+                if(movieDetail[k].Id == inputId){
+                    Console.WriteLine($"{movieDetail[k].Description}\n");
+                    found2 = true;
+                }
             }
-            if(gotostart){
-                goto beginning_Genre;
+            if(!found2){
+                System.Console.WriteLine("ID not found, try again");
+                goto beginning_Id;
             }
-        
+            
+
+
+
+
+            
+    
+
 
             
              
