@@ -16,7 +16,7 @@ namespace cinema
 
              Movie movie = new Movie();
             
-            //Console.WriteLine($"The Movie {movieDetail[1].Name} will start at {movieDetail[1].Time}\n");
+            // Console.WriteLine($"The Movie {movieDetail[1].Name} will start at {movieDetail[1].Time}\n");
             
             beginning_Movie:
 
@@ -79,7 +79,10 @@ namespace cinema
                 System.Console.WriteLine("ID not found, try again");
                 goto beginning_Id;
             }
+
             
+            
+
 
 
 
