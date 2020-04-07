@@ -22,7 +22,10 @@ namespace cinema
             Console.WriteLine("Please enter your password: ");
             SavePassword = Console.ReadLine();
             Console.WriteLine("Login succesful");
-            
+            /*
+             * In een login.json de gebgruiker vastleggen die is ingelogd. Op deze manier kan er makkelijk worden opgevraagd
+             * welke gebruiker is ingelogd en welke gegevens nodig zijn woor de reservering en betaling.
+            */
         }
     }
 }
