@@ -16,7 +16,7 @@ namespace cinema
                   
             string start, showMovies, showRooms, addMovies, rooms, login = "";
             
-           var arr = new[]
+            var arr = new[]
                       {
                               @"   __      __        _                              _             ____  _                                   ",
                               @"   \ \    / /  ___  | |  __   ___   _ __    ___    | |_   ___    |_  / (_)  ___   _ _    ___   _ __    __ _ ",
