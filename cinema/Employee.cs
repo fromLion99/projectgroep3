@@ -30,13 +30,13 @@ namespace cinema
             employee.Infix = Console.ReadLine();
             Console.WriteLine("Please enter your last name here: ");
             employee.LastName = Console.ReadLine();
-            Console.WriteLine("Please enter your age here: ");
-            employee.Age = Console.ReadLine();
+            // Console.WriteLine("Please enter your age here: ");
+            // employee.Age = Console.ReadLine();
             Console.WriteLine("Please enter your E-mail here: ");
             employee.Email = Console.ReadLine();
             Console.WriteLine("Please enter your password here: ");
             employee.Password = Console.ReadLine();
-            employeeDetail.Add(employeeDetail);
+            employeeDetail.Add(employee);
 
             string resultJson = JsonSerializer.Serialize<List<Employee>>(employeeDetail);
 
@@ -53,7 +53,7 @@ namespace cinema
                 Console.WriteLine("Employee ID: " + employeeDetail[i].Id );
                 Console.WriteLine("First name: " + employeeDetail[i].FirstName);
                 if(valInfix != ""){
-                    Console.WriteLine("Infix: " + employeeDetail[i].Infix)
+                    Console.WriteLine("Infix: " + employeeDetail[i].Infix);
                 }
             }
         }
