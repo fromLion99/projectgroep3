@@ -1,4 +1,5 @@
 // Niels Krommenhoek 0982940
+
 using System;
 using System.Text.Json;
 using System.IO;
@@ -10,11 +11,28 @@ namespace cinema
 
     public class Reservation
     {
-        public void Movie(){}
         public int Id {get; set;}
+        public int ticketId {get; set;}
+        public int movieId {get; set;}
+        public int roomId {get; set;}
+        public string customer {get; set;}
+        public string time {get; set;}
+        public string date {get; set;}
+        public int duration {get; set;}
+
         
         public void addReservation()
         {
+            Program p = new Program();
+            Movie movie = new Movie();
+            Room r = new Room();
+            Search s = new Search();
+            Login l = new Login();
+            Customer c = new Customer();
+            Reservation R = new Reservation();
+
+            string login, movieBegin = "";
+
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);            
             
@@ -22,13 +40,52 @@ namespace cinema
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
             
             string reservationsDetails = File.ReadAllText("reservation.json");
-            List<Movie> reservationDetail = JsonSerializer.Deserialize<List<Movie>>(reservationsDetails);
+            List<Reservation> reservationDetail = JsonSerializer.Deserialize<List<Reservation>>(reservationsDetails);
             
             Reservation reservation = new Reservation();
+            int choosenMovieId = 0;
             var item = reservationDetail[reservationDetail.Count -1];
             var newId = item.Id+1;
-            reservation.Id = newId;
+            reservation.Id = newId; 
+            
             Console.WriteLine("To make a reservation you have to be logged in, Press L to Login");
+            login = Console.ReadLine();
+            if(login == "L" || login == "l")
+            {
+                l.signIn(); 
+            }
+            beginning:
+
+            bool gotostart = false;
+            movie.viewMovie();
+            Console.WriteLine("Choose what movie you want to watch");
+            for(int j = 0; j < movieDetail.Count; j++){
+                string movieRead = Console.ReadLine();
+                choosenMovieId = j;
+                if(movieDetail[j].Name == movieRead){
+                    Console.WriteLine($"You Choose the Movie {movieDetail[j].Name}, it will start at {movieDetail[j].Time}\n");
+                }
+            }
+            Console.WriteLine("You want to choose another movie?, Yes or No?");
+            movieBegin = Console.ReadLine();
+            if (movieBegin == "Yes" || movieBegin == "yes")
+            {
+                gotostart = true;
+            }
+            if(gotostart){
+                goto beginning;
+            } 
+            movieBegin = Console.ReadLine();
+            if (movieBegin == "No" || movieBegin == "no")
+            {
+            reservationDetail.Add(reservation);
+            string resultJson = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
+            File.WriteAllText("reservation.json", resultJson);                
+            Console.WriteLine($"You Choose the Movie {movieDetail[choosenMovieId].Name}, it will start at {movieDetail[choosenMovieId].Time}\n");
+            }
+            
+
+
 
 
         
@@ -95,8 +152,6 @@ namespace cinema
         //     string choosenBank = "";
         //     string movieDetails = File.ReadAllText("movies.json");
         //     List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails); 
-
-
         // }
 
     }

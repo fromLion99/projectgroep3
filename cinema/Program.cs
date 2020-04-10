@@ -35,6 +35,7 @@ namespace cinema
 
             //R.MakeReservation();
             //s.searchMovie();
+                R.addReservation();
 
                 Console.WriteLine("Press M to view movies, Press L to login");
                 start = Console.ReadLine();
