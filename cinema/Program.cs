@@ -97,7 +97,7 @@ namespace cinema
 }
                   
 
-                                
+
 
             //s.searchMovie();
 
@@ -174,3 +174,4 @@ namespace cinema
 //         }
 //     }
 // }
+
