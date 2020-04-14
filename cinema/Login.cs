@@ -45,6 +45,7 @@ namespace cinema
         
         
         }
+        /*
         public void signinEmployee(){
             string SaveEmail, SavePassword = "";
             int id = 0;
@@ -63,7 +64,7 @@ namespace cinema
                 
             }
 
-        }
+        }*/
 
     }
 }
