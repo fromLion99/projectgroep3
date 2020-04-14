@@ -97,6 +97,27 @@ namespace cinema
                                 r.deleteRoom();
                             }
                         }
+                        if (employeeAction == "M" || employeeAction == "m")
+                        {
+                            Console.WriteLine("Add a movie: a, view all movies: V, edit a movie: E, delete a movie: D");
+                            employeeAction = Console.ReadLine();
+                            if (employeeAction == "A" || employeeAction == "a")
+                            {
+                                m.addMovie();
+                            }
+                            if (employeeAction == "V" || employeeAction == "v")
+                            {
+                                m.viewMovie();
+                            }
+                            if (employeeAction == "E" || employeeAction == "e")
+                            {
+                                m.editMovie();
+                            }
+                            if (employeeAction == "D" || employeeAction == "d")
+                            {
+                                m.deleteMovie();
+                            }
+                        }
                     }
                 }
             }
