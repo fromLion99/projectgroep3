@@ -118,6 +118,27 @@ namespace cinema
                                 m.deleteMovie();
                             }
                         }
+                        if (employeeAction == "C" || employeeAction == "c")
+                        {
+                            Console.WriteLine("Add a customer: A, view all customers: V, edit a customer: E, delete a customer: D");
+                            employeeAction = Console.ReadLine();
+                            if (employeeAction == "A" || employeeAction == "a")
+                            {
+                                c.addCustomer();
+                            }
+                            if (employeeAction == "V" || employeeAction == "v")
+                            {
+                                c.viewCustomer();
+                            }
+                            if (employeeAction == "E" || employeeAction == "e")
+                            {
+                                c.editCustomer();
+                            }
+                            if (employeeAction == "D" || employeeAction == "d")
+                            {
+                                c.deleteCustomer();
+                            }
+                        }
                     }
                 }
             }
