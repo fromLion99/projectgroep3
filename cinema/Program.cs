@@ -14,9 +14,59 @@ namespace cinema
             Customer c = new Customer();
             Reservation R = new Reservation();
                   
-            string start, showMovies, showRooms, addMovies, rooms, login = "";
+            string start, account, showMovies, showRooms, addMovies, rooms, login = "";
             
-           var arr = new[]
+            p.startScreen();
+
+            bool gotoMovies = false;
+            bool gotostart = false;
+
+            Console.WriteLine("After pressing a key hit enter to go further in the program.\nWill you see movies press M. Will you login or make an account press L.");
+            start = Console.ReadLine();
+            if(start == "M" || start == "m")
+            {
+                Console.WriteLine("Available movies, if you wat to login press L");
+                login = Console.ReadLine();
+                m.viewMovie();
+                moviesStart:
+                gotoMovies = false;
+                if (login == "L"|| login == "l" ){
+                    Console.WriteLine("Do you already have an account? Yes or No?");
+                    login = Console.ReadLine();
+                    if (login == "yes"|| login == "Yes" || login == "y"|| login == "Y" )
+                    {
+                        l.signIn();
+                        Console.WriteLine("Login successful, Press M for movies");
+                        showMovies = Console.ReadLine();
+                        if(showMovies == "m" || showMovies == "M")
+                        {
+                            m.viewMovie();
+                            gotoMovies = true;
+                            if(gotoMovies)
+                            {
+                                goto moviesStart;
+                            }
+                        }
+                    }
+                }
+            }
+            if(start == "L" || start == "l")
+            {
+                Console.WriteLine("Press L for log in. Press C to creare an account.");
+                account = Console.ReadLine();
+                if(account == "L" || account == "l")
+                {
+                    l.signIn();
+                }
+                if(account == "C" || account == "c")
+                {
+                    c.addCustomer();
+                }
+            }
+        }
+
+        public void startScreen(){
+            var arr = new[]
                       {
                               @"   __      __        _                              _             ____  _                                   ",
                               @"   \ \    / /  ___  | |  __   ___   _ __    ___    | |_   ___    |_  / (_)  ___   _ _    ___   _ __    __ _ ",
@@ -29,6 +79,7 @@ namespace cinema
             foreach(string line in arr )
                 Console.WriteLine(line);
             Console.ReadLine();
+<<<<<<< HEAD
             //c.viewCustomer();
             bool gotoMovies = false;
             bool gotostart = false;
@@ -90,91 +141,10 @@ namespace cinema
                              
                             }
                         }
+=======
+>>>>>>> 97e817a637ec4174f446ad3ef6b6165776297834
 
-                    }
         }
-                
-
     }         
 
 }
-                  
-
-
-
-            //s.searchMovie();
-
-            
-//             string action0, action1, action2 = "";
-//             beginning1:
-//             Console.WriteLine("\nWhat will you do? Enter M for movies or R for rooms.");
-//             action0 = Console.ReadLine();
-//             if(action0 == "M" || action0 == "m"){
-//                 Console.WriteLine("For view all movies enter V. Add a movie enter A. Edit a movie enter E. Delete a movie enter D.");
-//                 action1 = Console.ReadLine();
-//                 if(action1 == "A" || action1 == "a"){
-//                     m.addMovie();
-//                     gotostart = true;
-//                     if(gotostart){
-//                         goto beginning1;
-//                     }
-//                 }
-//                 if(action1 == "E" || action1 == "e"){
-//                     m.editMovie();
-//                     gotostart = true;
-//                     if(gotostart){
-//                         goto beginning1;
-//                     }
-//                 }
-//                 if(action1 == "D" || action1 == "d"){
-//                     m.deleteMovie();
-//                     gotostart = true;
-//                     if(gotostart){
-//                         goto beginning1;
-//                     }
-//                 }
-//                 else{
-//                     m.viewMovie();
-//                     gotostart = true;
-//                     if(gotostart){
-//                         goto beginning1;
-//                     }
-//                 }
-                
-            
-//             } 
-//             if(action0 == "R" || action0 == "r"){
-//                 Console.WriteLine("For view all rooms enter V. Add a room enter A. Edit a room enter E. Delete a room enter D.");
-//                 action2 = Console.ReadLine();
-//                 if(action2 == "A" || action2 == "a"){
-//                     r.addRoom();
-//                     gotostart = true;
-//                     if(gotostart){
-//                         goto beginning1;
-//                     }
-//                 }
-//                 if(action2 == "E" || action2 == "e"){
-//                     r.editRoom();
-//                     gotostart = true;
-//                     if(gotostart){
-//                         goto beginning1;
-//                     }
-//                 }
-//                 if(action2 == "D" || action2 == "d"){
-//                     r.deleteRoom();
-//                 }
-//                 else{
-//                     r.viewRoom();
-//                     gotostart = true;
-//                     if(gotostart){
-//                         goto beginning1;
-//                     }
-//                 }
-//             }
-//             else{
-//                 Console.WriteLine("Unknown command. Please run again this application.\nIf this message keeps showing on you probably do not understand how this application works.");
-//             }
-//         }
-//     }
-// }
-
