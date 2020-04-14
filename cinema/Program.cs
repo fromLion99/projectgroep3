@@ -156,11 +156,11 @@ namespace cinema
                             }
                             if (employeeAction == "E" || employeeAction == "e")
                             {
-                                
+                                e.editEmployee();
                             }
                             if (employeeAction == "D" || employeeAction == "d")
                             {
-
+                                e.deleteEmployee();
                             }
                         }
                     }

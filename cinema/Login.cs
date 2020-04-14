@@ -18,10 +18,10 @@ namespace cinema
         public void signIn(){
             string valId, email, password = "";
             int id = 0;
-            string Signindetails = File.ReadAllText("login.json");
-            List<login> Signindetails = JsonSerializer.Deserialize<List<login>>(Signindetails);
-            string customersdetails = File.ReadAllText("customers.json");
-            List<Customer> customerdetails = JsonSerializer.Deserialize<List<Customer>>(customerdetails);
+            string signinDetails = File.ReadAllText("login.json");
+            List<Login> Signindetail = JsonSerializer.Deserialize<List<Login>>(signinDetails);
+            string customerDetails = File.ReadAllText("customers.json");
+            List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
             string SaveEmail, SavePassword = ""; 
             Console.WriteLine("Please enter your E-mail: ");
             SaveEmail = Console.ReadLine();
@@ -31,11 +31,11 @@ namespace cinema
             var customer = customerDetail.FirstOrDefault(c => c.Id == id);
             Console.WriteLine("Please enter your Email: ");
             email = Console.ReadLine();
-            if(customerDetail[id.email == email]){
+            if(customerDetail[id].Email == email){
                 // vragen om wachtwoord, wachtwoord controleren. 
                 Console.WriteLine("Please enter your password: ");
                 password = Console.ReadLine();
-                if(customerdetails[id.password == password]){
+                if(customerDetail[id].Password == password){
                     SavePassword = Console.ReadLine();
                     Console.WriteLine("Login succesful");
                 }
