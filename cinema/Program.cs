@@ -21,6 +21,8 @@ namespace cinema
             bool gotoMovies = false;
             bool gotostart = false;
 
+            moviesStart:
+
             Console.WriteLine("After pressing a key hit enter to go further in the program.\nWill you see movies press M. Will you login or make an account press L.");
             start = Console.ReadLine();
             if(start == "M" || start == "m")
@@ -28,8 +30,7 @@ namespace cinema
                 Console.WriteLine("Available movies, if you wat to login press L");
                 login = Console.ReadLine();
                 m.viewMovie();
-                moviesStart:
-                gotoMovies = false;
+                
                 if (login == "L"|| login == "l" ){
                     Console.WriteLine("Do you already have an account? Yes or No?");
                     login = Console.ReadLine();
