@@ -72,6 +72,7 @@ namespace cinema
                 }
                 if(account == "E" || account == "e")
                 {
+                    l.signinEmployee();
                     Console.WriteLine("Employee login function came here.");
                     bool employeeLogin = true;//Dit moet later aangepast worden
                     if (employeeLogin)
