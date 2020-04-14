@@ -14,7 +14,7 @@ namespace cinema
             Customer c = new Customer();
             Reservation R = new Reservation();
                   
-            string start, account, showMovies, showRooms, addMovies, rooms, login = "";
+            string start, account, showMovies, showRooms, addMovies, rooms, login, reservation = "";
             
             p.startScreen();
 
@@ -32,7 +32,7 @@ namespace cinema
                 m.viewMovie();
                 
                 if (login == "L"|| login == "l" ){
-                    Console.WriteLine("Do you already have an account? Yes or No?");
+                    Console.WriteLine("Do you already have an account? Yes: Y or No: N");
                     login = Console.ReadLine();
                     if (login == "yes"|| login == "Yes" || login == "y"|| login == "Y" )
                     {
@@ -42,10 +42,15 @@ namespace cinema
                         if(showMovies == "m" || showMovies == "M")
                         {
                             m.viewMovie();
-                            gotoMovies = true;
-                            if(gotoMovies)
+                            Console.WriteLine("Do you want to make a reservation? Yes: Y or No: N");
+                            if (reservation == "Y" || reservation == "y")
                             {
-                                goto moviesStart;
+                                Console.WriteLine("Make reservation function needs to place here.");
+                                gotoMovies = true;
+                                if(gotoMovies)
+                                {
+                                    goto moviesStart;
+                                }
                             }
                         }
                     }
@@ -53,7 +58,7 @@ namespace cinema
             }
             if(start == "L" || start == "l")
             {
-                Console.WriteLine("Press L for log in. Press C to creare an account.");
+                Console.WriteLine("Press L for log in. Press C to create an account.\nEnter E for employee login.");
                 account = Console.ReadLine();
                 if(account == "L" || account == "l")
                 {
@@ -62,6 +67,10 @@ namespace cinema
                 if(account == "C" || account == "c")
                 {
                     c.addCustomer();
+                }
+                if(account == "E" || account == "e")
+                {
+                    Console.WriteLine("Employee login function came here.");
                 }
             }
         }
