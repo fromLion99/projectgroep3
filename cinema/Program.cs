@@ -14,7 +14,7 @@ namespace cinema
             Customer c = new Customer();
             Reservation R = new Reservation();
                   
-            string start, account, showMovies, showRooms, addMovies, rooms, login, reservation = "";
+            string start, account, showMovies, showRooms, addMovies, rooms, login, reservation, employeeAction = "";
             
             p.startScreen();
 
@@ -71,6 +71,33 @@ namespace cinema
                 if(account == "E" || account == "e")
                 {
                     Console.WriteLine("Employee login function came here.");
+                    bool employeeLogin = true;//Dit moet later aangepast worden
+                    if (employeeLogin)
+                    {
+                        Console.WriteLine("Manage rooms: R, manage movies: M, manage customer: C, manage employees: E");
+                        employeeAction = Console.ReadLine();
+                        if (employeeAction == "R" || employeeAction == "r")
+                        {
+                            Console.WriteLine("Add a room: A, view all rooms: V, edit a room: E, delete a room: D");
+                            employeeAction = Console.ReadLine();
+                            if (employeeAction == "A" || employeeAction == "a")
+                            {
+                                r.addRoom();
+                            }
+                            if (employeeAction == "V" || employeeAction == "v")
+                            {
+                                r.viewRoom();
+                            }
+                            if (employeeAction == "E" || employeeAction == "e")
+                            {
+                                r.editRoom();
+                            }
+                            if (employeeAction == "D" || employeeAction == "d")
+                            {
+                                r.deleteRoom();
+                            }
+                        }
+                    }
                 }
             }
         }
