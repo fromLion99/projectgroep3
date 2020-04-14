@@ -13,8 +13,9 @@ namespace cinema
             Login l = new Login();
             Customer c = new Customer();
             Reservation R = new Reservation();
+            Employee e = new Employee();
                   
-            string start, account, showMovies, showRooms, addMovies, rooms, login, reservation = "";
+            string start, account, showMovies, showRooms, addMovies, rooms, login, reservation, employeeAction = "";
             
             p.startScreen();
 
@@ -43,6 +44,7 @@ namespace cinema
                         {
                             m.viewMovie();
                             Console.WriteLine("Do you want to make a reservation? Yes: Y or No: N");
+                            reservation = Console.ReadLine();
                             if (reservation == "Y" || reservation == "y")
                             {
                                 Console.WriteLine("Make reservation function needs to place here.");
@@ -71,6 +73,97 @@ namespace cinema
                 if(account == "E" || account == "e")
                 {
                     l.signinEmployee();
+                    Console.WriteLine("Employee login function came here.");
+                    bool employeeLogin = true;//Dit moet later aangepast worden
+                    if (employeeLogin)
+                    {
+                        Console.WriteLine("Manage rooms: R, manage movies: M, manage customer: C, manage employees: E");
+                        employeeAction = Console.ReadLine();
+                        if (employeeAction == "R" || employeeAction == "r")
+                        {
+                            Console.WriteLine("Add a room: A, view all rooms: V, edit a room: E, delete a room: D");
+                            employeeAction = Console.ReadLine();
+                            if (employeeAction == "A" || employeeAction == "a")
+                            {
+                                r.addRoom();
+                            }
+                            if (employeeAction == "V" || employeeAction == "v")
+                            {
+                                r.viewRoom();
+                            }
+                            if (employeeAction == "E" || employeeAction == "e")
+                            {
+                                r.editRoom();
+                            }
+                            if (employeeAction == "D" || employeeAction == "d")
+                            {
+                                r.deleteRoom();
+                            }
+                        }
+                        if (employeeAction == "M" || employeeAction == "m")
+                        {
+                            Console.WriteLine("Add a movie: a, view all movies: V, edit a movie: E, delete a movie: D");
+                            employeeAction = Console.ReadLine();
+                            if (employeeAction == "A" || employeeAction == "a")
+                            {
+                                m.addMovie();
+                            }
+                            if (employeeAction == "V" || employeeAction == "v")
+                            {
+                                m.viewMovie();
+                            }
+                            if (employeeAction == "E" || employeeAction == "e")
+                            {
+                                m.editMovie();
+                            }
+                            if (employeeAction == "D" || employeeAction == "d")
+                            {
+                                m.deleteMovie();
+                            }
+                        }
+                        if (employeeAction == "C" || employeeAction == "c")
+                        {
+                            Console.WriteLine("Add a customer: A, view all customers: V, edit a customer: E, delete a customer: D");
+                            employeeAction = Console.ReadLine();
+                            if (employeeAction == "A" || employeeAction == "a")
+                            {
+                                c.addCustomer();
+                            }
+                            if (employeeAction == "V" || employeeAction == "v")
+                            {
+                                c.viewCustomer();
+                            }
+                            if (employeeAction == "E" || employeeAction == "e")
+                            {
+                                c.editCustomer();
+                            }
+                            if (employeeAction == "D" || employeeAction == "d")
+                            {
+                                c.deleteCustomer();
+                            }
+                        }
+                        if (employeeAction == "E" || employeeAction == "e")
+                        {
+                            Console.WriteLine("Add a employee: A, view all employees: V, edit a employee: E, delete a employee: D");
+                            employeeAction = Console.ReadLine();
+                            if (employeeAction == "A" || employeeAction == "a")
+                            {
+                                e.addEmployee();
+                            }
+                            if (employeeAction == "V" || employeeAction == "v")
+                            {
+                                e.viewEmployee();
+                            }
+                            if (employeeAction == "E" || employeeAction == "e")
+                            {
+                                
+                            }
+                            if (employeeAction == "D" || employeeAction == "d")
+                            {
+
+                            }
+                        }
+                    }
                 }
             }
         }
