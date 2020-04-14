@@ -70,7 +70,7 @@ namespace cinema
                 }
                 if(account == "E" || account == "e")
                 {
-                    Console.WriteLine("Employee login function came here.");
+                    l.signinEmployee();
                 }
             }
         }

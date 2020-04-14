@@ -16,18 +16,57 @@ namespace cinema
             Console.WriteLine("functie customerdetail");
         }       
         public void signIn(){
+            string valId, email, password = "";
+            int id = 0;
+            string Signindetails = File.ReadAllText("login.json");
+            List<login> Signindetails = JsonSerializer.Deserialize<List<login>>(Signindetails);
+            string customersdetails = File.ReadAllText("customers.json");
+            List<Customer> customerdetails = JsonSerializer.Deserialize<List<Customer>>(customerdetails);
             string SaveEmail, SavePassword = ""; 
             Console.WriteLine("Please enter your E-mail: ");
             SaveEmail = Console.ReadLine();
-            Console.WriteLine("Please enter your password: ");
-            SavePassword = Console.ReadLine();
-            Console.WriteLine("Login succesful");
-            /*
-             * In een login.json de gebgruiker vastleggen die is ingelogd. Op deze manier kan er makkelijk worden opgevraagd
-             * welke gebruiker is ingelogd en welke gegevens nodig zijn woor de reservering en betaling.
-            */
+            Console.WriteLine("Please enter your ID: ");
+            valId = Console.ReadLine();
+            id = Convert.ToInt32(valId);
+            var customer = customerDetail.FirstOrDefault(c => c.Id == id);
+            Console.WriteLine("Please enter your Email: ");
+            email = Console.ReadLine();
+            if(customerDetail[id.email == email]){
+                // vragen om wachtwoord, wachtwoord controleren. 
+                Console.WriteLine("Please enter your password: ");
+                password = Console.ReadLine();
+                if(customerdetails[id.password == password]){
+                    SavePassword = Console.ReadLine();
+                    Console.WriteLine("Login succesful");
+                }
+                
+            }
+
+        
+        
         }
+        public void signinEmployee(){
+            string SaveEmail, SavePassword = "";
+            int id = 0;
+            string employeedetails = File.ReadAllText("employees.json");
+            List<employee> emplyeedetails = JsonSerializer.Deserialize<List<employee>>(employeedetails);
+
+            Console.WriteLine("Please enter your Employee number: ");
+            SaveEmail = Console.ReadLine();
+            if(emplyeedetail [id.Email == email]){
+                Console.WriteLine("Please enter your password: ");
+                SavePassword = Console.ReadLine();
+                if(SavePassword[id.password ==SavePassword]){
+                    Console.WriteLine(" Employeelogin succesful");
+                }
+                
+                
+            }
+
+        }
+
     }
 }
 
-
+//Save the data in JSON
+//check if the password matches the password in JSON (with if statement and for loop)
