@@ -13,6 +13,7 @@ namespace cinema
             Login l = new Login();
             Customer c = new Customer();
             Reservation R = new Reservation();
+            Employee e = new Employee();
                   
             string start, account, showMovies, showRooms, addMovies, rooms, login, reservation, employeeAction = "";
             
@@ -43,6 +44,7 @@ namespace cinema
                         {
                             m.viewMovie();
                             Console.WriteLine("Do you want to make a reservation? Yes: Y or No: N");
+                            reservation = Console.ReadLine();
                             if (reservation == "Y" || reservation == "y")
                             {
                                 Console.WriteLine("Make reservation function needs to place here.");
@@ -137,6 +139,27 @@ namespace cinema
                             if (employeeAction == "D" || employeeAction == "d")
                             {
                                 c.deleteCustomer();
+                            }
+                        }
+                        if (employeeAction == "E" || employeeAction == "e")
+                        {
+                            Console.WriteLine("Add a employee: A, view all employees: V, edit a employee: E, delete a employee: D");
+                            employeeAction = Console.ReadLine();
+                            if (employeeAction == "A" || employeeAction == "a")
+                            {
+                                e.addEmployee();
+                            }
+                            if (employeeAction == "V" || employeeAction == "v")
+                            {
+                                e.viewEmployee();
+                            }
+                            if (employeeAction == "E" || employeeAction == "e")
+                            {
+                                
+                            }
+                            if (employeeAction == "D" || employeeAction == "d")
+                            {
+
                             }
                         }
                     }
