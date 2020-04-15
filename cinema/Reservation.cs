@@ -68,19 +68,20 @@ namespace cinema
             Console.WriteLine("Choose what movie you want to watch, Type the ID of the movie");
             choosenMovie = Console.ReadLine();
             choosenMovieId = Convert.ToInt32(choosenMovie);
-            if(choosenMovieId == movieDetail[choosenMovieId-1].Id){
-            Console.WriteLine($"You choose the Movie {movieDetail[choosenMovieId-1].Name}, it will start at {movieDetail[choosenMovieId-1].Time}\n");
+            if(choosenMovieId == movieDetail[choosenMovieId-1].Id)
+            {
+                Console.WriteLine($"You choose the Movie {movieDetail[choosenMovieId-1].Name}, it will start at {movieDetail[choosenMovieId-1].Time}\n");
             
             
             
-            reservation.movieId = choosenMovieId;
-            reservation.roomId = movieDetail[choosenMovieId-1].Room;
-            reservation.customer = customerDetail[choosenMovieId-1].Email;
-            reservation.customerId = customerDetail[choosenMovieId-1].Id;
-            reservation.time = movieDetail[choosenMovieId-1].Time;
-            reservation.date = movieDetail[choosenMovieId-1].Date;
-            reservation.duration = 0;
-            reservation.sales = movieDetail[choosenMovieId-1].Price;
+                reservation.movieId = choosenMovieId;
+                reservation.roomId = movieDetail[choosenMovieId-1].Room;
+                reservation.customer = customerDetail[choosenMovieId-1].Email;
+                reservation.customerId = customerDetail[choosenMovieId-1].Id;
+                reservation.time = movieDetail[choosenMovieId-1].Time;
+                reservation.date = movieDetail[choosenMovieId-1].Date;
+                reservation.duration = 0;
+                reservation.sales = movieDetail[choosenMovieId-1].Price;
             }
 
             reservationDetail.Add(reservation);
@@ -88,17 +89,18 @@ namespace cinema
             string resultJson = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
             File.WriteAllText("reservation.json", resultJson);
             Console.WriteLine("Reservation successfully added. Press B to start again");
-                gotostart = true;
-                back = Console.ReadLine();
-                if(back == "b" || back == "B"){
-                    if(gotostart){
-                        goto beginning;
-                    }
+            gotostart = true;
+            back = Console.ReadLine();
+            if(back == "b" || back == "B")
+            {
+                if(gotostart)
+                {
+                    goto beginning;
                 }
             }
-
         }
     }
+}
 
 
 
