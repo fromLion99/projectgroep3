@@ -38,8 +38,7 @@ namespace cinema
                 if(customerDetail[id].Password == password){
                     SavePassword = Console.ReadLine();
                     Console.WriteLine("Login succesful");
-                }
-                
+                }   
             }
 
         
