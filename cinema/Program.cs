@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace cinema
 {
@@ -16,11 +17,18 @@ namespace cinema
                   
             string start, account, showMovies, showRooms, addMovies, rooms, login, reservation, employeeAction, customerCreateAccount = "";
             
+            Console.Write("Booting... ");
+            using (var progress = new ProgressBar()) {
+                for (int i = 0; i <= 100; i++) {
+                    progress.Report((double) i / 100);
+                    Thread.Sleep(30);
+                }
+            }
             startScreen();
 
             moviesStart:
 
-            Console.WriteLine("After pressing a key hit enter to go further in the program.\nWill you see movies press M. Will you login or make an account press L.");
+            Console.WriteLine("After pressing a key hit enter to go further in the program.\nWill you see movies press M. Will you login or make an account press L.\nIf you want to close the program press Q.");
             start = Console.ReadLine();
             if(start == "M" || start == "m")
             {
@@ -198,6 +206,18 @@ namespace cinema
                         }
                     }
                 }
+            }
+            if (start == "Q" || start == "q")
+            {
+                Console.Write("Shutting down... ");
+                using (var progress = new ProgressBar()) {
+                    for (int i = 0; i <= 100; i++) {
+                        progress.Report((double) i / 100);
+                        Thread.Sleep(20);
+                    }
+                }
+                Console.WriteLine("Done.");
+                Environment.Exit(0);
             }
             else
             {
