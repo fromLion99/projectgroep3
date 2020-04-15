@@ -16,6 +16,7 @@ namespace cinema
         public int movieId {get; set;}
         public int roomId {get; set;}
         public string customer {get; set;}
+        public int customerId {get; set;}
         public string time {get; set;}
         public string date {get; set;}
         public int duration {get; set;}
@@ -25,12 +26,15 @@ namespace cinema
         public static void addReservation()
         {
             Program p = new Program();
+            Movie movie = new Movie();
             Room r = new Room();
             Search s = new Search();
             Customer c = new Customer();
             Reservation R = new Reservation();
+            Login l = new Login();
+            Customer customer = new Customer();
 
-            string login, movieBegin = "";
+            string login, movieBegin, choosenMovie, back = "";
 
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);            
@@ -41,11 +45,8 @@ namespace cinema
             string reservationsDetails = File.ReadAllText("reservation.json");
             List<Reservation> reservationDetail = JsonSerializer.Deserialize<List<Reservation>>(reservationsDetails);
             
-            Reservation reservation = new Reservation();
-            int choosenMovieId = 0;
-            var item = reservationDetail[reservationDetail.Count -1];
-            var newId = item.Id+1;
-            reservation.Id = newId; 
+            string customerDetails = File.ReadAllText("customers.json");
+            List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
             
             Console.WriteLine("To make a reservation you have to be logged in, Press L to Login");
             login = Console.ReadLine();
@@ -56,14 +57,13 @@ namespace cinema
             beginning:
 
             bool gotostart = false;
-<<<<<<< HEAD
             // R.customerId = c.Id;
             Reservation reservation = new Reservation();
             int choosenMovieId = 0;
             var item = reservationDetail[reservationDetail.Count -1];
             var newId = item.Id+1;
             reservation.Id = newId; 
-            movie.viewMovie();
+            cinema.Movie.viewMovie();
             
             Console.WriteLine("Choose what movie you want to watch, Type the ID of the movie");
             choosenMovie = Console.ReadLine();
@@ -81,46 +81,77 @@ namespace cinema
             reservation.date = movieDetail[choosenMovieId-1].Date;
             reservation.duration = 0;
             reservation.sales = movieDetail[choosenMovieId-1].Price;
-=======
-            cinema.Movie.viewMovie();
-            Console.WriteLine("Choose what movie you want to watch");
-            for(int j = 0; j < movieDetail.Count; j++){
-                string movieRead = Console.ReadLine();
-                choosenMovieId = j;
-                if(movieDetail[j].Name == movieRead){
-                    Console.WriteLine($"You Choose the Movie {movieDetail[j].Name}, it will start at {movieDetail[j].Time}\n");
-                }
->>>>>>> e3a39d391472d2883eb9ff8177495a84f2e091cf
             }
-            Console.WriteLine("You want to choose another movie?, Yes or No?");
-            movieBegin = Console.ReadLine();
-            if (movieBegin == "Yes" || movieBegin == "yes")
-            {
-                gotostart = true;
-            }
-            if(gotostart){
-                goto beginning;
-            } 
-            movieBegin = Console.ReadLine();
-            if (movieBegin == "No" || movieBegin == "no")
-            {
+
             reservationDetail.Add(reservation);
+
             string resultJson = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
-            File.WriteAllText("reservation.json", resultJson);                
-            Console.WriteLine($"You Choose the Movie {movieDetail[choosenMovieId].Name}, it will start at {movieDetail[choosenMovieId].Time}\n");
+            File.WriteAllText("reservation.json", resultJson);
+            Console.WriteLine("Reservation successfully added. Press B to start again");
+                gotostart = true;
+                back = Console.ReadLine();
+                if(back == "b" || back == "B"){
+                    if(gotostart){
+                        goto beginning;
+                    }
+                }
             }
-            
 
-
-
-
-        
-        
-        
-        
-        
-        
         }
+    }
+
+
+
+
+
+
+
+
+            // if(choosenMovieId == movie.Id)
+            // Console.WriteLine($"ID:{choosenMovieId}");
+            // if(choosenMovieId != movie.Id) {
+            //     Console.WriteLine("The ID you choose does not exist try again, Press B to start again");
+            //     gotostart = true;
+            //     back = Console.ReadLine();
+            //     if(back == "b" || back == "B"){
+            //         if(gotostart){
+            //             goto beginning;
+            //         }
+            //     }
+            // }
+
+            // string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
+            // File.WriteAllText("movies.json", resultJson);
+            // Console.WriteLine("Movie successfully added.");
+            // Console.WriteLine($"You choose the Movie {movieDetail[choosenMovieId].Name}, it will start at {movieDetail[choosenMovieId].Time}\n");
+        
+            // Console.WriteLine("You want to choose another movie?, Yes or No?");
+            // movieBegin = Console.ReadLine();
+            // if (movieBegin == "Yes" || movieBegin == "yes")
+            // {
+            //     gotostart = true;
+            // }
+            // if(gotostart){
+            //     goto beginning;
+            // } 
+            // movieBegin = Console.ReadLine();
+            // if (movieBegin == "No" || movieBegin == "no")
+            // {
+              
+            // Console.WriteLine($"You Choose the Movie {movieDetail[choosenMovieId].Name}, it will start at {movieDetail[choosenMovieId].Time}\n");
+            // }
+    
+
+
+
+
+        
+        
+        
+        
+        
+        
+        // }
         // public void MakeReservation(){
 
         //     // JSON
@@ -180,5 +211,5 @@ namespace cinema
         //     List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails); 
         // }
 
-    }
-}
+//     }
+// }
