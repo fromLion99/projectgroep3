@@ -15,6 +15,7 @@ namespace cinema
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
 
              Movie movie = new Movie();
+             Reservation R = new Reservation();
             
             // Console.WriteLine($"The Movie {movieDetail[1].Name} will start at {movieDetail[1].Time}\n");
             
@@ -56,11 +57,11 @@ namespace cinema
                     Console.WriteLine($"{movieDetail[i].Id}: {movieDetail[i].Name}");
                     found = true;
                 }
-                if(!found){
-                    Console.WriteLine("Genre not found, try again:");
-                    goto beginning_Genre;
-                }
             }
+            if(!found){
+                Console.WriteLine("Genre not found, try again:");
+                goto beginning_Genre;
+                }
 
             beginning_Id:
 
@@ -71,7 +72,8 @@ namespace cinema
 
             for(int k=0;k<movieDetail.Count;k++){
                 if(movieDetail[k].Id == inputId){
-                    Console.WriteLine($"{movieDetail[k].Description}\n");
+                    Console.WriteLine($"{movieDetail[k].Description}\nThe movie start at {movieDetail[k].Time} on {movieDetail[k].Date}");
+                    Console.WriteLine($"Type R to make a reservation for {movieDetail[k].Name} or press T to pick another movie.");
                     found2 = true;
                 }
             }
@@ -79,6 +81,45 @@ namespace cinema
                 System.Console.WriteLine("ID not found, try again");
                 goto beginning_Id;
             }
+
+            string input3 = Console.ReadLine();
+            if(input3 == "r" || input3 == "R"){
+                R.addReservation();
+            }
+            if(input3 == "T" || input3 == "t"){
+                goto beginning_Genre;
+            }
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              
+
+
+
+
+
+            
+
+
+
+
+
+
 
             
             

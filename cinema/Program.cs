@@ -186,6 +186,7 @@ namespace cinema
             foreach(string line in arr )
                 Console.WriteLine(line);
             Console.ReadLine();
+        
         }
     }         
 
