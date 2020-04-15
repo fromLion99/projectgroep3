@@ -10,11 +10,10 @@ namespace cinema
             Movie m = new Movie();
             Room r = new Room();
             Search s = new Search();
-            Login l = new Login();
             Customer c = new Customer();
             Reservation R = new Reservation();
             Employee e = new Employee();
-                  
+
             string start, account, showMovies, showRooms, addMovies, rooms, login, reservation, employeeAction, customerCreateAccount = "";
             
             Console.Write("Booting... ");
@@ -42,7 +41,7 @@ namespace cinema
                     login = Console.ReadLine();
                     if (login == "yes"|| login == "Yes" || login == "y"|| login == "Y" )
                     {
-                        l.signIn();
+                        Login.signIn();
                         Console.WriteLine("Login successful, Press M for movies");
                         showMovies = Console.ReadLine();
                         if(showMovies == "m" || showMovies == "M")
@@ -87,7 +86,7 @@ namespace cinema
                 account = Console.ReadLine();
                 if(account == "L" || account == "l")
                 {
-                    l.signIn();
+                    Login.signIn();
                     goto moviesStart;
                 }
                 if(account == "C" || account == "c")

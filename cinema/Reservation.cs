@@ -29,10 +29,10 @@ namespace cinema
             Movie movie = new Movie();
             Room r = new Room();
             Search s = new Search();
+            Customer c = new Customer();
+            Reservation R = new Reservation();
             Login l = new Login();
             Customer customer = new Customer();
-            
-
 
             string login, movieBegin, choosenMovie, back = "";
 
@@ -52,7 +52,7 @@ namespace cinema
             login = Console.ReadLine();
             if(login == "L" || login == "l")
             {
-                l.signIn(); 
+                cinema.Login.signIn();
             }
             beginning:
 
