@@ -14,12 +14,9 @@ namespace cinema
             Reservation R = new Reservation();
             Employee e = new Employee();
                   
-            string start, account, showMovies, showRooms, addMovies, rooms, login, reservation, employeeAction = "";
+            string start, account, showMovies, showRooms, addMovies, rooms, login, reservation, employeeAction, customerCreateAccount = "";
             
             startScreen();
-
-            bool gotoMovies = false;
-            bool gotostart = false;
 
             moviesStart:
 
@@ -27,9 +24,10 @@ namespace cinema
             start = Console.ReadLine();
             if(start == "M" || start == "m")
             {
-                Console.WriteLine("Available movies, if you wat to login press L");
-                login = Console.ReadLine();
+                Console.WriteLine("Available movies:");
                 m.viewMovie();
+                Console.WriteLine("If you want to log in enter L. If not hit enter.");
+                login = Console.ReadLine();
                 
                 if (login == "L"|| login == "l" ){
                     Console.WriteLine("Do you already have an account? Yes: Y or No: N");
@@ -47,14 +45,32 @@ namespace cinema
                             if (reservation == "Y" || reservation == "y")
                             {
                                 Console.WriteLine("Make reservation function needs to place here.");
-                                gotoMovies = true;
-                                if(gotoMovies)
-                                {
-                                    goto moviesStart;
-                                }
+                                goto moviesStart;
                             }
                         }
                     }
+                    if (login == "N" || login == "n")
+                    {
+                        Console.WriteLine("Do you want to create an account? Yes: Y or No: N");
+                        customerCreateAccount = Console.ReadLine();
+                        if (customerCreateAccount == "Y" || customerCreateAccount == "y")
+                        {
+                            c.addCustomer();
+                            goto moviesStart;
+                        }
+                        else
+                        {
+                            goto moviesStart;
+                        }
+                    }
+                    else
+                    {
+                        goto moviesStart;
+                    }
+                }
+                else
+                {
+                    goto moviesStart;
                 }
             }
             if(start == "L" || start == "l")
@@ -64,10 +80,12 @@ namespace cinema
                 if(account == "L" || account == "l")
                 {
                     l.signIn();
+                    goto moviesStart;
                 }
                 if(account == "C" || account == "c")
                 {
                     c.addCustomer();
+                    goto moviesStart;
                 }
                 if(account == "E" || account == "e")
                 {
@@ -85,18 +103,22 @@ namespace cinema
                             if (employeeAction == "A" || employeeAction == "a")
                             {
                                 r.addRoom();
+                                goto moviesStart;
                             }
                             if (employeeAction == "V" || employeeAction == "v")
                             {
                                 r.viewRoom();
+                                goto moviesStart;
                             }
                             if (employeeAction == "E" || employeeAction == "e")
                             {
                                 r.editRoom();
+                                goto moviesStart;
                             }
                             if (employeeAction == "D" || employeeAction == "d")
                             {
                                 r.deleteRoom();
+                                goto moviesStart;
                             }
                         }
                         if (employeeAction == "M" || employeeAction == "m")
@@ -106,18 +128,22 @@ namespace cinema
                             if (employeeAction == "A" || employeeAction == "a")
                             {
                                 m.addMovie();
+                                goto moviesStart;
                             }
                             if (employeeAction == "V" || employeeAction == "v")
                             {
                                 m.viewMovie();
+                                goto moviesStart;
                             }
                             if (employeeAction == "E" || employeeAction == "e")
                             {
                                 m.editMovie();
+                                goto moviesStart;
                             }
                             if (employeeAction == "D" || employeeAction == "d")
                             {
                                 m.deleteMovie();
+                                goto moviesStart;
                             }
                         }
                         if (employeeAction == "C" || employeeAction == "c")
@@ -127,18 +153,22 @@ namespace cinema
                             if (employeeAction == "A" || employeeAction == "a")
                             {
                                 c.addCustomer();
+                                goto moviesStart;
                             }
                             if (employeeAction == "V" || employeeAction == "v")
                             {
                                 c.viewCustomer();
+                                goto moviesStart;
                             }
                             if (employeeAction == "E" || employeeAction == "e")
                             {
                                 c.editCustomer();
+                                goto moviesStart;
                             }
                             if (employeeAction == "D" || employeeAction == "d")
                             {
                                 c.deleteCustomer();
+                                goto moviesStart;
                             }
                         }
                         if (employeeAction == "E" || employeeAction == "e")
@@ -148,22 +178,30 @@ namespace cinema
                             if (employeeAction == "A" || employeeAction == "a")
                             {
                                 e.addEmployee();
+                                goto moviesStart;
                             }
                             if (employeeAction == "V" || employeeAction == "v")
                             {
                                 e.viewEmployee();
+                                goto moviesStart;
                             }
                             if (employeeAction == "E" || employeeAction == "e")
                             {
                                 e.editEmployee();
+                                goto moviesStart;
                             }
                             if (employeeAction == "D" || employeeAction == "d")
                             {
                                 e.deleteEmployee();
+                                goto moviesStart;
                             }
                         }
                     }
                 }
+            }
+            else
+            {
+                goto moviesStart;
             }
         }
 
