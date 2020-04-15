@@ -19,6 +19,7 @@ namespace cinema
         public string time {get; set;}
         public string date {get; set;}
         public int duration {get; set;}
+        public int sales { get; set; }
 
         
         public void addReservation()

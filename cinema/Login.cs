@@ -44,7 +44,7 @@ namespace cinema
                 }
             }
             else{
-                Console.WriteLine("Unkown username!");
+                Console.WriteLine("unknown username!");
             }
         
         
