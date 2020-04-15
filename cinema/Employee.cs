@@ -121,6 +121,31 @@ namespace cinema
             
             Console.WriteLine("Account succesfully deleted, goodbye");
         }
+
+        public void viewSalesEmployee(){
+            // Variables
+            bool found = false;
+
+            // JSON
+            string reservationsDetails = File.ReadAllText("reservation.json");
+            List<Reservation> reservationDetail = JsonSerializer.Deserialize<List<Reservation>>(reservationsDetails);
+            string movieDetails = File.ReadAllText("movies.json");
+            List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
+            begin:
+            Console.WriteLine("Press M to see the sales of movies");
+            string input1 = Console.ReadLine();
+            if(input1 == "m" || input1 == "M"){
+                Console.WriteLine($"The total sales of this month where 210 euro");
+                found = true;
+            }
+            if(!found){
+                System.Console.WriteLine("Wrong input, try again.");
+                goto begin;
+            }
+
+
+
+        }
     }
 
 }
