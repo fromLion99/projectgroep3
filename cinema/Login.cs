@@ -14,26 +14,30 @@ namespace cinema
         public void CustomerDetail(){
             Console.WriteLine("functie customerdetail");
         }       
-        public void signIn(){
+        public static void signIn(){
             string valId, email, password = "";
             int id = 0;
+
             string signinDetails = File.ReadAllText("Login.json");
-            List<Login> Signindetail = JsonSerializer.Deserialize<List<Login>>(signinDetails);
+            Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
+
             Console.WriteLine("Please enter your ID: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
-            id-=1;
+            
             var customer = customerDetail.FirstOrDefault(c => c.Id == id);
-            Console.WriteLine(customer);
+            
             Console.WriteLine("Please enter your Email: ");
             email = Console.ReadLine();
-            if(customerDetail[id].Email == email){
+            if(customer.Email == email){
                 Console.WriteLine("Please enter your password: ");
                 password = Console.ReadLine();
-                if(customerDetail[id].Password == password){
-                    string Resultjson = JsonSerializer.Serialize<List<Login>>(Signindetail);
+                if(customer.Password == password){
+                    currentLogin.CustomerId = customer.Id;
+                    currentLogin.CustomerEmail = customer.Email;
+                    string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
                     File.WriteAllText("Login.json", Resultjson);
                     Console.WriteLine("Login succesful!");
                 }
@@ -45,6 +49,7 @@ namespace cinema
                 Console.WriteLine("unknown username!");
             }
         }
+
         /*
         public void signinEmployee(){
             string SaveEmail, SavePassword = "";
