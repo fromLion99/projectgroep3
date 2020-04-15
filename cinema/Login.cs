@@ -23,12 +23,14 @@ namespace cinema
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
             string SaveEmail, SavePassword = ""; 
-            Console.WriteLine("Please enter your E-mail: ");
-            SaveEmail = Console.ReadLine();
+//            Console.WriteLine("Please enter your E-mail: ");
+//            SaveEmail = Console.ReadLine();
             Console.WriteLine("Please enter your ID: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
+            id-=1;
             var customer = customerDetail.FirstOrDefault(c => c.Id == id);
+            Console.WriteLine(customer);
             Console.WriteLine("Please enter your Email: ");
             email = Console.ReadLine();
             if(customerDetail[id].Email == email){
@@ -39,9 +41,14 @@ namespace cinema
                     SavePassword = Console.ReadLine();
                     Console.WriteLine("Login succesful");
                 }
-                
+                else{
+                    Console.WriteLine("Password incorrect!");
+                }
             }
-
+            else{
+                Console.WriteLine(customerDetail[id].Email);
+                Console.WriteLine(email);
+            }
         
         
         }
