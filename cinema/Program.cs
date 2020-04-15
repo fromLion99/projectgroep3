@@ -7,14 +7,7 @@ namespace cinema
     {
         static void Main(string[] args)
         {
-            Movie m = new Movie();
-            Room r = new Room();
-            Search s = new Search();
-            Customer c = new Customer();
-            Reservation R = new Reservation();
-            Employee e = new Employee();
-
-            string start, account, showMovies, showRooms, addMovies, rooms, login, reservation, employeeAction, customerCreateAccount = "";
+            string start, account, showMovies, login, reservation, employeeAction, customerCreateAccount = "";
             
             Console.Write("Booting... ");
             using (var progress = new ProgressBar()) {
@@ -32,7 +25,7 @@ namespace cinema
             if(start == "M" || start == "m")
             {
                 Console.WriteLine("Available movies:");
-                m.viewMovie();
+                Movie.viewMovie();
                 Console.WriteLine("If you want to log in enter L. If not hit enter.");
                 login = Console.ReadLine();
                 
@@ -46,7 +39,7 @@ namespace cinema
                         showMovies = Console.ReadLine();
                         if(showMovies == "m" || showMovies == "M")
                         {
-                            m.viewMovie();
+                            Movie.viewMovie();
                             Console.WriteLine("Do you want to make a reservation? Yes: Y or No: N");
                             reservation = Console.ReadLine();
                             if (reservation == "Y" || reservation == "y")
@@ -62,7 +55,7 @@ namespace cinema
                         customerCreateAccount = Console.ReadLine();
                         if (customerCreateAccount == "Y" || customerCreateAccount == "y")
                         {
-                            c.addCustomer();
+                            Customer.addCustomer();
                             goto moviesStart;
                         }
                         else
@@ -91,7 +84,7 @@ namespace cinema
                 }
                 if(account == "C" || account == "c")
                 {
-                    c.addCustomer();
+                    Customer.addCustomer();
                     goto moviesStart;
                 }
                 if(account == "E" || account == "e")
@@ -109,22 +102,22 @@ namespace cinema
                             employeeAction = Console.ReadLine();
                             if (employeeAction == "A" || employeeAction == "a")
                             {
-                                r.addRoom();
+                                Room.addRoom();
                                 goto moviesStart;
                             }
                             if (employeeAction == "V" || employeeAction == "v")
                             {
-                                r.viewRoom();
+                                Room.viewRoom();
                                 goto moviesStart;
                             }
                             if (employeeAction == "E" || employeeAction == "e")
                             {
-                                r.editRoom();
+                                Room.editRoom();
                                 goto moviesStart;
                             }
                             if (employeeAction == "D" || employeeAction == "d")
                             {
-                                r.deleteRoom();
+                                Room.deleteRoom();
                                 goto moviesStart;
                             }
                         }
@@ -134,22 +127,22 @@ namespace cinema
                             employeeAction = Console.ReadLine();
                             if (employeeAction == "A" || employeeAction == "a")
                             {
-                                m.addMovie();
+                                Movie.addMovie();
                                 goto moviesStart;
                             }
                             if (employeeAction == "V" || employeeAction == "v")
                             {
-                                m.viewMovie();
+                                Movie.viewMovie();
                                 goto moviesStart;
                             }
                             if (employeeAction == "E" || employeeAction == "e")
                             {
-                                m.editMovie();
+                                Movie.editMovie();
                                 goto moviesStart;
                             }
                             if (employeeAction == "D" || employeeAction == "d")
                             {
-                                m.deleteMovie();
+                                Movie.deleteMovie();
                                 goto moviesStart;
                             }
                         }
@@ -159,22 +152,22 @@ namespace cinema
                             employeeAction = Console.ReadLine();
                             if (employeeAction == "A" || employeeAction == "a")
                             {
-                                c.addCustomer();
+                                Customer.addCustomer();
                                 goto moviesStart;
                             }
                             if (employeeAction == "V" || employeeAction == "v")
                             {
-                                c.viewCustomer();
+                                Customer.viewCustomer();
                                 goto moviesStart;
                             }
                             if (employeeAction == "E" || employeeAction == "e")
                             {
-                                c.editCustomer();
+                                Customer.editCustomer();
                                 goto moviesStart;
                             }
                             if (employeeAction == "D" || employeeAction == "d")
                             {
-                                c.deleteCustomer();
+                                Customer.deleteCustomer();
                                 goto moviesStart;
                             }
                         }
@@ -184,22 +177,22 @@ namespace cinema
                             employeeAction = Console.ReadLine();
                             if (employeeAction == "A" || employeeAction == "a")
                             {
-                                e.addEmployee();
+                                Employee.addEmployee();
                                 goto moviesStart;
                             }
                             if (employeeAction == "V" || employeeAction == "v")
                             {
-                                e.viewEmployee();
+                                Employee.viewEmployee();
                                 goto moviesStart;
                             }
                             if (employeeAction == "E" || employeeAction == "e")
                             {
-                                e.editEmployee();
+                                Employee.editEmployee();
                                 goto moviesStart;
                             }
                             if (employeeAction == "D" || employeeAction == "d")
                             {
-                                e.deleteEmployee();
+                                Employee.deleteEmployee();
                                 goto moviesStart;
                             }
                         }

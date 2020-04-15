@@ -22,10 +22,9 @@ namespace cinema
         public int sales { get; set; }
 
         
-        public void addReservation()
+        public static void addReservation()
         {
             Program p = new Program();
-            Movie movie = new Movie();
             Room r = new Room();
             Search s = new Search();
             Customer c = new Customer();
@@ -57,7 +56,7 @@ namespace cinema
             beginning:
 
             bool gotostart = false;
-            movie.viewMovie();
+            cinema.Movie.viewMovie();
             Console.WriteLine("Choose what movie you want to watch");
             for(int j = 0; j < movieDetail.Count; j++){
                 string movieRead = Console.ReadLine();
