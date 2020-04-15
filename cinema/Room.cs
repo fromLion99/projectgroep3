@@ -15,7 +15,7 @@ namespace cinema
         public int Row {get; set;}
         public int Chair {get; set;}
 
-        public void addRoom(){
+        public static void addRoom(){
             int roomNumber, countChair, row, chair = 0;
             string valRoomNumber, valCountChair, valRow, valChair = "";
 
@@ -54,7 +54,7 @@ namespace cinema
             Console.WriteLine("Room successfully added.\n");
         }
 
-        public void viewRoom(){
+        public static void viewRoom(){
             string roomDetails = File.ReadAllText("rooms.json");
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
 
@@ -68,7 +68,7 @@ namespace cinema
             }
         }
 
-        public void editRoom(){
+        public static void editRoom(){
             string roomDetails = File.ReadAllText("rooms.json");
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
 
@@ -115,7 +115,7 @@ namespace cinema
             Console.WriteLine("Changes successfully saved.");
         }
 
-        public void deleteRoom(){
+        public static void deleteRoom(){
             string roomDetails = File.ReadAllText("rooms.json");
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
 

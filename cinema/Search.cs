@@ -8,14 +8,11 @@ namespace cinema
 {
     public class Search
     {
-        public void searchMovie(){
+        public static void searchMovie(){
 
             // JSON
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
-
-             Movie movie = new Movie();
-             Reservation R = new Reservation();
             
             // Console.WriteLine($"The Movie {movieDetail[1].Name} will start at {movieDetail[1].Time}\n");
             
@@ -84,62 +81,11 @@ namespace cinema
 
             string input3 = Console.ReadLine();
             if(input3 == "r" || input3 == "R"){
-                R.addReservation();
+                Reservation.addReservation();
             }
             if(input3 == "T" || input3 == "t"){
                 goto beginning_Genre;
             }
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              
-
-
-
-
-
-            
-
-
-
-
-
-
-
-            
-            
-
-
-
-
-
-            
-    
-
-
-            
-             
-
-            
-
-
-
-
         }
     }
 }
