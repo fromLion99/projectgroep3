@@ -6,7 +6,6 @@ namespace cinema
     {
         static void Main(string[] args)
         {
-            Program p = new Program();
             Movie m = new Movie();
             Room r = new Room();
             Search s = new Search();
@@ -17,7 +16,7 @@ namespace cinema
                   
             string start, account, showMovies, showRooms, addMovies, rooms, login, reservation, employeeAction = "";
             
-            p.startScreen();
+            startScreen();
 
             bool gotoMovies = false;
             bool gotostart = false;
@@ -168,7 +167,7 @@ namespace cinema
             }
         }
 
-        public void startScreen(){
+        public static void startScreen(){
             var arr = new[]
                       {
                               @"   __      __        _                              _             ____  _                                   ",
