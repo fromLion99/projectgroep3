@@ -125,6 +125,7 @@ namespace cinema
         public void viewSalesEmployee(){
             // Variables
             bool found = false;
+            double countMoney = 0;
 
             // JSON
             string reservationsDetails = File.ReadAllText("reservation.json");
@@ -135,7 +136,10 @@ namespace cinema
             Console.WriteLine("Press M to see the sales of movies");
             string input1 = Console.ReadLine();
             if(input1 == "m" || input1 == "M"){
-                Console.WriteLine($"The total sales of this month where {reservationDetail[0].sales} euro");
+                for(int i = 0;i<reservationDetail.Count;i++){
+                    countMoney += reservationDetail[i].sales;
+                }
+                System.Console.WriteLine($"The total sales are: {countMoney} euro");
                 found = true;
             }
             if(!found){
