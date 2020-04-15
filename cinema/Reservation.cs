@@ -57,29 +57,25 @@ namespace cinema
 
             bool gotostart = false;
             // R.customerId = c.Id;
-            Reservation reservation = new Reservation();
-            int choosenMovieId = 0;
-            var item = reservationDetail[reservationDetail.Count -1];
-            var newId = item.Id+1;
-            reservation.Id = newId; 
-            movie.viewMovie();
+        
+            cinema.Movie.viewMovie();
             
             Console.WriteLine("Choose what movie you want to watch, Type the ID of the movie");
-            choosenMovie = Console.ReadLine();
+            string choosenMovie = Console.ReadLine();
             choosenMovieId = Convert.ToInt32(choosenMovie);
             if(choosenMovieId == movieDetail[choosenMovieId-1].Id){
             Console.WriteLine($"You choose the Movie {movieDetail[choosenMovieId-1].Name}, it will start at {movieDetail[choosenMovieId-1].Time}\n");
             
             
             
-            reservation.movieId = choosenMovieId;
-            reservation.roomId = movieDetail[choosenMovieId-1].Room;
-            reservation.customer = customerDetail[choosenMovieId-1].Email;
-            reservation.customerId = customerDetail[choosenMovieId-1].Id;
-            reservation.time = movieDetail[choosenMovieId-1].Time;
-            reservation.date = movieDetail[choosenMovieId-1].Date;
-            reservation.duration = 0;
-            reservation.sales = movieDetail[choosenMovieId-1].Price;
+            // reservation.movieId = choosenMovieId;
+            // reservation.roomId = movieDetail[choosenMovieId-1].Room;
+            // reservation.customer = customerDetail[choosenMovieId-1].Email;
+            // reservation.customerId = customerDetail[choosenMovieId-1].Id;
+            // reservation.time = movieDetail[choosenMovieId-1].Time;
+            // reservation.date = movieDetail[choosenMovieId-1].Date;
+            // reservation.duration = 0;
+            // reservation.sales = movieDetail[choosenMovieId-1].Price;
 
             }
             Console.WriteLine("You want to choose another movie?, Yes or No?");
