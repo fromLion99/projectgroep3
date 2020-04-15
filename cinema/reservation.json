@@ -1,1 +1,1 @@
-[{"Id":1,"ticketId":1,"movieId":1,"roomId":1,"customer":"customer1","time":"00:00","date":"DD/mm/yyyy","duration":5400}]
+[{"Id":1,"ticketId":1,"movieId":1,"roomId":1,"customer":"customer1","time":"00:00","date":"DD/mm/yyyy","duration":5400,"sales":10}]

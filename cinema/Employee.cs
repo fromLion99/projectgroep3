@@ -135,14 +135,14 @@ namespace cinema
             Console.WriteLine("Press M to see the sales of movies");
             string input1 = Console.ReadLine();
             if(input1 == "m" || input1 == "M"){
-                Console.WriteLine($"The total sales of this month where 210 euro");
+                Console.WriteLine($"The total sales of this month where {reservationDetail[0].sales} euro");
                 found = true;
             }
             if(!found){
                 System.Console.WriteLine("Wrong input, try again.");
                 goto begin;
             }
-
+            
 
 
         }
