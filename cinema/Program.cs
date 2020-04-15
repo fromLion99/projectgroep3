@@ -13,10 +13,11 @@ namespace cinema
             Login l = new Login();
             Customer c = new Customer();
             Reservation R = new Reservation();
+            Employee e = new Employee();
                   
-            string start, account, showMovies, showRooms, addMovies, rooms, login, reservation = "";
-            // s.searchMovie();
-            // p.startScreen();
+            string start, account, showMovies, showRooms, addMovies, rooms, login, reservation, employeeAction = "";
+            
+            p.startScreen();
 
             bool gotoMovies = false;
             bool gotostart = false;
@@ -43,6 +44,7 @@ namespace cinema
                         {
                             m.viewMovie();
                             Console.WriteLine("Do you want to make a reservation? Yes: Y or No: N");
+                            reservation = Console.ReadLine();
                             if (reservation == "Y" || reservation == "y")
                             {
                                 Console.WriteLine("Make reservation function needs to place here.");
@@ -70,7 +72,98 @@ namespace cinema
                 }
                 if(account == "E" || account == "e")
                 {
+                    //l.signinEmployee();
                     Console.WriteLine("Employee login function came here.");
+                    bool employeeLogin = true;//Dit moet later aangepast worden
+                    if (employeeLogin)
+                    {
+                        Console.WriteLine("Manage rooms: R, manage movies: M, manage customer: C, manage employees: E");
+                        employeeAction = Console.ReadLine();
+                        if (employeeAction == "R" || employeeAction == "r")
+                        {
+                            Console.WriteLine("Add a room: A, view all rooms: V, edit a room: E, delete a room: D");
+                            employeeAction = Console.ReadLine();
+                            if (employeeAction == "A" || employeeAction == "a")
+                            {
+                                r.addRoom();
+                            }
+                            if (employeeAction == "V" || employeeAction == "v")
+                            {
+                                r.viewRoom();
+                            }
+                            if (employeeAction == "E" || employeeAction == "e")
+                            {
+                                r.editRoom();
+                            }
+                            if (employeeAction == "D" || employeeAction == "d")
+                            {
+                                r.deleteRoom();
+                            }
+                        }
+                        if (employeeAction == "M" || employeeAction == "m")
+                        {
+                            Console.WriteLine("Add a movie: a, view all movies: V, edit a movie: E, delete a movie: D");
+                            employeeAction = Console.ReadLine();
+                            if (employeeAction == "A" || employeeAction == "a")
+                            {
+                                m.addMovie();
+                            }
+                            if (employeeAction == "V" || employeeAction == "v")
+                            {
+                                m.viewMovie();
+                            }
+                            if (employeeAction == "E" || employeeAction == "e")
+                            {
+                                m.editMovie();
+                            }
+                            if (employeeAction == "D" || employeeAction == "d")
+                            {
+                                m.deleteMovie();
+                            }
+                        }
+                        if (employeeAction == "C" || employeeAction == "c")
+                        {
+                            Console.WriteLine("Add a customer: A, view all customers: V, edit a customer: E, delete a customer: D");
+                            employeeAction = Console.ReadLine();
+                            if (employeeAction == "A" || employeeAction == "a")
+                            {
+                                c.addCustomer();
+                            }
+                            if (employeeAction == "V" || employeeAction == "v")
+                            {
+                                c.viewCustomer();
+                            }
+                            if (employeeAction == "E" || employeeAction == "e")
+                            {
+                                c.editCustomer();
+                            }
+                            if (employeeAction == "D" || employeeAction == "d")
+                            {
+                                c.deleteCustomer();
+                            }
+                        }
+                        if (employeeAction == "E" || employeeAction == "e")
+                        {
+                            Console.WriteLine("Add a employee: A, view all employees: V, edit a employee: E, delete a employee: D");
+                            employeeAction = Console.ReadLine();
+                            if (employeeAction == "A" || employeeAction == "a")
+                            {
+                                e.addEmployee();
+                            }
+                            if (employeeAction == "V" || employeeAction == "v")
+                            {
+                                e.viewEmployee();
+                            }
+                            if (employeeAction == "E" || employeeAction == "e")
+                            {
+                                e.editEmployee();
+                            }
+                            if (employeeAction == "D" || employeeAction == "d")
+                            {
+                                e.deleteEmployee();
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -83,7 +176,11 @@ namespace cinema
                               @"    \ \/\/ /  / -_) | | / _| / _ \ | '  \  / -_)   |  _| / _ \    / /  | | / -_) | ' \  / -_) | '  \  / _` |", 
                               @"     \_/\_/   \___| |_| \__| \___/ |_|_|_| \___|    \__| \___/   /___| |_| \___| |_||_| \___| |_|_|_| \__,_|", 
                               @"                                                                                                            ", 
-                              @"   Press enter to continue                                                                                     ",           
+                              @"     __     __ _  ____  _  _    ____  _  _  ____  ____  ____  __  ____  __ _   ___  ____     __  ____    _  _   __   _  _  __  ____  ____ ",
+                              @"    / _\   (  ( \(  __)/ )( \  (  __)( \/ )(  _ \(  __)(  _ \(  )(  __)(  ( \ / __)(  __)   /  \(  __)  ( \/ ) /  \ / )( \(  )(  __)/ ___)",
+                              @"   /    \  /    / ) _) \ /\ /   ) _)  )  (  ) __/ ) _)  )   / )(  ) _) /    /( (__  ) _)   (  O )) _)   / \/ \(  O )\ \/ / )(  ) _) \___ \",
+                              @"   \_/\_/  \_)__)(____)(_/\_)  (____)(_/\_)(__)  (____)(__\_)(__)(____)\_)__) \___)(____)   \__/(__)    \_)(_/ \__/  \__/ (__)(____)(____/",
+                              @"   Press enter to start                                                                                     ",           
                       };
             Console.WriteLine("\n\n");
             foreach(string line in arr )
