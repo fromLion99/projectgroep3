@@ -15,8 +15,8 @@ namespace cinema
             Reservation R = new Reservation();
                   
             string start, account, showMovies, showRooms, addMovies, rooms, login, reservation = "";
-            
-            p.startScreen();
+            // s.searchMovie();
+            // p.startScreen();
 
             bool gotoMovies = false;
             bool gotostart = false;
@@ -89,6 +89,7 @@ namespace cinema
             foreach(string line in arr )
                 Console.WriteLine(line);
             Console.ReadLine();
+        
         }
     }         
 
