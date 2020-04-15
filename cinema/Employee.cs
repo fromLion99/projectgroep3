@@ -16,7 +16,7 @@ namespace cinema
         public string Email {get; set;}
         public string Password {get; set;}
 
-        public void addEmployee(){
+        public static void addEmployee(){
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
 
@@ -44,7 +44,7 @@ namespace cinema
             Console.WriteLine("Employee added");
         }
 
-        public void viewEmployee(){
+        public static void viewEmployee(){
             string valInfix = "";
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
@@ -61,7 +61,7 @@ namespace cinema
             }
         }
 
-        public void editEmployee(){
+        public static void editEmployee(){
             int id = 0;
             string valInfix , valId = "";
             string employeeDetails = File.ReadAllText("employeeDetails.json");
@@ -97,7 +97,7 @@ namespace cinema
             Console.WriteLine("Your details have been edited.");
         }
 
-        public void deleteEmployee(){
+        public static void deleteEmployee(){
             int id = 0;
             string valInfix, valId = "";
             string employeeDetails = File.ReadAllText("employees.json");
@@ -122,7 +122,7 @@ namespace cinema
             Console.WriteLine("Account succesfully deleted, goodbye");
         }
 
-        public void viewSalesEmployee(){
+        public static void viewSalesEmployee(){
             // Variables
             bool found = false;
             double countMoney = 0;
@@ -146,9 +146,6 @@ namespace cinema
                 System.Console.WriteLine("Wrong input, try again.");
                 goto begin;
             }
-            
-
-
         }
     }
 
