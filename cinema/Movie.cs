@@ -18,10 +18,12 @@ namespace cinema
         public int Room {get; set;}
         public bool Imax {get; set;}
         public bool DrieD {get; set;}
+        public double Price {get; set;}
 
         public void addMovie(){
             int room = 0;
-            string valRoom, valImax, val3D = "";
+            double priceDouble = 0.0;
+            string valRoom, valImax, val3D, valPrice = "";
 
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
@@ -60,6 +62,10 @@ namespace cinema
             else{
                 movie.DrieD = false;
             }
+            Console.WriteLine("Enter the price for the movie: ");
+            valPrice = Console.ReadLine();
+            priceDouble = Convert.ToDouble(valPrice);
+            movie.Price = priceDouble;
             movieDetail.Add(movie);
 
             string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
@@ -94,6 +100,7 @@ namespace cinema
                 Console.WriteLine("Movie date and time: " + movieDetail[i].Date + " " + movieDetail[i].Time);
                 Console.WriteLine("Movie room: " + movieDetail[i].Room);
                 Console.WriteLine("3D: " + drieD + ", IMAX: " + imax);
+                Console.WriteLine("Costs movie: " + movieDetail[i].Price);
                 Console.WriteLine("\n===================================================================================\n");
             }
         }
@@ -104,9 +111,10 @@ namespace cinema
 
             string movieId, drieD = "";
             string imax = "";
-            string valRoom = "";
+            string valRoom, valPrice = "";
             string valImax, val3D = "";
             int idMovie, room = 0;
+            double priceDouble = 0.0;
 
             for(int i = 0; i < movieDetail.Count; i++){
                 Console.WriteLine("Movie ID: " + movieDetail[i].Id);
@@ -172,6 +180,11 @@ namespace cinema
             else{
                 searchedMovie.DrieD = false;
             }
+            Console.WriteLine("Enter the price for the movie: ");
+            valPrice = Console.ReadLine();
+            priceDouble = Convert.ToDouble(valPrice);
+            movie.Price = priceDouble;
+
             Console.WriteLine("Changes successfully saved.");
 
             string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
