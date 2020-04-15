@@ -21,7 +21,7 @@ namespace cinema
         public double Price {get; set;}
         public int RecommendedAge {get; set;}
 
-        public void addMovie(){
+        public static void addMovie(){
             int room, recomAge = 0;
             double priceDouble = 0.0;
             string valRoom, valImax, val3D, valPrice, valAge = "";
@@ -78,7 +78,7 @@ namespace cinema
             Console.WriteLine("Movie successfully added.");
         }
 
-        public void viewMovie(){
+        public static void viewMovie(){
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
 
@@ -111,7 +111,7 @@ namespace cinema
             }
         }
 
-        public void editMovie(){
+        public static void editMovie(){
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
 
@@ -202,7 +202,7 @@ namespace cinema
             File.WriteAllText("movies.json", resultJson);
         }
 
-        public void deleteMovie(){
+        public static void deleteMovie(){
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
 
