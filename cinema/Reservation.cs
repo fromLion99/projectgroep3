@@ -19,7 +19,7 @@ namespace cinema
         public string time {get; set;}
         public string date {get; set;}
         public int duration {get; set;}
-        public int sales { get; set; }
+        public double sales { get; set; }
 
         
         public static void addReservation()
@@ -56,14 +56,31 @@ namespace cinema
             beginning:
 
             bool gotostart = false;
-            cinema.Movie.viewMovie();
-            Console.WriteLine("Choose what movie you want to watch");
-            for(int j = 0; j < movieDetail.Count; j++){
-                string movieRead = Console.ReadLine();
-                choosenMovieId = j;
-                if(movieDetail[j].Name == movieRead){
-                    Console.WriteLine($"You Choose the Movie {movieDetail[j].Name}, it will start at {movieDetail[j].Time}\n");
-                }
+            // R.customerId = c.Id;
+            Reservation reservation = new Reservation();
+            int choosenMovieId = 0;
+            var item = reservationDetail[reservationDetail.Count -1];
+            var newId = item.Id+1;
+            reservation.Id = newId; 
+            movie.viewMovie();
+            
+            Console.WriteLine("Choose what movie you want to watch, Type the ID of the movie");
+            choosenMovie = Console.ReadLine();
+            choosenMovieId = Convert.ToInt32(choosenMovie);
+            if(choosenMovieId == movieDetail[choosenMovieId-1].Id){
+            Console.WriteLine($"You choose the Movie {movieDetail[choosenMovieId-1].Name}, it will start at {movieDetail[choosenMovieId-1].Time}\n");
+            
+            
+            
+            reservation.movieId = choosenMovieId;
+            reservation.roomId = movieDetail[choosenMovieId-1].Room;
+            reservation.customer = customerDetail[choosenMovieId-1].Email;
+            reservation.customerId = customerDetail[choosenMovieId-1].Id;
+            reservation.time = movieDetail[choosenMovieId-1].Time;
+            reservation.date = movieDetail[choosenMovieId-1].Date;
+            reservation.duration = 0;
+            reservation.sales = movieDetail[choosenMovieId-1].Price;
+
             }
             Console.WriteLine("You want to choose another movie?, Yes or No?");
             movieBegin = Console.ReadLine();
