@@ -18,10 +18,13 @@ namespace cinema
         public int Room {get; set;}
         public bool Imax {get; set;}
         public bool DrieD {get; set;}
+        public double Price {get; set;}
+        public int RecommendedAge {get; set;}
 
         public void addMovie(){
-            int room = 0;
-            string valRoom, valImax, val3D = "";
+            int room, recomAge = 0;
+            double priceDouble = 0.0;
+            string valRoom, valImax, val3D, valPrice, valAge = "";
 
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
@@ -60,6 +63,14 @@ namespace cinema
             else{
                 movie.DrieD = false;
             }
+            Console.WriteLine("Enter the price for the movie: ");
+            valPrice = Console.ReadLine();
+            priceDouble = Convert.ToDouble(valPrice);
+            movie.Price = priceDouble;
+            Console.WriteLine("Please enter the recommended minimum age of the viewers: ");
+            valAge = Console.ReadLine();
+            recomAge = Convert.ToInt32(valAge);
+            movie.RecommendedAge = recomAge;
             movieDetail.Add(movie);
 
             string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
@@ -94,6 +105,8 @@ namespace cinema
                 Console.WriteLine("Movie date and time: " + movieDetail[i].Date + " " + movieDetail[i].Time);
                 Console.WriteLine("Movie room: " + movieDetail[i].Room);
                 Console.WriteLine("3D: " + drieD + ", IMAX: " + imax);
+                Console.WriteLine("Costs movie: " + movieDetail[i].Price);
+                Console.WriteLine("Recommended minimum age of the viewers: " + movieDetail[i].RecommendedAge);
                 Console.WriteLine("\n===================================================================================\n");
             }
         }
@@ -104,9 +117,11 @@ namespace cinema
 
             string movieId, drieD = "";
             string imax = "";
-            string valRoom = "";
+            string valRoom, valPrice, valAge = "";
             string valImax, val3D = "";
-            int idMovie, room = 0;
+            int idMovie, room, recomAge = 0;
+            double priceDouble = 0.0;
+
 
             for(int i = 0; i < movieDetail.Count; i++){
                 Console.WriteLine("Movie ID: " + movieDetail[i].Id);
@@ -172,6 +187,15 @@ namespace cinema
             else{
                 searchedMovie.DrieD = false;
             }
+            Console.WriteLine("Enter the price for the movie: ");
+            valPrice = Console.ReadLine();
+            priceDouble = Convert.ToDouble(valPrice);
+            movie.Price = priceDouble;
+            Console.WriteLine("Please enter the recommended minimum age of the viewers: ");
+            valAge = Console.ReadLine();
+            recomAge = Convert.ToInt32(valAge);
+            movie.RecommendedAge = recomAge;
+
             Console.WriteLine("Changes successfully saved.");
 
             string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);

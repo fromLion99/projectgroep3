@@ -20,7 +20,7 @@ namespace cinema
         public string time {get; set;}
         public string date {get; set;}
         public int duration {get; set;}
-        public int price {get; set;}
+        public int sales { get; set; }
 
         
         public void addReservation()
@@ -80,6 +80,7 @@ namespace cinema
             reservation.time = movieDetail[choosenMovieId-1].Time;
             reservation.date = movieDetail[choosenMovieId-1].Date;
             reservation.duration = 0;
+            reservation.sales = 0;
             }
 
             reservationDetail.Add(reservation);
