@@ -17,7 +17,7 @@ namespace cinema
                 }
             }
             startScreen();
-            
+            Employee.viewSalesEmployee();
             Reservation.addReservation();
 
             moviesStart:
