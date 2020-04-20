@@ -135,23 +135,24 @@ namespace cinema
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
             begin:
-            Console.WriteLine("Press M to see the sales of all movies, press I to see the sales of a specific movie");
+            Console.WriteLine("Press M to see the current amount made, press I to see the amount made of a specific movie");
             input1 = Console.ReadLine();
             if(input1 == "m" || input1 == "M"){
                 for(int i = 0;i<reservationDetail.Count;i++){
                     countMoney += reservationDetail[i].sales;
                 }
-                System.Console.WriteLine($"The total sales are: {countMoney} euro");
+                System.Console.WriteLine($"The total amount is: {countMoney} euro");
                 found = true;
+                goto begin;
             }
             if(input1 == "i" || input1 == "I"){
-                Console.WriteLine("Press the movie id of the movie that you want to see the sales of:");
+                Console.WriteLine("Press a movie ID:");
                 inputid = Console.ReadLine();
-                // int value;
-                // if(!int.TryParse(inputid, out value)){
-                //     System.Console.WriteLine("Wrong movie ID, try again");
-                //     goto begin;
-                // }
+                int value;
+                if(!int.TryParse(inputid, out value)){
+                    System.Console.WriteLine("Wrong input,try again");
+                    goto begin;
+                }
                 int input2 = Convert.ToInt32(inputid);
                 for(int i = 0;i<reservationDetail.Count;i++){
                     if(input2 == reservationDetail[i].movieId){
@@ -159,7 +160,7 @@ namespace cinema
                         found = true;
                     }
                 }
-                Console.WriteLine($"The sales of {movieDetail[input2].Name} are {countMoney2} euro");
+                Console.WriteLine($"The revenue of {movieDetail[input2].Name} is {countMoney2} euro");
             }
             if(!found){
                 System.Console.WriteLine("Wrong input, try again.");

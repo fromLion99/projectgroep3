@@ -45,7 +45,7 @@ namespace cinema
             found = false;
             gotostart = false;
             
-
+            beginning_Movie2:
             System.Console.WriteLine($"The movies with Genre {inputgenre} are:");
             // Search for genre.
 
@@ -65,8 +65,12 @@ namespace cinema
             bool found2 = false;
             System.Console.WriteLine("Press the given movie id to get more information:");
             string pressedkey = Console.ReadLine();
+            int value;
+                if(!int.TryParse(pressedkey, out value)){
+                    System.Console.WriteLine("Wrong input,try again");
+                    goto beginning_Movie2;
+                }
             int inputId = Convert.ToInt32(pressedkey);
-
             for(int k=0;k<movieDetail.Count;k++){
                 if(movieDetail[k].Id == inputId){
                     Console.WriteLine($"{movieDetail[k].Description}\nThe movie start at {movieDetail[k].Time} on {movieDetail[k].Date}");

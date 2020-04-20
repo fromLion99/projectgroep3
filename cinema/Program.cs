@@ -17,8 +17,9 @@ namespace cinema
                 }
             }
             startScreen();
-            Employee.viewSalesEmployee();
-            Reservation.addReservation();
+            //Search.searchMovie();
+            //Employee.viewSalesEmployee();
+            //Reservation.addReservation();
 
             moviesStart:
 
@@ -96,7 +97,7 @@ namespace cinema
                     bool employeeLogin = true;//Dit moet later aangepast worden
                     if (employeeLogin)
                     {
-                        Console.WriteLine("Manage rooms: R, manage movies: M, manage customer: C, manage employees: E");
+                        Console.WriteLine("Manage rooms: R, manage movies: M, manage customer: C, manage employees: E, views sales: S");
                         employeeAction = Console.ReadLine();
                         if (employeeAction == "R" || employeeAction == "r")
                         {
@@ -197,6 +198,9 @@ namespace cinema
                                 Employee.deleteEmployee();
                                 goto moviesStart;
                             }
+                        }
+                        if(employeeAction == "s" || employeeAction == "S"){
+                            Employee.viewSalesEmployee();
                         }
                     }
                 }
