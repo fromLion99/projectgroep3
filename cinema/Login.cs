@@ -11,10 +11,12 @@ namespace cinema
         //Properties Login
         public int CustomerId {get; set;}
         public string CustomerEmail {get;set;}
-        public void CustomerDetail(){
+        public void CustomerDetail()
+        {
             Console.WriteLine("functie customerdetail");
         }       
-        public static void signIn(){
+        public static void signIn()
+        {
             string valId, email, password = "";
             int id = 0;
 
@@ -48,6 +50,19 @@ namespace cinema
             else{
                 Console.WriteLine("unknown username!");
             }
+        }
+
+        public static void logOut()
+        {
+            string loginDetails = File.ReadAllText("Login.json");
+            Login currentLogin = JsonSerializer.Deserialize<Login>(loginDetails);
+
+            currentLogin.CustomerId = 0;
+            currentLogin.CustomerEmail = "";
+
+            string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
+            File.WriteAllText("Login.json", Resultjson);
+            Console.WriteLine("Successfully logged out.");
         }
 
         /*
