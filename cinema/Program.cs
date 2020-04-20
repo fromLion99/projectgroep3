@@ -207,15 +207,33 @@ namespace cinema
             }
             if (start == "Q" || start == "q")
             {
-                Console.Write("Shutting down... ");
-                using (var progress = new ProgressBar()) {
-                    for (int i = 0; i <= 100; i++) {
-                        progress.Report((double) i / 100);
-                        Thread.Sleep(20);
+                Console.WriteLine("Do you want to log out? Yes: Y or No: N");
+                start = Console.ReadLine();
+                if (start == "Y" || start == "y")
+                {
+                    Login.logOut();
+                    Console.Write("Shutting down... ");
+                    using (var progress = new ProgressBar()) {
+                        for (int i = 0; i <= 100; i++) {
+                            progress.Report((double) i / 100);
+                            Thread.Sleep(20);
+                        }
                     }
+                    Console.WriteLine("Done.");
+                    Environment.Exit(0);
                 }
-                Console.WriteLine("Done.");
-                Environment.Exit(0);
+                else
+                {
+                    Console.Write("Shutting down... ");
+                    using (var progress = new ProgressBar()) {
+                        for (int i = 0; i <= 100; i++) {
+                            progress.Report((double) i / 100);
+                            Thread.Sleep(20);
+                        }
+                    }
+                    Console.WriteLine("Done.");
+                    Environment.Exit(0);
+                }
             }
             else
             {
