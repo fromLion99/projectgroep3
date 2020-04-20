@@ -33,6 +33,7 @@ namespace cinema
             Reservation R = new Reservation();
             Login l = new Login();
             Customer customer = new Customer();
+            Reservation ticketId = new Reservation();
 
             string login, loginAgain, choosenMovie, back = "";
 
@@ -78,6 +79,7 @@ namespace cinema
             
             
                 reservation.movieId = choosenMovieId;
+                reservation.ticketId = +1;
                 reservation.roomId = movieDetail[choosenMovieId-1].Room;
                 reservation.customer = currentLogin.CustomerEmail;
                 reservation.customerId = currentLogin.CustomerId;
