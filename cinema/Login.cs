@@ -9,12 +9,13 @@ namespace cinema
     public class Login
     {
         //Properties Login
-        public int CustomerId {get; set;}
-        public string CustomerEmail {get;set;}
+        public int UserId {get; set;}
+        public string UserEmail {get;set;}
         public void CustomerDetail()
         {
             Console.WriteLine("functie customerdetail");
-        }       
+        }    
+
         public static void signIn()
         {
             string valId, email, password = "";
@@ -37,8 +38,8 @@ namespace cinema
                 Console.WriteLine("Please enter your password: ");
                 password = Console.ReadLine();
                 if(customer.Password == password){
-                    currentLogin.CustomerId = customer.Id;
-                    currentLogin.CustomerEmail = customer.Email;
+                    currentLogin.UserId = customer.Id;
+                    currentLogin.UserEmail = customer.Email;
                     string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
                     File.WriteAllText("Login.json", Resultjson);
                     Console.WriteLine("Login succesful!");
@@ -52,42 +53,58 @@ namespace cinema
             }
         }
 
+        public static void signinEmployee()
+        {
+            string valId, email, password = "";
+            int id = 0;
+
+            string signinDetails = File.ReadAllText("Login.json");
+            Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
+            string employeeDetails = File.ReadAllText("employees.json");
+            List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
+
+            Console.WriteLine("Please enter your ID: ");
+            valId = Console.ReadLine();
+            id = Convert.ToInt32(valId);
+
+            var employee = employeeDetail.FirstOrDefault(e => e.Id == id);
+
+            Console.WriteLine("Please enter your email: ");
+            email = Console.ReadLine();
+            if (employee.Email == email)
+            {
+                Console.WriteLine("Please enter your password: ");
+                password = Console.ReadLine();
+                if (employee.Password == password)
+                {
+                    currentLogin.UserId = employee.Id;
+                    currentLogin.UserEmail = employee.Email;
+                    string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
+                    File.WriteAllText("Login.json", Resultjson);
+                    Console.WriteLine("Login succesful!");
+                }
+                else
+                {
+                    Console.WriteLine("Password incorrect!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Unkown email!");
+            }
+        }
+
         public static void logOut()
         {
             string loginDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(loginDetails);
 
-            currentLogin.CustomerId = 0;
-            currentLogin.CustomerEmail = "";
+            currentLogin.UserId = 0;
+            currentLogin.UserEmail = "";
 
             string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
             File.WriteAllText("Login.json", Resultjson);
             Console.WriteLine("Successfully logged out.");
         }
-
-        /*
-        public void signinEmployee(){
-            string SaveEmail, SavePassword = "";
-            int id = 0;
-            string employeedetails = File.ReadAllText("employees.json");
-            List<employee> emplyeedetails = JsonSerializer.Deserialize<List<employee>>(employeedetails);
-
-            Console.WriteLine("Please enter your Employee number: ");
-            SaveEmail = Console.ReadLine();
-            if(emplyeedetail [id.Email == email]){
-                Console.WriteLine("Please enter your password: ");
-                SavePassword = Console.ReadLine();
-                if(SavePassword[id.password ==SavePassword]){
-                    Console.WriteLine(" Employeelogin succesful");
-                }
-                
-                
-            }
-
-        }*/
-
     }
 }
-
-//Save the data in JSON
-//check if the password matches the password in JSON (with if statement and for loop)

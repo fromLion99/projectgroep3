@@ -9,13 +9,13 @@ namespace cinema
         {
             string start, account, showMovies, login, reservation, employeeAction, customerCreateAccount = "";
             
-            Console.Write("Booting... ");
-            using (var progress = new ProgressBar()) {
-                for (int i = 0; i <= 100; i++) {
-                    progress.Report((double) i / 100);
-                    Thread.Sleep(30);
-                }
-            }
+            // Console.Write("Booting... ");
+            // using (var progress = new ProgressBar()) {
+            //     for (int i = 0; i <= 100; i++) {
+            //         progress.Report((double) i / 100);
+            //         Thread.Sleep(30);
+            //     }
+            // }
             startScreen();
             //Search.searchMovie();
             //Employee.viewSalesEmployee();
@@ -92,8 +92,7 @@ namespace cinema
                 }
                 if(account == "E" || account == "e")
                 {
-                    //l.signinEmployee();
-                    Console.WriteLine("Employee login function came here.");
+                    Login.signinEmployee();
                     bool employeeLogin = true;//Dit moet later aangepast worden
                     if (employeeLogin)
                     {
@@ -212,26 +211,26 @@ namespace cinema
                 if (start == "Y" || start == "y")
                 {
                     Login.logOut();
-                    Console.Write("Shutting down... ");
-                    using (var progress = new ProgressBar()) {
-                        for (int i = 0; i <= 100; i++) {
-                            progress.Report((double) i / 100);
-                            Thread.Sleep(20);
-                        }
-                    }
+                    // Console.Write("Shutting down... ");
+                    // using (var progress = new ProgressBar()) {
+                    //     for (int i = 0; i <= 100; i++) {
+                    //         progress.Report((double) i / 100);
+                    //         Thread.Sleep(20);
+                    //     }
+                    // }
                     Console.WriteLine("Done.");
                     Environment.Exit(0);
                 }
                 else
                 {
-                    Console.Write("Shutting down... ");
-                    using (var progress = new ProgressBar()) {
-                        for (int i = 0; i <= 100; i++) {
-                            progress.Report((double) i / 100);
-                            Thread.Sleep(20);
-                        }
-                    }
-                    Console.WriteLine("Done.");
+                    // Console.Write("Shutting down... ");
+                    // using (var progress = new ProgressBar()) {
+                    //     for (int i = 0; i <= 100; i++) {
+                    //         progress.Report((double) i / 100);
+                    //         Thread.Sleep(20);
+                    //     }
+                    // }
+                    // Console.WriteLine("Done.");
                     Environment.Exit(0);
                 }
             }

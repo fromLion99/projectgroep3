@@ -81,8 +81,8 @@ namespace cinema
                 reservation.movieId = choosenMovieId;
                 reservation.ticketId = +1;
                 reservation.roomId = movieDetail[choosenMovieId-1].Room;
-                reservation.customer = currentLogin.CustomerEmail;
-                reservation.customerId = currentLogin.CustomerId;
+                //reservation.customer = currentLogin.UserId;
+                //reservation.customerId = currentLogin.UserId;
                 reservation.time = movieDetail[choosenMovieId-1].Time;
                 reservation.date = movieDetail[choosenMovieId-1].Date;
                 reservation.duration = 0;
