@@ -99,6 +99,28 @@ namespace cinema
                 }
             }
         }
+        public static void PayReservation(){
+            // Variables
+
+            // JSON
+            string movieDetails = File.ReadAllText("movies.json");
+            List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);  
+
+            string reservationsDetails = File.ReadAllText("reservation.json");
+            List<Reservation> reservationDetail = JsonSerializer.Deserialize<List<Reservation>>(reservationsDetails);
+            
+            string customerDetails = File.ReadAllText("customers.json");
+            List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
+
+            Console.WriteLine("Press L to login");
+            
+
+
+
+
+
+
+        }
     }
 }
 
