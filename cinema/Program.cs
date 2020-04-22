@@ -9,6 +9,7 @@ namespace cinema
             string start, account, showMovies, login, reservation, employeeAction, customerCreateAccount = "";
 
             startScreen();
+            Reservation.PayReservation();
 
             moviesStart:
 

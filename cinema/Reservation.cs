@@ -114,6 +114,7 @@ namespace cinema
         public static void PayReservation()
         {
             // Variables
+            string currentuser,input1 = "";
 
             // JSON
             string movieDetails = File.ReadAllText("movies.json");
@@ -125,8 +126,26 @@ namespace cinema
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
-            Console.WriteLine("Press L to login");
+            string signinDetails = File.ReadAllText("Login.json");
+            Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
+
+            currentuser = currentLogin.UserEmail;
+            Console.WriteLine("The rented movies are:");
+
+            for(int i = 0;i<reservationDetail.Count;i++){
+                if(reservationDetail[i].customer == currentuser){
+                    for(int j = 0;j<movieDetail.Count;j++){
+                        if(movieDetail[j].Id == reservationDetail[i].movieId){
+                            Console.WriteLine($"{movieDetail[j].Id}: {movieDetail[j].Name}");
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine($"Press the given movie ID to pay.");
+            input1 = Console.ReadLine();
             
+
         }
     }
 }
