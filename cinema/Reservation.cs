@@ -61,7 +61,6 @@ namespace cinema
             }
 
             bool gotostart = false;
-            // R.customerId = c.Id;
             Reservation reservation = new Reservation();
             int choosenMovieId = 0;
             var item = reservationDetail[reservationDetail.Count -1];
@@ -75,9 +74,7 @@ namespace cinema
              if(choosenMovieId == movieDetail[choosenMovieId-1].Id)
             {
                 Console.WriteLine($"You choose the Movie {movieDetail[choosenMovieId-1].Name}, it will start at {movieDetail[choosenMovieId-1].Time}\n");
-            
-            
-            
+                // Information about the movie and customer will be put into a JSON file      
                 reservation.movieId = choosenMovieId;
                 reservation.ticketId = +1;
                 reservation.roomId = movieDetail[choosenMovieId-1].Room;
@@ -125,126 +122,6 @@ namespace cinema
 
             Console.WriteLine("Press L to login");
             
-
-
-
-
-
-
         }
     }
 }
-
-
-
-
-
-
-
-
-            // if(choosenMovieId == movie.Id)
-            // Console.WriteLine($"ID:{choosenMovieId}");
-            // if(choosenMovieId != movie.Id) {
-            //     Console.WriteLine("The ID you choose does not exist try again, Press B to start again");
-            //     gotostart = true;
-            //     back = Console.ReadLine();
-            //     if(back == "b" || back == "B"){
-            //         if(gotostart){
-            //             goto beginning;
-            //         }
-            //     }
-            // }
-
-            // string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
-            // File.WriteAllText("movies.json", resultJson);
-            // Console.WriteLine("Movie successfully added.");
-            // Console.WriteLine($"You choose the Movie {movieDetail[choosenMovieId].Name}, it will start at {movieDetail[choosenMovieId].Time}\n");
-        
-            // Console.WriteLine("You want to choose another movie?, Yes or No?");
-            // movieBegin = Console.ReadLine();
-            // if (movieBegin == "Yes" || movieBegin == "yes")
-            // {
-            //     gotostart = true;
-            // }
-            // if(gotostart){
-            //     goto beginning;
-            // } 
-            // movieBegin = Console.ReadLine();
-            // if (movieBegin == "No" || movieBegin == "no")
-            // {
-              
-            // Console.WriteLine($"You Choose the Movie {movieDetail[choosenMovieId].Name}, it will start at {movieDetail[choosenMovieId].Time}\n");
-            // }
-    
-
-
-
-
-        
-        
-        
-        
-        
-        
-        // }
-        // public void MakeReservation(){
-
-        //     // JSON
-            // string movieDetails = File.ReadAllText("movies.json");
-            // List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
-        //     Movie movie = new Movie();
-
-        //     string roomDetails = File.ReadAllText("rooms.json");
-        //     List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
-        //     Room room = new Room();
-
-
-        //     beggining:
-        //     bool found = false;
-        //     Console.WriteLine($"{movieDetail[3].Name}:");
-        //     Console.WriteLine("Select room");
-        //     Console.WriteLine($"{roomDetail[0].Id}\n{roomDetail[1].Id}");        
-
-        //     string input = Console.ReadLine();
-        //     int inputroom = Convert.ToInt32(input);
-        //     if(inputroom == 1){
-        //         Console.WriteLine($"The movie {movieDetail[3].Name} in room 1 starts at {movieDetail[3].Time}");
-        //         found = true;
-        //     }
-        //     if(inputroom == 2){
-        //         Console.WriteLine($"The movie {movieDetail[3].Name} in room 2 starts at {movieDetail[3].Time}");
-        //         found = true;
-                
-        //     }
-        //     if(!found){
-        //         Console.WriteLine("Room not found,try again.");
-        //         goto beggining;
-        //     }
-
-            // Console.WriteLine($"Press 1 to reserve a seat, press 2 to select a diffrent room.");
-            // string input2 = Console.ReadLine();
-            // int inputcontinue = Convert.ToInt32(input2);
-            // if(inputcontinue == 2){
-            //     goto beggining;
-            // }
-
-            
-            // string[,] array = new string[,]
-            //     {
-            //         {"cat", "dog"},
-            //         {"bird", "fish"},
-            //     };
-            // Console.WriteLine(array[0, 0]);
-            // Console.WriteLine(array[0, 1]);
-            // Console.WriteLine(array[1, 0]);
-            // Console.WriteLine(array[1, 1]);
-        // }
-        // public void PayReservation();{
-        //     int totalSum = 0;
-        //     string choosenBank = "";
-        //     string movieDetails = File.ReadAllText("movies.json");
-        //     List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails); 
-        // }
-
-//     }
-// }
