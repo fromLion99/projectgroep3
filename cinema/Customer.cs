@@ -14,7 +14,7 @@ namespace cinema
         public string Infix {get; set;}
         public string LastName {get; set;}
         public string Email {get; set;}
-        public string Age {get; set;}
+        public int Age {get; set;}
         public string Password {get; set;}
         //public int reservationId {get; set;}
 
@@ -23,6 +23,7 @@ namespace cinema
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
             Customer customer = new Customer();
+            string theAge;
             var item = customerDetail[customerDetail.Count-1];
             var newId = item.Id +1;
             customer.Id = newId;
@@ -33,7 +34,8 @@ namespace cinema
             Console.WriteLine("Please enter your last name: ");
             customer.LastName = Console.ReadLine();
             Console.WriteLine("Please enter your age: ");
-            customer.Age  = Console.ReadLine();
+            theAge  = Console.ReadLine();
+            customer.Age = Convert.ToInt32(Age);
             Console.WriteLine("Please enter your E-mail: ");
             customer.Email = Console.ReadLine();
             Console.WriteLine("Please enter your password: ");
@@ -80,6 +82,7 @@ namespace cinema
             Console.WriteLine("Please enter your Customer ID to edit your details: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
+            string theAge;
             var searchCustomer = customerDetail.FirstOrDefault(c => c.Id == id);
             Console.WriteLine("Please enter your first name: ");
             customer.FirstName = Console.ReadLine();
@@ -88,7 +91,8 @@ namespace cinema
             Console.WriteLine("Please enter your last name: ");
             customer.LastName = Console.ReadLine();
             Console.WriteLine("Please enter your age: ");
-            customer.Age = Console.ReadLine();
+            theAge = Console.ReadLine();
+            customer.Age = Convert.ToInt32(theAge);
             Console.WriteLine("Please enter your E-mail: ");
             customer.Email = Console.ReadLine();
             Console.WriteLine("Please enter your password: ");
