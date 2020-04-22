@@ -20,7 +20,9 @@ namespace cinema
         public string time {get; set;}
         public string date {get; set;}
         public int duration {get; set;}
-        public double sales { get; set; }
+        public double sales {get; set;}
+
+        public int seatId {get; set;}
 
         
         public static void addReservation()
@@ -72,7 +74,7 @@ namespace cinema
                     Console.WriteLine("Choose what movie you want to watch, Type the ID of the movie");
                     choosenMovie = Console.ReadLine();
                     choosenMovieId = Convert.ToInt32(choosenMovie);
-                    if(choosenMovieId == movieDetail[choosenMovieId-1].Id && )
+                    if(choosenMovieId == movieDetail[choosenMovieId-1].Id)
                     {       
                         Console.WriteLine($"You choose the Movie {movieDetail[choosenMovieId-1].Name}, it will start at {movieDetail[choosenMovieId-1].Time}\n");
                         // Information about the movie and customer will be put into a JSON file      
@@ -129,10 +131,25 @@ namespace cinema
             
         }
         public static void seatReservation()
-        {
-            double chooseSeats = 0.0;
+        {    
+            Reservation seat = new Reservation();   
+            
             string roomDetails = File.ReadAllText("rooms.json");
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
+
+            string reservationsDetails = File.ReadAllText("reservation.json");
+            List<Reservation> reservationDetail = JsonSerializer.Deserialize<List<Reservation>>(reservationsDetails);
+            
+            string seatDetails = File.ReadAllText("seats.json");
+            List<Room> seatDetail = JsonSerializer.Deserialize<List<Room>>(seatDetails);
+            var item = seatDetail[seatDetail.Count-1];
+            var newId = item.Id+1;
+            seat.Id = newId;
+            
+
+
+
+            Console.WriteLine($"Choose your row between");
 
         }
     }
