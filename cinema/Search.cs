@@ -10,30 +10,32 @@ namespace cinema
     {
         public static void searchMovie(){
 
+            bool found = false;
+            bool gotostart = false;
+            bool found2 = false;
+            string pressedkey = "";
+
             // JSON
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
-            
-            // Console.WriteLine($"The Movie {movieDetail[1].Name} will start at {movieDetail[1].Time}\n");
             
             beginning_Movie:
 
             Console.WriteLine("Put in a movie to see at what time it will start:");
             string inputmovie = Console.ReadLine();
-            bool found = false;
-            bool gotostart = false;
 
-            // Search when a movie will start.
             for(int j = 0; j < movieDetail.Count; j++){
                 if(movieDetail[j].Name == inputmovie){
                     Console.WriteLine($"The Movie {movieDetail[j].Name} will start at {movieDetail[j].Time}\n");
                     found = true;
                 }
             }
+
             if(found == false){
                 Console.WriteLine("Movie not found, try again:");
                 gotostart = true;
             }
+            
             if(gotostart){
                 goto beginning_Movie;
             }
@@ -47,7 +49,6 @@ namespace cinema
             
             beginning_Movie2:
             System.Console.WriteLine($"The movies with Genre {inputgenre} are:");
-            // Search for genre.
 
             for(int i=0;i<movieDetail.Count;i++){
                 if(movieDetail[i].Genre == inputgenre){
@@ -55,22 +56,25 @@ namespace cinema
                     found = true;
                 }
             }
+
             if(!found){
                 Console.WriteLine("Genre not found, try again:");
                 goto beginning_Genre;
-                }
+            }
 
             beginning_Id:
 
-            bool found2 = false;
             System.Console.WriteLine("Press the given movie id to get more information:");
-            string pressedkey = Console.ReadLine();
+            pressedkey = Console.ReadLine();
+
             int value;
-                if(!int.TryParse(pressedkey, out value)){
-                    System.Console.WriteLine("Wrong input,try again");
-                    goto beginning_Movie2;
-                }
+            if(!int.TryParse(pressedkey, out value)){
+                System.Console.WriteLine("Wrong input,try again");
+                goto beginning_Movie2;
+            }
+
             int inputId = Convert.ToInt32(pressedkey);
+
             for(int k=0;k<movieDetail.Count;k++){
                 if(movieDetail[k].Id == inputId){
                     Console.WriteLine($"{movieDetail[k].Description}\nThe movie start at {movieDetail[k].Time} on {movieDetail[k].Date}");
@@ -78,15 +82,18 @@ namespace cinema
                     found2 = true;
                 }
             }
+
             if(!found2){
                 System.Console.WriteLine("ID not found, try again");
                 goto beginning_Id;
             }
 
             string input3 = Console.ReadLine();
+
             if(input3 == "r" || input3 == "R"){
                 Reservation.addReservation();
             }
+
             if(input3 == "T" || input3 == "t"){
                 goto beginning_Genre;
             }
