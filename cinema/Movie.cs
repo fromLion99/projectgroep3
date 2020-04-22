@@ -92,7 +92,8 @@ namespace cinema
 
         public static void viewMovie()
         {
-            string imax, drieD = "";
+            string imax = "";
+            string drieD = "";
 
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
@@ -134,7 +135,9 @@ namespace cinema
 
         public static void editMovie()
         {
-            string movieId, drieD, imax, valRoom, valPrice, valAge, valImax, val3D = "";
+            string movieId, valRoom, valPrice, valAge, valImax, val3D = "";
+            string drieD = "";
+            string imax = "";
             int idMovie, room, recomAge = 0;
             double priceDouble = 0.0;
 
