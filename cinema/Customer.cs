@@ -18,7 +18,7 @@ namespace cinema
         public string Password {get; set;}
         //public int reservationId {get; set;}
 
-        public void addCustomer(){
+        public static void addCustomer(){
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
@@ -47,7 +47,7 @@ namespace cinema
             Console.WriteLine("Customer added");
         }
       
-        public void viewCustomer(){
+        public static void viewCustomer(){
             string valInfix = "";
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
@@ -64,7 +64,7 @@ namespace cinema
                 Console.WriteLine("\n===================================================================================\n");
             }
         }
-        public void editCustomer(){
+        public static void editCustomer(){
             int id = 0;
             string valInfix , valId = "";
             string customerDetails = File.ReadAllText("customers.json");
@@ -104,7 +104,7 @@ namespace cinema
             Console.WriteLine("Your details have been edited.");   
         }
 
-        public void deleteCustomer(){
+        public static void deleteCustomer(){
             int id = 0;
             string valInfix, valId = "";
             string customerDetails = File.ReadAllText("customers.json");

@@ -16,7 +16,7 @@ namespace cinema
         public string Email {get; set;}
         public string Password {get; set;}
 
-        public void addEmployee(){
+        public static void addEmployee(){
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
 
@@ -44,7 +44,7 @@ namespace cinema
             Console.WriteLine("Employee added");
         }
 
-        public void viewEmployee(){
+        public static void viewEmployee(){
             string valInfix = "";
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
@@ -61,7 +61,7 @@ namespace cinema
             }
         }
 
-        public void editEmployee(){
+        public static void editEmployee(){
             int id = 0;
             string valInfix , valId = "";
             string employeeDetails = File.ReadAllText("employeeDetails.json");
@@ -97,7 +97,7 @@ namespace cinema
             Console.WriteLine("Your details have been edited.");
         }
 
-        public void deleteEmployee(){
+        public static void deleteEmployee(){
             int id = 0;
             string valInfix, valId = "";
             string employeeDetails = File.ReadAllText("employees.json");
@@ -122,9 +122,12 @@ namespace cinema
             Console.WriteLine("Account succesfully deleted, goodbye");
         }
 
-        public void viewSalesEmployee(){
+        public static void viewSalesEmployee(){
             // Variables
             bool found = false;
+            double countMoney= 0;
+            double countMoney2 = 0;
+            string input1,inputid = "";
 
             // JSON
             string reservationsDetails = File.ReadAllText("reservation.json");
@@ -132,19 +135,37 @@ namespace cinema
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
             begin:
-            Console.WriteLine("Press M to see the sales of movies");
-            string input1 = Console.ReadLine();
+            Console.WriteLine("Press M to see the current amount made, press I to see the amount made of a specific movie");
+            input1 = Console.ReadLine();
             if(input1 == "m" || input1 == "M"){
-                Console.WriteLine($"The total sales of this month where 210 euro");
+                for(int i = 0;i<reservationDetail.Count;i++){
+                    countMoney += reservationDetail[i].sales;
+                }
+                System.Console.WriteLine($"The total amount is: {countMoney} euro");
                 found = true;
+                goto begin;
+            }
+            if(input1 == "i" || input1 == "I"){
+                Console.WriteLine("Press a movie ID:");
+                inputid = Console.ReadLine();
+                int value;
+                if(!int.TryParse(inputid, out value)){
+                    System.Console.WriteLine("Wrong input,try again");
+                    goto begin;
+                }
+                int input2 = Convert.ToInt32(inputid);
+                for(int i = 0;i<reservationDetail.Count;i++){
+                    if(input2 == reservationDetail[i].movieId){
+                        countMoney2 += reservationDetail[i].sales;
+                        found = true;
+                    }
+                }
+                Console.WriteLine($"The revenue of {movieDetail[input2].Name} is {countMoney2} euro");
             }
             if(!found){
                 System.Console.WriteLine("Wrong input, try again.");
                 goto begin;
             }
-
-
-
         }
     }
 

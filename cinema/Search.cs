@@ -8,14 +8,11 @@ namespace cinema
 {
     public class Search
     {
-        public void searchMovie(){
+        public static void searchMovie(){
 
             // JSON
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
-
-             Movie movie = new Movie();
-             Reservation R = new Reservation();
             
             // Console.WriteLine($"The Movie {movieDetail[1].Name} will start at {movieDetail[1].Time}\n");
             
@@ -48,7 +45,7 @@ namespace cinema
             found = false;
             gotostart = false;
             
-
+            beginning_Movie2:
             System.Console.WriteLine($"The movies with Genre {inputgenre} are:");
             // Search for genre.
 
@@ -68,8 +65,12 @@ namespace cinema
             bool found2 = false;
             System.Console.WriteLine("Press the given movie id to get more information:");
             string pressedkey = Console.ReadLine();
+            int value;
+                if(!int.TryParse(pressedkey, out value)){
+                    System.Console.WriteLine("Wrong input,try again");
+                    goto beginning_Movie2;
+                }
             int inputId = Convert.ToInt32(pressedkey);
-
             for(int k=0;k<movieDetail.Count;k++){
                 if(movieDetail[k].Id == inputId){
                     Console.WriteLine($"{movieDetail[k].Description}\nThe movie start at {movieDetail[k].Time} on {movieDetail[k].Date}");
@@ -84,62 +85,11 @@ namespace cinema
 
             string input3 = Console.ReadLine();
             if(input3 == "r" || input3 == "R"){
-                R.addReservation();
+                Reservation.addReservation();
             }
             if(input3 == "T" || input3 == "t"){
                 goto beginning_Genre;
             }
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              
-
-
-
-
-
-            
-
-
-
-
-
-
-
-            
-            
-
-
-
-
-
-            
-    
-
-
-            
-             
-
-            
-
-
-
-
         }
     }
 }
