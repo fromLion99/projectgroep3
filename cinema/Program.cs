@@ -47,8 +47,7 @@ namespace cinema
                             reservation = Console.ReadLine();
                             if (reservation == "Y" || reservation == "y")
                             {
-                                Console.WriteLine("Make reservation function needs to place here.");
-                                goto moviesStart;
+                                Reservation.addReservation();
                             }
                         }
                     }
