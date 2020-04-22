@@ -35,7 +35,7 @@ namespace cinema
             customer.LastName = Console.ReadLine();
             Console.WriteLine("Please enter your age: ");
             theAge  = Console.ReadLine();
-            customer.Age = Convert.ToInt32(Age);
+            customer.Age = Convert.ToInt32(theAge);
             Console.WriteLine("Please enter your E-mail: ");
             customer.Email = Console.ReadLine();
             Console.WriteLine("Please enter your password: ");
