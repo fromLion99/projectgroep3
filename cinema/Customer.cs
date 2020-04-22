@@ -18,12 +18,14 @@ namespace cinema
         public string Password {get; set;}
         //public int reservationId {get; set;}
 
-        public static void addCustomer(){
+        public static void addCustomer()
+        {
+            string theAge;
+
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
             Customer customer = new Customer();
-            string theAge;
             var item = customerDetail[customerDetail.Count-1];
             var newId = item.Id +1;
             customer.Id = newId;
@@ -47,37 +49,52 @@ namespace cinema
             Console.WriteLine("Customer added");
         }
       
-        public static void viewCustomer(){
+        public static void viewCustomer()
+        {
             string valInfix = "";
+
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
-            for(int i = 0; i < customerDetail.Count; i++ ){
+
+            for(int i = 0; i < customerDetail.Count; i++ )
+            {
                 valInfix = customerDetail[i].Infix;
                 Console.WriteLine("Customer ID: " + customerDetail[i].Id );
                 Console.WriteLine("First name: " + customerDetail[i].FirstName);
-                if(valInfix != ""){
+
+                if(valInfix != "")
+                {
                     Console.WriteLine("Infix: "+ customerDetail[i].Infix);
                 }
+
                 Console.WriteLine("Last name: " +customerDetail[i].LastName);
                 Console.WriteLine("Age: " + customerDetail[i].Age);
                 Console.WriteLine("Email: " + customerDetail[i].Email);
                 Console.WriteLine("\n===================================================================================\n");
             }
         }
-        public static void editCustomer(){
+        public static void editCustomer()
+        {
             int id = 0;
             string valInfix , valId = "";
+
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
-            for(int i = 0; i < customerDetail.Count; i++ ){
+
+            for(int i = 0; i < customerDetail.Count; i++ )
+            {
                 valInfix = customerDetail[i].Infix;
                 Console.WriteLine("Customer ID: " + customerDetail[i].Id );
                 Console.WriteLine("First name: " + customerDetail[i].FirstName);
-                if(valInfix != ""){
+
+                if(valInfix != "")
+                {
                     Console.WriteLine("Infix: "+ customerDetail[i].Infix);
                 }
+
                 Console.WriteLine("Last name: " + customerDetail[i].LastName);
             }
+
             Customer customer = new Customer();
             Console.WriteLine("Please enter your Customer ID to edit your details: ");
             valId = Console.ReadLine();
@@ -104,20 +121,28 @@ namespace cinema
             Console.WriteLine("Your details have been edited.");   
         }
 
-        public static void deleteCustomer(){
+        public static void deleteCustomer()
+        {
             int id = 0;
             string valInfix, valId = "";
+
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
-            for(int i = 0; i < customerDetail.Count; i++ ){
+
+            for(int i = 0; i < customerDetail.Count; i++ )
+            {
                 valInfix = customerDetail[i].Infix;
                 Console.WriteLine("Customer ID: " + customerDetail[i].Id );
                 Console.WriteLine("First name: " + customerDetail[i].FirstName);
-                if(valInfix != ""){
+
+                if(valInfix != "")
+                {
                     Console.WriteLine("Infix: "+ customerDetail[i].Infix);
                 }
+
                 Console.WriteLine("Last name: " + customerDetail[i].LastName);
             }
+            
             Console.WriteLine("Please enter your Customer ID to delete your account: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);

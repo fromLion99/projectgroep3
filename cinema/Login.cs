@@ -13,7 +13,7 @@ namespace cinema
         public string UserEmail {get;set;}
         public void CustomerDetail()
         {
-            Console.WriteLine("functie customerdetail");
+            Console.WriteLine("functie customerdetail\nview id of customers and name");
         }    
 
         public static void signIn()
@@ -23,6 +23,7 @@ namespace cinema
 
             string signinDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
+
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
@@ -34,21 +35,31 @@ namespace cinema
             
             Console.WriteLine("Please enter your Email: ");
             email = Console.ReadLine();
-            if(customer.Email == email){
+
+            if(customer.Email == email)
+            {
                 Console.WriteLine("Please enter your password: ");
                 password = Console.ReadLine();
-                if(customer.Password == password){
+
+                if(customer.Password == password)
+                {
                     currentLogin.UserId = customer.Id;
                     currentLogin.UserEmail = customer.Email;
+
                     string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
                     File.WriteAllText("Login.json", Resultjson);
+
                     Console.WriteLine("Login succesful!");
                 }
-                else{
+
+                else
+                {
                     Console.WriteLine("Password incorrect!");
                 }
             }
-            else{
+
+            else
+            {
                 Console.WriteLine("unknown username!");
             }
         }
@@ -60,6 +71,7 @@ namespace cinema
 
             string signinDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
+
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
 
@@ -71,23 +83,29 @@ namespace cinema
 
             Console.WriteLine("Please enter your email: ");
             email = Console.ReadLine();
+
             if (employee.Email == email)
             {
                 Console.WriteLine("Please enter your password: ");
                 password = Console.ReadLine();
+
                 if (employee.Password == password)
                 {
                     currentLogin.UserId = employee.Id;
                     currentLogin.UserEmail = employee.Email;
+
                     string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
                     File.WriteAllText("Login.json", Resultjson);
+
                     Console.WriteLine("Login succesful!");
                 }
+
                 else
                 {
                     Console.WriteLine("Password incorrect!");
                 }
             }
+
             else
             {
                 Console.WriteLine("Unkown email!");
@@ -104,6 +122,7 @@ namespace cinema
 
             string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
             File.WriteAllText("Login.json", Resultjson);
+            
             Console.WriteLine("Successfully logged out.");
         }
     }

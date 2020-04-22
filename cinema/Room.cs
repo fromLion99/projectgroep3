@@ -15,7 +15,8 @@ namespace cinema
         public int Row {get; set;}
         public int Chair {get; set;}
 
-        public static void addRoom(){
+        public static void addRoom()
+        {
             int roomNumber, countChair, row, chair = 0;
             string valRoomNumber, valCountChair, valRow, valChair = "";
 
@@ -23,11 +24,14 @@ namespace cinema
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
 
             Room room = new Room();
-            for(int i = 0; i < roomDetail.Count; i++){
+
+            for(int i = 0; i < roomDetail.Count; i++)
+            {
                 Console.WriteLine("Room ID: " + roomDetail[i].Id);
                 Console.WriteLine("Room number: " + roomDetail[i].RoomNumber);
                 Console.WriteLine("\n===================================================================================\n");
             }
+
             var item = roomDetail[roomDetail.Count -1];
             var newId = item.Id+1;
             room.Id = newId;
@@ -51,14 +55,17 @@ namespace cinema
 
             string resultJson = JsonSerializer.Serialize<List<Room>>(roomDetail);
             File.WriteAllText("rooms.json", resultJson);
+
             Console.WriteLine("Room successfully added.\n");
         }
 
-        public static void viewRoom(){
+        public static void viewRoom()
+        {
             string roomDetails = File.ReadAllText("rooms.json");
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
 
-            for(int i = 0; i < roomDetail.Count; i++){
+            for(int i = 0; i < roomDetail.Count; i++)
+            {
                 Console.WriteLine("Room ID: " + roomDetail[i].Id);
                 Console.WriteLine("Room number: " + roomDetail[i].RoomNumber);
                 Console.WriteLine("Count chairs: " + roomDetail[i].CountChair);
@@ -68,14 +75,16 @@ namespace cinema
             }
         }
 
-        public static void editRoom(){
-            string roomDetails = File.ReadAllText("rooms.json");
-            List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
-
+        public static void editRoom()
+        {
             string roomId, roomNumber, countOfChair, countRow, countRowChair = "";
             int idRoom, numberRoom, chairCount, rowCount, rowChairCount = 0;
 
-            for(int i = 0; i < roomDetail.Count; i++){
+            string roomDetails = File.ReadAllText("rooms.json");
+            List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
+
+            for(int i = 0; i < roomDetail.Count; i++)
+            {
                 Console.WriteLine("Room ID: " + roomDetail[i].Id);
                 Console.WriteLine("Room number: " + roomDetail[i].RoomNumber);
                 Console.WriteLine("\n===================================================================================\n");
@@ -112,17 +121,20 @@ namespace cinema
 
             string resultJson = JsonSerializer.Serialize<List<Room>>(roomDetail);
             File.WriteAllText("rooms.json", resultJson);
+
             Console.WriteLine("Changes successfully saved.");
         }
 
-        public static void deleteRoom(){
-            string roomDetails = File.ReadAllText("rooms.json");
-            List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
-
+        public static void deleteRoom()
+        {
             string valId = "";
             int id = 0;
 
-            for(int i = 0; i < roomDetail.Count; i++){
+            string roomDetails = File.ReadAllText("rooms.json");
+            List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
+
+            for(int i = 0; i < roomDetail.Count; i++)
+            {
                 Console.WriteLine("Room ID: " + roomDetail[i].Id);
                 Console.WriteLine("Room number: " + roomDetail[i].RoomNumber);
                 Console.WriteLine("\n===================================================================================\n");

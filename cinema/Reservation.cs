@@ -1,5 +1,3 @@
-// Niels Krommenhoek 0982940
-
 using System;
 using System.Text.Json;
 using System.IO;
@@ -55,6 +53,7 @@ namespace cinema
             beginning:
             Console.WriteLine("To make a reservation you have to be logged in, Press L to Login");
             login = Console.ReadLine();
+
             if(login == "L" || login == "l")
             {
                 cinema.Login.signIn();
@@ -90,10 +89,12 @@ namespace cinema
 
             string resultJson = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
             File.WriteAllText("reservation.json", resultJson);
+
             beginB:
             Console.WriteLine("Reservation successfully added. Press B to start again");
             gotostart = true;
             back = Console.ReadLine();
+
             if(back == "b" || back == "B")
             {
                 if(gotostart)
@@ -101,13 +102,17 @@ namespace cinema
                     goto beginning;
                 }
             }
-                int value;
-                if(!int.TryParse(back, out value)){
-                    System.Console.WriteLine("Wrong input,try again");
-                    goto beginB;
-                }
+
+            int value;
+            if(!int.TryParse(back, out value))
+            {
+                System.Console.WriteLine("Wrong input,try again");
+                goto beginB;
+            }
         }
-        public static void PayReservation(){
+
+        public static void PayReservation()
+        {
             // Variables
 
             // JSON
