@@ -37,3 +37,5 @@ cinema/.vs/cinema/v16/.suo
 cinema/obj/Release/netcoreapp3.1/cinema.AssemblyInfoInputs.cache
 cinema/obj/Release/netcoreapp3.1/cinema.assets.cache
 cinema/obj/Release/netcoreapp3.1/cinema.AssemblyInfo.cs
+cinema/.vs/slnx.sqlite
+cinema/.vs/VSWorkspaceState.json
