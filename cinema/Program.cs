@@ -6,11 +6,11 @@ namespace cinema
     {
         static void Main(string[] args)
         {
-            string start, account, showMovies, login, reservation, employeeAction, customerCreateAccount = "";
+            string start, account, showMovies, login, reservation, employeeAction, customerCreateAccount,Drinks = "";
 
             startScreen();
-            Reservation.PayReservation();
-
+            //Reservation.PayReservation();
+            Subscription.editSubscription();
             moviesStart:
 
             Console.WriteLine("After pressing a key hit enter to go further in the program.\nWill you see movies press M. Will you login or make an account press L.\nIf you want to close the program press Q.");
@@ -23,7 +23,7 @@ namespace cinema
                 Console.WriteLine("If you want to log in enter L. If not hit enter.");
                 login = Console.ReadLine();
 
-                if (login == "L"|| login == "l" )
+                if (login == "L"|| login == "l")
                 {
                     Console.WriteLine("Do you already have an account? Yes: Y or No: N");
                     login = Console.ReadLine();
