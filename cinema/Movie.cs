@@ -25,7 +25,7 @@ namespace cinema
         {
             int room, recomAge = 0;
             double priceDouble = 0.0;
-            string valRoom, valImax, val3D, valPrice, valAge = "";
+            string valRoom, valImax, val3D, valPrice, valAge, replace = "";
 
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
@@ -77,7 +77,8 @@ namespace cinema
 
             Console.WriteLine("Enter the price for the movie: ");
             valPrice = Console.ReadLine();
-            priceDouble = Convert.ToDouble(valPrice);
+            replace = valPrice.Replace(".",",");
+            priceDouble = Convert.ToDouble(replace);
             movie.Price = priceDouble;
             Console.WriteLine("Please enter the recommended minimum age of the viewers: ");
             valAge = Console.ReadLine();
@@ -135,7 +136,7 @@ namespace cinema
 
         public static void editMovie()
         {
-            string movieId, valRoom, valPrice, valAge, valImax, val3D = "";
+            string movieId, valRoom, valPrice, valAge, valImax, val3D, replace = "";
             string drieD = "";
             string imax = "";
             int idMovie, room, recomAge = 0;
@@ -229,7 +230,8 @@ namespace cinema
 
             Console.WriteLine("Enter the price for the movie: ");
             valPrice = Console.ReadLine();
-            priceDouble = Convert.ToDouble(valPrice);
+            replace = valPrice.Replace(".",",");
+            priceDouble = Convert.ToDouble(replace);
             movie.Price = priceDouble;
             Console.WriteLine("Please enter the recommended minimum age of the viewers: ");
             valAge = Console.ReadLine();
