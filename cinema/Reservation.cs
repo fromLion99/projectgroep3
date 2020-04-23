@@ -127,12 +127,20 @@ namespace cinema
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
-            Console.WriteLine("Press L to login");
-            
+            Console.WriteLine("Press L to login");           
         }
-        public static void seatReservation()
+
+
+
+        public static void addSeatReservation()
         {    
-            Reservation seat = new Reservation();   
+            Reservation seat = new Reservation();  
+            string row = "";
+            string rowString, back, whereRowString = "";
+            string chooseSeat, chooseAmountSeatString = "";
+            int chooseAmountSeat, whereRow, WhereInRow = 0;
+            bool gotostart = false; 
+            int maxSeats = 15;
             
             string roomDetails = File.ReadAllText("rooms.json");
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
@@ -149,7 +157,61 @@ namespace cinema
 
 
 
-            Console.WriteLine($"Choose your row between");
+            begin1:
+            Console.WriteLine($"Choose your row between: A-B-C-D-E, A is the row nearest to the filmscreen and E is the furthest away");
+            row = Console.ReadLine();
+            if(row == "a" || row == "A" || row == "b" || row == "B" || row == "c" || row == "C" || row == "d" || row == "D" || row == "e" || row == "E") 
+            {
+                rowString = row;  
+                Console.WriteLine($"you choose Row : {rowString}, are you sure: Y or N?");
+
+                back = Console.ReadLine();
+                if(back == "N" || back == "n")
+                {
+                    rowString = "";
+                    gotostart = true;
+                    goto begin1;
+                }
+                if(back == "Y" || back == "y")
+                {
+                    begin2:
+                    Console.WriteLine($"Now choose how many seats you want, you have to choose atleast 1 and the row has a maximum of 15 seats. Type: 1 - 15");
+                    chooseAmountSeatString = Console.ReadLine();
+                    chooseAmountSeat = Convert.ToInt32(chooseAmountSeatString);
+                    if(chooseAmountSeat <= 15 && chooseAmountSeat > 0)
+                    {
+                        Console.WriteLine($"You choose : {chooseAmountSeat} seat(s)");
+                        Console.WriteLine("Now choose where in the row you wanna sit, Choose between 1-15. IMPORTANT! : choose your seat accordingly there are 15 seats max so for example if you previously choose 5 seats and now choose to sit at seat 11 the program will result in an error, you will have to choose to sit at seat 10.");
+                        whereRowString = Console.ReadLine();
+                        whereRow = Convert.ToInt32(whereRowString);
+                        if(whereRow+chooseAmountSeat > maxSeats)
+                        {
+                            WhereInRow = maxSeats - whereRow + chooseAmountSeat;  
+                        }
+
+
+                    }
+                    else
+                    {
+                        int value1;
+                        if(!int.TryParse(back, out value1))
+                        {
+                            gotostart = true;
+                            System.Console.WriteLine("Wrong input,try again");
+                            goto begin2;
+                        }
+                    }
+                }
+                int value;
+                if(!int.TryParse(row, out value))
+                {
+                    gotostart = true;
+                    System.Console.WriteLine("Wrong input,try again");
+                    goto begin1;
+                }             
+            }
+
+
 
         }
     }
