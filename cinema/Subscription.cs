@@ -83,7 +83,7 @@ namespace cinema
 
         public static void editSubscription()
         {
-            string valId,valMonthPrice, replace = "";
+            string valId,valMonthPrice, replace, valYearSubscription = "";
             int id = 0;
             double dMonthPrice = 0.0;
 
@@ -123,6 +123,21 @@ namespace cinema
             replace = valMonthPrice.Replace(".",",");
             dMonthPrice = Convert.ToDouble(replace);
             searchedSubscription.MonthPrice = dMonthPrice;
+            Console.WriteLine("Year subscription: Yes: Y or No: N");
+            valYearSubscription = Console.ReadLine();
+
+            if(valYearSubscription == "Y" || valYearSubscription == "y")
+            {
+                searchedSubscription.YearSubscription = true;
+            }
+            
+            else
+            {
+                searchedSubscription.YearSubscription = false;
+            }
+
+            string resultJson = JsonSerializer.Serialize<List<Subscription>>(subscriptionDetail);
+            File.WriteAllText("subscriptions.json", resultJson);
         }
     }
 }
