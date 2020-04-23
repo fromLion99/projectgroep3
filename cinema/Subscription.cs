@@ -53,5 +53,31 @@ namespace cinema
 
             Console.WriteLine("Subscription succesfully added.");
         }
+
+        public static void viewSubscription()
+        {
+            string subscriptionDetails = File.ReadAllText("subscriptions.json");
+            List<Subscription> subscriptionDetail = JsonSerializer.Deserialize<List<Subscription>>(subscriptionDetails);
+
+            for(int i = 0; i < subscriptionDetail.Count; i++)
+            {
+                Console.WriteLine("ID: " + subscriptionDetail[i].Id);
+                Console.WriteLine("Name: " + subscriptionDetail[i].Name);
+                Console.WriteLine("Price per month: " + subscriptionDetail[i].MonthPrice);
+
+                if(subscriptionDetail[i].YearSubscription)
+                {
+                    Console.WriteLine("Year subscription: Yes");
+                    Console.WriteLine("Price per year: " + ((subscriptionDetail[i].MonthPrice * 12) - 15));
+                }
+                
+                else
+                {
+                    Console.WriteLine("Year subscription: No");
+                }
+
+                Console.WriteLine("\n===================================================================================\n");
+            }
+        }
     }
 }
