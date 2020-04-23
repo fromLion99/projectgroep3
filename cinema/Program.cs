@@ -10,7 +10,7 @@ namespace cinema
 
             startScreen();
             //Reservation.PayReservation();
-            Subscription.addSubscription();
+            Subscription.viewSubscription();
 
             moviesStart:
 
