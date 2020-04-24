@@ -21,6 +21,9 @@ namespace cinema
         public int duration {get; set;}
         public double sales {get; set;}
         public int seatId {get; set;}
+        public string row {get; set;}
+        public int seats {get; set;}
+        public int startseat {get; set;}
 
         
         public static void addReservation()
@@ -153,11 +156,8 @@ namespace cinema
             var newId = item.Id+1;
             seat.Id = newId;
             
-
-
-
             begin1:
-            Console.WriteLine($"Choose your row between: A-B-C-D-E, A is the row nearest to the filmscreen and E is the furthest away");
+            Console.WriteLine($"Choose your row between: A-B-C-D-E, A is the row closest to the filmscreen and E is the furthest away");
             row = Console.ReadLine();
             if(row == "a" || row == "A" || row == "b" || row == "B" || row == "c" || row == "C" || row == "d" || row == "D" || row == "e" || row == "E") 
             {
@@ -180,15 +180,14 @@ namespace cinema
                     if(chooseAmountSeat <= 15 && chooseAmountSeat > 0)
                     {
                         Console.WriteLine($"You choose : {chooseAmountSeat} seat(s)");
-                        Console.WriteLine("Now choose where in the row you wanna sit, Choose between 1-15. IMPORTANT! : choose your seat accordingly there are 15 seats max so for example if you previously choose 5 seats and now choose to sit at seat 11 the program will result in an error, you will have to choose to sit at seat 10.");
+                        Console.Write("Now choose where in the row you wanna sit, Choose between 1-15:");
                         whereRowString = Console.ReadLine();
                         whereRow = Convert.ToInt32(whereRowString);
                         while(chooseAmountSeat > (maxSeats - whereRow + 1))
                         {
                             whereRow = whereRow - 1; 
                         }
-
-
+                        Console.WriteLine($"You choose to sit at Row: {rowString} - Amount of seats : {chooseAmountSeat} - Where in the row : {whereRow}");
                     }
                     else
                     {
