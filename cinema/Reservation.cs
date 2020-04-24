@@ -114,6 +114,7 @@ namespace cinema
         public static void PayReservation()
         {
             // Variables
+            string currentuser,input1 = "";
 
             // JSON
             string movieDetails = File.ReadAllText("movies.json");

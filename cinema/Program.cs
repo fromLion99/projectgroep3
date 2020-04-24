@@ -9,6 +9,8 @@ namespace cinema
             string start, account, showMovies, login, reservation, employeeAction, customerCreateAccount = "";
 
             startScreen();
+            //Reservation.PayReservation();
+            Subscription.viewSubscription();
 
             moviesStart:
 
@@ -22,7 +24,7 @@ namespace cinema
                 Console.WriteLine("If you want to log in enter L. If not hit enter.");
                 login = Console.ReadLine();
 
-                if (login == "L"|| login == "l" )
+                if (login == "L"|| login == "l")
                 {
                     Console.WriteLine("Do you already have an account? Yes: Y or No: N");
                     login = Console.ReadLine();
