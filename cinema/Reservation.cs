@@ -8,7 +8,6 @@ using System.Collections.Generic;
 namespace cinema
 {
     
-
     public class Reservation
     {
         public int Id {get; set;}
@@ -21,7 +20,6 @@ namespace cinema
         public string date {get; set;}
         public int duration {get; set;}
         public double sales {get; set;}
-
         public int seatId {get; set;}
 
         
@@ -184,9 +182,9 @@ namespace cinema
                         Console.WriteLine("Now choose where in the row you wanna sit, Choose between 1-15. IMPORTANT! : choose your seat accordingly there are 15 seats max so for example if you previously choose 5 seats and now choose to sit at seat 11 the program will result in an error, you will have to choose to sit at seat 10.");
                         whereRowString = Console.ReadLine();
                         whereRow = Convert.ToInt32(whereRowString);
-                        if(whereRow+chooseAmountSeat > maxSeats)
+                        while(chooseAmountSeat > (maxSeats - whereRow + 1))
                         {
-                            WhereInRow = maxSeats - whereRow + chooseAmountSeat;  
+                            whereRow = whereRow - 1; 
                         }
 
 
@@ -210,9 +208,6 @@ namespace cinema
                     goto begin1;
                 }             
             }
-
-
-
         }
     }
 }
