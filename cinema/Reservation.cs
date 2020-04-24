@@ -20,10 +20,9 @@ namespace cinema
         public string time {get; set;}
         public string date {get; set;}
         public int duration {get; set;}
-        public double sales {get; set;}
-
+        public double sales { get; set; }
+        public bool paid { get; set; }
         public int seatId {get; set;}
-
         
         public static void addReservation()
         {
@@ -116,7 +115,10 @@ namespace cinema
         public static void PayReservation()
         {
             // Variables
-            string currentuser,input1 = "";
+            string currentuser,input1,input2 = "";
+            int movieid,value;
+            bool found = false;
+            bool found2 = false;
 
             // JSON
             string movieDetails = File.ReadAllText("movies.json");
@@ -128,9 +130,59 @@ namespace cinema
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
-            Console.WriteLine("Press L to login");           
-        }
+            Console.WriteLine("Press L to login");          
 
+            currentuser = currentLogin.UserEmail;
+            Console.WriteLine($"The rented movies of the current user {currentuser} are:");
+
+            for(int i = 0;i<reservationDetail.Count;i++){
+                if(reservationDetail[i].customer == currentuser){
+                    for(int j = 0;j<movieDetail.Count;j++){
+                        if(movieDetail[j].Id == reservationDetail[i].movieId){
+                            Console.WriteLine($"ID {movieDetail[j].Id}: {movieDetail[j].Name}");
+                        }
+                    }
+                }
+            }
+            begin:
+
+            Console.WriteLine($"Press the given movie ID to pay for that movie");
+            input1 = Console.ReadLine();
+
+            if(!int.TryParse(input1, out value))
+            {
+                Console.WriteLine("Movie ID not found, try again.");
+                goto begin;
+            }
+
+            movieid = Convert.ToInt32(input1);
+
+            begin2:
+
+            for(int i = 0; i<reservationDetail.Count;i++){
+                if(reservationDetail[i].movieId == movieid){
+                    Console.WriteLine($"Do you want to pay for {movieDetail[movieid-1].Name}?\nCost: {movieDetail[movieid-1].Price} euro\nPress Y to pay.");
+                    found = true;
+                }
+            }
+
+            if(!found){
+                System.Console.WriteLine("Movie ID not found, try again");
+                goto begin;
+            }
+
+            input2 = Console.ReadLine();
+            
+            if(input2 == "Y" || input2 == "y"){
+                System.Console.WriteLine($"You have paid {movieDetail[movieid-1].Price} euro");
+                found2 = true;
+            }
+
+            if(!found2){
+                System.Console.WriteLine("Wrong input, try again.");
+                goto begin2;
+            }
+        }
 
 
         public static void addSeatReservation()
