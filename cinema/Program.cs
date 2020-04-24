@@ -10,7 +10,7 @@ namespace cinema
 
             startScreen();
             //Reservation.PayReservation();
-            Subscription.editSubscription();
+            Subscription.deleteSubscription();
             moviesStart:
 
             Console.WriteLine("After pressing a key hit enter to go further in the program.\nWill you see movies press M. Will you login or make an account press L.\nIf you want to close the program press Q.");

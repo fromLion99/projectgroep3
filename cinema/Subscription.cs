@@ -138,6 +138,34 @@ namespace cinema
 
             string resultJson = JsonSerializer.Serialize<List<Subscription>>(subscriptionDetail);
             File.WriteAllText("subscriptions.json", resultJson);
+
+            Console.WriteLine("Changes successfully saved.");
+        }
+
+        public static void deleteSubscription()
+        {
+            string valId = "";
+            int id = 0;
+
+            string subscriptionDetails = File.ReadAllText("subscriptions.json");
+            List<Subscription> subscriptionDetail = JsonSerializer.Deserialize<List<Subscription>>(subscriptionDetails);
+
+            for(int i = 0; i < subscriptionDetail.Count; i++)
+            {
+                Console.WriteLine("ID: " + subscriptionDetail[i].Id);
+                Console.WriteLine("Name: " + subscriptionDetail[i].Name);
+                Console.WriteLine("\n===================================================================================\n");
+            }
+
+            Console.WriteLine("Enter the ID of the subscription you want to delete: ");
+            valId = Console.ReadLine();
+            id = Convert.ToInt32(valId);
+            subscriptionDetail.Remove(subscriptionDetail.FirstOrDefault(m=>m.Id==id));
+
+            string resultJson = JsonSerializer.Serialize<List<Subscription>>(subscriptionDetail);
+            File.WriteAllText("subscriptions.json", resultJson);
+
+            Console.WriteLine("Subscription with " + id + " is succefully deleted.");
         }
     }
 }
