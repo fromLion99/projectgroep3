@@ -4,220 +4,9 @@ namespace cinema
 {
     class newProgram
     {
-        static void notUsed()
+        static void Main(string[] args)
         {
-            string start, account, showMovies, login, reservation, employeeAction, customerCreateAccount,Drinks = "";
-
-            startScreen();
-            moviesStart:
-
-            Console.WriteLine("After pressing a key hit enter to go further in the program.\nWill you see movies press M. Will you login or make an account press L.\nIf you want to close the program press Q.");
-            start = Console.ReadLine();
             
-            if(start == "M" || start == "m")
-            {
-                Console.WriteLine("Available movies:");
-                Movie.viewMovie();
-                Console.WriteLine("If you want to log in enter L. If not hit enter.");
-                login = Console.ReadLine();
-
-                if (login == "L"|| login == "l")
-                {
-                    Console.WriteLine("Do you already have an account? Yes: Y or No: N");
-                    login = Console.ReadLine();
-
-                    if (login == "yes"|| login == "Yes" || login == "y"|| login == "Y" )
-                    {
-                        Login.signIn();
-                        Console.WriteLine("Login successful, Press M for movies");
-                        showMovies = Console.ReadLine();
-
-                        if(showMovies == "m" || showMovies == "M")
-                        {
-                            Movie.viewMovie();
-                            Console.WriteLine("Do you want to make a reservation? Yes: Y or No: N");
-                            reservation = Console.ReadLine();
-
-                            if (reservation == "Y" || reservation == "y")
-                            {
-                                Reservation.addReservation();
-                            }
-                        }
-                    }
-
-                    if (login == "N" || login == "n")
-                    {
-                        Console.WriteLine("Do you want to create an account? Yes: Y or No: N");
-                        customerCreateAccount = Console.ReadLine();
-
-                        if (customerCreateAccount == "Y" || customerCreateAccount == "y")
-                        {
-                            Customer.addCustomer();
-                            goto moviesStart;
-                        }
-
-                        else
-                        {
-                            goto moviesStart;
-                        }
-                    }
-
-                    else
-                    {
-                        goto moviesStart;
-                    }
-                }
-
-                else
-                {
-                    goto moviesStart;
-                }
-            }
-
-            if(start == "L" || start == "l")
-            {
-                Console.WriteLine("Press L for log in. Press C to create an account.\nEnter E for employee login.");
-                account = Console.ReadLine();
-
-                if(account == "L" || account == "l")
-                {
-                    Login.signIn();
-                    goto moviesStart;
-                }
-
-                if(account == "C" || account == "c")
-                {
-                    Customer.addCustomer();
-                    goto moviesStart;
-                }
-
-                if(account == "E" || account == "e")
-                {
-                    Login.signinEmployee();
-                    bool employeeLogin = true;//Dit moet later aangepast worden
-
-                    if (employeeLogin)
-                    {
-                        Console.WriteLine("Manage rooms: R, manage movies: M, manage customer: C, manage employees: E, views sales: S");
-                        employeeAction = Console.ReadLine();
-
-                        if (employeeAction == "R" || employeeAction == "r")
-                        {
-                            Console.WriteLine("Add a room: A, view all rooms: V, edit a room: E, delete a room: D");
-                            employeeAction = Console.ReadLine();
-
-                            switch (employeeAction)
-                            {
-                                case "A": case "a":
-                                    Room.addRoom();
-                                    goto moviesStart;
-                                case "V": case "v":
-                                    Room.viewRoom();
-                                    goto moviesStart;
-                                case "E": case "e":
-                                    Room.editRoom();
-                                    goto moviesStart;
-                                case "D": case "d":
-                                    Room.deleteRoom();
-                                    goto moviesStart;
-                            }
-                        }
-
-                        if (employeeAction == "M" || employeeAction == "m")
-                        {
-                            Console.WriteLine("Add a movie: a, view all movies: V, edit a movie: E, delete a movie: D");
-                            employeeAction = Console.ReadLine();
-
-                            switch (employeeAction)
-                            {
-                                case "A": case "a":
-                                    Movie.addMovie();
-                                    goto moviesStart;
-                                case "V": case "v":
-                                    Movie.viewMovie();
-                                    goto moviesStart;
-                                case "E": case "e":
-                                    Movie.editMovie();
-                                    goto moviesStart;
-                                case "D": case "d":
-                                    Movie.deleteMovie();
-                                    goto moviesStart;
-                            }
-                        }
-
-                        if (employeeAction == "C" || employeeAction == "c")
-                        {
-                            Console.WriteLine("Add a customer: A, view all customers: V, edit a customer: E, delete a customer: D");
-                            employeeAction = Console.ReadLine();
-
-                            switch (employeeAction)
-                            {
-                                case "A": case "a":
-                                    Customer.addCustomer();
-                                    goto moviesStart;
-                                case "V": case "v":
-                                    Customer.viewCustomer();
-                                    goto moviesStart;
-                                case "E": case "e":
-                                    Customer.editCustomer();
-                                    goto moviesStart;
-                                case "D": case "d":
-                                    Customer.deleteCustomer();
-                                    goto moviesStart;
-                            }
-                        }
-
-                        if (employeeAction == "E" || employeeAction == "e")
-                        {
-                            Console.WriteLine("Add a employee: A, view all employees: V, edit a employee: E, delete a employee: D");
-                            employeeAction = Console.ReadLine();
-
-                            switch (employeeAction)
-                            {
-                                case "A": case "a":
-                                    Employee.addEmployee();
-                                    goto moviesStart;
-                                case "V": case "v":
-                                    Employee.viewEmployee();
-                                    goto moviesStart;
-                                case "E": case "e":
-                                    Employee.editEmployee();
-                                    goto moviesStart;
-                                case "D": case "d":
-                                    Employee.deleteEmployee();
-                                    goto moviesStart;
-                            }
-                        }
-
-                        if(employeeAction == "s" || employeeAction == "S")
-                        {
-                            Employee.viewSalesEmployee();
-                        }
-                    }
-                }
-            }
-            
-            if (start == "Q" || start == "q")
-            {
-                Console.WriteLine("Do you want to log out? Yes: Y or No: N");
-                start = Console.ReadLine();
-
-                if (start == "Y" || start == "y")
-                {
-                    Login.logOut();
-                    Environment.Exit(0);
-                }
-
-                else
-                {
-                    Environment.Exit(0);
-                }
-            }
-
-            else
-            {
-                goto moviesStart;
-            }
         }
 
         public static void startScreen()
@@ -241,6 +30,19 @@ namespace cinema
             Console.ReadLine();
         }
 
-       
+        public static void guestUser()
+        {
+
+        }
+
+        public static void customerUser()
+        {
+
+        }
+
+        public static void employeeUser()
+        {
+
+        }
     }
 }

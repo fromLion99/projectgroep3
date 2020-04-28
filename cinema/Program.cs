@@ -9,6 +9,7 @@ namespace cinema
             string start = "";
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
+
             begin:
 
             if (Login.checkCustomerLogin())

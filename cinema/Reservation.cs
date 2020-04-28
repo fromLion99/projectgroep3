@@ -8,7 +8,6 @@ using System.Collections.Generic;
 namespace cinema
 {
     
-
     public class Reservation
     {
         public int Id {get; set;}
@@ -23,6 +22,10 @@ namespace cinema
         public double sales { get; set; }
         public bool paid { get; set; }
         public int seatId {get; set;}
+        public string row {get; set;}
+        public int startseat {get; set;}
+        public int amountseats {get; set;}
+        
         
         public static void addReservation()
         {
@@ -91,7 +94,7 @@ namespace cinema
                         string resultJson = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
                         File.WriteAllText("reservation.json", resultJson);
                         beginB:
-                        Console.WriteLine("Reservation successfully added. Press B to start again");
+                        Console.WriteLine("Reservation successfully added, press B to start again or S to choose your seat...");
                         gotostart = true;
                         back = Console.ReadLine();
                         if(back == "b" || back == "B")
@@ -100,6 +103,10 @@ namespace cinema
                             {
                                 goto beginning;
                             }
+                        }
+                        if (back == "s" || back == "S")
+                        {
+                            addSeatReservation();
                         }
                             int value;
                             if(!int.TryParse(back, out value))
@@ -190,13 +197,14 @@ namespace cinema
 
         public static void addSeatReservation()
         {    
-            Reservation seat = new Reservation();  
+            Reservation reservation = new Reservation();  
             string row = "";
             string rowString, back, whereRowString = "";
             string chooseSeat, chooseAmountSeatString = "";
             int chooseAmountSeat, whereRow, WhereInRow = 0;
             bool gotostart = false; 
             int maxSeats = 15;
+
             
             string roomDetails = File.ReadAllText("rooms.json");
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
@@ -205,16 +213,13 @@ namespace cinema
             List<Reservation> reservationDetail = JsonSerializer.Deserialize<List<Reservation>>(reservationsDetails);
             
             string seatDetails = File.ReadAllText("seats.json");
-            List<Room> seatDetail = JsonSerializer.Deserialize<List<Room>>(seatDetails);
+            List<Reservation> seatDetail = JsonSerializer.Deserialize<List<Reservation>>(seatDetails);
             var item = seatDetail[seatDetail.Count-1];
             var newId = item.Id+1;
-            seat.Id = newId;
+            reservation.seatId = newId;
             
-
-
-
             begin1:
-            Console.WriteLine($"Choose your row between: A-B-C-D-E, A is the row nearest to the filmscreen and E is the furthest away");
+            Console.WriteLine($"Choose your row between: A-B-C-D-E, A is the row closest to the filmscreen and E is the furthest away");
             row = Console.ReadLine();
             if(row == "a" || row == "A" || row == "b" || row == "B" || row == "c" || row == "C" || row == "d" || row == "D" || row == "e" || row == "E") 
             {
@@ -236,35 +241,54 @@ namespace cinema
                     chooseAmountSeat = Convert.ToInt32(chooseAmountSeatString);
                     if(chooseAmountSeat <= 15 && chooseAmountSeat > 0)
                     {
+                        begin3:
                         Console.WriteLine($"You choose : {chooseAmountSeat} seat(s)");
-                        Console.WriteLine("Now choose where in the row you wanna sit, Choose between 1-15. IMPORTANT! : choose your seat accordingly there are 15 seats max so for example if you previously choose 5 seats and now choose to sit at seat 11 the program will result in an error, you will have to choose to sit at seat 10.");
+                        Console.Write("Now choose where in the row you wanna sit, Choose between 1-15:");
                         whereRowString = Console.ReadLine();
                         whereRow = Convert.ToInt32(whereRowString);
-                        if(whereRow+chooseAmountSeat > maxSeats)
+                        if(whereRow > 0 && whereRow <= 15) 
                         {
-                            WhereInRow = maxSeats - whereRow + chooseAmountSeat;  
+                            while(chooseAmountSeat > (maxSeats - whereRow + 1))
+                            {
+                                whereRow = whereRow - 1; 
+                            }
+                            Console.WriteLine($"You choose to sit at Row: {rowString} - Amount of seats : {chooseAmountSeat} - Where in the row : {whereRow}");
+                            reservation.row = rowString;
+                            reservation.startseat = whereRow;
+                            reservation.amountseats = chooseAmountSeat;
+                            
+                            seatDetail.Add(reservation);
+                            string resultJson = JsonSerializer.Serialize<List<Reservation>>(seatDetail);
+                            File.WriteAllText("seats.json", resultJson);
                         }
-
-
+                        else
+                        {
+                            gotostart = true;
+                            System.Console.WriteLine("Wrong input,try again");
+                            goto begin3;      
+                        }                        
                     }
                     else
                     {
-                        int value1;
-                        if(!int.TryParse(back, out value1))
+                        int value2;
+                        if(!int.TryParse(back, out value2))
                         {
                             gotostart = true;
                             System.Console.WriteLine("Wrong input,try again");
                             goto begin2;
                         }
                     }
-                }
+                }   
+            }
+            else
+            {
                 int value;
                 if(!int.TryParse(row, out value))
                 {
                     gotostart = true;
                     System.Console.WriteLine("Wrong input,try again");
                     goto begin1;
-                }             
+                }
             }
         }
     }
