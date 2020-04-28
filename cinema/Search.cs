@@ -11,9 +11,9 @@ namespace cinema
         public static void searchMovie(){
 
             bool found = false;
-            bool gotostart = false;
             bool found2 = false;
-            string pressedkey,input1 = "";
+            string pressedkey,input1,input2 = "";
+            int inputId,value,inputint;
 
             // JSON
             string movieDetails = File.ReadAllText("movies.json");
@@ -21,24 +21,40 @@ namespace cinema
             
             begin:
 
-            Console.WriteLine("Input a genre, room ");
+            Console.WriteLine("Input a genre, room or movie.");
             input1 = Console.ReadLine();
-
-            for(int j = 0; j < movieDetail.Count; j++)
-            {
-                if(movieDetail[j].Name == input1)
+            
+            if(!int.TryParse(input1, out value)){
+                for(int j = 0; j < movieDetail.Count; j++)
                 {
-                    Console.WriteLine($"The Movie {movieDetail[j].Name} will start at {movieDetail[j].Time}\n");
-                    found = true;
+                    if(movieDetail[j].Name == input1)
+                    {
+                        Console.WriteLine($"The Movie {movieDetail[j].Name} will start at {movieDetail[j].Time}\n");
+                        found = true;
+                    }
                 }
             }
 
-            for(int i=0;i<movieDetail.Count;i++)
-            {
-                if(movieDetail[i].Genre == input1)
+            if(!int.TryParse(input1, out value)){
+                for(int i=0;i<movieDetail.Count;i++)
                 {
-                    Console.WriteLine($"{movieDetail[i].Id}: {movieDetail[i].Name}");
-                    found = true;
+                    if(movieDetail[i].Genre == input1)
+                    {
+                        Console.WriteLine($"The movies with Genre {input1} are:");
+                        Console.WriteLine($"{movieDetail[i].Id}: {movieDetail[i].Name}");
+                        found = true;
+                    }
+                }
+            }
+
+            if(int.TryParse(input1,out value)){
+                inputint = Convert.ToInt32(input1);
+                Console.WriteLine($"The movies played in Room {input1} are:");
+                for(int i = 0;i<movieDetail.Count;i++){
+                    if(movieDetail[i].Room == inputint){
+                        Console.WriteLine($"{movieDetail[i].Name}");
+                        found = true;
+                    }
                 }
             }
 
@@ -48,36 +64,18 @@ namespace cinema
                 goto begin;
             }
 
-            beginning_Genre:
+            begin2:
 
-            System.Console.WriteLine("Input a Genre to see all the movies of that genre:");
-            string inputgenre = Console.ReadLine();
-            found = false;
-            gotostart = false;
-            
-            beginning_Movie2:
-            System.Console.WriteLine($"The movies with Genre {inputgenre} are:");
-
-
-            if(!found)
-            {
-                Console.WriteLine("Genre not found, try again:");
-                goto beginning_Genre;
-            }
-
-            beginning_Id:
-
-            System.Console.WriteLine("Press the given movie id to get more information:");
+            Console.WriteLine("Press the given movie id to get more information:");
             pressedkey = Console.ReadLine();
 
-            int value;
             if(!int.TryParse(pressedkey, out value))
             {
                 System.Console.WriteLine("Wrong input,try again");
-                goto beginning_Movie2;
+                goto begin2;
             }
 
-            int inputId = Convert.ToInt32(pressedkey);
+            inputId = Convert.ToInt32(pressedkey);
 
             for(int k=0;k<movieDetail.Count;k++)
             {
@@ -92,19 +90,19 @@ namespace cinema
             if(!found2)
             {
                 System.Console.WriteLine("ID not found, try again");
-                goto beginning_Id;
+                goto begin2;
             }
 
-            string input3 = Console.ReadLine();
+            input2 = Console.ReadLine();
 
-            if(input3 == "r" || input3 == "R")
+            if(input2 == "r" || input2 == "R")
             {
                 Reservation.addReservation();
             }
 
-            if(input3 == "T" || input3 == "t")
+            if(input2 == "T" || input2 == "t")
             {
-                goto beginning_Genre;
+                goto begin2;
             }
         }
     }
