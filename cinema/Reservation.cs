@@ -241,42 +241,54 @@ namespace cinema
                     chooseAmountSeat = Convert.ToInt32(chooseAmountSeatString);
                     if(chooseAmountSeat <= 15 && chooseAmountSeat > 0)
                     {
+                        begin3:
                         Console.WriteLine($"You choose : {chooseAmountSeat} seat(s)");
                         Console.Write("Now choose where in the row you wanna sit, Choose between 1-15:");
                         whereRowString = Console.ReadLine();
                         whereRow = Convert.ToInt32(whereRowString);
-                        while(chooseAmountSeat > (maxSeats - whereRow + 1))
+                        if(whereRow > 0 && whereRow <= 15) 
                         {
-                            whereRow = whereRow - 1; 
+                            while(chooseAmountSeat > (maxSeats - whereRow + 1))
+                            {
+                                whereRow = whereRow - 1; 
+                            }
+                            Console.WriteLine($"You choose to sit at Row: {rowString} - Amount of seats : {chooseAmountSeat} - Where in the row : {whereRow}");
+                            reservation.row = rowString;
+                            reservation.startseat = whereRow;
+                            reservation.amountseats = chooseAmountSeat;
+                            
+                            seatDetail.Add(reservation);
+                            string resultJson = JsonSerializer.Serialize<List<Reservation>>(seatDetail);
+                            File.WriteAllText("seats.json", resultJson);
                         }
-                        Console.WriteLine($"You choose to sit at Row: {rowString} - Amount of seats : {chooseAmountSeat} - Where in the row : {whereRow}");
-                        reservation.row = rowString;
-                        reservation.startseat = whereRow;
-                        reservation.amountseats = chooseAmountSeat;
-                        
-                        seatDetail.Add(reservation);
-                        string resultJson = JsonSerializer.Serialize<List<Reservation>>(seatDetail);
-                        File.WriteAllText("seats.json", resultJson);
-                    
+                        else
+                        {
+                            gotostart = true;
+                            System.Console.WriteLine("Wrong input,try again");
+                            goto begin3;      
+                        }                        
                     }
                     else
                     {
-                        int value1;
-                        if(!int.TryParse(back, out value1))
+                        int value2;
+                        if(!int.TryParse(back, out value2))
                         {
                             gotostart = true;
                             System.Console.WriteLine("Wrong input,try again");
                             goto begin2;
                         }
                     }
-                }
+                }   
+            }
+            else
+            {
                 int value;
                 if(!int.TryParse(row, out value))
                 {
                     gotostart = true;
                     System.Console.WriteLine("Wrong input,try again");
                     goto begin1;
-                }             
+                }
             }
         }
     }
