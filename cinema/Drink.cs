@@ -84,9 +84,32 @@ namespace cinema
             drink.Prijs = priceDouble;
             Console.WriteLine("Enter 'Yes' if the drink contains alcohol, enter 'no' if it does not: ");
             searchedDrink.Alcoholic = Console.ReadLine();
-            
-        }
 
+            string resultJson = JsonSerializer.serialize<List<Drinks>>(Drinkdetials);
+            File.WriteAllText("AddDrinks.Json", resultJson);
+            Console.WriteLine("Drinks changed succesfully! :D");
         }
+        public static void Drinkdelete()
+        {
+            string drinkDetails = File.ReadAllText("Drinks.Json");
+            List<Drinks> drinkDetails = JsonSerializer.Deserialize<List<Drink>>(drinkDetails);
+
+            for(int i = 0; i < drinkDetail.Count; i++)
+            {
+                Console.WriteLine("Drink name: " + drinkDetail[i].drank);
+                Console.WriteLine("Urod cyka idi nahoi"); 
+                Console.WriteLine("\n===================================================================================\n");
+            }
+            Console.WriteLine("Please enter the ID of the drink you would like to delete: ");
+            valId = Console.ReadLine();
+            benaan = Convert.ToInt32(valId);
+            drinkDetails.Remove(drinkDetails.FirstOrDefault(d =>d.id == idDrink));
+
+            string resultJson = JsonSerializer.serialize<List<Drinks>>(Drinkdetails);
+            File.WriteAllText("Drinks.Json",resultJson);
+
+            Console.WriteLine("Drink "+id+" Has been deleted.");
+        }
+    }
     }
 //}

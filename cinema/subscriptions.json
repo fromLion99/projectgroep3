@@ -1,1 +1,1 @@
-[{"Id":1,"Name":"Starter","MonthPrice":1050,"YearSubscription":false},{"Id":3,"Name":"Master","MonthPrice":24.95,"YearSubscription":false}]
+[{"Id":1,"Name":"Starter","MonthPrice":10.50,"YearSubscription":false},{"Id":2,"Name":"Medium","MonthPrice":24.95,"YearSubscription":false},{"Id":3,"Name":"Pro","MonthPrice":44.95,"YearSubscription":false}]
