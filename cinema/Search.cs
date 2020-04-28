@@ -13,35 +13,39 @@ namespace cinema
             bool found = false;
             bool gotostart = false;
             bool found2 = false;
-            string pressedkey = "";
+            string pressedkey,input1 = "";
 
             // JSON
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
             
-            beginning_Movie:
+            begin:
 
-            Console.WriteLine("Put in a movie to see at what time it will start:");
-            string inputmovie = Console.ReadLine();
+            Console.WriteLine("Input a genre, room ");
+            input1 = Console.ReadLine();
 
             for(int j = 0; j < movieDetail.Count; j++)
             {
-                if(movieDetail[j].Name == inputmovie)
+                if(movieDetail[j].Name == input1)
                 {
                     Console.WriteLine($"The Movie {movieDetail[j].Name} will start at {movieDetail[j].Time}\n");
                     found = true;
                 }
             }
 
-            if(found == false)
+            for(int i=0;i<movieDetail.Count;i++)
             {
-                Console.WriteLine("Movie not found, try again:");
-                gotostart = true;
+                if(movieDetail[i].Genre == input1)
+                {
+                    Console.WriteLine($"{movieDetail[i].Id}: {movieDetail[i].Name}");
+                    found = true;
+                }
             }
-            
-            if(gotostart)
+
+            if(!found)
             {
-                goto beginning_Movie;
+                Console.WriteLine("Wrong input, try again.");
+                goto begin;
             }
 
             beginning_Genre:
@@ -54,14 +58,6 @@ namespace cinema
             beginning_Movie2:
             System.Console.WriteLine($"The movies with Genre {inputgenre} are:");
 
-            for(int i=0;i<movieDetail.Count;i++)
-            {
-                if(movieDetail[i].Genre == inputgenre)
-                {
-                    Console.WriteLine($"{movieDetail[i].Id}: {movieDetail[i].Name}");
-                    found = true;
-                }
-            }
 
             if(!found)
             {
