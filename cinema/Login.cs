@@ -11,9 +11,12 @@ namespace cinema
         //Properties Login
         public int UserId {get; set;}
         public string UserEmail {get;set;}
+        public bool CustomerLogin {get;set;}
+        public bool EmployeeLogin {get;set;}
+
         public void CustomerDetail()
         {
-            Console.WriteLine("functie customerdetail\nview id of customers and name");
+            Console.WriteLine("function customerdetail\nview id of customers and name");
         }    
 
         public static void signIn()
@@ -45,22 +48,23 @@ namespace cinema
                 {
                     currentLogin.UserId = customer.Id;
                     currentLogin.UserEmail = customer.Email;
+                    currentLogin.CustomerLogin = true;
 
                     string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
                     File.WriteAllText("Login.json", Resultjson);
 
-                    Console.WriteLine("Login succesful!");
+                    Console.WriteLine("Login successful!");
                 }
 
                 else
                 {
-                    Console.WriteLine("Password incorrect!");
+                    Console.WriteLine("Password is incorrect!");
                 }
             }
 
             else
             {
-                Console.WriteLine("unknown username!");
+                Console.WriteLine("Unknown username!");
             }
         }
 
@@ -81,7 +85,7 @@ namespace cinema
 
             var employee = employeeDetail.FirstOrDefault(e => e.Id == id);
 
-            Console.WriteLine("Please enter your email: ");
+            Console.WriteLine("Please enter your Email: ");
             email = Console.ReadLine();
 
             if (employee.Email == email)
@@ -93,11 +97,12 @@ namespace cinema
                 {
                     currentLogin.UserId = employee.Id;
                     currentLogin.UserEmail = employee.Email;
+                    currentLogin.EmployeeLogin = true;
 
                     string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
                     File.WriteAllText("Login.json", Resultjson);
 
-                    Console.WriteLine("Login succesful!");
+                    Console.WriteLine("Login successful!");
                 }
 
                 else
@@ -108,7 +113,7 @@ namespace cinema
 
             else
             {
-                Console.WriteLine("Unkown email!");
+                Console.WriteLine("Unkown Email!");
             }
         }
 
@@ -119,11 +124,43 @@ namespace cinema
 
             currentLogin.UserId = 0;
             currentLogin.UserEmail = "";
+            currentLogin.CustomerLogin = false;
+            currentLogin.EmployeeLogin = false;
 
             string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
             File.WriteAllText("Login.json", Resultjson);
             
             Console.WriteLine("Successfully logged out.");
+        }
+
+        public static bool checkCustomerLogin()
+        {
+            string loginDetails = File.ReadAllText("Login.json");
+            Login currentLogin = JsonSerializer.Deserialize<Login>(loginDetails);
+
+            if (currentLogin.CustomerLogin)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool checkEmployeeLogin()
+        {
+            string loginDetails = File.ReadAllText("Login.json");
+            Login currentLogin = JsonSerializer.Deserialize<Login>(loginDetails);
+
+            if (currentLogin.EmployeeLogin)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
