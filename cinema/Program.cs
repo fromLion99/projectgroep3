@@ -9,7 +9,6 @@ namespace cinema
             string start = "";
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
-
             begin:
 
             if (Login.checkCustomerLogin())
@@ -119,6 +118,7 @@ namespace cinema
                 case "M": case "m":
                     Console.WriteLine("A: add a movie, V: view all movies, E: edit a movie, D: delete a movie.");
                     employeeAction = Console.ReadLine();
+
                     switch (employeeAction)
                     {
                         case "A": case "a":
@@ -133,14 +133,102 @@ namespace cinema
                         case "D": case "d":
                             Movie.deleteMovie();
                             goto startEmployee;
-                        case "Q": case "q":
-                            shutDown();
-                            break;
                         default:
                             Console.WriteLine("Unknown command.");
                             goto startEmployee;
                     }
-                    break;
+                case "R": case "r":
+                    Console.WriteLine("A: add a room, V: view all rooms, E: edit a room, D: delete a room.");
+                    employeeAction = Console.ReadLine();
+
+                    switch (employeeAction)
+                    {
+                        case "A": case "a":
+                            Room.addRoom();
+                            goto startEmployee;
+                        case "V": case "v":
+                            Room.viewRoom();
+                            goto startEmployee;
+                        case "E": case "e":
+                            Room.editRoom();
+                            goto startEmployee;
+                        case "D": case "d":
+                            Room.deleteRoom();
+                            goto startEmployee;
+                        default:
+                            Console.WriteLine("Unknown command.");
+                            goto startEmployee;
+                    }
+                case "E": case "e":
+                    Console.WriteLine("A: add a employee, V: view all employees, E: edit a employee, D: delete a employee.");
+                    employeeAction = Console.ReadLine();
+
+                    switch (employeeAction)
+                    {
+                        case "A": case "a":
+                            Employee.addEmployee();
+                            goto startEmployee;
+                        case "V": case "v":
+                            Employee.viewEmployee();
+                            goto startEmployee;
+                        case "E": case "e":
+                            Employee.editEmployee();
+                            goto startEmployee;
+                        case "D": case "d":
+                            Employee.deleteEmployee();
+                            goto startEmployee;
+                        default:
+                            Console.WriteLine("Unknown command.");
+                            goto startEmployee;
+                    }
+                case "C": case "c":
+                    Console.WriteLine("A: add a customer, V: view all customers, E: edit a customer, D: delete a customer.");
+                    employeeAction = Console.ReadLine();
+
+                    switch (employeeAction)
+                    {
+                        case "A": case "a":
+                            Customer.addCustomer();
+                            goto startEmployee;
+                        case "V": case "v":
+                            Customer.viewCustomer();
+                            goto startEmployee;
+                        case "E": case "e":
+                            Customer.editCustomer();
+                            goto startEmployee;
+                        case "D": case "d":
+                            Customer.deleteCustomer();
+                            goto startEmployee;
+                        default:
+                            Console.WriteLine("Unknown command.");
+                            goto startEmployee;
+                    }
+                case "W": case "w":
+                    Console.WriteLine("A: add a reservation, ");
+                    employeeAction = Console.ReadLine();
+
+                    switch (employeeAction)
+                    {
+                        case "A": case "a":
+                            Console.WriteLine("FUNCTION NEEDS TO BE PLACED HERE");
+                            goto startEmployee;
+                        default:
+                            Console.WriteLine("Unknown command.");
+                            goto startEmployee;
+                    }
+                case "D": case "d":
+                    Console.WriteLine("A: add a drink, V: view all drinks, E: edit a drink, D: delete a drink.");
+                    employeeAction = Console.ReadLine();
+
+                    switch (employeeAction)
+                    {
+                        case "A": case "a":
+                            Console.WriteLine("FUNCTION NEEDS TO BE PLACED HERE");
+                            goto startEmployee;
+                        default:
+                            Console.WriteLine("Unknown command.");
+                            goto startEmployee;
+                    }
             }
         }
 
