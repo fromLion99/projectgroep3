@@ -9,15 +9,11 @@ namespace cinema
             string start, account, showMovies, login, reservation, employeeAction, customerCreateAccount,Drinks = "";
 
             startScreen();
-            //Reservation.PayReservation();
-          
-            Subscription.deleteSubscription();
-
             moviesStart:
 
             Console.WriteLine("After pressing a key hit enter to go further in the program.\nWill you see movies press M. Will you login or make an account press L.\nIf you want to close the program press Q.");
             start = Console.ReadLine();
-
+            
             if(start == "M" || start == "m")
             {
                 Console.WriteLine("Available movies:");
@@ -110,28 +106,20 @@ namespace cinema
                             Console.WriteLine("Add a room: A, view all rooms: V, edit a room: E, delete a room: D");
                             employeeAction = Console.ReadLine();
 
-                            if (employeeAction == "A" || employeeAction == "a")
+                            switch (employeeAction)
                             {
-                                Room.addRoom();
-                                goto moviesStart;
-                            }
-
-                            if (employeeAction == "V" || employeeAction == "v")
-                            {
-                                Room.viewRoom();
-                                goto moviesStart;
-                            }
-
-                            if (employeeAction == "E" || employeeAction == "e")
-                            {
-                                Room.editRoom();
-                                goto moviesStart;
-                            }
-
-                            if (employeeAction == "D" || employeeAction == "d")
-                            {
-                                Room.deleteRoom();
-                                goto moviesStart;
+                                case "A": case "a":
+                                    Room.addRoom();
+                                    goto moviesStart;
+                                case "V": case "v":
+                                    Room.viewRoom();
+                                    goto moviesStart;
+                                case "E": case "e":
+                                    Room.editRoom();
+                                    goto moviesStart;
+                                case "D": case "d":
+                                    Room.deleteRoom();
+                                    goto moviesStart;
                             }
                         }
 
@@ -140,28 +128,20 @@ namespace cinema
                             Console.WriteLine("Add a movie: a, view all movies: V, edit a movie: E, delete a movie: D");
                             employeeAction = Console.ReadLine();
 
-                            if (employeeAction == "A" || employeeAction == "a")
+                            switch (employeeAction)
                             {
-                                Movie.addMovie();
-                                goto moviesStart;
-                            }
-
-                            if (employeeAction == "V" || employeeAction == "v")
-                            {
-                                Movie.viewMovie();
-                                goto moviesStart;
-                            }
-
-                            if (employeeAction == "E" || employeeAction == "e")
-                            {
-                                Movie.editMovie();
-                                goto moviesStart;
-                            }
-
-                            if (employeeAction == "D" || employeeAction == "d")
-                            {
-                                Movie.deleteMovie();
-                                goto moviesStart;
+                                case "A": case "a":
+                                    Movie.addMovie();
+                                    goto moviesStart;
+                                case "V": case "v":
+                                    Movie.viewMovie();
+                                    goto moviesStart;
+                                case "E": case "e":
+                                    Movie.editMovie();
+                                    goto moviesStart;
+                                case "D": case "d":
+                                    Movie.deleteMovie();
+                                    goto moviesStart;
                             }
                         }
 
@@ -170,28 +150,20 @@ namespace cinema
                             Console.WriteLine("Add a customer: A, view all customers: V, edit a customer: E, delete a customer: D");
                             employeeAction = Console.ReadLine();
 
-                            if (employeeAction == "A" || employeeAction == "a")
+                            switch (employeeAction)
                             {
-                                Customer.addCustomer();
-                                goto moviesStart;
-                            }
-
-                            if (employeeAction == "V" || employeeAction == "v")
-                            {
-                                Customer.viewCustomer();
-                                goto moviesStart;
-                            }
-
-                            if (employeeAction == "E" || employeeAction == "e")
-                            {
-                                Customer.editCustomer();
-                                goto moviesStart;
-                            }
-
-                            if (employeeAction == "D" || employeeAction == "d")
-                            {
-                                Customer.deleteCustomer();
-                                goto moviesStart;
+                                case "A": case "a":
+                                    Customer.addCustomer();
+                                    goto moviesStart;
+                                case "V": case "v":
+                                    Customer.viewCustomer();
+                                    goto moviesStart;
+                                case "E": case "e":
+                                    Customer.editCustomer();
+                                    goto moviesStart;
+                                case "D": case "d":
+                                    Customer.deleteCustomer();
+                                    goto moviesStart;
                             }
                         }
 
@@ -200,28 +172,20 @@ namespace cinema
                             Console.WriteLine("Add a employee: A, view all employees: V, edit a employee: E, delete a employee: D");
                             employeeAction = Console.ReadLine();
 
-                            if (employeeAction == "A" || employeeAction == "a")
+                            switch (employeeAction)
                             {
-                                Employee.addEmployee();
-                                goto moviesStart;
-                            }
-
-                            if (employeeAction == "V" || employeeAction == "v")
-                            {
-                                Employee.viewEmployee();
-                                goto moviesStart;
-                            }
-
-                            if (employeeAction == "E" || employeeAction == "e")
-                            {
-                                Employee.editEmployee();
-                                goto moviesStart;
-                            }
-
-                            if (employeeAction == "D" || employeeAction == "d")
-                            {
-                                Employee.deleteEmployee();
-                                goto moviesStart;
+                                case "A": case "a":
+                                    Employee.addEmployee();
+                                    goto moviesStart;
+                                case "V": case "v":
+                                    Employee.viewEmployee();
+                                    goto moviesStart;
+                                case "E": case "e":
+                                    Employee.editEmployee();
+                                    goto moviesStart;
+                                case "D": case "d":
+                                    Employee.deleteEmployee();
+                                    goto moviesStart;
                             }
                         }
 

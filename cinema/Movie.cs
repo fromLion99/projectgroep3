@@ -17,7 +17,7 @@ namespace cinema
         public string Date {get; set;}
         public int Room {get; set;}
         public bool Imax {get; set;}
-        public bool DrieD {get; set;}
+        public bool ThreeD {get; set;}
         public double Price {get; set;}
         public int RecommendedAge {get; set;}
 
@@ -67,12 +67,12 @@ namespace cinema
 
             if(val3D == "Y" || val3D == "y")
             {
-                movie.DrieD = true;
+                movie.ThreeD = true;
             }
 
             else
             {
-                movie.DrieD = false;
+                movie.ThreeD = false;
             }
 
             Console.WriteLine("Enter the price for the movie: ");
@@ -94,7 +94,7 @@ namespace cinema
         public static void viewMovie()
         {
             string imax = "";
-            string drieD = "";
+            string threeD = "";
 
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
@@ -106,9 +106,9 @@ namespace cinema
                 imax = "Yes";
                 }
 
-                if(movieDetail[i].DrieD)
+                if(movieDetail[i].ThreeD)
                 {
-                    drieD = "Yes";
+                    threeD = "Yes";
                 }
 
                 if(!movieDetail[i].Imax)
@@ -116,9 +116,9 @@ namespace cinema
                     imax = "No";
                 }
 
-                if(!movieDetail[i].DrieD)
+                if(!movieDetail[i].ThreeD)
                 {
-                    drieD = "No";
+                    threeD = "No";
                 }
 
                 Console.WriteLine("Movie ID: " + movieDetail[i].Id);
@@ -127,7 +127,7 @@ namespace cinema
                 Console.WriteLine("Movie description: " + movieDetail[i].Description);
                 Console.WriteLine("Movie date and time: " + movieDetail[i].Date + " " + movieDetail[i].Time);
                 Console.WriteLine("Movie room: " + movieDetail[i].Room);
-                Console.WriteLine("3D: " + drieD + ", IMAX: " + imax);
+                Console.WriteLine("3D: " + threeD + ", IMAX: " + imax);
                 Console.WriteLine("Costs movie: " + movieDetail[i].Price);
                 Console.WriteLine("Recommended minimum age of the viewers: " + movieDetail[i].RecommendedAge);
                 Console.WriteLine("\n===================================================================================\n");
@@ -137,7 +137,7 @@ namespace cinema
         public static void editMovie()
         {
             string movieId, valRoom, valPrice, valAge, valImax, val3D, replace = "";
-            string drieD = "";
+            string threeD = "";
             string imax = "";
             int idMovie, room, recomAge = 0;
             double priceDouble = 0.0;
@@ -164,9 +164,9 @@ namespace cinema
                 imax = "Yes";
             }
 
-            if(searchedMovie.DrieD)
+            if(searchedMovie.ThreeD)
             {
-                drieD = "Yes";
+                threeD = "Yes";
             }
 
             if(!searchedMovie.Imax)
@@ -174,9 +174,9 @@ namespace cinema
                 imax = "No";
             }
 
-            if(!searchedMovie.DrieD)
+            if(!searchedMovie.ThreeD)
             {
-                drieD = "No";
+                threeD = "No";
             }
 
             Console.WriteLine("Movie ID: " + searchedMovie.Id);
@@ -185,7 +185,7 @@ namespace cinema
             Console.WriteLine("Movie description: " + searchedMovie.Description);
             Console.WriteLine("Movie date and time: " + searchedMovie.Date + " " + searchedMovie.Time);
             Console.WriteLine("Movie room: " + searchedMovie.Room);
-            Console.WriteLine("3D: " + drieD + " IMAX: " + imax);
+            Console.WriteLine("3D: " + threeD + " IMAX: " + imax);
             Console.WriteLine("\n===================================================================================\n");
 
             Console.WriteLine("Enter the new name of the movie: ");
@@ -220,12 +220,12 @@ namespace cinema
 
             if(val3D == "Y" || val3D == "y")
             {
-                searchedMovie.DrieD = true;
+                searchedMovie.ThreeD = true;
             }
 
             else
             {
-                searchedMovie.DrieD = false;
+                searchedMovie.ThreeD = false;
             }
 
             Console.WriteLine("Enter the price for the movie: ");
