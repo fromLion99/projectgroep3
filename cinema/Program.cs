@@ -6,16 +6,19 @@ namespace cinema
     {
         static void Main(string[] args)
         {
-           string start = "";
+            string start = "";
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
-            if (cinema.Login.checkCustomerLogin())
+
+            begin:
+
+            if (Login.checkCustomerLogin())
             {
-                Console.WriteLine("Welcome " + "CUSTOMER NAME" + "\nAfter pressing a key you needs to hit enter to go further in the program.\nWill you see movies press M. If you want to cose the program press Q.");
-                start = Console.ReadLine();
+                Console.WriteLine("Welcome " + "CUSTOMER NAME" + "\nAfter pressing a key you needs to hit enter to go further in the program.");
+                customerUser();
             }
 
-            if (cinema.Login.checkEmployeeLogin())
+            if (Login.checkEmployeeLogin())
             {
                 Console.WriteLine("Welcome " + "EMPLOYEE NAME" + "\nM: manage movies, R: manage rooms, C: manage customers, E: manage employees, Q: shut down the application.");
                 start = Console.ReadLine();
@@ -25,13 +28,6 @@ namespace cinema
             {
                 guestUser();
                 goto begin;
-            }
-
-            switch (start)
-            {
-                case "L": case "l":
-                    guestUser();
-                    goto begin;
             } 
         }
 
@@ -60,31 +56,85 @@ namespace cinema
         {
             string guestAction = "";
 
-            Console.WriteLine("Do you wan to create an account enter C. Do you want to login enter L. Do you want to see all movies press M.");
+            Console.WriteLine("Do you wan to create an account enter C. Do you want to login enter L. Do you want to login as Employee press E. Do you want to see all movies press M. Do you want to close the program press Q.");
             guestAction = Console.ReadLine();
 
             switch (guestAction)
             {
                 case "C": case "c":
-                    cinema.Customer.addCustomer();
+                    Customer.addCustomer();
                     break;
                 case "L": case "l":
-                    cinema.Login.signIn();
+                    Login.signIn();
+                    break;
+                case "E": case "e":
+                    Login.signinEmployee();
                     break;
                 case "M": case "m":
-                    cinema.Movie.viewMovie();
+                    Movie.viewMovie();
+                    break;
+                case "Q": case "q":
+                    shutDown();
                     break;
             }
         }
 
         public static void customerUser()
         {
+            string customerAction = "";
 
+            startCustomer:
+
+            Console.WriteLine("Will you see movies press M. Will you make a reservation press R. If you want to close the program press Q.");
+            customerAction = Console.ReadLine();
+
+            switch (customerAction)
+            {
+                case "M": case "m":
+                    Movie.viewMovie();
+                    goto startCustomer;
+                case "R": case "r":
+                    Reservation.addReservation();
+                    goto startCustomer;
+                case "Q": case "q":
+                    shutDown();
+                    break;
+                default:
+                    Console.WriteLine("Unknown command.");
+                    goto startCustomer;
+            }
         }
 
         public static void employeeUser()
         {
 
+        }
+
+        public static void shutDown()
+        {
+            string quit = "";
+
+            if (Login.checkCustomerLogin() || Login.checkEmployeeLogin())
+            {
+                Console.WriteLine("Do you want to log out? Yes: Y or No: N");
+                quit = Console.ReadLine();
+
+                if (quit == "Y" || quit == "y")
+                {
+                    Login.logOut();
+                    Environment.Exit(0);
+                }
+
+                else
+                {
+                    Environment.Exit(0);
+                }
+            }
+
+            else
+            {
+                Environment.Exit(0);
+            }
         }
     }         
 }
