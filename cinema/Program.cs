@@ -9,9 +9,6 @@ namespace cinema
            string start = "";
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
-            cinema.Reservation.addSeatReservation();
-            begin:
-
             if (cinema.Login.checkCustomerLogin())
             {
                 Console.WriteLine("Welcome " + "CUSTOMER NAME" + "\nAfter pressing a key you needs to hit enter to go further in the program.\nWill you see movies press M. If you want to cose the program press Q.");
