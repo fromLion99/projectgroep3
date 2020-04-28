@@ -11,13 +11,13 @@ namespace cinema
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
             begin:
 
-            if (cinema.Login.checkCustomerLogin())
+            if (Login.checkCustomerLogin())
             {
                 Console.WriteLine("Welcome " + "CUSTOMER NAME" + "\nAfter pressing a key you needs to hit enter to go further in the program.\nWill you see movies press M. If you want to cose the program press Q.");
                 start = Console.ReadLine();
             }
 
-            if (cinema.Login.checkEmployeeLogin())
+            if (Login.checkEmployeeLogin())
             {
                 Console.WriteLine("Welcome " + "EMPLOYEE NAME" + "\nM: manage movies, R: manage rooms, C: manage customers, E: manage employees, Q: shut down the application.");
                 start = Console.ReadLine();
@@ -62,19 +62,22 @@ namespace cinema
         {
             string guestAction = "";
 
-            Console.WriteLine("Do you wan to create an account enter C. Do you want to login enter L. Do you want to see all movies press M.");
+            Console.WriteLine("Do you wan to create an account enter C. Do you want to login enter L. Do you want to login as Employee press E. Do you want to see all movies press M.");
             guestAction = Console.ReadLine();
 
             switch (guestAction)
             {
                 case "C": case "c":
-                    cinema.Customer.addCustomer();
+                    Customer.addCustomer();
                     break;
                 case "L": case "l":
-                    cinema.Login.signIn();
+                    Login.signIn();
+                    break;
+                case "E": case "e":
+                    Login.signinEmployee();
                     break;
                 case "M": case "m":
-                    cinema.Movie.viewMovie();
+                    Movie.viewMovie();
                     break;
             }
         }
