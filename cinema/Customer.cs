@@ -91,7 +91,18 @@ namespace cinema
                 
                 if(customerDetail[i].subscriptionId != 0)
                 {
-                    Console.WriteLine("Subscription: " + customerDetail[i].subscriptionId);
+                    switch (customerDetail[i].subscriptionId)
+                    {
+                        case 1:
+                            Console.WriteLine("Subscription: Starter");
+                            break;
+                        case 2:
+                            Console.WriteLine("Subscription: Medium");
+                            break;
+                        case 3:
+                            Console.WriteLine("Subscription: Pro");
+                            break;
+                    }
                 }
 
                 Console.WriteLine("\n===================================================================================\n");
