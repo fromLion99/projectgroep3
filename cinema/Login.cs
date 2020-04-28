@@ -13,7 +13,7 @@ namespace cinema
         public string UserEmail {get;set;}
         public void CustomerDetail()
         {
-            Console.WriteLine("functie customerdetail\nview id of customers and name");
+            Console.WriteLine("function customerdetail\nview id of customers and name");
         }    
 
         public static void signIn()
@@ -49,18 +49,18 @@ namespace cinema
                     string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
                     File.WriteAllText("Login.json", Resultjson);
 
-                    Console.WriteLine("Login succesful!");
+                    Console.WriteLine("Login successful!");
                 }
 
                 else
                 {
-                    Console.WriteLine("Password incorrect!");
+                    Console.WriteLine("Password is incorrect!");
                 }
             }
 
             else
             {
-                Console.WriteLine("unknown username!");
+                Console.WriteLine("Unknown username!");
             }
         }
 
@@ -81,7 +81,7 @@ namespace cinema
 
             var employee = employeeDetail.FirstOrDefault(e => e.Id == id);
 
-            Console.WriteLine("Please enter your email: ");
+            Console.WriteLine("Please enter your Email: ");
             email = Console.ReadLine();
 
             if (employee.Email == email)
@@ -97,7 +97,7 @@ namespace cinema
                     string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
                     File.WriteAllText("Login.json", Resultjson);
 
-                    Console.WriteLine("Login succesful!");
+                    Console.WriteLine("Login successful!");
                 }
 
                 else
@@ -108,7 +108,7 @@ namespace cinema
 
             else
             {
-                Console.WriteLine("Unkown email!");
+                Console.WriteLine("Unkown Email!");
             }
         }
 
