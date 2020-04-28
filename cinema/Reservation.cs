@@ -94,7 +94,7 @@ namespace cinema
                         string resultJson = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
                         File.WriteAllText("reservation.json", resultJson);
                         beginB:
-                        Console.WriteLine("Reservation successfully added, press B to start again");
+                        Console.WriteLine("Reservation successfully added, press B to start again or S to choose your seat...");
                         gotostart = true;
                         back = Console.ReadLine();
                         if(back == "b" || back == "B")
@@ -103,6 +103,10 @@ namespace cinema
                             {
                                 goto beginning;
                             }
+                        }
+                        if (back == "s" || back == "S")
+                        {
+                            addSeatReservation();
                         }
                             int value;
                             if(!int.TryParse(back, out value))
@@ -193,7 +197,7 @@ namespace cinema
 
         public static void addSeatReservation()
         {    
-            Reservation seat = new Reservation();  
+            Reservation reservation = new Reservation();  
             string row = "";
             string rowString, back, whereRowString = "";
             string chooseSeat, chooseAmountSeatString = "";
@@ -201,7 +205,6 @@ namespace cinema
             bool gotostart = false; 
             int maxSeats = 15;
 
-            Reservation seatReservation = new Reservation();
             
             string roomDetails = File.ReadAllText("rooms.json");
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
@@ -210,10 +213,10 @@ namespace cinema
             List<Reservation> reservationDetail = JsonSerializer.Deserialize<List<Reservation>>(reservationsDetails);
             
             string seatDetails = File.ReadAllText("seats.json");
-            List<Room> seatDetail = JsonSerializer.Deserialize<List<Room>>(seatDetails);
+            List<Reservation> seatDetail = JsonSerializer.Deserialize<List<Reservation>>(seatDetails);
             var item = seatDetail[seatDetail.Count-1];
             var newId = item.Id+1;
-            seat.Id = newId;
+            reservation.seatId = newId;
             
             begin1:
             Console.WriteLine($"Choose your row between: A-B-C-D-E, A is the row closest to the filmscreen and E is the furthest away");
@@ -247,12 +250,14 @@ namespace cinema
                             whereRow = whereRow - 1; 
                         }
                         Console.WriteLine($"You choose to sit at Row: {rowString} - Amount of seats : {chooseAmountSeat} - Where in the row : {whereRow}");
-                        seatReservation.row = rowString;
-                        seatReservation.startseat = whereRow;
-                        seatReservation.amountseats = chooseAmountSeat;
+                        reservation.row = rowString;
+                        reservation.startseat = whereRow;
+                        reservation.amountseats = chooseAmountSeat;
                         
-                        seatDetail.Add(seatReservation);
-                        string resultJson = JsonSerializer.Serialize<List<Reservation>>(seatReservation);
+                        seatDetail.Add(reservation);
+                        string resultJson = JsonSerializer.Serialize<List<Reservation>>(seatDetail);
+                        File.WriteAllText("seats.json", resultJson);
+                    
                     }
                     else
                     {
