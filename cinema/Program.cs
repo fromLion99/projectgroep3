@@ -6,11 +6,12 @@ namespace cinema
     {
         static void Main(string[] args)
         {
-            string start, account, showMovies, login, reservation, employeeAction, customerCreateAccount = "";
+            string start, account, showMovies, login, reservation, employeeAction, customerCreateAccount,Drinks = "";
 
             startScreen();
             //Reservation.PayReservation();
-            Subscription.viewSubscription();
+          
+            Subscription.deleteSubscription();
 
             moviesStart:
 
