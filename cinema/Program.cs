@@ -9,9 +9,6 @@ namespace cinema
             string start, account, showMovies, login, reservation, employeeAction, customerCreateAccount,Drinks = "";
 
             startScreen();
-            //Reservation.PayReservation();
-          
-            Subscription.deleteSubscription();
 
             moviesStart:
 

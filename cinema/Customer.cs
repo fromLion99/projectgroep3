@@ -16,10 +16,12 @@ namespace cinema
         public string Email {get; set;}
         public int Age {get; set;}
         public string Password {get; set;}
+        public int subscriptionId {get; set;}
 
         public static void addCustomer()
         {
-            string theAge;
+            string theAge, subscription, valSubscription = "";
+            int idSubscription = 0;
 
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
@@ -41,6 +43,23 @@ namespace cinema
             customer.Email = Console.ReadLine();
             Console.WriteLine("Please enter your password: ");
             customer.Password = Console.ReadLine();
+            Console.WriteLine("Do you want an subscription? Yes: Y or No: N");
+            subscription = Console.ReadLine();
+
+            if(subscription == "Y" || subscription == "y")
+            {
+                cinema.Subscription.viewSubscription();
+                Console.WriteLine("Enter the ID of the subscription you want to sign up for: ");
+                valSubscription = Console.ReadLine();
+                idSubscription = Convert.ToInt32(valSubscription);
+                customer.subscriptionId = idSubscription;
+            }
+
+            else
+            {
+                customer.subscriptionId = 0;
+            }
+
             customerDetail.Add(customer);
 
             string resultJson = JsonSerializer.Serialize<List<Customer>>(customerDetail);
@@ -75,7 +94,7 @@ namespace cinema
         public static void editCustomer()
         {
             int id = 0;
-            string valInfix , valId = "";
+            string valInfix , valId, theAge = "";
 
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
@@ -98,7 +117,6 @@ namespace cinema
             Console.WriteLine("Please enter your Customer ID to edit your details: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
-            string theAge;
             var searchCustomer = customerDetail.FirstOrDefault(c => c.Id == id);
             Console.WriteLine("Please enter your first name: ");
             customer.FirstName = Console.ReadLine();
