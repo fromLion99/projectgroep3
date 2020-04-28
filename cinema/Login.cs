@@ -132,5 +132,35 @@ namespace cinema
             
             Console.WriteLine("Successfully logged out.");
         }
+
+        public static bool checkCustomerLogin()
+        {
+            string loginDetails = File.ReadAllText("Login.json");
+            Login currentLogin = JsonSerializer.Deserialize<Login>(loginDetails);
+
+            if (currentLogin.CustomerLogin)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool checkEmployeeLogin()
+        {
+            string loginDetails = File.ReadAllText("Login.json");
+            Login currentLogin = JsonSerializer.Deserialize<Login>(loginDetails);
+
+            if (currentLogin.EmployeeLogin)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
