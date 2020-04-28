@@ -11,6 +11,9 @@ namespace cinema
         //Properties Login
         public int UserId {get; set;}
         public string UserEmail {get;set;}
+        public bool CustomerLogin {get;set;}
+        public bool EmployeeLogin {get;set;}
+
         public void CustomerDetail()
         {
             Console.WriteLine("function customerdetail\nview id of customers and name");
@@ -45,6 +48,7 @@ namespace cinema
                 {
                     currentLogin.UserId = customer.Id;
                     currentLogin.UserEmail = customer.Email;
+                    currentLogin.CustomerLogin = true;
 
                     string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
                     File.WriteAllText("Login.json", Resultjson);
@@ -93,6 +97,7 @@ namespace cinema
                 {
                     currentLogin.UserId = employee.Id;
                     currentLogin.UserEmail = employee.Email;
+                    currentLogin.EmployeeLogin = true;
 
                     string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
                     File.WriteAllText("Login.json", Resultjson);
@@ -119,6 +124,8 @@ namespace cinema
 
             currentLogin.UserId = 0;
             currentLogin.UserEmail = "";
+            currentLogin.CustomerLogin = false;
+            currentLogin.EmployeeLogin = false;
 
             string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
             File.WriteAllText("Login.json", Resultjson);
