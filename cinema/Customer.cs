@@ -88,6 +88,12 @@ namespace cinema
                 Console.WriteLine("Last name: " +customerDetail[i].LastName);
                 Console.WriteLine("Age: " + customerDetail[i].Age);
                 Console.WriteLine("Email: " + customerDetail[i].Email);
+                
+                if(customerDetail[i].subscriptionId != 0)
+                {
+                    Console.WriteLine("Subscription: " + customerDetail[i].subscriptionId);
+                }
+
                 Console.WriteLine("\n===================================================================================\n");
             }
         }
