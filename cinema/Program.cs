@@ -20,8 +20,8 @@ namespace cinema
 
             if (Login.checkEmployeeLogin())
             {
-                Console.WriteLine("Welcome " + "EMPLOYEE NAME" + "\nM: manage movies, R: manage rooms, C: manage customers, E: manage employees, Q: shut down the application.");
-                start = Console.ReadLine();
+                Console.WriteLine("Welcome " + "EMPLOYEE NAME" + "\nAfter pressing a key you needs to hit enter to go further in the program.");
+                employeeUser();
             }
 
             else
@@ -107,7 +107,41 @@ namespace cinema
 
         public static void employeeUser()
         {
+            string employeeAction = "";
 
+            startEmployee:
+
+            Console.WriteLine("M: manage movies, R: manage rooms, E: manage employees, C: manage customers, W: manage reservations, D: mange drinks, S: manage snacks, Q: close the program.");
+            employeeAction = Console.ReadLine();
+
+            switch (employeeAction)
+            {
+                case "M": case "m":
+                    Console.WriteLine("A: add a movie, V: view all movies, E: edit a movie, D: delete a movie.");
+                    employeeAction = Console.ReadLine();
+                    switch (employeeAction)
+                    {
+                        case "A": case "a":
+                            Movie.addMovie();
+                            goto startEmployee;
+                        case "V": case "v":
+                            Movie.viewMovie();
+                            goto startEmployee;
+                        case "E": case "e":
+                            Movie.editMovie();
+                            goto startEmployee;
+                        case "D": case "d":
+                            Movie.deleteMovie();
+                            goto startEmployee;
+                        case "Q": case "q":
+                            shutDown();
+                            break;
+                        default:
+                            Console.WriteLine("Unknown command.");
+                            goto startEmployee;
+                    }
+                    break;
+            }
         }
 
         public static void shutDown()
