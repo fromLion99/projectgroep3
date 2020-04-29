@@ -257,6 +257,7 @@ namespace cinema
                     }
                 case "Q": case "q":
                     shutDown();
+                    break;
             }
         }
 
