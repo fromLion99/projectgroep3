@@ -218,9 +218,6 @@ namespace cinema
 
                     switch (employeeAction)
                     {
-                        case "A": case "a":
-                            Console.WriteLine("FUNCTION NEEDS TO BE PLACED HERE");
-                            goto startEmployee;
                         default:
                             Console.WriteLine("Unknown command.");
                             goto reservationEmployee;
@@ -234,7 +231,16 @@ namespace cinema
                     switch (employeeAction)
                     {
                         case "A": case "a":
-                            Console.WriteLine("FUNCTION NEEDS TO BE PLACED HERE");
+                            Drink.AddDrink();
+                            goto startEmployee;
+                        case "V": case "v":
+                            Drink.viewDrink();
+                            goto startEmployee;
+                        case "E": case "e":
+                            Drink.editDrink();
+                            goto startEmployee;
+                        case "D": case "d":
+                            Drink.deleteDrink();
                             goto startEmployee;
                         default:
                             Console.WriteLine("Unknown command.");
