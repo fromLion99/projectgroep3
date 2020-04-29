@@ -116,6 +116,8 @@ namespace cinema
             switch (employeeAction)
             {
                 case "M": case "m":
+                    employeeMovie:
+                    
                     Console.WriteLine("A: add a movie, V: view all movies, E: edit a movie, D: delete a movie.");
                     employeeAction = Console.ReadLine();
 
@@ -135,9 +137,11 @@ namespace cinema
                             goto startEmployee;
                         default:
                             Console.WriteLine("Unknown command.");
-                            goto startEmployee;
+                            goto employeeMovie;
                     }
                 case "R": case "r":
+                    employeeRoom:
+
                     Console.WriteLine("A: add a room, V: view all rooms, E: edit a room, D: delete a room.");
                     employeeAction = Console.ReadLine();
 
@@ -157,9 +161,11 @@ namespace cinema
                             goto startEmployee;
                         default:
                             Console.WriteLine("Unknown command.");
-                            goto startEmployee;
+                            goto employeeRoom;
                     }
                 case "E": case "e":
+                    employeeManage:
+
                     Console.WriteLine("A: add a employee, V: view all employees, E: edit a employee, D: delete a employee.");
                     employeeAction = Console.ReadLine();
 
@@ -179,9 +185,11 @@ namespace cinema
                             goto startEmployee;
                         default:
                             Console.WriteLine("Unknown command.");
-                            goto startEmployee;
+                            goto employeeManage;
                     }
                 case "C": case "c":
+                    customerEmployee:
+
                     Console.WriteLine("A: add a customer, V: view all customers, E: edit a customer, D: delete a customer.");
                     employeeAction = Console.ReadLine();
 
@@ -201,9 +209,11 @@ namespace cinema
                             goto startEmployee;
                         default:
                             Console.WriteLine("Unknown command.");
-                            goto startEmployee;
+                            goto customerEmployee;
                     }
                 case "W": case "w":
+                    reservationEmployee:
+
                     Console.WriteLine("A: add a reservation, ");
                     employeeAction = Console.ReadLine();
 
@@ -214,9 +224,11 @@ namespace cinema
                             goto startEmployee;
                         default:
                             Console.WriteLine("Unknown command.");
-                            goto startEmployee;
+                            goto reservationEmployee;
                     }
                 case "D": case "d":
+                    drinkEmployee:
+
                     Console.WriteLine("A: add a drink, V: view all drinks, E: edit a drink, D: delete a drink.");
                     employeeAction = Console.ReadLine();
 
@@ -227,9 +239,11 @@ namespace cinema
                             goto startEmployee;
                         default:
                             Console.WriteLine("Unknown command.");
-                            goto startEmployee;
+                            goto drinkEmployee;
                     }
                 case "S": case "s":
+                    snackEmployee:
+
                     Console.WriteLine("A: add a snack, V: view all snacks, E: edit a snack, D: delete a snack.");
                     employeeAction = Console.ReadLine();
 
@@ -240,8 +254,30 @@ namespace cinema
                             goto startEmployee;
                         default:
                             Console.WriteLine("Unknown command.");
-                            goto startEmployee;
+                            goto snackEmployee;
                     }
+                case "Q": case "q":
+                    logoutEmployee:
+
+                    Console.WriteLine("Do you want to logout? Yes: Y or No: N");
+                    employeeAction = Console.ReadLine();
+
+                    switch (employeeAction)
+                    {
+                        case "Y": case "y":
+                            Login.logOut();
+                            Environment.Exit(0);
+                            break;
+                        case "N": case "n":
+                            Environment.Exit(0);
+                            break;
+                        default:
+                            Console.WriteLine("Unknwon command.");
+                            goto logoutEmployee;
+                    }
+                default:
+                    Console.WriteLine("Unknown command.");
+                    goto startEmployee;
             }
         }
 
