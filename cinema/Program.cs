@@ -278,18 +278,21 @@ namespace cinema
 
                 if (quit == "Y" || quit == "y")
                 {
+                    Console.WriteLine("See you again " + Login.getLoginName());
                     Login.logOut();
                     Environment.Exit(0);
                 }
 
                 else
                 {
+                    Console.WriteLine("See you again " + Login.getLoginName());
                     Environment.Exit(0);
                 }
             }
 
             else
             {
+                Console.WriteLine("Hope to see you again!");
                 Environment.Exit(0);
             }
         }
