@@ -229,6 +229,19 @@ namespace cinema
                             Console.WriteLine("Unknown command.");
                             goto startEmployee;
                     }
+                case "S": case "s":
+                    Console.WriteLine("A: add a snack, V: view all snacks, E: edit a snack, D: delete a snack.");
+                    employeeAction = Console.ReadLine();
+
+                    switch (employeeAction)
+                    {
+                        case "A": case "a":
+                            Console.WriteLine("FUNCTION NEEDS TO BE PLACED HERE");
+                            goto startEmployee;
+                        default:
+                            Console.WriteLine("Unknown command.");
+                            goto startEmployee;
+                    }
             }
         }
 
