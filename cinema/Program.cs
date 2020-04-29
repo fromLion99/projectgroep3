@@ -6,7 +6,6 @@ namespace cinema
     {
         static void Main(string[] args)
         {
-            string start = "";
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
             begin:
@@ -257,27 +256,7 @@ namespace cinema
                             goto snackEmployee;
                     }
                 case "Q": case "q":
-                    logoutEmployee:
-
-                    Console.WriteLine("Do you want to logout? Yes: Y or No: N");
-                    employeeAction = Console.ReadLine();
-
-                    switch (employeeAction)
-                    {
-                        case "Y": case "y":
-                            Login.logOut();
-                            Environment.Exit(0);
-                            break;
-                        case "N": case "n":
-                            Environment.Exit(0);
-                            break;
-                        default:
-                            Console.WriteLine("Unknwon command.");
-                            goto logoutEmployee;
-                    }
-                default:
-                    Console.WriteLine("Unknown command.");
-                    goto startEmployee;
+                    shutDown();
             }
         }
 
