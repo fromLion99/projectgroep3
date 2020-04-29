@@ -218,6 +218,9 @@ namespace cinema
 
                     switch (employeeAction)
                     {
+                        case "A": case "a":
+                            Reservation.addReservation();
+                            goto startEmployee;
                         default:
                             Console.WriteLine("Unknown command.");
                             goto reservationEmployee;
