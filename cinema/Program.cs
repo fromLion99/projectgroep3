@@ -12,13 +12,13 @@ namespace cinema
 
             if (Login.checkCustomerLogin())
             {
-                Console.WriteLine("Welcome " + "CUSTOMER NAME" + "\nAfter pressing a key you needs to hit enter to go further in the program.");
+                Console.WriteLine("Welcome " + Login.getLoginName() + "\nAfter pressing a key you needs to hit enter to go further in the program.");
                 customerUser();
             }
 
             if (Login.checkEmployeeLogin())
             {
-                Console.WriteLine("Welcome " + "EMPLOYEE NAME" + "\nAfter pressing a key you needs to hit enter to go further in the program.");
+                Console.WriteLine("Welcome " + Login.getLoginName() + "\nAfter pressing a key you needs to hit enter to go further in the program.");
                 employeeUser();
             }
 
