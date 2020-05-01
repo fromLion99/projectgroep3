@@ -162,5 +162,36 @@ namespace cinema
                 return false;
             }
         }
+
+        public static string getLoginName()
+        {
+            int id = 0;
+
+            string loginDetails = File.ReadAllText("Login.json");
+            Login currentLogin = JsonSerializer.Deserialize<Login>(loginDetails);
+
+            string customerDetails = File.ReadAllText("customers.json");
+            List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
+
+            string employeeDetails = File.ReadAllText("employees.json");
+            List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
+
+            id = currentLogin.UserId - 1;
+
+            if (currentLogin.CustomerLogin)
+            {
+                return customerDetail[id].FirstName + " " + customerDetail[id].Infix + " " + customerDetail[id].LastName;
+            }
+
+            if (currentLogin.EmployeeLogin)
+            {
+                return employeeDetail[id].FirstName + " " + employeeDetail[id].Infix + " " + employeeDetail[id].LastName;
+            }
+
+            else
+            {
+                return "";
+            }
+        }
     }
 }
