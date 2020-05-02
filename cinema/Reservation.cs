@@ -140,6 +140,9 @@ namespace cinema
             string signinDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
 
+            string seatDetails = File.ReadAllText("seats.json");
+            List<Reservation> seatDetail = JsonSerializer.Deserialize<List<Reservation>>(seatDetails);
+
             Console.WriteLine("Press L to login");          
 
             currentuser = currentLogin.UserEmail;
@@ -192,6 +195,10 @@ namespace cinema
                 System.Console.WriteLine("Wrong input, please try again:");
                 goto begin2;
             }
+
+
+
+
         }
 
 
@@ -214,6 +221,10 @@ namespace cinema
             
             string seatDetails = File.ReadAllText("seats.json");
             List<Reservation> seatDetail = JsonSerializer.Deserialize<List<Reservation>>(seatDetails);
+
+            string signinDetails = File.ReadAllText("Login.json");
+            Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
+
             var item = seatDetail[seatDetail.Count-1];
             var newId = item.Id+1;
             reservation.seatId = newId;
@@ -256,6 +267,7 @@ namespace cinema
                             reservation.row = rowString;
                             reservation.startseat = whereRow;
                             reservation.amountseats = chooseAmountSeat;
+                            reservation.customer =  Login.getLoginName();
                             
                             seatDetail.Add(reservation);
                             string resultJson = JsonSerializer.Serialize<List<Reservation>>(seatDetail);
