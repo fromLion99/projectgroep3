@@ -143,7 +143,7 @@ namespace cinema
             string seatDetails = File.ReadAllText("seats.json");
             List<Reservation> seatDetail = JsonSerializer.Deserialize<List<Reservation>>(seatDetails);
 
-            Console.WriteLine("Press L to login");          
+            Console.WriteLine("Press L to login, Press q to exit the program anytime.");          
 
             currentuser = currentLogin.UserEmail;
             Console.WriteLine($"The rented movies of the current user {currentuser} are:");
@@ -161,6 +161,13 @@ namespace cinema
 
             Console.WriteLine($"Type the given movie ID to pay for that movie:");
             input1 = Console.ReadLine();
+
+            switch (input1)
+            {
+                case "Q": case "q":
+                Program.shutDown();
+                break;
+            }
 
             if(!int.TryParse(input1, out value))
             {
@@ -185,22 +192,23 @@ namespace cinema
             }
 
             input2 = Console.ReadLine();
-            
-            if(input2 == "Y" || input2 == "y"){
-                System.Console.WriteLine($"You have paid {movieDetail[movieid-1].Price} euro.");
-                found2 = true;
+
+            switch (input2)
+            {
+                case "Q": case "q":
+                    Program.shutDown();
+                    break;
+                case "y": case "Y":
+                    System.Console.WriteLine($"You have paid {movieDetail[movieid-1].Price} euro.");
+                    found2 = true;
+                    break;
             }
 
             if(!found2){
                 System.Console.WriteLine("Wrong input, please try again:");
                 goto begin2;
             }
-
-
-
-
         }
-
 
         public static void addSeatReservation()
         {    
@@ -211,7 +219,6 @@ namespace cinema
             int chooseAmountSeat, whereRow, WhereInRow = 0;
             bool gotostart = false; 
             int maxSeats = 15;
-
             
             string roomDetails = File.ReadAllText("rooms.json");
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
