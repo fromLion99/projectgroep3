@@ -8,11 +8,6 @@ namespace cinema
         {
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
-<<<<<<< HEAD
-            cinema.Reservation.addReservation();
-
-=======
->>>>>>> a81c7bbe6dc7ae5b7bb6f26ff49d43ec22bb9e10
             begin:
 
             if (Login.checkCustomerLogin())
