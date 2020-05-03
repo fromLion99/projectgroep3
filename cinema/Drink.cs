@@ -19,11 +19,10 @@ namespace cinema
             string valPrice, replace = "";
             double priceDouble = 0.0;
 
-            Console.WriteLine("The list of drinks shall be printed here");
+            //Console.WriteLine("The list of drinks shall be printed here");
             string drinkDetails = File.ReadAllText("Drinks.json");
 
             List<Drink> drinkDetail = JsonSerializer.Deserialize<List<Drink>>(drinkDetails);
-            //Console.WriteLine(drinkDetails);
 
             Drink drink = new Drink();
             var item = drinkDetail[drinkDetail.Count -1];
@@ -103,7 +102,7 @@ namespace cinema
             searchedDrink.Alcoholic = Console.ReadLine();
 
             string resultJson = JsonSerializer.Serialize<List<Drink>>(drinkDetail);
-            File.WriteAllText("AddDrinks.Json", resultJson);
+            File.WriteAllText("Drinks.Json", resultJson);
             Console.WriteLine("Drinks changed succesfully! :D");
         }
         public static void deleteDrink()
@@ -131,5 +130,4 @@ namespace cinema
             Console.WriteLine("Drink "+ id +" Has been deleted.");
         }
     }
-    }
-//}
+}
