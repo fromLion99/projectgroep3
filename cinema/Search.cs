@@ -23,6 +23,13 @@ namespace cinema
 
             Console.WriteLine("Input a genre, room or movie.");
             input1 = Console.ReadLine();
+
+            switch (input1)
+            {
+                case "Q": case "q":
+                Program.shutDown();
+                break;
+            }
             
             if(!int.TryParse(input1, out value)){
                 for(int j = 0; j < movieDetail.Count; j++)
@@ -69,6 +76,13 @@ namespace cinema
             Console.WriteLine("Press the given movie id to get more information:");
             pressedkey = Console.ReadLine();
 
+            switch (pressedkey)
+            {
+                case "Q": case "q":
+                Program.shutDown();
+                break;
+            }
+
             if(!int.TryParse(pressedkey, out value))
             {
                 System.Console.WriteLine("Wrong input,try again");
@@ -95,15 +109,22 @@ namespace cinema
 
             input2 = Console.ReadLine();
 
-            if(input2 == "r" || input2 == "R")
+           switch (input2)
             {
-                Reservation.addReservation();
+                case "Q": case "q":
+                    Program.shutDown();
+                    break;
+                case "r": case "R":
+                    Reservation.addReservation();
+                    break;
+                case "t": case "T":
+                    goto begin2;
+                default:
+                    Console.WriteLine("Unknown command.");
+                    goto begin2;
             }
 
-            if(input2 == "T" || input2 == "t")
-            {
-                goto begin2;
             }
         }
     }
-}
+    

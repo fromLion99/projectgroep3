@@ -54,7 +54,7 @@ namespace cinema
         {
             string guestAction = "";
 
-            Console.WriteLine("Do you wan to create an account enter C. Do you want to login enter L. Do you want to login as Employee press E. Do you want to see all movies press M. Do you want to close the program press Q.");
+            Console.WriteLine("Do you wan to create an account enter C. Do you want to login enter L. Do you want to login as Employee press E. Do you want to see all movies press M. Do you want to search trough the movies press S. Do you want to close the program press Q.");
             guestAction = Console.ReadLine();
 
             switch (guestAction)
@@ -71,6 +71,9 @@ namespace cinema
                 case "M": case "m":
                     Movie.viewMovie();
                     break;
+                case "S": case "s":
+                    Search.searchMovie();
+                    break;
                 case "Q": case "q":
                     shutDown();
                     break;
@@ -83,7 +86,7 @@ namespace cinema
 
             startCustomer:
 
-            Console.WriteLine("Will you see movies press M. Will you make a reservation press R. If you want to close the program press Q.");
+            Console.WriteLine("Will you see movies press M. Will you make a reservation press R. Will you search trough the movies press S. If you want to logout and/or close the program press Q.");
             customerAction = Console.ReadLine();
 
             switch (customerAction)
@@ -93,7 +96,11 @@ namespace cinema
                     goto startCustomer;
                 case "R": case "r":
                     Reservation.addReservation();
+                    Reservation.addSeatReservation();
                     goto startCustomer;
+                case "S": case "s":
+                    Search.searchMovie();
+                    break;
                 case "Q": case "q":
                     shutDown();
                     break;
@@ -109,7 +116,7 @@ namespace cinema
 
             startEmployee:
 
-            Console.WriteLine("M: manage movies, R: manage rooms, E: manage employees, C: manage customers, W: manage reservations, D: mange drinks, S: manage snacks, Q: close the program.");
+            Console.WriteLine("M: manage movies, R: manage rooms, E: manage employees, C: manage customers, W: manage reservations, D: mange drinks, S: manage snacks, Q: logout and/or close the program.");
             employeeAction = Console.ReadLine();
 
             switch (employeeAction)
