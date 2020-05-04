@@ -17,6 +17,7 @@ namespace cinema
 
         public static void addRoom()
         {
+            //This function adds a room to the JSON
             int roomNumber, countChair, row, chair = 0;
             string valRoomNumber, valCountChair, valRow, valChair = "";
 
@@ -61,6 +62,7 @@ namespace cinema
 
         public static void viewRoom()
         {
+            //This function displays all the rooms on the screen
             string roomDetails = File.ReadAllText("rooms.json");
             List<Room> roomDetail = JsonSerializer.Deserialize<List<Room>>(roomDetails);
 
@@ -77,6 +79,7 @@ namespace cinema
 
         public static void editRoom()
         {
+            //This function can edit a room
             string roomId, roomNumber, countOfChair, countRow, countRowChair = "";
             int idRoom, numberRoom, chairCount, rowCount, rowChairCount = 0;
 
@@ -127,6 +130,7 @@ namespace cinema
 
         public static void deleteRoom()
         {
+            //This function deletes a room from the JSON
             string valId = "";
             int id = 0;
 
