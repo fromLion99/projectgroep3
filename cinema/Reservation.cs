@@ -1,5 +1,3 @@
-// Niels Krommenhoek 0982940
-
 using System;
 using System.Text.Json;
 using System.IO;
