@@ -21,6 +21,7 @@ namespace cinema
 
         public static void signIn()
         {
+            //A customer can log in with this function
             string valId, email, password = "";
             int id = 0;
 
@@ -70,6 +71,7 @@ namespace cinema
 
         public static void signinEmployee()
         {
+            //A employee can login with this function
             string valId, email, password = "";
             int id = 0;
 
@@ -119,6 +121,7 @@ namespace cinema
 
         public static void logOut()
         {
+            //Users and customers can logout with this function
             string loginDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(loginDetails);
 
@@ -135,6 +138,7 @@ namespace cinema
 
         public static bool checkCustomerLogin()
         {
+            //This function checks if there is an customer signed in
             string loginDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(loginDetails);
 
@@ -150,6 +154,7 @@ namespace cinema
 
         public static bool checkEmployeeLogin()
         {
+            //This functiob checks if there is an employee signed in
             string loginDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(loginDetails);
 
@@ -165,6 +170,7 @@ namespace cinema
 
         public static string getLoginName()
         {
+            //This function get the full name of the signde in user
             int id = 0;
 
             string loginDetails = File.ReadAllText("Login.json");
