@@ -1,4 +1,3 @@
-// Niels Krommenhoek 0982940
 using System;
 using System.Text.Json;
 using System.IO;
@@ -8,7 +7,8 @@ namespace cinema
 {
     public class Search
     {
-        public static void searchMovie(){
+        public static void searchMovie()
+        {
 
             bool found = false;
             bool found2 = false;
@@ -31,7 +31,8 @@ namespace cinema
                 break;
             }
             
-            if(!int.TryParse(input1, out value)){
+            if(!int.TryParse(input1, out value))
+            {
                 for(int j = 0; j < movieDetail.Count; j++)
                 {
                     if(movieDetail[j].Name == input1)
@@ -42,7 +43,8 @@ namespace cinema
                 }
             }
 
-            if(!int.TryParse(input1, out value)){
+            if(!int.TryParse(input1, out value))
+            {
                 for(int i=0;i<movieDetail.Count;i++)
                 {
                     if(movieDetail[i].Genre == input1)
@@ -54,11 +56,14 @@ namespace cinema
                 }
             }
 
-            if(int.TryParse(input1,out value)){
+            if(int.TryParse(input1,out value))
+            {
                 inputint = Convert.ToInt32(input1);
                 Console.WriteLine($"The movies played in Room {input1} are:");
-                for(int i = 0;i<movieDetail.Count;i++){
-                    if(movieDetail[i].Room == inputint){
+                for(int i = 0;i<movieDetail.Count;i++)
+                {
+                    if(movieDetail[i].Room == inputint)
+                    {
                         Console.WriteLine($"{movieDetail[i].Name}");
                         found = true;
                     }
@@ -109,7 +114,7 @@ namespace cinema
 
             input2 = Console.ReadLine();
 
-           switch (input2)
+            switch (input2)
             {
                 case "Q": case "q":
                     Program.shutDown();
@@ -123,8 +128,6 @@ namespace cinema
                     Console.WriteLine("Unknown command.");
                     goto begin2;
             }
-
-            }
         }
     }
-    
+}   
