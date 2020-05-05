@@ -198,10 +198,11 @@ namespace cinema
         public static void PayReservation()
         {
             // Variables
-            string currentuser,input1,input2 = "";
+            string currentuser,input1,input2,input3 = "";
             int movieid,value;
             bool found = false;
             bool found2 = false;
+            bool found3 = false;
 
             // JSON
             string movieDetails = File.ReadAllText("movies.json");
@@ -216,21 +217,40 @@ namespace cinema
             string signinDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
 
-            Console.WriteLine("Press L to login, Press q to exit the program anytime.");          
-
-            currentuser = currentLogin.UserEmail;
+            string seatDetails = File.ReadAllText("seats.json");
+            List<Reservation> seatDetail = JsonSerializer.Deserialize<List<Reservation>>(seatDetails);
+          
+            Console.WriteLine("Press L to login, Press q to exit the program anytime.");                  
+            currentuser = Login.getLoginName();
             Console.WriteLine($"The rented movies of the current user {currentuser} are:");
 
             for(int i = 0;i<reservationDetail.Count;i++){
-                if(reservationDetail[i].customer == currentuser){
+                if(reservationDetail[i].customer == currentuser && reservationDetail[i].paid == false){
                     for(int j = 0;j<movieDetail.Count;j++){
                         if(movieDetail[j].Id == reservationDetail[i].movieId){
                             Console.WriteLine($"ID {movieDetail[j].Id}: {movieDetail[j].Name}");
+                            found3 = true;
                         }
                     }
                 }
             }
-            begin:
+            
+            if(!found3){
+                Console.WriteLine("Current user has no reservations, do you want to make one? Press R.");
+                input3 = Console.ReadLine();
+
+                try{
+                    if(input3 == "R" || input3 == "r"){
+                        Reservation.addReservation();
+                    }
+                }
+
+                catch{
+                    Console.WriteLine("Wrong input, try again.");
+                }
+            }
+
+            begin2:
 
             Console.WriteLine($"Type the given movie ID to pay for that movie:");
             input1 = Console.ReadLine();
@@ -245,23 +265,27 @@ namespace cinema
             if(!int.TryParse(input1, out value))
             {
                 Console.WriteLine("Movie ID not found, please try again:");
-                goto begin;
+                goto begin2;
             }
 
             movieid = Convert.ToInt32(input1);
 
-            begin2:
+            begin3:
 
             for(int i = 0; i<reservationDetail.Count;i++){
                 if(reservationDetail[i].movieId == movieid){
-                    Console.WriteLine($"Do you want to pay for {movieDetail[movieid-1].Name}?\nCost: {movieDetail[movieid-1].Price} euro\nPress Y to pay.");
+                    Console.WriteLine($"Do you want to pay for {movieDetail[movieid-1].Name}?\nTotal price to pay is {reservationDetail[i].amountseats} \nPress Y to pay.");
                     found = true;
+                    reservationDetail[i].paid = true;
+                    
+                    string resultJson1 = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
+                    File.WriteAllText("reservation.json", resultJson1);
                 }
             }
 
             if(!found){
                 System.Console.WriteLine("Movie ID not found, please try again:");
-                goto begin;
+                goto begin2;
             }
 
             input2 = Console.ReadLine();
@@ -274,12 +298,14 @@ namespace cinema
                 case "y": case "Y":
                     System.Console.WriteLine($"You have paid {movieDetail[movieid-1].Price} euro.");
                     found2 = true;
+
+
                     break;
             }
 
             if(!found2){
                 System.Console.WriteLine("Wrong input, please try again:");
-                goto begin2;
+                goto begin3;
             }
         }
     }
