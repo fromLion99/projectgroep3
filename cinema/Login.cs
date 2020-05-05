@@ -31,6 +31,13 @@ namespace cinema
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
+            for (int i = 0; i < customerDetail.Count; i++)
+            {
+                Console.WriteLine("ID: " + customerDetail[i].Id);
+                Console.WriteLine("Name: " + customerDetail[i].FirstName + " " + customerDetail[i].Infix + " " + customerDetail[i].LastName);
+                Console.WriteLine("\n===================================================================================\n");
+            }
+
             Console.WriteLine("Please enter your ID: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
@@ -80,6 +87,13 @@ namespace cinema
 
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
+
+            for (int i = 0; i < employeeDetail.Count; i++)
+            {
+                Console.WriteLine("ID: " + employeeDetail[i].Id);
+                Console.WriteLine("Name: " + employeeDetail[i].FirstName + " " + employeeDetail[i].Infix + " " + employeeDetail[i].LastName);
+                Console.WriteLine("\n===================================================================================\n");
+            }
 
             Console.WriteLine("Please enter your ID: ");
             valId = Console.ReadLine();
