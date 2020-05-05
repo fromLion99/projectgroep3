@@ -90,7 +90,7 @@ namespace cinema
 
             startCustomer:
 
-            Console.WriteLine("Will you see movies press M. Will you make a reservation press R. Will you search through the movies press S. If you want to logout and/or close the program press Q.");
+            Console.WriteLine("Will you see movies press M. Will you make a reservation press R. Will you search through the movies press S. Will you see drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
             customerAction = Console.ReadLine();
 
             switch (customerAction)
@@ -299,26 +299,12 @@ namespace cinema
 
         public static void shutDown()
         {
-            //This function asks the user to sign out and closes the program
-            string quit = "";
-
+            //This function logs the user automaticly out
             if (Login.checkCustomerLogin() || Login.checkEmployeeLogin())
             {
-                Console.WriteLine("Do you want to log out? Yes: Y or No: N");
-                quit = Console.ReadLine();
-
-                if (quit == "Y" || quit == "y")
-                {
-                    Console.WriteLine("See you again " + Login.getLoginName());
-                    Login.logOut();
-                    Environment.Exit(0);
-                }
-
-                else
-                {
-                    Console.WriteLine("See you again " + Login.getLoginName());
-                    Environment.Exit(0);
-                }
+                Login.logOut();
+                Console.WriteLine("See you again!");
+                Environment.Exit(0);
             }
 
             else
