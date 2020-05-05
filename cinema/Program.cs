@@ -291,6 +291,9 @@ namespace cinema
                 case "Q": case "q":
                     shutDown();
                     break;
+                default:
+                    Console.WriteLine("Unknown command.");
+                    goto startEmployee;
             }
         }
 
