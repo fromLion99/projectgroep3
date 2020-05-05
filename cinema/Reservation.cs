@@ -213,8 +213,8 @@ namespace cinema
             Reservation reservation = new Reservation();  
             string row = "";
             string rowString, back, whereRowString = "";
-            string chooseSeat, chooseAmountSeatString = "";
-            int chooseAmountSeat, whereRow, WhereInRow = 0;
+            string chooseAmountSeatString = "";
+            int chooseAmountSeat, whereRow = 0;
             bool gotostart = false; 
             int maxSeats = 15;
             

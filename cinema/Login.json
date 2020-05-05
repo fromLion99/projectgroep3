@@ -1,13 +1,1 @@
-<<<<<<< HEAD
-{"UserId":1,"UserEmail":"Ariebenjo@gmail.com","CustomerLogin":false,"EmployeeLogin":true}
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-{"UserId":4,"UserEmail":"Roby010@outlook.com","CustomerLogin":true,"EmployeeLogin":false}
-=======
-{"UserId":1,"UserEmail":"Ariebenjo@gmail.com","CustomerLogin":false,"EmployeeLogin":true}
->>>>>>> a81c7bbe6dc7ae5b7bb6f26ff49d43ec22bb9e10
-=======
-{"UserId":0,"UserEmail":"","CustomerLogin":false,"EmployeeLogin":false}
->>>>>>> b4bd276c54ba14e00df78a31591adab83fef5bc1
->>>>>>> d69b2741b2c38c269a3eb0357d4691a165d6462c
+[{"UserId":4,"UserEmail":"Roby010@outlook.com","CustomerLogin":true,"EmployeeLogin":false}]
