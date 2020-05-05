@@ -90,8 +90,6 @@ namespace cinema
                             reservation.sales = movieDetail[choosenMovieId-1].Price;
                             
                             reservationDetail.Add(reservation);
-                            string resultJson = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
-                            File.WriteAllText("reservation.json", resultJson);
                             
                             beginError1:
                             Console.WriteLine("Reservation successfully added, press B to start again or S to choose your seat.");
