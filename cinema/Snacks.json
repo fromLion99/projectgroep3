@@ -1,1 +1,1 @@
-[{"Id":1,"Name":"Aminams", "price":10, "Nuts":"Yes", "Type":"Chocolate" },{"Id":2,"Name":"Stroopwafel","Price":10,"Nuts":"No", "Type":"Cookie"},{"Id":3,"Name":"Popcurn", "price":10, "Nuts":"No", "Type":"Corn?"},{"Id":4,"Name":"Drop","Price":4.69,"nuts":"No","Type":"Candy"}]
+[{"Id":1,"Name":"Aminams", "price":10.00, "Nuts":"Yes", "Type":"Chocolate" },{"Id":2,"Name":"Stroopwafel","Price":10.00,"Nuts":"No", "Type":"Cookie"},{"Id":3,"Name":"Popcurn", "price":10.00, "Nuts":"No", "Type":"Corn?"},{"Id":4,"Name":"Drop","Price":4.69,"nuts":"No","Type":"Candy"}]
