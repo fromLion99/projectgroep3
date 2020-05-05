@@ -12,6 +12,7 @@ namespace cinema
 
             bool found = false;
             bool found2 = false;
+            bool found3 = false;
             string pressedkey,input1,input2 = "";
             int inputId,value,inputint;
 
@@ -52,6 +53,7 @@ namespace cinema
                         Console.WriteLine($"The movies with Genre {input1} are:");
                         Console.WriteLine($"{movieDetail[i].Id}: {movieDetail[i].Name}");
                         found = true;
+                        found3 = true;
                     }
                 }
             }
@@ -75,58 +77,59 @@ namespace cinema
                 Console.WriteLine("Wrong input, try again.");
                 goto begin;
             }
+            if(found3){
+                begin2:
 
-            begin2:
+                Console.WriteLine("Press the given movie id to get more information:");
+                pressedkey = Console.ReadLine();
 
-            Console.WriteLine("Press the given movie id to get more information:");
-            pressedkey = Console.ReadLine();
-
-            switch (pressedkey)
-            {
-                case "Q": case "q":
-                Program.shutDown();
-                break;
-            }
-
-            if(!int.TryParse(pressedkey, out value))
-            {
-                System.Console.WriteLine("Wrong input,try again");
-                goto begin2;
-            }
-
-            inputId = Convert.ToInt32(pressedkey);
-
-            for(int k=0;k<movieDetail.Count;k++)
-            {
-                if(movieDetail[k].Id == inputId)
+                switch (pressedkey)
                 {
-                    Console.WriteLine($"{movieDetail[k].Description}\nThe movie start at {movieDetail[k].Time} on {movieDetail[k].Date}");
-                    Console.WriteLine($"Type R to make a reservation for {movieDetail[k].Name} or press T to pick another movie.");
-                    found2 = true;
-                }
-            }
-
-            if(!found2)
-            {
-                System.Console.WriteLine("ID not found, try again");
-                goto begin2;
-            }
-
-            input2 = Console.ReadLine();
-
-            switch (input2)
-            {
-                case "Q": case "q":
+                    case "Q": case "q":
                     Program.shutDown();
                     break;
-                case "r": case "R":
-                    Reservation.addReservation();
-                    break;
-                case "t": case "T":
+                }
+
+                if(!int.TryParse(pressedkey, out value))
+                {
+                    System.Console.WriteLine("Wrong input,try again");
                     goto begin2;
-                default:
-                    Console.WriteLine("Unknown command.");
+                }
+
+                inputId = Convert.ToInt32(pressedkey);
+
+                for(int k=0;k<movieDetail.Count;k++)
+                {
+                    if(movieDetail[k].Id == inputId)
+                    {
+                        Console.WriteLine($"{movieDetail[k].Description}\nThe movie start at {movieDetail[k].Time} on {movieDetail[k].Date}");
+                        Console.WriteLine($"Type R to make a reservation for {movieDetail[k].Name} or press T to pick another movie.");
+                        found2 = true;
+                    }
+                }
+
+                if(!found2)
+                {
+                    System.Console.WriteLine("ID not found, try again");
                     goto begin2;
+                }
+
+                input2 = Console.ReadLine();
+
+                switch (input2)
+                {
+                    case "Q": case "q":
+                        Program.shutDown();
+                        break;
+                    case "r": case "R":
+                        Reservation.addReservation();
+                        break;
+                    case "t": case "T":
+                        goto begin2;
+                    default:
+                        Console.WriteLine("Unknown command.");
+                        goto begin2;
+                }
             }
         }
     }
