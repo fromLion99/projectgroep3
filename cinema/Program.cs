@@ -54,7 +54,8 @@ namespace cinema
         {
             string guestAction = "";
 
-            Console.WriteLine("Do you want to create an account enter C. Do you want to login enter L. Do you want to login as Employee press E. Do you want to see all movies press M. Do you want to search trough the movies press S. Do you want to close the program press Q.");
+            Console.WriteLine("Do you wan to create an account enter C. Do you want to login enter L. Do you want to login as Employee press E. Do you want to see all movies press M. Do you want to search trough the movies press S.\nDo you want to close the program press Q.");
+
             guestAction = Console.ReadLine();
 
             switch (guestAction)
