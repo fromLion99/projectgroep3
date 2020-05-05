@@ -20,6 +20,7 @@ namespace cinema
 
         public static void addCustomer()
         {
+            //This function adds a customer to the JSON
             string theAge, subscription, valSubscription = "";
             int idSubscription = 0;
 
@@ -69,6 +70,7 @@ namespace cinema
       
         public static void viewCustomer()
         {
+            //This function displays all the customers on the screen
             string valInfix = "";
 
             string customerDetails = File.ReadAllText("customers.json");
@@ -110,6 +112,7 @@ namespace cinema
         }
         public static void editCustomer()
         {
+            //This function can edit a customer
             int id = 0;
             string valInfix , valId, theAge = "";
 
@@ -157,6 +160,7 @@ namespace cinema
 
         public static void deleteCustomer()
         {
+            //This function can remove a customer from the JSON
             int id = 0;
             string valInfix, valId = "";
 
