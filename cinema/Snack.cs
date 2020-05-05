@@ -59,7 +59,8 @@ namespace cinema
             File.WriteAllText("Snacks.Json", resultJson);
             Console.WriteLine("Snack succesfully added!");
         }
-        public static void EditSnack()
+        
+        public static void editSnack()
         {
             string valprice, snackId,replace = "";
             double priceDouble = 0.0;
