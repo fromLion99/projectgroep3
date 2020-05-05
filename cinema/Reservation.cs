@@ -88,7 +88,7 @@ namespace cinema
                             reservation.date = movieDetail[choosenMovieId-1].Date;
                             reservation.duration = 0;
                             reservation.sales = movieDetail[choosenMovieId-1].Price;
-                            
+
                             beginError1:
                             Console.WriteLine("Reservation successfully added, press B to start again or S to choose your seat.");
                             back = Console.ReadLine();
@@ -201,6 +201,7 @@ namespace cinema
             bool found = false;
             bool found2 = false;
             bool found3 = false;
+            double totalPrice = 0;
 
             // JSON
             string movieDetails = File.ReadAllText("movies.json");
@@ -232,7 +233,7 @@ namespace cinema
                     }
                 }
             }
-            
+
             if(!found3){
                 Console.WriteLine("Current user has no reservations, do you want to make one? Press R.");
                 input3 = Console.ReadLine();
@@ -272,7 +273,8 @@ namespace cinema
 
             for(int i = 0; i<reservationDetail.Count;i++){
                 if(reservationDetail[i].movieId == movieid){
-                    Console.WriteLine($"Do you want to pay for {movieDetail[movieid-1].Name}?\nTotal price to pay is {reservationDetail[i].amountseats} \nPress Y to pay.");
+                    totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].amountseats;
+                    Console.WriteLine($"Do you want to pay for {movieDetail[movieid-1].Name}?\nTotal price to pay is {totalPrice} \nPress Y to pay.");
                     found = true;
                     reservationDetail[i].paid = true;
                     
@@ -294,7 +296,7 @@ namespace cinema
                     Program.shutDown();
                     break;
                 case "y": case "Y":
-                    System.Console.WriteLine($"You have paid {movieDetail[movieid-1].Price} euro.");
+                    System.Console.WriteLine($"You have paid {totalPrice} euro.");
                     found2 = true;
 
 
