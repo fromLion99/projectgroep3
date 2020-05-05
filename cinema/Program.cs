@@ -90,7 +90,8 @@ namespace cinema
 
             startCustomer:
 
-            Console.WriteLine("Will you see movies press M. Will you make a reservation press R. Will you search trough the movies press S. Will you see drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
+            Console.WriteLine("Will you see movies press M. Will you make a reservation press R. Will you search through the movies press S. If you want to logout and/or close the program press Q.");
+
             customerAction = Console.ReadLine();
 
             switch (customerAction)
@@ -124,7 +125,7 @@ namespace cinema
 
             startEmployee:
 
-            Console.WriteLine("M: manage movies, R: manage rooms, E: manage employees, C: manage customers, W: manage reservations, D: mange drinks, S: manage snacks, Q: logout and/or close the program.");
+            Console.WriteLine("M: manage movies, R: manage rooms, E: manage employees, C: manage customers, W: manage reservations, D: manage drinks, S: manage snacks, Q: logout and/or close the program.");
             employeeAction = Console.ReadLine();
 
             switch (employeeAction)
