@@ -16,6 +16,7 @@ namespace cinema
 
         public static void addSubscription()
         {
+            //This function adds a new subscription to the JSON
             string valMonthPrice, valYearSubscription, replace = "";
             double dMonthPrice = 0.0;
 
@@ -57,6 +58,7 @@ namespace cinema
 
         public static void viewSubscription()
         {
+            //This function displays all the subscriptions
             string subscriptionDetails = File.ReadAllText("subscriptions.json");
             List<Subscription> subscriptionDetail = JsonSerializer.Deserialize<List<Subscription>>(subscriptionDetails);
 
@@ -83,6 +85,7 @@ namespace cinema
 
         public static void editSubscription()
         {
+            //This function can edit a subscription
             string valId,valMonthPrice, replace, valYearSubscription = "";
             int id = 0;
             double dMonthPrice = 0.0;
@@ -144,6 +147,7 @@ namespace cinema
 
         public static void deleteSubscription()
         {
+            //This function deletes a subscription
             string valId = "";
             int id = 0;
 

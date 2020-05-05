@@ -6,6 +6,7 @@ namespace cinema
     {
         static void Main(string[] args)
         {
+            //This functions checks if there is someone logedin and executes the program
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
             begin:
@@ -31,6 +32,7 @@ namespace cinema
 
         public static void startScreen()
         {
+            //This function displays the start screen of the program
             var arr = new[]
                       {
                               @"   __      __        _                              _             ____  _                                   ",
@@ -50,12 +52,12 @@ namespace cinema
             Console.ReadLine();
         }
 
-         public static void guestUser()
+        public static void guestUser()
         {
+            //This function executes the part of the program for the guest users
             string guestAction = "";
 
             Console.WriteLine("Do you wan to create an account enter C. Do you want to login enter L. Do you want to login as Employee press E. Do you want to see all movies press M. Do you want to search trough the movies press S.\nDo you want to close the program press Q.");
-
             guestAction = Console.ReadLine();
 
             switch (guestAction)
@@ -83,6 +85,7 @@ namespace cinema
 
         public static void customerUser()
         {
+            //This function executes the part of the program for the customers
             string customerAction = "";
 
             startCustomer:
@@ -113,6 +116,7 @@ namespace cinema
 
         public static void employeeUser()
         {
+            //This function executes the part of the program for the employee
             string employeeAction = "";
 
             startEmployee:
@@ -280,6 +284,7 @@ namespace cinema
 
         public static void shutDown()
         {
+            //This function asks the user to sign out and closes the program
             string quit = "";
 
             if (Login.checkCustomerLogin() || Login.checkEmployeeLogin())

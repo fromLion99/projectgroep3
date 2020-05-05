@@ -18,6 +18,7 @@ namespace cinema
 
         public static void addEmployee()
         {
+            //This function adds a new employee to the JSON
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
 
@@ -45,6 +46,7 @@ namespace cinema
 
         public static void viewEmployee()
         {
+            //This function displays all the employees
             string valInfix = "";
 
             string employeeDetails = File.ReadAllText("employees.json");
@@ -69,6 +71,7 @@ namespace cinema
 
         public static void editEmployee()
         {
+            //This function edit an employee
             int id = 0;
             string valInfix , valId = "";
 
@@ -113,6 +116,7 @@ namespace cinema
 
         public static void deleteEmployee()
         {
+            //This function deleted an employee
             int id = 0;
             string valInfix, valId = "";
 
@@ -146,13 +150,12 @@ namespace cinema
 
         public static void viewSalesEmployee()
         {
-            // Variables
+            //This function displays the sales of the cinema
             bool found = false;
             double countMoney = 0;
             double countMoney2 = 0;
             string input1,inputid = "";
 
-            // JSON
             string reservationsDetails = File.ReadAllText("reservation.json");
             List<Reservation> reservationDetail = JsonSerializer.Deserialize<List<Reservation>>(reservationsDetails);
 
