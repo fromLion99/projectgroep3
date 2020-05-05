@@ -96,7 +96,6 @@ namespace cinema
                     goto startCustomer;
                 case "R": case "r":
                     Reservation.addReservation();
-                    Reservation.addSeatReservation();
                     goto startCustomer;
                 case "S": case "s":
                     Search.searchMovie();
