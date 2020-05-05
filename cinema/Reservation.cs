@@ -89,8 +89,6 @@ namespace cinema
                             reservation.duration = 0;
                             reservation.sales = movieDetail[choosenMovieId-1].Price;
                             
-                            reservationDetail.Add(reservation);
-                            
                             beginError1:
                             Console.WriteLine("Reservation successfully added, press B to start again or S to choose your seat.");
                             back = Console.ReadLine();
