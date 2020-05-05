@@ -23,6 +23,7 @@ namespace cinema
 
         public static void addMovie()
         {
+            //This function adds a new movie to the JSON
             int room, recomAge = 0;
             double priceDouble = 0.0;
             string valRoom, valImax, val3D, valPrice, valAge, replace = "";
@@ -93,6 +94,7 @@ namespace cinema
 
         public static void viewMovie()
         {
+            //This function displays all movies on the screen from the JSON
             string imax = "";
             string threeD = "";
 
@@ -136,6 +138,7 @@ namespace cinema
 
         public static void editMovie()
         {
+            //This function can edit a movie
             string movieId, valRoom, valPrice, valAge, valImax, val3D, replace = "";
             string threeD = "";
             string imax = "";
@@ -245,6 +248,7 @@ namespace cinema
 
         public static void deleteMovie()
         {
+            //This function removes a movie from the JOSN
             string valId = "";
             int id = 0;
 
