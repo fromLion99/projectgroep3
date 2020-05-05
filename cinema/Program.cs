@@ -302,9 +302,21 @@ namespace cinema
             //This function logs the user automaticly out
             if (Login.checkCustomerLogin() || Login.checkEmployeeLogin())
             {
-                Login.logOut();
-                Console.WriteLine("See you again!");
-                Environment.Exit(0);
+                string login = "";
+
+                Console.WriteLine("Do you want to stay signed in? Yes: Y or NO: N");
+                login = Console.ReadLine();
+                if(login == "Y" || login == "y")
+                {
+                    Console.WriteLine("See you again!");
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Login.logOut();
+                    Console.WriteLine("Successfully logout\nSee you again!");
+                    Environment.Exit(0);
+                }
             }
 
             else
