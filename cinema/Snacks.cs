@@ -49,13 +49,13 @@ namespace cinema
             replace = valPrice.Replace(".",".");
             priceDouble = Convert.ToDouble(replace);
             snack.Price = priceDouble;
-            Console.readeline("Please enter if the snack contains nuts(Enter Yes or No: ");
+            Console.WriteLine("Please enter if the snack contains nuts(Enter Yes or No: ");
             snack.Nuts = Console.ReadLine();
             Console.WriteLine("Please enter the type of snack: ");
-            snack.Type = Console.Readline();
+            snack.Type = Console.ReadLine();
 
             snackDetail.Add(snack);
-            string resultJson = JsonSerializer.serialize<List<Snack>>(snackDetails);
+            string resultJson = JsonSerializer.Serialize<List<Snack>>(snackDetail);
             File.WriteAllText("Snacks.Json", resultJson);
             Console.WriteLine("Snack succesfully added!");
         }
@@ -104,7 +104,7 @@ namespace cinema
             Console.WriteLine("Enter the type of the snacc: ");
             snack.Type = Console.ReadLine();
             
-            string resultJson = JsonSerializer.serialize<List<Snack>>(snackDetails);
+            string resultJson = JsonSerializer.Serialize<List<Snack>>(snackDetail);
             File.WriteAllText("snacks.json" , resultJson);
             Console.WriteLine("Snack eddited succesfully! :)");
         }
@@ -128,9 +128,9 @@ namespace cinema
             Console.WriteLine("Please enter the ID of the snack you would like to delete: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
-            snackDetail.remove(snackDetail.FirstOrDefault(s => s.Id == id));
+            snackDetail.Remove(snackDetail.FirstOrDefault(s => s.Id == id));
 
-            string resultJson = JsonSerializer.serialize<List<Snack>>(snackDetail);
+            string resultJson = JsonSerializer.Serialize<List<Snack>>(snackDetail);
             File.WriteAllText("Snacks.Json",resultJson);
             Console.WriteLine("Snack" + id + " Has been deleted");
         }
