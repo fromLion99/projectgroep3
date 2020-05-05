@@ -9,7 +9,7 @@ namespace cinema
     {
         public static void searchMovie()
         {
-
+            //This function makes it possible to search trough all movies
             bool found = false;
             bool found2 = false;
             bool found3 = false;

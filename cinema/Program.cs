@@ -90,7 +90,7 @@ namespace cinema
 
             startCustomer:
 
-            Console.WriteLine("Will you see movies press M. Will you make a reservation press R. Will you search trough the movies press S. Will you see drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
+            Console.WriteLine("Will you see movies press M. Will you make a reservation press R. Will you search through the movies press S. Will you see drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
             customerAction = Console.ReadLine();
 
             switch (customerAction)
@@ -124,7 +124,7 @@ namespace cinema
 
             startEmployee:
 
-            Console.WriteLine("M: manage movies, R: manage rooms, E: manage employees, C: manage customers, W: manage reservations, D: mange drinks, S: manage snacks, Q: logout and/or close the program.");
+            Console.WriteLine("M: manage movies, R: manage rooms, E: manage employees, C: manage customers, W: manage reservations, D: manage drinks, S: manage snacks, Q: logout and/or close the program.");
             employeeAction = Console.ReadLine();
 
             switch (employeeAction)
@@ -299,24 +299,22 @@ namespace cinema
 
         public static void shutDown()
         {
-            //This function asks the user to sign out and closes the program
-            string quit = "";
-
+            //This function logs the user automaticly out
             if (Login.checkCustomerLogin() || Login.checkEmployeeLogin())
             {
-                Console.WriteLine("Do you want to log out? Yes: Y or No: N");
-                quit = Console.ReadLine();
+                string login = "";
 
-                if (quit == "Y" || quit == "y")
+                Console.WriteLine("Do you want to stay signed in? Yes: Y or NO: N");
+                login = Console.ReadLine();
+                if(login == "Y" || login == "y")
                 {
-                    Console.WriteLine("See you again " + Login.getLoginName());
-                    Login.logOut();
+                    Console.WriteLine("See you again!");
                     Environment.Exit(0);
                 }
-
                 else
                 {
-                    Console.WriteLine("See you again " + Login.getLoginName());
+                    Login.logOut();
+                    Console.WriteLine("Successfully logout\nSee you again!");
                     Environment.Exit(0);
                 }
             }
