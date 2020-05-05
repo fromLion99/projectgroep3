@@ -307,26 +307,12 @@ namespace cinema
 
         public static void shutDown()
         {
-            //This function asks the user to sign out and closes the program
-            string quit = "";
-
+            //This function logs the user automaticly out
             if (Login.checkCustomerLogin() || Login.checkEmployeeLogin())
             {
-                Console.WriteLine("Do you want to log out? Yes: Y or No: N");
-                quit = Console.ReadLine();
-
-                if (quit == "Y" || quit == "y")
-                {
-                    Console.WriteLine("See you again " + Login.getLoginName());
-                    Login.logOut();
-                    Environment.Exit(0);
-                }
-
-                else
-                {
-                    Console.WriteLine("See you again " + Login.getLoginName());
-                    Environment.Exit(0);
-                }
+                Login.logOut();
+                Console.WriteLine("See you again!");
+                Environment.Exit(0);
             }
 
             else
