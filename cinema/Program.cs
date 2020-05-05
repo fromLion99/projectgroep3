@@ -90,15 +90,7 @@ namespace cinema
 
             startCustomer:
 
-<<<<<<< HEAD
             Console.WriteLine("Will you see movies press M. Will you make a reservation press R. Will you search through the movies press S. If you want to logout and/or close the program press Q.");
-<<<<<<< HEAD
-=======
-            Console.WriteLine("Will you see movies press M. Will you make a reservation press R. Will you search trough the movies press S. Will you see drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
->>>>>>> 6e010d5961b4389580b2ed874183065bebe5d936
-=======
-
->>>>>>> eb208fafcec6d53e4e93a8bb855cfc7af025dbbe
             customerAction = Console.ReadLine();
 
             switch (customerAction)
