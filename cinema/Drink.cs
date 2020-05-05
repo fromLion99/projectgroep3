@@ -11,18 +11,18 @@ namespace cinema
         public int Id {get;set;}
         public string Name {get; set;}
         public double Price {get; set;}
-        //Alles in het engels! aanpassen hier en in de JSON
         public string Alcoholic {get; set;}
 
         public static void AddDrink()
         {
+            //This function adds a drink to the JSON
             string valPrice, replace = "";
             double priceDouble = 0.0;
 
-            //Console.WriteLine("The list of drinks shall be printed here");
             string drinkDetails = File.ReadAllText("Drinks.json");
-
             List<Drink> drinkDetail = JsonSerializer.Deserialize<List<Drink>>(drinkDetails);
+
+            viewDrink();
 
             Drink drink = new Drink();
             var item = drinkDetail[drinkDetail.Count -1];
@@ -47,6 +47,7 @@ namespace cinema
 
         public static void viewDrink()
         {
+            //This function displays all the drinks
             string drinkDetails = File.ReadAllText("Drinks.json");
             List<Drink> drinkDetail = JsonSerializer.Deserialize<List<Drink>>(drinkDetails);
 
@@ -62,6 +63,7 @@ namespace cinema
         
         public static void editDrink()
         {
+            //This function can edit a drink
             string valPrice, drinkId,replace = "";
             double priceDouble = 0.0;
             int idDrink = 0;
@@ -90,7 +92,7 @@ namespace cinema
                 Console.WriteLine("Drink contains alcohol: " + drinkDetail[i].Alcoholic);
                 Console.WriteLine("\n===================================================================================\n");
             }
-            //variables are: Drink, Prics, Alcoholic
+
             Console.WriteLine("Enter the name of the drink: ");
             searchedDrink.Name = Console.ReadLine();
             Console.WriteLine("Enter the price of the drink: ");
@@ -107,6 +109,7 @@ namespace cinema
         }
         public static void deleteDrink()
         {
+            //This function deletes a drink
             string valId = "";
             int id = 0;
 
