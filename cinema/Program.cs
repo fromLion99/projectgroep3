@@ -91,6 +91,7 @@ namespace cinema
             startCustomer:
 
             Console.WriteLine("Will you see movies press M. Will you make a reservation press R. Will you search through the movies press S. If you want to logout and/or close the program press Q.");
+
             customerAction = Console.ReadLine();
 
             switch (customerAction)
@@ -103,7 +104,11 @@ namespace cinema
                     goto startCustomer;
                 case "S": case "s":
                     Search.searchMovie();
-                    break;
+                    goto startCustomer;
+                case "D": case "d":
+                    Drink.viewDrink();
+                    Snack.viewSnack();
+                    goto startCustomer;
                 case "Q": case "q":
                     shutDown();
                     break;
@@ -269,7 +274,16 @@ namespace cinema
                     switch (employeeAction)
                     {
                         case "A": case "a":
-                            Console.WriteLine("FUNCTION NEEDS TO BE PLACED HERE");
+                            Snack.addSnack();
+                            goto startEmployee;
+                        case "V": case "v":
+                            Snack.viewSnack();
+                            goto startEmployee;
+                        case "E": case "e":
+                            Snack.editSnack();
+                            goto startEmployee;
+                        case "D": case "d":
+                            Snack.deleteSnack();
                             goto startEmployee;
                         default:
                             Console.WriteLine("Unknown command.");
@@ -278,6 +292,9 @@ namespace cinema
                 case "Q": case "q":
                     shutDown();
                     break;
+                default:
+                    Console.WriteLine("Unknown command.");
+                    goto startEmployee;
             }
         }
 
