@@ -16,6 +16,7 @@ namespace cinema
 
         public static void viewSnack()
         {
+            //This function displays all snacks
             string snackDetails = File.ReadAllText("Snacks.Json");
             List<Snack> snackDetail = JsonSerializer.Deserialize<List<Snack>>(snackDetails);
 
@@ -31,6 +32,7 @@ namespace cinema
         }
         public static void addSnack()
         {
+            //This function adds a new snack to the JSON
             string valPrice, replace = "";
             double priceDouble = 0.0;
 
@@ -62,6 +64,7 @@ namespace cinema
         
         public static void editSnack()
         {
+            //This function edits a snack
             string valprice, snackId,replace = "";
             double priceDouble = 0.0;
             int idSnack = 0;
@@ -111,6 +114,7 @@ namespace cinema
         }
         public static void deleteSnack()
         {
+            //This function deletes a snack
             string valId = "";
             int id = 0;
 
