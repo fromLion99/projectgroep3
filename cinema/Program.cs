@@ -88,7 +88,7 @@ namespace cinema
 
             startCustomer:
 
-            Console.WriteLine("Do you want to see the list of movies? press M. \nDo you want to make a reservation? press R. \nDo you want to search through the movies? press S. \nFor drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
+            Console.WriteLine("Do you want to see the list of movies? press M. \nDo you want to make a reservation? press R. \nDo you want to cancel a reservation? press C. \nDo you want to search through the movies? press S. \nFor drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
             customerAction = Console.ReadLine();
 
             switch (customerAction)
@@ -98,6 +98,9 @@ namespace cinema
                     goto startCustomer;
                 case "R": case "r":
                     Reservation.addReservation();
+                    goto startCustomer;
+                case "C": case "c":
+                    //Cancel a reservation
                     goto startCustomer;
                 case "S": case "s":
                     Search.searchMovie();
@@ -234,6 +237,14 @@ namespace cinema
                         case "A": case "a":
                             Reservation.addReservation();
                             goto startEmployee;
+                        case "V": case "v":
+                            //View all reservations
+                            goto startEmployee;
+                        case "E": case "e":
+                            //Edit a reservation
+                            goto startEmployee;
+                        case "D": case "d":
+                            //Delets a reservation
                         default:
                             Console.WriteLine("Unknown command.");
                             goto reservationEmployee;
