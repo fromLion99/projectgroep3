@@ -125,7 +125,7 @@ namespace cinema
 
             startEmployee:
 
-            Console.WriteLine("M: manage movies, R: manage rooms, E: manage employees, C: manage customers, W: manage reservations, D: manage drinks, S: manage snacks, Q: logout and/or close the program.");
+            Console.WriteLine("M: manage movies, R: manage rooms, E: manage employees, C: manage customers, W: manage reservations, D: manage drinks, S: manage snacks, A: manage subscriptions, Q: logout and/or close the program.");
             employeeAction = Console.ReadLine();
 
             switch (employeeAction)
@@ -296,6 +296,30 @@ namespace cinema
                         default:
                             Console.WriteLine("Unknown command.");
                             goto snackEmployee;
+                    }
+                case "A": case "a":
+                    subscriptionEmployee:
+
+                    Console.WriteLine("A: add a subscription, V: view all subscriptions, E: edit a subscription, D: delete a subscription.");
+                    employeeAction = Console.ReadLine();
+
+                    switch (employeeAction)
+                    {
+                        case "A": case "a":
+                            Subscription.addSubscription();
+                            goto startEmployee;
+                        case "V": case "v":
+                            Subscription.viewSubscription();
+                            goto startEmployee;
+                        case "E": case "e":
+                            Subscription.editSubscription();
+                            goto startEmployee;
+                        case "D": case "d":
+                            Subscription.deleteSubscription();
+                            goto startEmployee;
+                        default:
+                            Console.WriteLine("Unknown command.");
+                            goto subscriptionEmployee;
                     }
                 case "Q": case "q":
                     shutDown();
