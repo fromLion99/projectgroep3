@@ -13,13 +13,13 @@ namespace cinema
 
             if (Login.checkCustomerLogin())
             {
-                Console.WriteLine("Welcome " + Login.getLoginName() + "\nAfter pressing a key you needs to hit enter to go further in the program.");
+                Console.WriteLine("Welcome " + Login.getLoginName());
                 customerUser();
             }
 
             if (Login.checkEmployeeLogin())
             {
-                Console.WriteLine("Welcome " + Login.getLoginName() + "\nAfter pressing a key you needs to hit enter to go further in the program.");
+                Console.WriteLine("Welcome " + Login.getLoginName());
                 employeeUser();
             }
 
@@ -44,12 +44,11 @@ namespace cinema
                               @"    / _\   (  ( \(  __)/ )( \  (  __)( \/ )(  _ \(  __)(  _ \(  )(  __)(  ( \ / __)(  __)   /  \(  __)  ( \/ ) /  \ / )( \(  )(  __)/ ___)",
                               @"   /    \  /    / ) _) \ /\ /   ) _)  )  (  ) __/ ) _)  )   / )(  ) _) /    /( (__  ) _)   (  O )) _)   / \/ \(  O )\ \/ / )(  ) _) \___ \",
                               @"   \_/\_/  \_)__)(____)(_/\_)  (____)(_/\_)(__)  (____)(__\_)(__)(____)\_)__) \___)(____)   \__/(__)    \_)(_/ \__/  \__/ (__)(____)(____/",
-                              @"   Press enter to start                                                                                     ",           
+                              @"                                                                                        ",           
                       };
             Console.WriteLine("\n\n");
             foreach(string line in arr )
                 Console.WriteLine(line);
-            Console.ReadLine();
         }
 
         public static void guestUser()
@@ -57,7 +56,7 @@ namespace cinema
             //This function executes the part of the program for the guest users
             string guestAction = "";
 
-            Console.WriteLine("Do you wan to create an account enter C. Do you want to login enter L. Do you want to login as Employee press E. Do you want to see all movies press M. Do you want to search trough the movies press S.\nDo you want to close the program press Q.");
+            Console.WriteLine("Do you want to create an account enter C.\nDo you want to login enter L. \nDo you want to login as Employee press E. \nDo you want to see all movies press M. \nDo you want to search through the movies press S.\nDo you want to close the program press Q.");
             guestAction = Console.ReadLine();
 
             switch (guestAction)
@@ -90,7 +89,7 @@ namespace cinema
 
             startCustomer:
 
-            Console.WriteLine("Will you see movies press M. Will you make a reservation press R. Will you search through the movies press S. Will you see drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
+            Console.WriteLine("Do you want to see the list of movies? press M. \nDo you want to make a reservation? press R. \nDo you want to search through the movies? press S. \nFor drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
             customerAction = Console.ReadLine();
 
             switch (customerAction)
