@@ -9,6 +9,7 @@ namespace cinema
             //This functions checks if there is someone logedin and executes the program
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
+            Employee.viewSalesEmployee();
             begin:
 
             if (Login.checkCustomerLogin())

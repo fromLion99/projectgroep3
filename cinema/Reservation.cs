@@ -196,7 +196,7 @@ namespace cinema
         public static void PayReservation()
         {
             // Variables
-            string currentuser,input1,input2,input3 = "";
+            string currentuser,input1,input2,input3,input4 = "";
             int movieid,value;
             bool found = false;
             bool found2 = false;
@@ -218,8 +218,9 @@ namespace cinema
 
             string seatDetails = File.ReadAllText("seats.json");
             List<Reservation> seatDetail = JsonSerializer.Deserialize<List<Reservation>>(seatDetails);
-          
-            Console.WriteLine("Press L to login, Press q to exit the program anytime.");                  
+
+            begin:          
+
             currentuser = Login.getLoginName();
             Console.WriteLine($"The rented movies of the current user {currentuser} are:");
 
@@ -274,7 +275,11 @@ namespace cinema
             for(int i = 0; i<reservationDetail.Count;i++){
                 if(reservationDetail[i].movieId == movieid){
                     totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].amountseats;
-                    Console.WriteLine($"Do you want to pay for {movieDetail[movieid-1].Name}?\nTotal price to pay is {totalPrice} \nPress Y to pay.");
+                    Console.WriteLine($"Do you want to pay for your reservation for {movieDetail[movieid-1].Name} at {movieDetail[movieid-1].Time}?\nTotal price to pay is {totalPrice} \nPress Y to pay, Or B to pick another movie.");
+                    input4 = Console.ReadLine();
+                    if(input4 == "b" || input4 == "B"){
+                        goto begin;
+                    }
                     found = true;
                     reservationDetail[i].paid = true;
                     
@@ -288,9 +293,7 @@ namespace cinema
                 goto begin2;
             }
 
-            input2 = Console.ReadLine();
-
-            switch (input2)
+            switch (input4)
             {
                 case "Q": case "q":
                     Program.shutDown();
@@ -298,8 +301,6 @@ namespace cinema
                 case "y": case "Y":
                     System.Console.WriteLine($"You have paid {totalPrice} euro.");
                     found2 = true;
-
-
                     break;
             }
 
