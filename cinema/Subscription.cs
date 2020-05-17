@@ -100,7 +100,7 @@ namespace cinema
                 Console.WriteLine("\n===================================================================================\n");
             }
 
-            Console.WriteLine("Enter the id of the subscription tou want to manage: ");
+            Console.WriteLine("Enter the id of the subscription you want to manage: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
             var searchedSubscription = subscriptionDetail.FirstOrDefault(m=>m.Id==id);
