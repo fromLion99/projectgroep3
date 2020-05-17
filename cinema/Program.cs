@@ -4,7 +4,7 @@ namespace cinema
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             //This functions checks if there is someone logedin and executes the program
             startScreen();
@@ -342,18 +342,40 @@ namespace cinema
             {
                 string login = "";
 
-                Console.WriteLine("Do you want to stay signed in? Yes: Y or NO: N");
+                signIn:
+                Console.WriteLine("Do you want to shut down the system? Yes: Y or NO: N\nIf you only want to sign out enter N.");
                 login = Console.ReadLine();
+
                 if(login == "Y" || login == "y")
                 {
-                    Console.WriteLine("See you again!");
-                    Environment.Exit(0);
+                    Console.WriteLine("Do you want to stay signed in? Yes: Y or NO: N");
+                    login = Console.ReadLine();
+
+                    if(login == "Y" || login == "y")
+                    {
+                        Console.WriteLine("See you again!");
+                        Environment.Exit(0);
+                    }
+
+                    else
+                    {
+                        Login.logOut();
+                        Console.WriteLine("Successfully logout\nSee you again!");
+                        Environment.Exit(0);
+                    }
                 }
-                else
+
+                if(login == "N" || login == "n")
                 {
                     Login.logOut();
-                    Console.WriteLine("Successfully logout\nSee you again!");
-                    Environment.Exit(0);
+                    Console.Clear();
+                    Program.Main();
+                }
+
+                else
+                {
+                    Console.WriteLine("Unknown command.");
+                    goto signIn;
                 }
             }
 
