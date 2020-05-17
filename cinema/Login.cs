@@ -12,12 +12,7 @@ namespace cinema
         public int UserId {get; set;}
         public string UserEmail {get;set;}
         public bool CustomerLogin {get;set;}
-        public bool EmployeeLogin {get;set;}
-
-        public void CustomerDetail()
-        {
-            Console.WriteLine("function customerdetail\nview id of customers and name");
-        }    
+        public bool EmployeeLogin {get;set;}   
 
         public static void signIn()
         {
@@ -36,6 +31,7 @@ namespace cinema
             email = Console.ReadLine();
             
             var customer = customerDetail.FirstOrDefault(c => c.Email == email);
+
             try{
                 if(customer.Email == email)
                 {
@@ -83,48 +79,44 @@ namespace cinema
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
 
-            for (int i = 0; i < employeeDetail.Count; i++)
-            {
-                Console.WriteLine("ID: " + employeeDetail[i].Id);
-                Console.WriteLine("Name: " + employeeDetail[i].FirstName + " " + employeeDetail[i].Infix + " " + employeeDetail[i].LastName);
-                Console.WriteLine("\n===================================================================================\n");
-            }
-
-            Console.WriteLine("Please enter your ID: ");
-            valId = Console.ReadLine();
-            id = Convert.ToInt32(valId);
-
-            var employee = employeeDetail.FirstOrDefault(e => e.Id == id);
-
-            Console.WriteLine("Please enter your Email: ");
+            beginLogin:
+            Console.WriteLine("Please enter your E-mail: ");
             email = Console.ReadLine();
+            
+            var employee = employeeDetail.FirstOrDefault(c => c.Email == email);
 
-            if (employee.Email == email)
-            {
-                Console.WriteLine("Please enter your password: ");
-                password = Console.ReadLine();
-
-                if (employee.Password == password)
+            try{
+                if (employee.Email == email)
                 {
-                    currentLogin.UserId = employee.Id;
-                    currentLogin.UserEmail = employee.Email;
-                    currentLogin.EmployeeLogin = true;
+                    Console.WriteLine("Please enter your password: ");
+                    password = Console.ReadLine();
 
-                    string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
-                    File.WriteAllText("Login.json", Resultjson);
+                    if (employee.Password == password)
+                    {
+                        currentLogin.UserId = employee.Id;
+                        currentLogin.UserEmail = employee.Email;
+                        currentLogin.EmployeeLogin = true;
 
-                    Console.WriteLine("Login successful!");
+                        string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
+                        File.WriteAllText("Login.json", Resultjson);
+
+                        Console.WriteLine("Login successful!");
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("Password incorrect!");
+                    }
                 }
 
                 else
                 {
-                    Console.WriteLine("Password incorrect!");
+                    Console.WriteLine("Unknown Email!");
                 }
             }
-
-            else
-            {
-                Console.WriteLine("Unkown Email!");
+            catch{
+                Console.WriteLine("Unknown Emial!");
+                goto beginLogin;
             }
         }
 

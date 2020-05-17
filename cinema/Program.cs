@@ -9,7 +9,7 @@ namespace cinema
             //This functions checks if there is someone logedin and executes the program
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
-            Employee.viewSalesEmployee();
+
             begin:
 
             if (Login.checkCustomerLogin())
@@ -59,6 +59,8 @@ namespace cinema
             Console.WriteLine("Do you want to create an account enter C.\nDo you want to login enter L. \nDo you want to login as Employee press E. \nDo you want to see all movies press M. \nDo you want to search through the movies press S.\nDo you want to close the program press Q.");
             guestAction = Console.ReadLine();
 
+            Console.Clear();
+
             switch (guestAction)
             {
                 case "C": case "c":
@@ -91,6 +93,8 @@ namespace cinema
 
             Console.WriteLine("Do you want to see the list of movies? press M. \nDo you want to make a reservation? press R. \nDo you want to cancel a reservation? press C. \nDo you want to search through the movies? press S. \nFor drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
             customerAction = Console.ReadLine();
+
+            Console.Clear();
 
             switch (customerAction)
             {
