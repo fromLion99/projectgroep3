@@ -31,48 +31,43 @@ namespace cinema
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
-            for (int i = 0; i < customerDetail.Count; i++)
-            {
-                Console.WriteLine("ID: " + customerDetail[i].Id);
-                Console.WriteLine("Name: " + customerDetail[i].FirstName + " " + customerDetail[i].Infix + " " + customerDetail[i].LastName);
-                Console.WriteLine("\n===================================================================================\n");
-            }
-
-            Console.WriteLine("Please enter your ID: ");
-            valId = Console.ReadLine();
-            id = Convert.ToInt32(valId);
-            
-            var customer = customerDetail.FirstOrDefault(c => c.Id == id);
-            
-            Console.WriteLine("Please enter your Email: ");
+            beginLogin:
+            Console.WriteLine("Please enter your E-mail: ");
             email = Console.ReadLine();
-
-            if(customer.Email == email)
-            {
-                Console.WriteLine("Please enter your password: ");
-                password = Console.ReadLine();
-
-                if(customer.Password == password)
+            
+            var customer = customerDetail.FirstOrDefault(c => c.Email == email);
+            try{
+                if(customer.Email == email)
                 {
-                    currentLogin.UserId = customer.Id;
-                    currentLogin.UserEmail = customer.Email;
-                    currentLogin.CustomerLogin = true;
+                    Console.WriteLine("Please enter your password: ");
+                    password = Console.ReadLine();
 
-                    string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
-                    File.WriteAllText("Login.json", Resultjson);
+                    if(customer.Password == password)
+                    {
+                        currentLogin.UserId = customer.Id;
+                        currentLogin.UserEmail = customer.Email;
+                        currentLogin.CustomerLogin = true;
 
-                    Console.WriteLine("Login successful!");
+                        string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
+                        File.WriteAllText("Login.json", Resultjson);
+
+                        Console.WriteLine("Login successful!");
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("Password is incorrect!");
+                    }
                 }
 
                 else
                 {
-                    Console.WriteLine("Password is incorrect!");
+                    Console.WriteLine("Unknown username!");
                 }
             }
-
-            else
-            {
-                Console.WriteLine("Unknown username!");
+            catch{
+                Console.WriteLine("Unkown E-mail! Check your e-mail on typo's or create an account.");
+                goto beginLogin;
             }
         }
 
