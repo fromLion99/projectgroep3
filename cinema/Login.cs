@@ -17,8 +17,7 @@ namespace cinema
         public static void signIn()
         {
             //A customer can log in with this function
-            string valId, email, password = "";
-            int id = 0;
+            string email, password = "";
 
             string signinDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
@@ -70,8 +69,7 @@ namespace cinema
         public static void signinEmployee()
         {
             //A employee can login with this function
-            string valId, email, password = "";
-            int id = 0;
+            string email, password = "";
 
             string signinDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);

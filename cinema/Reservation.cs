@@ -196,7 +196,7 @@ namespace cinema
         public static void PayReservation()
         {
             // Variables
-            string currentuser,input1,input2,input3,input4 = "";
+            string currentuser,input1,input3,input4 = "";
             int movieid,value;
             bool found = false;
             bool found2 = false;
