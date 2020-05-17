@@ -113,7 +113,7 @@ namespace cinema
                 }
             }
             catch{
-                Console.WriteLine("Unknown Emial!");
+                Console.WriteLine("Unknown Email!");
                 goto beginLogin;
             }
         }
