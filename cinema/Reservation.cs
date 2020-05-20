@@ -77,6 +77,7 @@ namespace cinema
                     {
                         if(choosenMovieId == movieDetail[choosenMovieId-1].Id)
                         {       
+                            beginError1:
                             Console.WriteLine($"You have chosen the movie {movieDetail[choosenMovieId-1].Name}, it will start at {movieDetail[choosenMovieId-1].Time}\n");
                             // Information about the movie and customer will be put into a JSON file      
                             reservation.movieId = choosenMovieId;
@@ -89,7 +90,7 @@ namespace cinema
                             reservation.duration = 0;
                             reservation.sales = movieDetail[choosenMovieId-1].Price;
 
-                            beginError1:
+                            
                             Console.WriteLine("Reservation successfully added, press B to start again or S to choose your seat.");
                             back = Console.ReadLine();
                             try
@@ -98,7 +99,7 @@ namespace cinema
                                 {
                                     goto beginning;
                                 }
-                                if (back == "s" || back == "S")
+                                else if (back == "s" || back == "S")
                                 {        
                                     beginError2:
                                     Console.WriteLine($"Choose your row between: A-B-C-D-E, A is the row closest to the screen and E is the furthest away:");
@@ -116,7 +117,7 @@ namespace cinema
                                                 rowString = "";
                                                 goto beginError2;
                                             }
-                                            if(back == "Y" || back == "y")
+                                            else if(back == "Y" || back == "y")
                                             {
                                                 beginError3:
                                                 Console.WriteLine($"Please choose how many seats you want, you have to choose atleast 1 and the row has a maximum of 15 seats. Please type 1 - 15:");
@@ -181,14 +182,14 @@ namespace cinema
                     }
                     catch
                     {
-                        Console.WriteLine("Error 1: Please enter a valid ID");
+                        Console.WriteLine("Error : Please enter a valid ID");
                         goto beginError;
                     }
                 }
             }
             catch
             {
-               Console.WriteLine("Error : Input not valid try again");
+               Console.WriteLine("Error beginning: Input not valid try again");
                goto beginning; 
             }
         }
