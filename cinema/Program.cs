@@ -133,6 +133,8 @@ namespace cinema
             Console.WriteLine("M: manage movies, R: manage rooms, E: manage employees, C: manage customers, W: manage reservations, D: manage drinks, S: manage snacks, A: manage subscriptions, Q: logout and/or close the program.");
             employeeAction = Console.ReadLine();
 
+            Console.Clear();
+
             switch (employeeAction)
             {
                 case "M": case "m":
@@ -165,6 +167,8 @@ namespace cinema
                     Console.WriteLine("A: add a room, V: view all rooms, E: edit a room, D: delete a room.");
                     employeeAction = Console.ReadLine();
 
+                    Console.Clear();
+
                     switch (employeeAction)
                     {
                         case "A": case "a":
@@ -189,6 +193,8 @@ namespace cinema
                     Console.WriteLine("A: add a employee, V: view all employees, E: edit a employee, D: delete a employee.");
                     employeeAction = Console.ReadLine();
 
+                    Console.Clear();
+
                     switch (employeeAction)
                     {
                         case "A": case "a":
@@ -212,6 +218,8 @@ namespace cinema
 
                     Console.WriteLine("A: add a customer, V: view all customers, E: edit a customer, D: delete a customer.");
                     employeeAction = Console.ReadLine();
+
+                    Console.Clear();
 
                     switch (employeeAction)
                     {
@@ -260,6 +268,8 @@ namespace cinema
                     Console.WriteLine("A: add a drink, V: view all drinks, E: edit a drink, D: delete a drink.");
                     employeeAction = Console.ReadLine();
 
+                    Console.Clear();
+
                     switch (employeeAction)
                     {
                         case "A": case "a":
@@ -284,6 +294,8 @@ namespace cinema
                     Console.WriteLine("A: add a snack, V: view all snacks, E: edit a snack, D: delete a snack.");
                     employeeAction = Console.ReadLine();
 
+                    Console.Clear();
+
                     switch (employeeAction)
                     {
                         case "A": case "a":
@@ -307,6 +319,8 @@ namespace cinema
 
                     Console.WriteLine("A: add a subscription, V: view all subscriptions, E: edit a subscription, D: delete a subscription.");
                     employeeAction = Console.ReadLine();
+
+                    Console.Clear();
 
                     switch (employeeAction)
                     {
@@ -345,6 +359,8 @@ namespace cinema
                 signIn:
                 Console.WriteLine("Do you want to shut down the system? Yes: Y or NO: N\nIf you only want to sign out enter N.");
                 login = Console.ReadLine();
+
+                Console.Clear();
 
                 if(login == "Y" || login == "y")
                 {
