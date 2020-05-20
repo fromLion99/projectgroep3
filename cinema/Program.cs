@@ -4,11 +4,12 @@ namespace cinema
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             //This functions checks if there is someone logedin and executes the program
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
+
             begin:
 
             if (Login.checkCustomerLogin())
@@ -43,8 +44,7 @@ namespace cinema
                               @"     __     __ _  ____  _  _    ____  _  _  ____  ____  ____  __  ____  __ _   ___  ____     __  ____    _  _   __   _  _  __  ____  ____ ",
                               @"    / _\   (  ( \(  __)/ )( \  (  __)( \/ )(  _ \(  __)(  _ \(  )(  __)(  ( \ / __)(  __)   /  \(  __)  ( \/ ) /  \ / )( \(  )(  __)/ ___)",
                               @"   /    \  /    / ) _) \ /\ /   ) _)  )  (  ) __/ ) _)  )   / )(  ) _) /    /( (__  ) _)   (  O )) _)   / \/ \(  O )\ \/ / )(  ) _) \___ \",
-                              @"   \_/\_/  \_)__)(____)(_/\_)  (____)(_/\_)(__)  (____)(__\_)(__)(____)\_)__) \___)(____)   \__/(__)    \_)(_/ \__/  \__/ (__)(____)(____/",
-                              @"                                                                                        ",           
+                              @"   \_/\_/  \_)__)(____)(_/\_)  (____)(_/\_)(__)  (____)(__\_)(__)(____)\_)__) \___)(____)   \__/(__)    \_)(_/ \__/  \__/ (__)(____)(____/",           
                       };
             Console.WriteLine("\n\n");
             foreach(string line in arr )
@@ -58,6 +58,8 @@ namespace cinema
 
             Console.WriteLine("Do you want to create an account enter C.\nDo you want to login enter L. \nDo you want to login as Employee press E. \nDo you want to see all movies press M. \nDo you want to search through the movies press S.\nDo you want to close the program press Q.");
             guestAction = Console.ReadLine();
+
+            Console.Clear();
 
             switch (guestAction)
             {
@@ -89,8 +91,10 @@ namespace cinema
 
             startCustomer:
 
-            Console.WriteLine("Do you want to see the list of movies? press M. \nDo you want to make a reservation? press R. \nDo you want to search through the movies? press S. \nFor drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
+            Console.WriteLine("Do you want to see the list of movies? press M. \nDo you want to make a reservation? press R. \nDo you want to cancel a reservation? press C. \nDo you want to search through the movies? press S. \nFor drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
             customerAction = Console.ReadLine();
+
+            Console.Clear();
 
             switch (customerAction)
             {
@@ -99,6 +103,9 @@ namespace cinema
                     goto startCustomer;
                 case "R": case "r":
                     Reservation.addReservation();
+                    goto startCustomer;
+                case "C": case "c":
+                    //Cancel a reservation
                     goto startCustomer;
                 case "S": case "s":
                     Search.searchMovie();
@@ -123,7 +130,7 @@ namespace cinema
 
             startEmployee:
 
-            Console.WriteLine("M: manage movies, R: manage rooms, E: manage employees, C: manage customers, W: manage reservations, D: manage drinks, S: manage snacks, Q: logout and/or close the program.");
+            Console.WriteLine("M: manage movies, R: manage rooms, E: manage employees, C: manage customers, W: manage reservations, D: manage drinks, S: manage snacks, A: manage subscriptions, Q: logout and/or close the program.");
             employeeAction = Console.ReadLine();
 
             switch (employeeAction)
@@ -235,6 +242,14 @@ namespace cinema
                         case "A": case "a":
                             Reservation.addReservation();
                             goto startEmployee;
+                        case "V": case "v":
+                            //View all reservations
+                            goto startEmployee;
+                        case "E": case "e":
+                            //Edit a reservation
+                            goto startEmployee;
+                        case "D": case "d":
+                            //Delets a reservation
                         default:
                             Console.WriteLine("Unknown command.");
                             goto reservationEmployee;
@@ -287,6 +302,30 @@ namespace cinema
                             Console.WriteLine("Unknown command.");
                             goto snackEmployee;
                     }
+                case "A": case "a":
+                    subscriptionEmployee:
+
+                    Console.WriteLine("A: add a subscription, V: view all subscriptions, E: edit a subscription, D: delete a subscription.");
+                    employeeAction = Console.ReadLine();
+
+                    switch (employeeAction)
+                    {
+                        case "A": case "a":
+                            Subscription.addSubscription();
+                            goto startEmployee;
+                        case "V": case "v":
+                            Subscription.viewSubscription();
+                            goto startEmployee;
+                        case "E": case "e":
+                            Subscription.editSubscription();
+                            goto startEmployee;
+                        case "D": case "d":
+                            Subscription.deleteSubscription();
+                            goto startEmployee;
+                        default:
+                            Console.WriteLine("Unknown command.");
+                            goto subscriptionEmployee;
+                    }
                 case "Q": case "q":
                     shutDown();
                     break;
@@ -303,18 +342,40 @@ namespace cinema
             {
                 string login = "";
 
-                Console.WriteLine("Do you want to stay signed in? Yes: Y or NO: N");
+                signIn:
+                Console.WriteLine("Do you want to shut down the system? Yes: Y or NO: N\nIf you only want to sign out enter N.");
                 login = Console.ReadLine();
+
                 if(login == "Y" || login == "y")
                 {
-                    Console.WriteLine("See you again!");
-                    Environment.Exit(0);
+                    Console.WriteLine("Do you want to stay signed in? Yes: Y or NO: N");
+                    login = Console.ReadLine();
+
+                    if(login == "Y" || login == "y")
+                    {
+                        Console.WriteLine("See you again!");
+                        Environment.Exit(0);
+                    }
+
+                    else
+                    {
+                        Login.logOut();
+                        Console.WriteLine("Successfully logout\nSee you again!");
+                        Environment.Exit(0);
+                    }
                 }
-                else
+
+                if(login == "N" || login == "n")
                 {
                     Login.logOut();
-                    Console.WriteLine("Successfully logout\nSee you again!");
-                    Environment.Exit(0);
+                    Console.Clear();
+                    Program.Main();
+                }
+
+                else
+                {
+                    Console.WriteLine("Unknown command.");
+                    goto signIn;
                 }
             }
 
