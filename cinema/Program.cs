@@ -92,7 +92,7 @@ namespace cinema
 
             startCustomer:
 
-            Console.WriteLine("Do you want to see the list of movies? press M. \nDo you want to make a reservation? press R. \nDo you want to cancel a reservation? press C. \nDo you want to search through the movies? press S. \nFor drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
+            Console.WriteLine("Do you want to see the list of movies? press M. \nDo you want to make a reservation? press R.\n DO you want to pay for a reservation press P. \nDo you want to cancel a reservation? press C. \nDo you want to search through the movies? press S. \nFor drinks and snacks press D.\nIf you want to logout and/or close the program press Q.");
             customerAction = Console.ReadLine();
 
             Console.Clear();
@@ -104,6 +104,9 @@ namespace cinema
                     goto startCustomer;
                 case "R": case "r":
                     Reservation.addReservation();
+                    goto startCustomer;
+                case "p": case "P":
+                    Reservation.PayReservation();
                     goto startCustomer;
                 case "C": case "c":
                     //Cancel a reservation
