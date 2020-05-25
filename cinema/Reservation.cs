@@ -345,7 +345,7 @@ namespace cinema
 
             input1 = Console.ReadLine();
 
-            if(input1)
+            //if(input1)
 
 
         }
