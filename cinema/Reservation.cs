@@ -310,5 +310,44 @@ namespace cinema
                 goto begin3;
             }
         }
+        public static void ViewReservation(){
+
+            // Variables
+            string currentuser, input1;
+
+
+            // JSON
+            string reservationsDetails = File.ReadAllText("reservation.json");
+            List<Reservation> reservationDetail = JsonSerializer.Deserialize<List<Reservation>>(reservationsDetails);
+            
+            string customerDetails = File.ReadAllText("customers.json");
+            List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
+
+            string signinDetails = File.ReadAllText("Login.json");
+            Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
+
+            string movieDetails = File.ReadAllText("movies.json");
+            List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
+
+            currentuser =  Login.getLoginName();
+
+            System.Console.WriteLine("Below are past reservations.\nPress the given ID to see more information");var
+
+            for(int i = 0;i<reservationDetail.Count;i++){
+                if(reservationDetail[i].customer == currentuser){
+                    for(int j = 0;j<movieDetail.Count;j++){
+                        if(movieDetail[j].Id == reservationDetail[i].movieId){
+                            Console.WriteLine($"ID {movieDetail[j].Id}: {movieDetail[j].Name}");
+                        }
+                    }
+                }
+            }
+
+            input1 = Console.ReadLine();
+
+            if(input1)
+
+
+        }
     }
 }
