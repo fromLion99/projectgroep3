@@ -314,5 +314,65 @@ namespace cinema
                 goto begin3;
             }
         }
+        public static void ViewReservation(){
+
+            // Variables
+            string currentuser, input1;
+            int value, movieid;
+            double totalPrice;
+
+            // JSON
+            string reservationsDetails = File.ReadAllText("reservation.json");
+            List<Reservation> reservationDetail = JsonSerializer.Deserialize<List<Reservation>>(reservationsDetails);
+            
+            string customerDetails = File.ReadAllText("customers.json");
+            List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
+
+            string signinDetails = File.ReadAllText("Login.json");
+            Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
+
+            string movieDetails = File.ReadAllText("movies.json");
+            List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
+
+            currentuser =  Login.getLoginName();
+            
+            begin:
+
+            System.Console.WriteLine("Below are past reservations.\nPress the given ID to see more information");
+
+            for(int i = 0;i<reservationDetail.Count;i++){
+                if(reservationDetail[i].customer == currentuser){
+                    for(int j = 0;j<movieDetail.Count;j++){
+                        if(movieDetail[j].Id == reservationDetail[i].movieId){
+                            Console.WriteLine($"ID {movieDetail[j].Id}: {movieDetail[j].Name}");
+                        }
+                    }
+                }
+            }
+
+            input1 = Console.ReadLine();
+
+            switch (input1)
+            {
+                case "Q": case "q":
+                Program.shutDown();
+                break;
+            }
+
+            if(!int.TryParse(input1, out value))
+            {
+                Console.WriteLine("Movie ID not found, please try again:");
+                goto begin;
+            }
+
+            movieid = Convert.ToInt32(input1);
+
+             for(int i = 0; i<reservationDetail.Count;i++){
+                if(reservationDetail[i].movieId == movieid && reservationDetail[i].customer == currentuser){
+                    totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].amountseats;
+                    Console.WriteLine($"Name movie: {movieDetail[movieid-1].Name}\nDate and Time: {movieDetail[movieid-1].Date}, {movieDetail[movieid-1].Time}\nRoom: {movieDetail[movieid-1].Room}\nAmount of seats: {reservationDetail[i].amountseats}\nTotal price paid: {totalPrice} dollars");
+                }
+            }
+        }
     }
 }
