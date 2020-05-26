@@ -181,7 +181,7 @@ namespace cinema
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
 
-            id = currentLogin.UserId - 1;
+            id = currentLogin.UserId -1;
 
             if (currentLogin.CustomerLogin)
             {
