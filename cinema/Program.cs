@@ -42,11 +42,11 @@ namespace cinema
                               @"*    \ \/\/ /  / -_) | | / _| / _ \ | '  \  / -_)   |  _| / _ \    / /  | | / -_) | ' \  / -_) | '  \  / _` |                                           *", 
                               @"*     \_/\_/   \___| |_| \__| \___/ |_|_|_| \___|    \__| \___/   /___| |_| \___| |_||_| \___| |_|_|_| \__,_|                                           *", 
                               @"*                                                                                                                                                       *", 
-                              @"*    _                                                            _                                    __                            _               _  *",
-                              @"*   /_\    _ __    ___ __      __   ___ __  __ _ __    ___  _ __ (_)  ___  _ __    ___   ___    ___   / _|  _ __ ___    ___  __   __(_)  ___  ___   / \ *",
-                              @"*  //_\\  | '_ \  / _ \\ \ /\ / /  / _ \\ \/ /| '_ \  / _ \| '__|| | / _ \| '_ \  / __| / _ \  / _ \ | |_  | '_ ` _ \  / _ \ \ \ / /| | / _ \/ __| /  / *",
-                              @"* /  _  \ | | | ||  __/ \ V  V /  |  __/ >  < | |_) ||  __/| |   | ||  __/| | | || (__ |  __/ | (_) ||  _| | | | | | || (_) | \ V / | ||  __/\__ \/\_/  *",
-                              @"* \_/ \_/ |_| |_| \___|  \_/\_/    \___|/_/\_\| .__/  \___||_|   |_| \___||_| |_| \___| \___|  \___/ |_|   |_| |_| |_| \___/   \_/  |_| \___||___/\/    *",
+                              @"*    _                                                            _                                    __                            _                  *",
+                              @"*   /_\    _ __    ___ __      __   ___ __  __ _ __    ___  _ __ (_)  ___  _ __    ___   ___    ___   / _|  _ __ ___    ___  __   __(_)  ___  ___       *",
+                              @"*  //_\\  | '_ \  / _ \\ \ /\ / /  / _ \\ \/ /| '_ \  / _ \| '__|| | / _ \| '_ \  / __| / _ \  / _ \ | |_  | '_ ` _ \  / _ \ \ \ / /| | / _ \/ __|      *",
+                              @"* /  _  \ | | | ||  __/ \ V  V /  |  __/ >  < | |_) ||  __/| |   | ||  __/| | | || (__ |  __/ | (_) ||  _| | | | | | || (_) | \ V / | ||  __/\__ \      *",
+                              @"* \_/ \_/ |_| |_| \___|  \_/\_/    \___|/_/\_\| .__/  \___||_|   |_| \___||_| |_| \___| \___|  \___/ |_|   |_| |_| |_| \___/   \_/  |_| \___||___/      *",
                               @"*                                             |_|                                                                                                       *",
                               @"*********************************************************************************************************************************************************",
                                         
@@ -63,7 +63,7 @@ namespace cinema
             //This function executes the part of the program for the guest users
             string guestAction = "";
 
-            Console.WriteLine("\nDo you want to create an account enter C\n\nDo you want to login enter L\n\nDo you want to login as Employee press E\n\nDo you want to see all movies press M\n\nDo you want to search through the movies press S\n\nDo you want to close the program press Q");
+            Console.WriteLine("\nDo you want to create an account enter C\n\nDo you want to login enter L\n\nDo you want to login as Employee press E\n\nDo you want to see all movies press M\n\nDo you want to search through the movies press S\n\nDo you want to close the program press Q\n");
             guestAction = Console.ReadLine();
 
             Console.Clear();
@@ -197,7 +197,7 @@ namespace cinema
                 case "E": case "e":
                     employeeManage:
 
-                    Console.WriteLine("A: add a employee\nV: view all employees\nE: edit a employee\nD: delete a employee");
+                    Console.WriteLine("\nA: add a employee\nV: view all employees\nE: edit a employee\nD: delete a employee\n");
                     employeeAction = Console.ReadLine();
 
                     Console.Clear();
@@ -223,7 +223,7 @@ namespace cinema
                 case "C": case "c":
                     customerEmployee:
 
-                    Console.WriteLine("A: add a customer\nV: view all customers\nE: edit a customer\nD: delete a customer.");
+                    Console.WriteLine("A: add a customer\nV: view all customers\nE: edit a customer\nD: delete a customer\n");
                     employeeAction = Console.ReadLine();
 
                     Console.Clear();
@@ -298,7 +298,7 @@ namespace cinema
                 case "S": case "s":
                     snackEmployee:
 
-                    Console.WriteLine("A: add a snack, V: view all snacks, E: edit a snack, D: delete a snack.");
+                    Console.WriteLine("\nA: add a snack\nV: view all snacks\nE: edit a snack\nD: delete a snack\n");
                     employeeAction = Console.ReadLine();
 
                     Console.Clear();
@@ -324,7 +324,7 @@ namespace cinema
                 case "A": case "a":
                     subscriptionEmployee:
 
-                    Console.WriteLine("A: add a subscription, V: view all subscriptions, E: edit a subscription, D: delete a subscription.");
+                    Console.WriteLine("\nA: add a subscription\nV: view all subscriptions\nE: edit a subscription\nD: delete a subscription\n");
                     employeeAction = Console.ReadLine();
 
                     Console.Clear();
@@ -364,7 +364,7 @@ namespace cinema
                 string login = "";
 
                 signIn:
-                Console.WriteLine("Do you want to shut down the system? Yes: Y or NO: N\nIf you only want to sign out enter N.");
+                Console.WriteLine("\nDo you want to shut down the system? Yes: Y or NO: N\nIf you only want to sign out enter N\n");
                 login = Console.ReadLine();
 
                 Console.Clear();
