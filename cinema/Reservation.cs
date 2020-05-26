@@ -331,7 +331,7 @@ namespace cinema
 
             currentuser =  Login.getLoginName();
 
-            System.Console.WriteLine("Below are past reservations.\nPress the given ID to see more information");var
+            System.Console.WriteLine("Below are past reservations.\nPress the given ID to see more information");
 
             for(int i = 0;i<reservationDetail.Count;i++){
                 if(reservationDetail[i].customer == currentuser){
