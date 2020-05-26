@@ -23,7 +23,6 @@ namespace cinema
         public string row {get; set;}
         public int startseat {get; set;}
         public int amountseats {get; set;}
-        public string currenttime { get; set; }
         
         
         public static void addReservation()
@@ -149,7 +148,6 @@ namespace cinema
                                                                 reservation.startseat = whereRow;
                                                                 reservation.amountseats = chooseAmountSeat;
                                                                 reservation.customer =  Login.getLoginName();
-                                                                reservation.currenttime = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
                                                                 
                                                                 reservationDetail.Add(reservation);
                                                                 string resultJson1 = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
@@ -372,7 +370,7 @@ namespace cinema
              for(int i = 0; i<reservationDetail.Count;i++){
                 if(reservationDetail[i].movieId == movieid && reservationDetail[i].customer == currentuser){
                     totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].amountseats;
-                    Console.WriteLine($"Name movie: {movieDetail[movieid-1].Name}\nDate and Time: {movieDetail[movieid-1].Date}, {movieDetail[movieid-1].Time}\nRoom: {movieDetail[movieid-1].Room}\nAmount of seats: {reservationDetail[i].amountseats}\nTotal price paid: {totalPrice} dollars\nTime of reservation: {reservationDetail[i].currenttime}");
+                    Console.WriteLine($"Name movie: {movieDetail[movieid-1].Name}\nDate and Time: {movieDetail[movieid-1].Date}, {movieDetail[movieid-1].Time}\nRoom: {movieDetail[movieid-1].Room}\nAmount of seats: {reservationDetail[i].amountseats}\nTotal price paid: {totalPrice} dollars");
                 }
             }
         }
