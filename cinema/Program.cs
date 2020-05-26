@@ -223,7 +223,7 @@ namespace cinema
                 case "C": case "c":
                     customerEmployee:
 
-                    Console.WriteLine("A: add a customer\nV: view all customers\nE: edit a customer\nD: delete a customer\n");
+                    Console.WriteLine("\nA: add a customer\nV: view all customers\nE: edit a customer\nD: delete a customer\n");
                     employeeAction = Console.ReadLine();
 
                     Console.Clear();
@@ -272,7 +272,7 @@ namespace cinema
                 case "D": case "d":
                     drinkEmployee:
 
-                    Console.WriteLine("\nA: add a drink\nV: view all drinks\nE: edit a drink\nD: delete a drink.");
+                    Console.WriteLine("\nA: add a drink\nV: view all drinks\nE: edit a drink\nD: delete a drink\n");
                     employeeAction = Console.ReadLine();
 
                     Console.Clear();
