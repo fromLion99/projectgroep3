@@ -77,6 +77,7 @@ namespace cinema
                     {
                         if(choosenMovieId == movieDetail[choosenMovieId-1].Id)
                         {       
+                            beginError1:
                             Console.WriteLine($"You have chosen the movie {movieDetail[choosenMovieId-1].Name}, it will start at {movieDetail[choosenMovieId-1].Time}\n");
                             // Information about the movie and customer will be put into a JSON file      
                             reservation.movieId = choosenMovieId;
@@ -89,7 +90,7 @@ namespace cinema
                             reservation.duration = 0;
                             reservation.sales = movieDetail[choosenMovieId-1].Price;
 
-                            beginError1:
+                            
                             Console.WriteLine("Reservation successfully added, press B to start again or S to choose your seat.");
                             back = Console.ReadLine();
                             try
@@ -98,7 +99,7 @@ namespace cinema
                                 {
                                     goto beginning;
                                 }
-                                if (back == "s" || back == "S")
+                                else if (back == "s" || back == "S")
                                 {        
                                     beginError2:
                                     Console.WriteLine($"Choose your row between: A-B-C-D-E, A is the row closest to the screen and E is the furthest away:");
@@ -116,7 +117,7 @@ namespace cinema
                                                 rowString = "";
                                                 goto beginError2;
                                             }
-                                            if(back == "Y" || back == "y")
+                                            else if(back == "Y" || back == "y")
                                             {
                                                 beginError3:
                                                 Console.WriteLine($"Please choose how many seats you want, you have to choose atleast 1 and the row has a maximum of 15 seats. Please type 1 - 15:");
@@ -181,14 +182,14 @@ namespace cinema
                     }
                     catch
                     {
-                        Console.WriteLine("Error 1: Please enter a valid ID");
+                        Console.WriteLine("Error : Please enter a valid ID");
                         goto beginError;
                     }
                 }
             }
             catch
             {
-               Console.WriteLine("Error : Input not valid try again");
+               Console.WriteLine("Error beginning: Input not valid try again");
                goto beginning; 
             }
         }
@@ -196,7 +197,7 @@ namespace cinema
         public static void PayReservation()
         {
             // Variables
-            string currentuser,input1,input2,input3 = "";
+            string currentuser,input1,input3,input4 = "";
             int movieid,value;
             bool found = false;
             bool found2 = false;
@@ -218,8 +219,9 @@ namespace cinema
 
             string seatDetails = File.ReadAllText("seats.json");
             List<Reservation> seatDetail = JsonSerializer.Deserialize<List<Reservation>>(seatDetails);
-          
-            Console.WriteLine("Press L to login, Press q to exit the program anytime.");                  
+
+            begin:          
+
             currentuser = Login.getLoginName();
             Console.WriteLine($"The rented movies of the current user {currentuser} are:");
 
@@ -274,7 +276,11 @@ namespace cinema
             for(int i = 0; i<reservationDetail.Count;i++){
                 if(reservationDetail[i].movieId == movieid){
                     totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].amountseats;
-                    Console.WriteLine($"Do you want to pay for {movieDetail[movieid-1].Name}?\nTotal price to pay is {totalPrice} \nPress Y to pay.");
+                    Console.WriteLine($"Do you want to pay for your reservation for {movieDetail[movieid-1].Name} at {movieDetail[movieid-1].Time}?\nTotal price to pay is {totalPrice} \nPress Y to pay, Or B to pick another movie.");
+                    input4 = Console.ReadLine();
+                    if(input4 == "b" || input4 == "B"){
+                        goto begin;
+                    }
                     found = true;
                     reservationDetail[i].paid = true;
                     
@@ -288,9 +294,7 @@ namespace cinema
                 goto begin2;
             }
 
-            input2 = Console.ReadLine();
-
-            switch (input2)
+            switch (input4)
             {
                 case "Q": case "q":
                     Program.shutDown();
@@ -298,8 +302,6 @@ namespace cinema
                 case "y": case "Y":
                     System.Console.WriteLine($"You have paid {totalPrice} euro.");
                     found2 = true;
-
-
                     break;
             }
 
@@ -307,6 +309,45 @@ namespace cinema
                 System.Console.WriteLine("Wrong input, please try again:");
                 goto begin3;
             }
+        }
+        public static void ViewReservation(){
+
+            // Variables
+            string currentuser, input1;
+
+
+            // JSON
+            string reservationsDetails = File.ReadAllText("reservation.json");
+            List<Reservation> reservationDetail = JsonSerializer.Deserialize<List<Reservation>>(reservationsDetails);
+            
+            string customerDetails = File.ReadAllText("customers.json");
+            List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
+
+            string signinDetails = File.ReadAllText("Login.json");
+            Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
+
+            string movieDetails = File.ReadAllText("movies.json");
+            List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
+
+            currentuser =  Login.getLoginName();
+
+            System.Console.WriteLine("Below are past reservations.\nPress the given ID to see more information");
+
+            for(int i = 0;i<reservationDetail.Count;i++){
+                if(reservationDetail[i].customer == currentuser){
+                    for(int j = 0;j<movieDetail.Count;j++){
+                        if(movieDetail[j].Id == reservationDetail[i].movieId){
+                            Console.WriteLine($"ID {movieDetail[j].Id}: {movieDetail[j].Name}");
+                        }
+                    }
+                }
+            }
+
+            input1 = Console.ReadLine();
+
+            //if(input1)
+
+
         }
     }
 }

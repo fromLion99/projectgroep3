@@ -21,7 +21,7 @@ namespace cinema
         public static void addCustomer()
         {
             //This function adds a customer to the JSON
-            string theAge, subscription, valSubscription = "";
+            string subscription, valSubscription = "";
             int idSubscription = 0;
 
             string customerDetails = File.ReadAllText("customers.json");
@@ -38,8 +38,7 @@ namespace cinema
             Console.WriteLine("Please enter your last name: ");
             customer.LastName = Console.ReadLine();
             Console.WriteLine("Please enter your age: ");
-            theAge  = Console.ReadLine();
-            customer.Age = Convert.ToInt32(theAge);
+            customer.askAge();
             Console.WriteLine("Please enter your E-mail: ");
             customer.Email = Console.ReadLine();
             Console.WriteLine("Please enter your password: ");
@@ -66,6 +65,24 @@ namespace cinema
             string resultJson = JsonSerializer.Serialize<List<Customer>>(customerDetail);
             File.WriteAllText("customers.json", resultJson);
             Console.WriteLine("Customer added");
+        }
+                private void askAge()
+        {
+            var repeatQuestion = true;
+
+            while (repeatQuestion)
+            {
+                Console.WriteLine("Please enter your age: "); 
+                if (int.TryParse(Console.ReadLine(), out var parsedAge))
+                {
+                    Age = parsedAge;
+                    repeatQuestion = false;
+                }
+                else
+                {
+                    Console.WriteLine("Something went wrong, try again!");
+                }
+            }
         }
       
         public static void viewCustomer()

@@ -170,7 +170,9 @@ namespace cinema
             {
                 for(int i = 0;i<reservationDetail.Count;i++)
                 {
-                    countMoney += reservationDetail[i].sales;
+                    if(reservationDetail[i].paid == true){
+                        countMoney += reservationDetail[i].sales;
+                    }
                 }
 
                 System.Console.WriteLine($"The total amount is: {countMoney} euro");
