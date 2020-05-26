@@ -9,6 +9,7 @@ namespace cinema
             //This functions checks if there is someone logedin and executes the program
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
+            // test
 
             begin:
 
@@ -99,6 +100,7 @@ namespace cinema
             startCustomer:
 
             Console.WriteLine("\nDo you want to see the list of movies? press M\n\nDo you want to make a reservation? press R\n\nDo you want to cancel a reservation? press C\n\nDo you want to search through the movies? press S\n\nFor drinks and snacks press D\n\nIf you want to logout and/or close the program press Q\n");
+
             customerAction = Console.ReadLine();
 
             Console.Clear();
@@ -110,6 +112,12 @@ namespace cinema
                     goto startCustomer;
                 case "R": case "r":
                     Reservation.addReservation();
+                    goto startCustomer;
+                case "p": case "P":
+                    Reservation.PayReservation();
+                    goto startCustomer;
+                case "V": case "v":
+                    Reservation.ViewReservation();
                     goto startCustomer;
                 case "C": case "c":
                     //Cancel a reservation

@@ -42,7 +42,7 @@ namespace cinema
             customer.Email = Console.ReadLine();
             Console.WriteLine("Please enter your password: ");
             customer.Password = Console.ReadLine();
-            Console.WriteLine("Do you want an subscription? Yes: Y or No: N");
+            Console.WriteLine("Would you like to have a monthly subscription to watch your favorite and upcoming movies at a discount? Yes: Y or No: N");
             subscription = Console.ReadLine();
 
             if(subscription == "Y" || subscription == "y")
