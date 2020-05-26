@@ -37,7 +37,6 @@ namespace cinema
             customer.Infix = Console.ReadLine();
             Console.WriteLine("Please enter your last name: ");
             customer.LastName = Console.ReadLine();
-            Console.WriteLine("Please enter your age: ");
             customer.askAge();
             Console.WriteLine("Please enter your E-mail: ");
             customer.Email = Console.ReadLine();
@@ -80,7 +79,7 @@ namespace cinema
                 }
                 else
                 {
-                    Console.WriteLine("Something went wrong, try again!");
+                    Console.WriteLine("Something went wrong, your input is incorrect try again.");
                 }
             }
         }
