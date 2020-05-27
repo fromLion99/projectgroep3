@@ -185,12 +185,12 @@ namespace cinema
 
             if (currentLogin.CustomerLogin)
             {
-                return customerDetail[id].FirstName + " " + customerDetail[id].Infix + " " + customerDetail[id].LastName;
+                return customerDetail[id].FirstName + " " + customerDetail[id].LastName;
             }
 
             if (currentLogin.EmployeeLogin)
             {
-                return employeeDetail[id].FirstName + " " + employeeDetail[id].Infix + " " + employeeDetail[id].LastName;
+                return employeeDetail[id].FirstName + " " + employeeDetail[id].LastName;
             }
 
             else
