@@ -79,7 +79,7 @@ namespace cinema
                         if(choosenMovieId == movieDetail[choosenMovieId-1].Id)
                         {       
                             beginError1:
-                            Console.WriteLine($"Movie: {movieDetail[choosenMovieId-1].Name}, it will start at {movieDetail[choosenMovieId-1].Time}\n");
+                            Console.WriteLine($"\nMovie: {movieDetail[choosenMovieId-1].Name}, it will start at {movieDetail[choosenMovieId-1].Time}\n");
                             // Information about the movie and customer will be put into a JSON file      
                             reservation.movieId = choosenMovieId;
                             reservation.ticketId = +1;
@@ -92,33 +92,33 @@ namespace cinema
                             reservation.sales = movieDetail[choosenMovieId-1].Price;
 
                             
-                            Console.Write($"You choose the movie {movieDetail[choosenMovieId-1].Name}, Press S to choose your seat or B to choose a different movie: ");
+                            Console.Write($"\nYou choose the movie {movieDetail[choosenMovieId-1].Name}, Press S to choose your seat or B to choose a different movie: ");
                             back = Console.ReadLine();
                             try
                             {
-                                if(back == "b" || back == "B")
+                                if(back.ToUpper() == "B")
                                 {
                                     goto beginning;
                                 }
-                                else if (back == "s" || back == "S")
+                                if(back.ToUpper() == "S")
                                 {        
                                     beginError2:                           
                                     try
                                     {
                                         Console.Write($"\nChoose your row between: A-B-C-D-E, A is the row closest to the screen and E is the furthest away, Row: ");
                                         row = Console.ReadLine();
-                                        if(row == "a" || row == "A" || row == "b" || row == "B" || row == "c" || row == "C" || row == "d" || row == "D" || row == "e" || row == "E") 
+                                        if(row.ToUpper() == "A" || row.ToUpper() == "B" || row.ToUpper() == "C" || row.ToUpper() == "D" || row.ToUpper() == "E") 
                                         {
                                             rowString = row;  
                                             Console.Write($"You have chosen row : {rowString}, are you sure: Y or N?\n");
 
                                             back = Console.ReadLine();
-                                            if(back == "N" || back == "n")
+                                            if(back.ToUpper() == "N")
                                             {
                                                 rowString = "";
                                                 goto beginError2;
                                             }
-                                            else if(back == "Y" || back == "y")
+                                            if(back.ToUpper() == "Y")
                                             {
                                                 beginError3:
                                                 Console.Write($"Please choose how many seats you want, you have to choose atleast 1 and the row has a maximum of 15 seats. Please type 1 - 15: ");
@@ -129,9 +129,8 @@ namespace cinema
                                                     if(chooseAmountSeat <= 15 && chooseAmountSeat > 0)
                                                     {
                                                         beginError4:
-                                                        Console.WriteLine($"You choose : {chooseAmountSeat} seat(s)");
-                                                        Console.Write("Please choose where in the row you want to sit, Please choose between 1-15:");
-                                                          
+                                                        Console.WriteLine($"You choose : {chooseAmountSeat} seat(s)\n");
+                                                        Console.Write("Please choose where in the row you want to sit, Please choose between 1-15:");                                                
                                                         try
                                                         {
                                                             whereRowString = Console.ReadLine();
@@ -154,12 +153,18 @@ namespace cinema
                                                                 File.WriteAllText("reservation.json", resultJson1);
                                                                 Console.WriteLine("\nReservation is succesfully added\n\nYou are now being redirected to the main menu\n\n********************************************************************************\n");
                                                             }
+                                                            {
+                                                                throw new ArgumentException("Invalid argument given");
+                                                            }
                                                         }
                                                         catch
                                                         {
                                                             Console.WriteLine("Error 4: Input not valid try again");
                                                             goto beginError4; 
                                                         }                     
+                                                    }
+                                                    {
+                                                        throw new ArgumentException("Invalid argument given");
                                                     }
                                                 }
                                                 catch
@@ -169,12 +174,18 @@ namespace cinema
                                                 }
                                             }     
                                         }
+                                        {
+                                            throw new ArgumentException("Invalid argument given");
+                                        }
                                     }
                                     catch
                                     {
                                         Console.WriteLine("Error 2: Input not valid try again");
                                         goto beginError2; 
                                     }
+                                }
+                                {
+                                    throw new ArgumentException("Invalid argument given");
                                 }
                             }
                             catch
