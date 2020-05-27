@@ -109,7 +109,7 @@ namespace cinema
 
                 else
                 {
-                    Console.WriteLine("The Email you entered is unknown! Please check for typo's and try again.);
+                    Console.WriteLine("The Email you entered is unknown! Please check for typo's and try again.");
                 }
             }
             catch{
