@@ -48,7 +48,7 @@ namespace cinema
             if(subscription == "Y" || subscription == "y")
             {
                 cinema.Subscription.viewSubscription();
-                Console.WriteLine("Enter the ID of the subscription you want to sign up for: ");
+                Console.WriteLine("Please enter the ID of the subscription you want to sign up for: ");
                 valSubscription = Console.ReadLine();
                 idSubscription = Convert.ToInt32(valSubscription);
                 customer.subscriptionId = idSubscription;
