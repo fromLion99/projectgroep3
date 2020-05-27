@@ -113,6 +113,7 @@ namespace cinema
                     goto startCustomer;
                 case "C": case "c":
                     //Cancel a reservation
+                    Console.WriteLine("\nFunction coming soon ;) for now you can only cancel at the servicedesk in Zienema, 15 minutes before the start of the movie\n");
                     goto startCustomer;
                 case "S": case "s":
                     Search.searchMovie();
@@ -408,5 +409,6 @@ namespace cinema
                 Environment.Exit(0);
             }
         }
-    }   
-}      
+    }         
+}
+
