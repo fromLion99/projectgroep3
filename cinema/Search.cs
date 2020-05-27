@@ -22,7 +22,7 @@ namespace cinema
             
             begin:
 
-            Console.WriteLine("Input a genre, room or movie.");
+            Console.WriteLine("Input a genre, room number, or movie.");
             input1 = Console.ReadLine();
 
             switch (input1)
@@ -61,7 +61,7 @@ namespace cinema
             if(int.TryParse(input1,out value))
             {
                 inputint = Convert.ToInt32(input1);
-                Console.WriteLine($"The movies played in Room {input1} are:");
+                Console.WriteLine($"The movies played in room {input1} are:");
                 for(int i = 0;i<movieDetail.Count;i++)
                 {
                     if(movieDetail[i].Room == inputint)
@@ -74,7 +74,7 @@ namespace cinema
 
             if(!found)
             {
-                Console.WriteLine("Wrong input, try again.");
+                Console.WriteLine("Wrong input, please try again.");
                 goto begin;
             }
             if(found3){
@@ -92,7 +92,7 @@ namespace cinema
 
                 if(!int.TryParse(pressedkey, out value))
                 {
-                    System.Console.WriteLine("Wrong input,try again");
+                    System.Console.WriteLine("Wrong input, please try again");
                     goto begin2;
                 }
 
@@ -102,15 +102,15 @@ namespace cinema
                 {
                     if(movieDetail[k].Id == inputId)
                     {
-                        Console.WriteLine($"{movieDetail[k].Description}\nThe movie start at {movieDetail[k].Time} on {movieDetail[k].Date}");
-                        Console.WriteLine($"Type R to make a reservation for {movieDetail[k].Name} or press T to pick another movie.");
+                        Console.WriteLine($"{movieDetail[k].Description}\nThe movie starts at {movieDetail[k].Time} on {movieDetail[k].Date}");
+                        Console.WriteLine($"Type R to make a reservation for {movieDetail[k].Name}, or press T to pick another movie.");
                         found2 = true;
                     }
                 }
 
                 if(!found2)
                 {
-                    System.Console.WriteLine("ID not found, try again");
+                    System.Console.WriteLine("ID not found, please try again");
                     goto begin2;
                 }
 
