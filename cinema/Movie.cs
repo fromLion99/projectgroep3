@@ -36,17 +36,17 @@ namespace cinema
             var item = movieDetail[movieDetail.Count -1];
             var newId = item.Id+1;
             movie.Id = newId;
-            Console.WriteLine("Enter a movie name: ");
+            Console.WriteLine("Please enter a movie name: ");
             movie.Name = Console.ReadLine();
-            Console.WriteLine("Enter the genre of the movie: ");
+            Console.WriteLine("Please enter the genre of the movie: ");
             movie.Genre = Console.ReadLine();
-            Console.WriteLine("Enter a movie description: ");
+            Console.WriteLine("Please enter a movie description: ");
             movie.Description = Console.ReadLine();
-            Console.WriteLine("Enter the start time of the movie (string, HH:MM hour): ");
+            Console.WriteLine("Please enter the start time of the movie (string, HH:MM hour): ");
             movie.Time = Console.ReadLine();
-            Console.WriteLine("Enter the date of the movie (string, D M Y): ");
+            Console.WriteLine("Please enter the date of the movie (string, D M Y): ");
             movie.Date = Console.ReadLine();
-            Console.WriteLine("Enter the room of the movie: ");
+            Console.WriteLine("Please enter the room of the movie: ");
             valRoom = Console.ReadLine();
             room = Convert.ToInt32(valRoom);
             movie.Room = room;
@@ -76,7 +76,7 @@ namespace cinema
                 movie.ThreeD = false;
             }
 
-            Console.WriteLine("Enter the price for the movie: ");
+            Console.WriteLine("Please enter the price for the movie: ");
             valPrice = Console.ReadLine();
             replace = valPrice.Replace(".",",");
             priceDouble = Convert.ToDouble(replace);
@@ -156,7 +156,7 @@ namespace cinema
             }
             
             Movie movie = new Movie();
-            Console.WriteLine("Enter the movie ID of the movie you want to edit: ");
+            Console.WriteLine("Please enter the movie ID of the movie you want to edit: ");
             movieId = Console.ReadLine();
 
             idMovie = Convert.ToInt32(movieId);
@@ -191,17 +191,17 @@ namespace cinema
             Console.WriteLine("3D: " + threeD + " IMAX: " + imax);
             Console.WriteLine("\n===================================================================================\n");
 
-            Console.WriteLine("Enter the new name of the movie: ");
+            Console.WriteLine("Please enter the new name of the movie: ");
             searchedMovie.Name = Console.ReadLine();
-            Console.WriteLine("Enter a new Genre of the movie: ");
+            Console.WriteLine("Please enter a new Genre of the movie: ");
             searchedMovie.Genre = Console.ReadLine();
-            Console.WriteLine("Enter a new description for the movie: ");
+            Console.WriteLine("Please enter a new description for the movie: ");
             searchedMovie.Description = Console.ReadLine();
-            Console.WriteLine("Enter a new date for the movie: ");
+            Console.WriteLine("Please enter a new date for the movie: ");
             searchedMovie.Date = Console.ReadLine();
-            Console.WriteLine("Enter a new time for the movie: ");
+            Console.WriteLine("Please enter a new time for the movie: ");
             searchedMovie.Time = Console.ReadLine();
-            Console.WriteLine("Enter a new room for the movie: ");
+            Console.WriteLine("Please enter a new room for the movie: ");
             valRoom = Console.ReadLine();
             room = Convert.ToInt32(valRoom);
             searchedMovie.Room = room;
@@ -231,7 +231,7 @@ namespace cinema
                 searchedMovie.ThreeD = false;
             }
 
-            Console.WriteLine("Enter the price for the movie: ");
+            Console.WriteLine("Please enter the price for the movie: ");
             valPrice = Console.ReadLine();
             replace = valPrice.Replace(".",",");
             priceDouble = Convert.ToDouble(replace);
@@ -262,7 +262,7 @@ namespace cinema
                 Console.WriteLine("\n===================================================================================\n");
             }
 
-            Console.WriteLine("Enter the ID of the movie that you want to delete: ");
+            Console.WriteLine("Please enter the ID of the movie that you want to delete: ");
             valId = Console.ReadLine();
             id = Convert.ToInt32(valId);
             movieDetail.Remove(movieDetail.FirstOrDefault(m=>m.Id==id));
