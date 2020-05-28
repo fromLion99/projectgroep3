@@ -6,7 +6,9 @@ namespace cinema
     {
         static void Main()
         {
+            Console.BackgroundColor = ConsoleColor.Black;
             //This functions checks if there is someone logedin and executes the program
+            
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
 
@@ -32,23 +34,25 @@ namespace cinema
         }
 
         public static void startScreen()
+        
         {
             //This function displays the start screen of the program
+            Console.ForegroundColor = ConsoleColor.Yellow;
             var arr = new[]
                       {
-                              @"*********************************************************************************************************************************************************",
-                              @"*   __      __        _                              _             ____  _                                                                              *",
-                              @"*   \ \    / /  ___  | |  __   ___   _ __    ___    | |_   ___    |_  / (_)  ___   _ _    ___   _ __    __ _                                            *",
-                              @"*    \ \/\/ /  / -_) | | / _| / _ \ | '  \  / -_)   |  _| / _ \    / /  | | / -_) | ' \  / -_) | '  \  / _` |                                           *", 
-                              @"*     \_/\_/   \___| |_| \__| \___/ |_|_|_| \___|    \__| \___/   /___| |_| \___| |_||_| \___| |_|_|_| \__,_|                                           *", 
-                              @"*                                                                                                                                                       *", 
-                              @"*    _                                                            _                                    __                            _                  *",
-                              @"*   /_\    _ __    ___ __      __   ___ __  __ _ __    ___  _ __ (_)  ___  _ __    ___   ___    ___   / _|  _ __ ___    ___  __   __(_)  ___  ___       *",
-                              @"*  //_\\  | '_ \  / _ \\ \ /\ / /  / _ \\ \/ /| '_ \  / _ \| '__|| | / _ \| '_ \  / __| / _ \  / _ \ | |_  | '_ ` _ \  / _ \ \ \ / /| | / _ \/ __|      *",
-                              @"* /  _  \ | | | ||  __/ \ V  V /  |  __/ >  < | |_) ||  __/| |   | ||  __/| | | || (__ |  __/ | (_) ||  _| | | | | | || (_) | \ V / | ||  __/\__ \      *",
-                              @"* \_/ \_/ |_| |_| \___|  \_/\_/    \___|/_/\_\| .__/  \___||_|   |_| \___||_| |_| \___| \___|  \___/ |_|   |_| |_| |_| \___/   \_/  |_| \___||___/      *",
-                              @"*                                             |_|                                                                                                       *",
-                              @"*********************************************************************************************************************************************************",
+                              @"********************************************************************************************************************************************************",
+                              @"*   __      __        _                              _             ____  _                                                                             *",
+                              @"*   \ \    / /  ___  | |  __   ___   _ __    ___    | |_   ___    |_  / (_)  ___   _ _    ___   _ __    __ _                                           *",
+                              @"*    \ \/\/ /  / -_) | | / _| / _ \ | '  \  / -_)   |  _| / _ \    / /  | | / -_) | ' \  / -_) | '  \  / _` |                                          *", 
+                              @"*     \_/\_/   \___| |_| \__| \___/ |_|_|_| \___|    \__| \___/   /___| |_| \___| |_||_| \___| |_|_|_| \__,_|                                          *", 
+                              @"*                                                                                                                                                      *", 
+                              @"*     _                                                            _                                    __                            _                *",
+                              @"*    /_\    _ __    ___ __      __   ___ __  __ _ __    ___  _ __ (_)  ___  _ __    ___   ___    ___   / _|  _ __ ___    ___  __   __(_)  ___  ___     *",
+                              @"*   //_\\  | '_ \  / _ \\ \ /\ / /  / _ \\ \/ /| '_ \  / _ \| '__|| | / _ \| '_ \  / __| / _ \  / _ \ | |_  | '_ ` _ \  / _ \ \ \ / /| | / _ \/ __|    *",
+                              @"*  /  _  \ | | | ||  __/ \ V  V /  |  __/ >  < | |_) ||  __/| |   | ||  __/| | | || (__ |  __/ | (_) ||  _| | | | | | || (_) | \ V / | ||  __/\__ \    *",
+                              @"*  \_/ \_/ |_| |_| \___|  \_/\_/    \___|/_/\_\| .__/  \___||_|   |_| \___||_| |_| \___| \___|  \___/ |_|   |_| |_| |_| \___/   \_/  |_| \___||___/    *",
+                              @"*                                              |_|                                                                                                     *",
+                              @"********************************************************************************************************************************************************",
                                         
                                          
 
@@ -62,8 +66,19 @@ namespace cinema
         {
             //This function executes the part of the program for the guest users
             string guestAction = "";
-
-            Console.WriteLine("\nDo you want to create an account enter C\n\nDo you want to login enter L\n\nDo you want to login as Employee press E\n\nDo you want to see all movies press M\n\nDo you want to search through the movies press S\n\nDo you want to close the program press Q\n");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\n\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nTo see all movies press M\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\nTo make an reservation press R\n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nTo login press L\n");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\nTo search through the movies press S\n");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\nTo close the program press Q\n");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             guestAction = Console.ReadLine();
 
             Console.Clear();
@@ -76,8 +91,8 @@ namespace cinema
                 case "L": case "l":
                     Login.signIn();
                     break;
-                case "E": case "e":
-                    Login.signinEmployee();
+                case "R": case "r":
+                    Reservation.addReservation();
                     break;
                 case "M": case "m":
                     Movie.viewMovie();
@@ -102,6 +117,7 @@ namespace cinema
             customerAction = Console.ReadLine();
 
             Console.Clear();
+            
 
             switch (customerAction)
             {

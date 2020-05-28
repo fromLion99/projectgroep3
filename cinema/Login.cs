@@ -25,8 +25,12 @@ namespace cinema
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
-            beginLogin:
-            Console.WriteLine("Please enter Your E-mail: ");
+            // Console.WriteLine("To create an account press C,to login press L");
+            // email = Console.ReadLine();
+            // if()
+            beginLogin:          
+            Console.WriteLine("Please enter your E-mail: ");
+
             email = Console.ReadLine();
             
             var customer = customerDetail.FirstOrDefault(c => c.Email == email);
