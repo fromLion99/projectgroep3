@@ -30,6 +30,7 @@ namespace cinema
             // if()
             beginLogin:          
             Console.WriteLine("Please enter your E-mail: ");
+
             email = Console.ReadLine();
             
             var customer = customerDetail.FirstOrDefault(c => c.Email == email);
@@ -37,7 +38,7 @@ namespace cinema
             try{
                 if(customer.Email == email)
                 {
-                    Console.WriteLine("Please enter your password: ");
+                    Console.WriteLine("Please enter Your password: ");
                     password = Console.ReadLine();
 
                     if(customer.Password == password)
@@ -54,17 +55,17 @@ namespace cinema
 
                     else
                     {
-                        Console.WriteLine("Password is incorrect!");
+                        Console.WriteLine("The password You entered is incorrect! Please try again.");
                     }
                 }
 
                 else
                 {
-                    Console.WriteLine("Unknown username!");
+                    Console.WriteLine("This username is unknown! Please check for typo's or create an account.");
                 }
             }
             catch{
-                Console.WriteLine("Unkown E-mail! Check your e-mail on typo's or create an account.");
+                Console.WriteLine("This E-mail is unknown! Please check for typo's or create an account.");
                 goto beginLogin;
             }
         }
@@ -106,17 +107,17 @@ namespace cinema
 
                     else
                     {
-                        Console.WriteLine("Password incorrect!");
+                        Console.WriteLine("The password you entered is incorrect! Please check for typo's and try again.");
                     }
                 }
 
                 else
                 {
-                    Console.WriteLine("Unknown Email!");
+                    Console.WriteLine("The Email you entered is unknown! Please check for typo's and try again.");
                 }
             }
             catch{
-                Console.WriteLine("Unknown Email!");
+                Console.WriteLine("The Email you entered is unknown! Please check for typo's and try again.");
                 goto beginLogin;
             }
         }
@@ -188,12 +189,12 @@ namespace cinema
 
             if (currentLogin.CustomerLogin)
             {
-                return customerDetail[id].FirstName + " " + customerDetail[id].Infix + " " + customerDetail[id].LastName;
+                return customerDetail[id].FirstName + " " + customerDetail[id].LastName;
             }
 
             if (currentLogin.EmployeeLogin)
             {
-                return employeeDetail[id].FirstName + " " + employeeDetail[id].Infix + " " + employeeDetail[id].LastName;
+                return employeeDetail[id].FirstName + " " + employeeDetail[id].LastName;
             }
 
             else

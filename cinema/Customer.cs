@@ -11,7 +11,6 @@ namespace cinema
         //Properties Customer
         public int Id {get; set;}
         public string FirstName {get; set;}
-        public string Infix {get; set;}
         public string LastName {get; set;}
         public string Email {get; set;}
         public int Age {get; set;}
@@ -33,8 +32,6 @@ namespace cinema
             customer.Id = newId;
             Console.WriteLine("Please enter your first name: ");
             customer.FirstName = Console.ReadLine();
-            Console.WriteLine("Please enter your infix (if you don't have one, please leave this blank): ");
-            customer.Infix = Console.ReadLine();
             Console.WriteLine("Please enter your last name: ");
             customer.LastName = Console.ReadLine();
             customer.askAge();
@@ -42,7 +39,7 @@ namespace cinema
             customer.Email = Console.ReadLine();
             Console.WriteLine("Please enter your password: ");
             customer.Password = Console.ReadLine();
-            Console.WriteLine("Would you like to have a monthly subscription to watch your favorite and upcoming movies at a discount? Yes: Y or No: N");
+            Console.WriteLine("We're currently Would you like to have a monthly subscription to watch your favorite and upcoming movies at a discount? Yes: Y or No: N");
             subscription = Console.ReadLine();
 
             if(subscription == "Y" || subscription == "y")
@@ -87,22 +84,14 @@ namespace cinema
         public static void viewCustomer()
         {
             //This function displays all the customers on the screen
-            string valInfix = "";
 
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
             for(int i = 0; i < customerDetail.Count; i++ )
             {
-                valInfix = customerDetail[i].Infix;
                 Console.WriteLine("Customer ID: " + customerDetail[i].Id );
                 Console.WriteLine("First name: " + customerDetail[i].FirstName);
-
-                if(valInfix != "")
-                {
-                    Console.WriteLine("Infix: "+ customerDetail[i].Infix);
-                }
-
                 Console.WriteLine("Last name: " +customerDetail[i].LastName);
                 Console.WriteLine("Age: " + customerDetail[i].Age);
                 Console.WriteLine("Email: " + customerDetail[i].Email);
@@ -130,22 +119,15 @@ namespace cinema
         {
             //This function can edit a customer
             int id = 0;
-            string valInfix , valId, theAge = "";
+            string valId, theAge = "";
 
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
             for(int i = 0; i < customerDetail.Count; i++ )
             {
-                valInfix = customerDetail[i].Infix;
                 Console.WriteLine("Customer ID: " + customerDetail[i].Id );
                 Console.WriteLine("First name: " + customerDetail[i].FirstName);
-
-                if(valInfix != "")
-                {
-                    Console.WriteLine("Infix: "+ customerDetail[i].Infix);
-                }
-
                 Console.WriteLine("Last name: " + customerDetail[i].LastName);
             }
 
@@ -156,8 +138,6 @@ namespace cinema
             var searchCustomer = customerDetail.FirstOrDefault(c => c.Id == id);
             Console.WriteLine("Please enter your first name: ");
             customer.FirstName = Console.ReadLine();
-            Console.WriteLine("Please enter your infix (if you don't have one, please leave this blank): ");
-            customer.Infix = Console.ReadLine();
             Console.WriteLine("Please enter your last name: ");
             customer.LastName = Console.ReadLine();
             Console.WriteLine("Please enter your age: ");
@@ -178,22 +158,15 @@ namespace cinema
         {
             //This function can remove a customer from the JSON
             int id = 0;
-            string valInfix, valId = "";
+            string valId = "";
 
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
             for(int i = 0; i < customerDetail.Count; i++ )
             {
-                valInfix = customerDetail[i].Infix;
                 Console.WriteLine("Customer ID: " + customerDetail[i].Id );
                 Console.WriteLine("First name: " + customerDetail[i].FirstName);
-
-                if(valInfix != "")
-                {
-                    Console.WriteLine("Infix: "+ customerDetail[i].Infix);
-                }
-
                 Console.WriteLine("Last name: " + customerDetail[i].LastName);
             }
             

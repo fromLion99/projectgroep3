@@ -11,7 +11,6 @@ namespace cinema
         //Properties Employee
         public int Id {get; set;}
         public string FirstName {get; set;}
-        public string Infix {get; set;}
         public string LastName {get; set;}
         public string Email {get; set;}
         public string Password {get; set;}
@@ -28,8 +27,6 @@ namespace cinema
             employee.Id = newId;
             Console.WriteLine("Please enter your first name here: ");
             employee.FirstName = Console.ReadLine();
-            Console.WriteLine("Please enter your infix here (if you don't have one, please leave this blank): ");
-            employee.Infix = Console.ReadLine();
             Console.WriteLine("Please enter your last name here: ");
             employee.LastName = Console.ReadLine();
             Console.WriteLine("Please enter your E-mail here: ");
@@ -47,22 +44,14 @@ namespace cinema
         public static void viewEmployee()
         {
             //This function displays all the employees
-            string valInfix = "";
 
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
 
             for(int i = 0; i < employeeDetail.Count; i++ )
             {
-                valInfix = employeeDetail[i].Infix;
                 Console.WriteLine("Employee ID: " + employeeDetail[i].Id );
                 Console.WriteLine("First name: " + employeeDetail[i].FirstName);
-
-                if(valInfix != "")
-                {
-                    Console.WriteLine("Infix: " + employeeDetail[i].Infix);
-                }
-
                 Console.WriteLine("Last name: " + employeeDetail[i].LastName);
                 Console.WriteLine("Email: " + employeeDetail[i].Email);
                 Console.WriteLine("\n===================================================================================\n");
@@ -73,22 +62,15 @@ namespace cinema
         {
             //This function edit an employee
             int id = 0;
-            string valInfix , valId = "";
+            string valId = "";
 
             string employeeDetails = File.ReadAllText("employeeDetails.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
 
             for(int i = 0; i < employeeDetail.Count; i++)
             {
-                valInfix = employeeDetail[i].Infix;
                 Console.WriteLine("Employee ID: " + employeeDetail[i].Id);
                 Console.WriteLine("First name: " + employeeDetail[i].FirstName);
-
-                if(valInfix != "")
-                {
-                    Console.WriteLine("Infix: " + employeeDetail[i].Infix);
-                }
-
                 Console.WriteLine("Last name: " + employeeDetail[i].LastName);
             }
 
@@ -99,8 +81,6 @@ namespace cinema
             var searchEmployee = employeeDetail.FirstOrDefault(c => c.Id == id);
             Console.WriteLine("Please enter your first name: ");
             employee.FirstName = Console.ReadLine();
-            Console.WriteLine("Please enter your infix (if you don't have one, please leave this blank): ");
-            employee.Infix = Console.ReadLine();
             Console.WriteLine("Please enter your last name: ");
             employee.LastName = Console.ReadLine();
             Console.WriteLine("Please enter your E-mail: ");
@@ -118,22 +98,15 @@ namespace cinema
         {
             //This function deleted an employee
             int id = 0;
-            string valInfix, valId = "";
+            string valId = "";
 
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
 
             for(int i = 0; i < employeeDetail.Count; i++ )
             {
-                valInfix = employeeDetail[i].Infix;
                 Console.WriteLine("Employee ID: " + employeeDetail[i].Id );
                 Console.WriteLine("First name: " + employeeDetail[i].FirstName);
-
-                if(valInfix != "")
-                {
-                    Console.WriteLine("Infix: "+ employeeDetail[i].Infix);
-                }
-
                 Console.WriteLine("Last name: " + employeeDetail[i].LastName);
             }
 
