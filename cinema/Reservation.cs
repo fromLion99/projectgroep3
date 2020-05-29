@@ -75,6 +75,7 @@ namespace cinema
                     try
                     {
                         choosenMovie = Console.ReadLine();
+                        Console.Clear();
                         choosenMovieId = Convert.ToInt32(choosenMovie);
                         if(choosenMovieId == movieDetail[choosenMovieId-1].Id)
                         {       
@@ -94,6 +95,7 @@ namespace cinema
                             
                             Console.Write($"\nYou choose the movie {movieDetail[choosenMovieId-1].Name}, Press S to choose your seat or B to choose a different movie: ");
                             back = Console.ReadLine();
+                            Console.Clear();
                             try
                             {
                                 if(back.ToUpper() == "B")
@@ -349,7 +351,7 @@ namespace cinema
             
             begin:
 
-            System.Console.WriteLine("Below are past reservations.\nPress the given ID to see more information");
+            System.Console.WriteLine("Below are past reservations.\nPress the given ID to see more informationn\n");
 
             for(int i = 0;i<reservationDetail.Count;i++){
                 if(reservationDetail[i].customer == currentuser){
@@ -362,6 +364,7 @@ namespace cinema
             }
 
             input1 = Console.ReadLine();
+            Console.Clear();
 
             switch (input1)
             {

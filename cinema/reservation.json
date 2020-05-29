@@ -1,1 +1,1 @@
-[{}]
+[{"Id":0,"ticketId":0,"movieId":0,"roomId":0,"customer":null,"customerId":0,"time":null,"date":null,"duration":0,"sales":0,"paid":false,"seatId":0,"row":null,"startseat":0,"amountseats":0},{"Id":1,"ticketId":1,"movieId":7,"roomId":2,"customer":"Niels Krommenhoek","customerId":3,"time":"20:00 hour","date":"19 April 2020","duration":0,"sales":13,"paid":false,"seatId":1,"row":"c","startseat":6,"amountseats":4}]
