@@ -26,7 +26,7 @@ namespace cinema
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
             beginLogin:          
-            Console.WriteLine("Please enter your E-mail: ");
+            Console.WriteLine("\nPlease enter your E-mail: ");
 
             email = Console.ReadLine();
             
@@ -35,7 +35,7 @@ namespace cinema
             try{
                 if(customer.Email == email)
                 {
-                    Console.WriteLine("Please enter Your password: ");
+                    Console.WriteLine("\nPlease enter Your password: ");
                     password = Console.ReadLine();
 
                     if(customer.Password == password)
