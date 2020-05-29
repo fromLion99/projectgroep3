@@ -60,7 +60,7 @@ namespace cinema
 
             string resultJson = JsonSerializer.Serialize<List<Customer>>(customerDetail);
             File.WriteAllText("customers.json", resultJson);
-            Console.WriteLine("Customer added");
+            Console.WriteLine("\nYou've succesfully created an account, Press L to login!");
         }
                 private void askAge()
         {

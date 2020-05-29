@@ -16,13 +16,13 @@ namespace cinema
 
             if (Login.checkCustomerLogin())
             {
-                Console.WriteLine("Welcome " + Login.getLoginName());
+                Console.WriteLine($"\nWelcome {Login.getLoginName()}");
                 customerUser();
             }
 
             if (Login.checkEmployeeLogin())
             {
-                Console.WriteLine("Welcome " + Login.getLoginName());
+                Console.WriteLine($"\nWelcome {Login.getLoginName()}");
                 employeeUser();
             }
 
@@ -66,12 +66,12 @@ namespace cinema
         {
             //This function executes the part of the program for the guest users
             string guestAction = "";
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("\n\n");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\nMain menu\n");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\nTo see all movies press M\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("\nTo make an reservation press R\n");
+            Console.WriteLine("\nTo make a reservation press R\n");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\nTo login press L\n");
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -89,7 +89,7 @@ namespace cinema
                     Customer.addCustomer();
                     break;
                 case "L": case "l":
-                    Login.signIn();
+                    Login.LoginOrCreate();
                     break;
                 case "R": case "r":
                     Reservation.addReservation();
@@ -113,7 +113,19 @@ namespace cinema
 
             startCustomer:
 
-            Console.WriteLine("\nDo you want to see the list of movies? press M\n\nDo you want to make a reservation? press R\n\nDo you want to cancel a reservation? press C\n\nDo you want to search through the movies? press S\n\nFor drinks and snacks press D\n\nIf you want to logout and/or close the program press Q\n");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\nMain menu\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nTo see all movies press M\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\nTo make a reservation press R\n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nTo cancel a reservation press C\n");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\nTo search through the movies press S\n");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\nTo close the program press Q and/or logout\n");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             customerAction = Console.ReadLine();
 
             Console.Clear();
@@ -155,6 +167,7 @@ namespace cinema
             startEmployee:
 
             Console.WriteLine("\nM: manage movies\nR: manage rooms\nE: manage employees\nC: manage customers\nW: manage reservations\nD: manage drinks\nS: manage snacks\nA: manage subscriptions\nQ: logout and/or close the program\n");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             employeeAction = Console.ReadLine();
 
             Console.Clear();
@@ -381,14 +394,14 @@ namespace cinema
                 string login = "";
 
                 signIn:
-                Console.WriteLine("\nDo you want to shut down the system? Yes: Y or NO: N\nIf you only want to sign out enter N\n");
+                Console.WriteLine("\nDo you want to shut down the system? Yes: Y or NO: N\n\nIf you only want to sign out enter N\n");
                 login = Console.ReadLine();
 
                 Console.Clear();
 
                 if(login == "Y" || login == "y")
                 {
-                    Console.WriteLine("Do you want to stay signed in? Yes: Y or NO: N");
+                    Console.WriteLine("\nDo you want to stay signed in? Yes: Y or NO: N");
                     login = Console.ReadLine();
 
                     if(login == "Y" || login == "y")
@@ -400,7 +413,7 @@ namespace cinema
                     else
                     {
                         Login.logOut();
-                        Console.WriteLine("Successfully logout\nSee you again!");
+                        Console.WriteLine("Successfully logged out\nWe hope to see you again next time!");
                         Environment.Exit(0);
                     }
                 }
