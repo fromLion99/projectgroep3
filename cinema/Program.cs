@@ -73,10 +73,10 @@ namespace cinema
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\nTo make a reservation press R\n");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\nTo login press L\n");
-            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\nTo search through the movies press S\n");
             Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\nTo login press L\n");
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\nTo close the program press Q\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             guestAction = Console.ReadLine();
@@ -125,7 +125,7 @@ namespace cinema
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\nTo make a reservation press R\n");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\nTo cancel a reservation press C\n");
+            Console.WriteLine("\nTo view past reservations press V\n");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\nTo search through the movies press S\n");
             Console.ForegroundColor = ConsoleColor.Magenta;
