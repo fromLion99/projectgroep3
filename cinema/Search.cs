@@ -22,7 +22,7 @@ namespace cinema
             
             begin:
 
-            Console.WriteLine("Input a genre, room number, or movie.");
+            Console.WriteLine("Input a genre or room number.\n");
             input1 = Console.ReadLine();
 
             switch (input1)
@@ -32,49 +32,52 @@ namespace cinema
                 break;
             }
             
-            if(!int.TryParse(input1, out value))
-            {
-                for(int j = 0; j < movieDetail.Count; j++)
-                {
-                    if(movieDetail[j].Name == input1)
-                    {
-                        Console.WriteLine($"The Movie {movieDetail[j].Name} will start at {movieDetail[j].Time}\n");
-                        found = true;
-                    }
-                }
-            }
+            // if(!int.TryParse(input1, out value))
+            // {
+            //     for(int j = 0; j < movieDetail.Count; j++)
+            //     {
+            //         if(movieDetail[j].Name == input1)
+            //         {
+            //             Console.WriteLine($"The Movie {movieDetail[j].Name} will start at {movieDetail[j].Time}\n");
+            //             found = true;
+            //         }
+            //     }
+            // }
 
             if(!int.TryParse(input1, out value))
-            {
+            {  
+                Console.Clear();
+                Console.WriteLine($"The movies with Genre {input1} are:\n");
                 for(int i=0;i<movieDetail.Count;i++)
                 {
                     if(movieDetail[i].Genre == input1)
                     {
-                        Console.WriteLine($"The movies with Genre {input1} are:");
-                        Console.WriteLine($"{movieDetail[i].Id}: {movieDetail[i].Name}");
+                        Console.WriteLine($"ID {movieDetail[i].Id}: {movieDetail[i].Name}");
+                        found = true;
+                        found3 = true;
+                    }
+                }
+                //Console.WriteLine("\n");
+            }
+
+            if(int.TryParse(input1,out value))
+            {
+                inputint = Convert.ToInt32(input1);
+                Console.WriteLine($"The movies played in room {input1} are:\n");
+                for(int i = 0;i<movieDetail.Count;i++)
+                {
+                    if(movieDetail[i].Room == inputint)
+                    {
+                        Console.WriteLine($"ID {movieDetail[i].Id}: {movieDetail[i].Name}");
                         found = true;
                         found3 = true;
                     }
                 }
             }
 
-            if(int.TryParse(input1,out value))
-            {
-                inputint = Convert.ToInt32(input1);
-                Console.WriteLine($"The movies played in room {input1} are:");
-                for(int i = 0;i<movieDetail.Count;i++)
-                {
-                    if(movieDetail[i].Room == inputint)
-                    {
-                        Console.WriteLine($"{movieDetail[i].Name}");
-                        found = true;
-                    }
-                }
-            }
-
             if(!found)
             {
-                Console.WriteLine("Wrong input, please try again.");
+                Console.WriteLine("Error, please try again.\n");
                 goto begin;
             }
             if(found3){
@@ -82,6 +85,7 @@ namespace cinema
 
                 Console.WriteLine("Press the given movie id to get more information:");
                 pressedkey = Console.ReadLine();
+                Console.Clear();
 
                 switch (pressedkey)
                 {
@@ -92,7 +96,7 @@ namespace cinema
 
                 if(!int.TryParse(pressedkey, out value))
                 {
-                    System.Console.WriteLine("Wrong input, please try again");
+                    System.Console.WriteLine("Wrong input, please try again\n");
                     goto begin2;
                 }
 
@@ -102,7 +106,7 @@ namespace cinema
                 {
                     if(movieDetail[k].Id == inputId)
                     {
-                        Console.WriteLine($"{movieDetail[k].Description}\nThe movie starts at {movieDetail[k].Time} on {movieDetail[k].Date}");
+                        Console.WriteLine($"{movieDetail[k].Name}\nThe movie starts at {movieDetail[k].Time} on {movieDetail[k].Date}\nTicket price: ${movieDetail[k].Price}\n");
                         Console.WriteLine($"Type R to make a reservation for {movieDetail[k].Name}, or press T to pick another movie.");
                         found2 = true;
                     }
@@ -110,11 +114,12 @@ namespace cinema
 
                 if(!found2)
                 {
-                    System.Console.WriteLine("ID not found, please try again");
+                    System.Console.WriteLine("ID not found, please try again\n");
                     goto begin2;
                 }
 
                 input2 = Console.ReadLine();
+                Console.Clear();
 
                 switch (input2)
                 {
@@ -125,9 +130,9 @@ namespace cinema
                         Reservation.addReservation();
                         break;
                     case "t": case "T":
-                        goto begin2;
+                        goto begin;
                     default:
-                        Console.WriteLine("Unknown command.");
+                        Console.WriteLine("Unknown command.\n");
                         goto begin2;
                 }
             }
