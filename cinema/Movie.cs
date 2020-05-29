@@ -97,6 +97,7 @@ namespace cinema
             //This function displays all movies on the screen from the JSON
             string imax = "";
             string threeD = "";
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);
@@ -123,15 +124,11 @@ namespace cinema
                     threeD = "No";
                 }
 
-                Console.WriteLine("Movie ID: " + movieDetail[i].Id);
-                Console.WriteLine("Movie name: " + movieDetail[i].Name);
-                Console.WriteLine("Movie genre: " + movieDetail[i].Genre);
-                Console.WriteLine("Movie description: " + movieDetail[i].Description);
-                Console.WriteLine("Movie date and time: " + movieDetail[i].Date + " " + movieDetail[i].Time);
-                Console.WriteLine("Movie room: " + movieDetail[i].Room);
-                Console.WriteLine("3D: " + threeD + ", IMAX: " + imax);
-                Console.WriteLine("Costs movie: " + movieDetail[i].Price);
-                Console.WriteLine("Recommended minimum age of the viewers: " + movieDetail[i].RecommendedAge);
+                Console.WriteLine($"ID: {movieDetail[i].Id} || Name: {movieDetail[i].Name}");
+                Console.WriteLine($"Description: {movieDetail[i].Description} || 3D: {threeD} - IMAX: {imax} || genre: {movieDetail[i].Genre}");
+                Console.WriteLine("Date and time: " + movieDetail[i].Date + " " + movieDetail[i].Time);
+                Console.WriteLine($"Price ticket: €{movieDetail[i].Price}");
+                Console.WriteLine("Recommended minimum age: " + movieDetail[i].RecommendedAge);
                 Console.WriteLine("\n===================================================================================\n");
             }
         }
@@ -257,8 +254,8 @@ namespace cinema
 
             for(int i = 0; i < movieDetail.Count; i++)
             {
-                Console.WriteLine("Movie ID: " + movieDetail[i].Id);
-                Console.WriteLine("Movie name: " + movieDetail[i].Name);
+                Console.WriteLine($"Movie ID: {movieDetail[i].Id}");
+                Console.WriteLine($"Movie name: {movieDetail[i].Name}");
                 Console.WriteLine("\n===================================================================================\n");
             }
 

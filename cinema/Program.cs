@@ -89,18 +89,23 @@ namespace cinema
                     Customer.addCustomer();
                     break;
                 case "L": case "l":
+                    Console.ForegroundColor = ConsoleColor.Green;   
                     Login.LoginOrCreate();
                     break;
                 case "R": case "r":
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Reservation.addReservation();
                     break;
                 case "M": case "m":
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Movie.viewMovie();
                     break;
                 case "S": case "s":
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Search.searchMovie();
                     break;
                 case "Q": case "q":
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     shutDown();
                     break;
             }
@@ -134,16 +139,20 @@ namespace cinema
             switch (customerAction)
             {
                 case "M": case "m":
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Movie.viewMovie();
                     goto startCustomer;
                 case "R": case "r":
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Reservation.addReservation();
                     goto startCustomer;
                 case "C": case "c":
                     //Cancel a reservation
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\nFunction coming soon ;) for now you can only cancel at the servicedesk in Zienema, 15 minutes before the start of the movie\n");
                     goto startCustomer;
                 case "S": case "s":
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Search.searchMovie();
                     goto startCustomer;
                 case "D": case "d":
@@ -151,6 +160,7 @@ namespace cinema
                     Snack.viewSnack();
                     goto startCustomer;
                 case "Q": case "q":
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     shutDown();
                     break;
                 default:

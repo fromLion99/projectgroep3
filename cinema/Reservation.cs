@@ -61,7 +61,7 @@ namespace cinema
             if(!cinema.Login.checkCustomerLogin()) 
             {
                 Console.WriteLine("To make a reservation you have to be logged in.");
-                cinema.Login.signIn();
+                cinema.Login.LoginOrCreate();
                 goto beginning;
             }
             try
@@ -142,8 +142,8 @@ namespace cinema
                                                                     whereRow = whereRow - 1; 
                                                                 }
                                                                 Console.Clear();
-                                                                Console.Write($"\nYou have chosen to sit at row {rowString} - the amount of seats is {chooseAmountSeat} - the placement in the row is {whereRow}.\n");
-                                                                reservation.row = rowString;
+                                                                Console.Write($"\nYou have chosen to sit at row {rowString.ToUpper()} - the amount of seats is {chooseAmountSeat} - the placement in the row is {whereRow}.\n");
+                                                                reservation.row = rowString.ToUpper();
                                                                 reservation.startseat = whereRow;
                                                                 reservation.amountseats = chooseAmountSeat;
                                                                 reservation.customer =  Login.getLoginName();
@@ -152,6 +152,7 @@ namespace cinema
                                                                 string resultJson1 = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
                                                                 File.WriteAllText("reservation.json", resultJson1);
                                                                 Console.WriteLine("\nReservation is succesfully added\n\nYou are now being redirected to the main menu\n\n********************************************************************************\n");
+                                                                return;
                                                             }
                                                             {
                                                                 throw new ArgumentException("Invalid argument given");
