@@ -120,7 +120,7 @@ namespace cinema
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\nTo make a reservation press R\n");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\nTo cancel a reservation press C\n");
+            Console.WriteLine("\nTo view past reservations press V\n");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\nTo search through the movies press S\n");
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -139,9 +139,9 @@ namespace cinema
                 case "R": case "r":
                     Reservation.addReservation();
                     goto startCustomer;
-                case "C": case "c":
-                    //Cancel a reservation
-                    Console.WriteLine("\nFunction coming soon ;) for now you can only cancel at the servicedesk in Zienema, 15 minutes before the start of the movie\n");
+                case "v": case "V":
+                    Reservation.ViewReservation();
+                    //Console.WriteLine("\nFunction coming soon ;) for now you can only cancel at the servicedesk in Zienema, 15 minutes before the start of the movie\n");
                     goto startCustomer;
                 case "S": case "s":
                     Search.searchMovie();

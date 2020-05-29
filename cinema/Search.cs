@@ -47,7 +47,7 @@ namespace cinema
             if(!int.TryParse(input1, out value))
             {  
                 Console.Clear();
-                Console.WriteLine($"The movies with Genre {input1} are:\n");
+                Console.WriteLine($"\nThe movies with Genre {input1} are:\n");
                 for(int i=0;i<movieDetail.Count;i++)
                 {
                     if(movieDetail[i].Genre == input1)
@@ -63,7 +63,7 @@ namespace cinema
             if(int.TryParse(input1,out value))
             {
                 inputint = Convert.ToInt32(input1);
-                Console.WriteLine($"The movies played in room {input1} are:\n");
+                Console.WriteLine($"\nThe movies played in room {input1} are:\n");
                 for(int i = 0;i<movieDetail.Count;i++)
                 {
                     if(movieDetail[i].Room == inputint)
@@ -77,7 +77,7 @@ namespace cinema
 
             if(!found)
             {
-                Console.WriteLine("Error, please try again.\n");
+                Console.WriteLine("\nError, please try again.\n");
                 goto begin;
             }
             if(found3){
@@ -96,7 +96,7 @@ namespace cinema
 
                 if(!int.TryParse(pressedkey, out value))
                 {
-                    System.Console.WriteLine("Wrong input, please try again\n");
+                    System.Console.WriteLine("\nWrong input, please try again\n");
                     goto begin2;
                 }
 
@@ -106,15 +106,15 @@ namespace cinema
                 {
                     if(movieDetail[k].Id == inputId)
                     {
-                        Console.WriteLine($"{movieDetail[k].Name}\nThe movie starts at {movieDetail[k].Time} on {movieDetail[k].Date}\nTicket price: ${movieDetail[k].Price}\n");
-                        Console.WriteLine($"Type R to make a reservation for {movieDetail[k].Name}, or press T to pick another movie.");
+                        Console.WriteLine($"\n{movieDetail[k].Name}\nThe movie starts at {movieDetail[k].Time} on {movieDetail[k].Date}\nTicket price: ${movieDetail[k].Price}\n");
+                        Console.WriteLine($"\nType R to make a reservation for {movieDetail[k].Name}, or press T to pick another movie.");
                         found2 = true;
                     }
                 }
 
                 if(!found2)
                 {
-                    System.Console.WriteLine("ID not found, please try again\n");
+                    System.Console.WriteLine("\nID not found, please try again\n");
                     goto begin2;
                 }
 
@@ -132,7 +132,7 @@ namespace cinema
                     case "t": case "T":
                         goto begin;
                     default:
-                        Console.WriteLine("Unknown command.\n");
+                        Console.WriteLine("\nUnknown command.\n");
                         goto begin2;
                 }
             }
