@@ -25,9 +25,6 @@ namespace cinema
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
-            // Console.WriteLine("To create an account press C,to login press L");
-            // email = Console.ReadLine();
-            // if()
             beginLogin:          
             Console.WriteLine("Please enter your E-mail: ");
 
@@ -49,6 +46,7 @@ namespace cinema
 
                         string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
                         File.WriteAllText("Login.json", Resultjson);
+                        Console.Clear();
 
                         Console.WriteLine("Login successful!");
                     }
@@ -67,6 +65,20 @@ namespace cinema
             catch{
                 Console.WriteLine("This E-mail is unknown! Please check for typo's or create an account.");
                 goto beginLogin;
+            }
+        }
+        public static void LoginOrCreate()
+        {
+            Console.Write("\nTo login press L\n\nTo create an account press C\n");
+            string loginAction = Console.ReadLine();
+
+            if(loginAction.ToUpper() == "L")
+            {
+                Login.signIn();
+            }
+            if(loginAction.ToUpper() == "C")
+            {
+                Customer.addCustomer();
             }
         }
 
@@ -101,8 +113,11 @@ namespace cinema
 
                         string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
                         File.WriteAllText("Login.json", Resultjson);
+                        Console.Clear();
 
                         Console.WriteLine("Login successful!");
+                        Login.getLoginName();
+
                     }
 
                     else
@@ -185,7 +200,7 @@ namespace cinema
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
 
-            id = currentLogin.UserId -1;
+            id = currentLogin.UserId;
 
             if (currentLogin.CustomerLogin)
             {
