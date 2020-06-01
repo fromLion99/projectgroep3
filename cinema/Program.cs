@@ -11,6 +11,7 @@ namespace cinema
             
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
+            
 
             begin:
 
