@@ -331,9 +331,10 @@ namespace cinema
         public static void ViewReservation(){
 
             // Variables
-            string currentuser, input1;
+            string currentuser, input1, input2;
             int value, movieid;
             double totalPrice;
+            bool found = false;
 
             // JSON
             string reservationsDetails = File.ReadAllText("reservation.json");
@@ -352,42 +353,75 @@ namespace cinema
             
             begin:
 
-            System.Console.WriteLine("Below are past reservations.\nPress the given ID to see more informationn\n");
+            //System.Console.WriteLine("Below are past reservations.\n");
 
             for(int i = 0;i<reservationDetail.Count;i++){
                 if(reservationDetail[i].customer == currentuser){
                     for(int j = 0;j<movieDetail.Count;j++){
                         if(movieDetail[j].Id == reservationDetail[i].movieId){
                             Console.WriteLine($"ID {movieDetail[j].Id}: {movieDetail[j].Name}");
+                            found = true;
                         }
                     }
                 }
             }
 
-            input1 = Console.ReadLine();
-            Console.Clear();
+            if(found){
+                Console.WriteLine("\nPress the given movie ID to see more details.\n");
 
-            switch (input1)
-            {
-                case "Q": case "q":
-                Program.shutDown();
-                break;
-            }
+                input1 = Console.ReadLine();
+                Console.Clear();
 
-            if(!int.TryParse(input1, out value))
-            {
-                Console.WriteLine("Movie ID not found, please try again:");
-                goto begin;
-            }
+                switch (input1)
+                {
+                    case "Q": case "q":
+                    Program.shutDown();
+                    break;
+                }
 
-            movieid = Convert.ToInt32(input1);
+                if(!int.TryParse(input1, out value))
+                {
+                    Console.WriteLine("Movie ID not found, please try again:");
+                    goto begin;
+                }
 
-             for(int i = 0; i<reservationDetail.Count;i++){
-                if(reservationDetail[i].movieId == movieid && reservationDetail[i].customer == currentuser){
-                    totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].amountseats;
-                    Console.WriteLine($"Name movie: {movieDetail[movieid-1].Name}\nDate and Time: {movieDetail[movieid-1].Date}, {movieDetail[movieid-1].Time}\nRoom: {movieDetail[movieid-1].Room}\nAmount of seats: {reservationDetail[i].amountseats}\nTotal price paid: {totalPrice} dollars");
+                movieid = Convert.ToInt32(input1);
+
+                for(int i = 0; i<reservationDetail.Count;i++){
+                    if(reservationDetail[i].movieId == movieid && reservationDetail[i].customer == currentuser){
+                        totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].amountseats;
+                        Console.WriteLine($"Name movie: {movieDetail[movieid-1].Name}\nDate and Time: {movieDetail[movieid-1].Date}, {movieDetail[movieid-1].Time}\nRoom: {movieDetail[movieid-1].Room}\nAmount of seats: {reservationDetail[i].amountseats}\nTotal price paid: {totalPrice} dollars");
+                    }
                 }
             }
+
+            else{
+                Console.WriteLine("There are no past reservations.\n\nTo make a reservation press R\n\nTo go back to menu press B\n\n");
+                begin2:
+                input2 = Console.ReadLine();
+
+                switch (input2)
+                {
+                    case "r": case "R":
+                        Reservation.addReservation();
+                        break;
+                    case "b": case "B":
+                        break;
+                    default:
+                        System.Console.WriteLine("\nError, try again.\n");
+                        goto begin2;
+                }
+
+                if(int.TryParse(input2, out value))
+                {
+                    Console.WriteLine("\nError, try again\n");
+                    goto begin2;
+                }
+
+            }
+
+            Console.Clear();
         }
+
     }
 }
