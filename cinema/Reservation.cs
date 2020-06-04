@@ -23,6 +23,7 @@ namespace cinema
         public string row {get; set;}
         public int startseat {get; set;}
         public int amountseats {get; set;}
+        public string currenttime { get; set; }
         
         
         public static void addReservation()
@@ -75,11 +76,11 @@ namespace cinema
                     try
                     {
                         choosenMovie = Console.ReadLine();
-                        Console.Clear();
                         choosenMovieId = Convert.ToInt32(choosenMovie);
                         if(choosenMovieId == movieDetail[choosenMovieId-1].Id)
                         {       
                             beginError1:
+                            Console.Clear();
                             Console.WriteLine($"\nMovie: {movieDetail[choosenMovieId-1].Name}, it will start at {movieDetail[choosenMovieId-1].Time}\n");
                             // Information about the movie and customer will be put into a JSON file      
                             reservation.movieId = choosenMovieId;
@@ -91,6 +92,8 @@ namespace cinema
                             reservation.date = movieDetail[choosenMovieId-1].Date;
                             reservation.duration = 0;
                             reservation.sales = movieDetail[choosenMovieId-1].Price;
+                            reservation.currenttime = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+                              
 
                             
                             Console.Write($"\nYou choose the movie {movieDetail[choosenMovieId-1].Name}, Press S to choose your seat or B to choose a different movie: ");
@@ -390,8 +393,8 @@ namespace cinema
                 for(int i = 0; i<reservationDetail.Count;i++){
                     if(reservationDetail[i].movieId == movieid && reservationDetail[i].customer == currentuser){
                         totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].amountseats;
-                        Console.WriteLine($"Name movie: {movieDetail[movieid-1].Name}\nDate and Time: {movieDetail[movieid-1].Date}, {movieDetail[movieid-1].Time}\nRoom: {movieDetail[movieid-1].Room}\nAmount of seats: {reservationDetail[i].amountseats}\nTotal price paid: {totalPrice} dollars");
-                    }
+                        Console.WriteLine($"Name movie: {movieDetail[movieid-1].Name}\nDate and Time: {movieDetail[movieid-1].Date}, {movieDetail[movieid-1].Time}\nRoom: {movieDetail[movieid-1].Room}\nAmount of seats: {reservationDetail[i].amountseats}\nTotal price paid: {totalPrice} dollars\nTime of reservation: {reservationDetail[i].currenttime}\n");
+                   }
                 }
             }
 
@@ -403,6 +406,7 @@ namespace cinema
                 switch (input2)
                 {
                     case "r": case "R":
+                        Console.Clear();
                         Reservation.addReservation();
                         break;
                     case "b": case "B":
@@ -420,7 +424,7 @@ namespace cinema
 
             }
 
-            Console.Clear();
+            //Console.Clear();
         }
 
     }
