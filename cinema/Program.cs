@@ -89,7 +89,7 @@ namespace cinema
                     Customer.addCustomer();
                     break;
                 case "L": case "l":
-                    Console.ForegroundColor = ConsoleColor.Green;   
+                    Console.ForegroundColor = ConsoleColor.Magenta;   
                     Login.LoginOrCreate();
                     break;
                 case "R": case "r":
@@ -101,11 +101,11 @@ namespace cinema
                     Movie.viewMovie();
                     break;
                 case "S": case "s":
-                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Search.searchMovie();
                     break;
                 case "Q": case "q":
-                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
                     shutDown();
                     break;
             }
@@ -125,7 +125,7 @@ namespace cinema
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\nTo make a reservation press R\n");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\nTo view past reservations press V\n");
+            Console.WriteLine("\nTo view past reservations press C\n");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\nTo search through the movies press S\n");
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -149,7 +149,7 @@ namespace cinema
                 case "C": case "c":
                     //Cancel a reservation
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("\nFunction coming soon ;) for now you can only cancel at the servicedesk in Zienema, 15 minutes before the start of the movie\n");
+                    Console.WriteLine("\nFunction coming soon ;) for now you can only view your reservation at the servicedesk in Zienema.\n");
                     goto startCustomer;
                 case "S": case "s":
                     Console.ForegroundColor = ConsoleColor.Blue;
