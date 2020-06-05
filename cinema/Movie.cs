@@ -12,9 +12,9 @@ namespace cinema
         public int Id {get; set;}
         public string Name {get; set;}
         public string Genre {get; set;}
-        public string Description {get; set;}
         public string Time {get; set;}
         public string Date {get; set;}
+        public string Description {get; set;}
         public int Room {get; set;}
         public bool Imax {get; set;}
         public bool ThreeD {get; set;}
@@ -182,8 +182,8 @@ namespace cinema
             Console.WriteLine("Movie ID: " + searchedMovie.Id);
             Console.WriteLine("Movie name: " + searchedMovie.Name);
             Console.WriteLine("Movie genre: " + searchedMovie.Genre);
-            Console.WriteLine("Movie description: " + searchedMovie.Description);
             Console.WriteLine("Movie date and time: " + searchedMovie.Date + " " + searchedMovie.Time);
+            Console.WriteLine("Movie description: " + searchedMovie.Description);
             Console.WriteLine("Movie room: " + searchedMovie.Room);
             Console.WriteLine("3D: " + threeD + " IMAX: " + imax);
             Console.WriteLine("\n===================================================================================\n");
@@ -192,12 +192,12 @@ namespace cinema
             searchedMovie.Name = Console.ReadLine();
             Console.WriteLine("Please enter a new Genre of the movie: ");
             searchedMovie.Genre = Console.ReadLine();
-            Console.WriteLine("Please enter a new description for the movie: ");
-            searchedMovie.Description = Console.ReadLine();
             Console.WriteLine("Please enter a new date for the movie: ");
             searchedMovie.Date = Console.ReadLine();
             Console.WriteLine("Please enter a new time for the movie: ");
             searchedMovie.Time = Console.ReadLine();
+            Console.WriteLine("Please enter a new description for the movie: ");
+            searchedMovie.Description = Console.ReadLine();
             Console.WriteLine("Please enter a new room for the movie: ");
             valRoom = Console.ReadLine();
             room = Convert.ToInt32(valRoom);
