@@ -126,7 +126,7 @@ namespace cinema
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\nTo make a reservation press R\n");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\nTo view past reservations press C\n");
+            Console.WriteLine("\nTo view past reservations press V\n");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\nTo search through the movies press S\n");
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -148,9 +148,9 @@ namespace cinema
                     Reservation.addReservation();
                     goto startCustomer;
                 case "v": case "V":
-                    Reservation.ViewReservation();
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("\nFunction coming soon ;) for now you can only view your reservation at the servicedesk in Zienema.\n");
+                    Reservation.ViewReservation();
+                    //Console.WriteLine("\nFunction coming soon ;) for now you can only view your reservation at the servicedesk in Zienema.\n");
                     goto startCustomer;
                 case "S": case "s":
                     Console.ForegroundColor = ConsoleColor.Blue;
