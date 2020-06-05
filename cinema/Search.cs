@@ -22,7 +22,7 @@ namespace cinema
             
             begin:
 
-            Console.WriteLine("Input a genre or room number.\n");
+            Console.WriteLine("Input a genre or room number (1,2,3).\n");
             input1 = Console.ReadLine();
 
             switch (input1)
@@ -31,35 +31,26 @@ namespace cinema
                 Program.shutDown();
                 break;
             }
-            
-            // if(!int.TryParse(input1, out value))
-            // {
-            //     for(int j = 0; j < movieDetail.Count; j++)
-            //     {
-            //         if(movieDetail[j].Name == input1)
-            //         {
-            //             Console.WriteLine($"The Movie {movieDetail[j].Name} will start at {movieDetail[j].Time}\n");
-            //             found = true;
-            //         }
-            //     }
-            // }
 
             if(!int.TryParse(input1, out value))
             {  
                 Console.Clear();
-                Console.WriteLine($"\nThe movies with Genre {input1} are:\n");
-                for(int i=0;i<movieDetail.Count;i++)
-                {
-                    if(movieDetail[i].Genre == input1)
-                    {
-                        Console.WriteLine($"ID {movieDetail[i].Id}: {movieDetail[i].Name}");
-                        found = true;
-                        found3 = true;
+                for(int i = 0; i<movieDetail.Count; i++){
+                    if(movieDetail[i].Genre == input1){
+                        Console.WriteLine($"\nThe movies with Genre {input1} are:\n");
+                        for(int j=0;j<movieDetail.Count;j++)
+                        {
+                            if(movieDetail[j].Genre == input1)
+                            {       
+                                Console.WriteLine($"ID {movieDetail[j].Id}: {movieDetail[j].Name}");
+                                found = true;
+                                found3 = true;
+                            }
+                        }
                     }
                 }
-                //Console.WriteLine("\n");
             }
-
+               
             if(int.TryParse(input1,out value))
             {
                 inputint = Convert.ToInt32(input1);
@@ -77,7 +68,7 @@ namespace cinema
 
             if(!found)
             {
-                Console.WriteLine("\nError, please try again.\n");
+                Console.WriteLine("\nError, please input a correct room number or genre.\n");
                 goto begin;
             }
             if(found3){
@@ -96,7 +87,7 @@ namespace cinema
 
                 if(!int.TryParse(pressedkey, out value))
                 {
-                    System.Console.WriteLine("\nWrong input, please try again\n");
+                    System.Console.WriteLine("\nError, please input a correct movie id.\n");
                     goto begin2;
                 }
 
