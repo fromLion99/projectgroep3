@@ -11,7 +11,6 @@ namespace cinema
             
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
-            
 
             begin:
 
@@ -147,10 +146,9 @@ namespace cinema
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Reservation.addReservation();
                     goto startCustomer;
-                case "v": case "V":
-                    Reservation.ViewReservation();
+                case "V": case "v":
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("\nFunction coming soon ;) for now you can only view your reservation at the servicedesk in Zienema.\n");
+                    Reservation.ViewReservation();
                     goto startCustomer;
                 case "S": case "s":
                     Console.ForegroundColor = ConsoleColor.Blue;
