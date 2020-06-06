@@ -25,23 +25,30 @@ namespace cinema
             string customerDetails = File.ReadAllText("customers.json");
             List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
-            beginLogin:          
+            string employeeDetails = File.ReadAllText("employees.json");
+            List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
+
+            beginLogin:
+
             Console.WriteLine("\nPlease enter your E-mail: ");
 
             email = Console.ReadLine();
             
-            var customer = customerDetail.FirstOrDefault(c => c.Email == email);
+            //var customer = customerDetail.FirstOrDefault(c => c.Email == email);
+            //var employee = employeeDetail.FirstOrDefault(c => c.Email == email);
 
-            try{
-                if(customer.Email == email)
-                {
-                    Console.WriteLine("\nPlease enter Your password: ");
+            begin_password:
+
+            for(int i =0; i<customerDetail.Count;i++){
+
+                if(customerDetail[i].Email == email){
+                    Console.WriteLine("\nPlease enter Your password: \ncustomer password");
                     password = Console.ReadLine();
 
-                    if(customer.Password == password)
+                    if(customerDetail[i].Password == password)
                     {
-                        currentLogin.UserId = customer.Id;
-                        currentLogin.UserEmail = customer.Email;
+                        currentLogin.UserId = customerDetail[i].Id;
+                        currentLogin.UserEmail = customerDetail[i].Email;
                         currentLogin.CustomerLogin = true;
 
                         string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
@@ -50,23 +57,85 @@ namespace cinema
 
                         Console.WriteLine("Login successful!");
                     }
-
-                    else
-                    {
-                        Console.WriteLine("The password You entered is incorrect! Please try again.");
+                    else{
+                        System.Console.WriteLine("Wrong password, try again.");
+                        goto begin_password;
                     }
                 }
+            }
 
-                else
-                {
-                    Console.WriteLine("This username is unknown! Please check for typo's or create an account.");
+            begin_password2:
+
+            for(int i =0; i<employeeDetail.Count;i++){
+
+                if(employeeDetail[i].Email == email){
+                    Console.WriteLine("\nPlease enter Your password: \nemployee password");
+                    password = Console.ReadLine();
+
+                    if(employeeDetail[i].Password == password)
+                    {
+                        currentLogin.UserId = employeeDetail[i].Id;
+                        currentLogin.UserEmail = employeeDetail[i].Email;
+                        currentLogin.CustomerLogin = false;
+                        currentLogin.EmployeeLogin = true;
+
+                        string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
+                        File.WriteAllText("Login.json", Resultjson);
+                        Console.Clear();
+
+                        Console.WriteLine("Login successful!");
+                    }
+                    else{
+                        System.Console.WriteLine("Wrong password, try again.");
+                        goto begin_password2;
+                    }
                 }
             }
-            catch{
-                Console.WriteLine("This E-mail is unknown! Please check for typo's or create an account.");
-                goto beginLogin;
-            }
         }
+
+            // beginLogin:          
+            // Console.WriteLine("\nPlease enter your E-mail: ");
+
+            // email = Console.ReadLine();
+            
+            // var customer = customerDetail.FirstOrDefault(c => c.Email == email);
+            
+
+            // try{
+            //     if(customer.Email == email)
+            //     {
+            //         Console.WriteLine("\nPlease enter Your password: ");
+            //         password = Console.ReadLine();
+
+            //         if(customer.Password == password)
+            //         {
+            //             currentLogin.UserId = customer.Id;
+            //             currentLogin.UserEmail = customer.Email;
+            //             currentLogin.CustomerLogin = true;
+
+            //             string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
+            //             File.WriteAllText("Login.json", Resultjson);
+            //             Console.Clear();
+
+            //             Console.WriteLine("Login successful!");
+            //         }
+
+            //         else
+            //         {
+            //             Console.WriteLine("The password You entered is incorrect! Please try again.");
+            //         }
+            //     }
+
+            //     else
+            //     {
+            //         Console.WriteLine("This username is unknown! Please check for typo's or create an account.");
+            //     }
+            // }
+            // catch{
+            //     Console.WriteLine("This E-mail is unknown! Please check for typo's or create an account.");
+            //     goto beginLogin;
+            // }
+        
         public static void LoginOrCreate()
         {
             Console.Write("\nTo login press L\n\nTo create an account press C\n");
