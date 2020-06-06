@@ -144,7 +144,7 @@ namespace cinema
                 for(int i = 0;i<reservationDetail.Count;i++)
                 {
                     if(reservationDetail[i].paid == true){
-                        countMoney += reservationDetail[i].sales;
+                        countMoney += reservationDetail[i].sales * reservationDetail[i].amountseats;
                     }
                 }
 
@@ -171,7 +171,7 @@ namespace cinema
                 {
                     if(input2 == reservationDetail[i].movieId)
                     {
-                        countMoney2 += reservationDetail[i].sales;
+                        countMoney2 += reservationDetail[i].sales * reservationDetail[i].amountseats;
                         found = true;
                     }
                 }
