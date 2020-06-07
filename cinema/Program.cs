@@ -125,7 +125,7 @@ namespace cinema
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("\nTo make a reservation press R\n");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\nTo view past reservations press C\n");
+            Console.WriteLine("\nTo view past reservations press V\n");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\nTo search through the movies press S\n");
             Console.ForegroundColor = ConsoleColor.Magenta;
