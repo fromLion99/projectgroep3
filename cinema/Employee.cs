@@ -143,8 +143,10 @@ namespace cinema
             {
                 for(int i = 0;i<reservationDetail.Count;i++)
                 {
-                    if(reservationDetail[i].paid == true){
-                        countMoney += reservationDetail[i].sales * reservationDetail[i].amountseats;
+
+                    if(reservationDetail[i].Paid == true){
+                        countMoney += reservationDetail[i].Sales;
+
                     }
                 }
 
@@ -169,9 +171,10 @@ namespace cinema
 
                 for(int i = 0;i<reservationDetail.Count;i++)
                 {
-                    if(input2 == reservationDetail[i].movieId)
+                    if(input2 == reservationDetail[i].MovieId)
                     {
-                        countMoney2 += reservationDetail[i].sales * reservationDetail[i].amountseats;
+                        countMoney2 += reservationDetail[i].Sales;
+
                         found = true;
                     }
                 }

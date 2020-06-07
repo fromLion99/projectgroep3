@@ -11,7 +11,6 @@ namespace cinema
             
             startScreen();
             //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
-            
 
             begin:
 
@@ -95,7 +94,7 @@ namespace cinema
                     break;
                 case "R": case "r":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Reservation.addReservation();
+                    Reservation.AddReservation();
                     break;
                 case "M": case "m":
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -145,12 +144,11 @@ namespace cinema
                     goto startCustomer;
                 case "R": case "r":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Reservation.addReservation();
+                    Reservation.AddReservation();
                     goto startCustomer;
-                case "v": case "V":
+                case "V": case "v":
                     Console.ForegroundColor = ConsoleColor.Green;
                     Reservation.ViewReservation();
-                    //Console.WriteLine("\nFunction coming soon ;) for now you can only view your reservation at the servicedesk in Zienema.\n");
                     goto startCustomer;
                 case "S": case "s":
                     Console.ForegroundColor = ConsoleColor.Blue;
@@ -158,7 +156,6 @@ namespace cinema
                     goto startCustomer;
                 case "D": case "d":
                     Drink.viewDrink();
-                    Snack.viewSnack();
                     goto startCustomer;
                 case "Q": case "q":
                     Console.ForegroundColor = ConsoleColor.Magenta;
@@ -296,7 +293,7 @@ namespace cinema
                     switch (employeeAction)
                     {
                         case "A": case "a":
-                            Reservation.addReservation();
+                            Reservation.AddReservation();
                             goto startEmployee;
                         case "V": case "v":
                             //View all reservations
@@ -335,32 +332,6 @@ namespace cinema
                         default:
                             Console.WriteLine("Unknown command.");
                             goto drinkEmployee;
-                    }
-                case "S": case "s":
-                    snackEmployee:
-
-                    Console.WriteLine("\nA: add a snack\nV: view all snacks\nE: edit a snack\nD: delete a snack\n");
-                    employeeAction = Console.ReadLine();
-
-                    Console.Clear();
-
-                    switch (employeeAction)
-                    {
-                        case "A": case "a":
-                            Snack.addSnack();
-                            goto startEmployee;
-                        case "V": case "v":
-                            Snack.viewSnack();
-                            goto startEmployee;
-                        case "E": case "e":
-                            Snack.editSnack();
-                            goto startEmployee;
-                        case "D": case "d":
-                            Snack.deleteSnack();
-                            goto startEmployee;
-                        default:
-                            Console.WriteLine("Unknown command.");
-                            goto snackEmployee;
                     }
                 case "A": case "a":
                     subscriptionEmployee:

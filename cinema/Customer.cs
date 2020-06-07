@@ -24,21 +24,27 @@ namespace cinema
             int idSubscription = 0;
 
             string customerDetails = File.ReadAllText("customers.json");
-            List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
+            var customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
-            Customer customer = new Customer();
+            var customer = new Customer();
             var item = customerDetail[customerDetail.Count-1];
             var newId = item.Id +1;
+
             customer.Id = newId;
             Console.WriteLine("Please enter your first name: ");
             customer.FirstName = Console.ReadLine();
+
             Console.WriteLine("Please enter your last name: ");
             customer.LastName = Console.ReadLine();
+
             customer.askAge();
+
             Console.WriteLine("Please enter your E-mail: ");
             customer.Email = Console.ReadLine();
+
             Console.WriteLine("Please enter your password: ");
             customer.Password = Console.ReadLine();
+
             Console.WriteLine("We're currently Would you like to have a monthly subscription to watch your favorite and upcoming movies at a discount? Yes: Y or No: N");
             subscription = Console.ReadLine();
 
@@ -86,7 +92,7 @@ namespace cinema
             //This function displays all the customers on the screen
 
             string customerDetails = File.ReadAllText("customers.json");
-            List<Customer> customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
+            var customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
             for(int i = 0; i < customerDetail.Count; i++ )
             {

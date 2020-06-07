@@ -1,1 +1,3 @@
-{"UserId":2,"UserEmail":"employee","CustomerLogin":false,"EmployeeLogin":true}
+
+{"UserId":3,"UserEmail":"123","CustomerLogin":true,"EmployeeLogin":false}
+
