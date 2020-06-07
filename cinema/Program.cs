@@ -174,7 +174,7 @@ namespace cinema
 
             startEmployee:
 
-            Console.WriteLine("\nM: manage movies\nR: manage rooms\nE: manage employees\nC: manage customers\nW: manage reservations\nD: manage drinks\nS: manage snacks\nA: manage subscriptions\nQ: logout and/or close the program\n");
+            Console.WriteLine("\nM: manage movies\n\nR: manage rooms\n\nE: manage employees\n\nC: manage customers\n\nW: manage reservations\n\nD: manage drinks\n\nS: manage snacks\n\nA: manage subscriptions\n\nV: view sales\n\nQ: logout and/or close the program\n\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             employeeAction = Console.ReadLine();
 
@@ -359,6 +359,10 @@ namespace cinema
                             Console.WriteLine("Unknown command.");
                             goto subscriptionEmployee;
                     }
+                case "V": case "v":
+                    Employee.viewSalesEmployee();
+                    break;
+
                 case "Q": case "q":
                     shutDown();
                     break;
