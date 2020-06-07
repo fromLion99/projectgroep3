@@ -5,46 +5,45 @@ using System.Collections.Generic;
 
 namespace cinema
 {
-    
     public class Reservation
     {
         public int Id {get; set;}
-        public int ticketId {get; set;}
-        public int movieId {get; set;}
-        public int roomId {get; set;}
-        public string customer {get; set;}
-        public int customerId {get; set;}
-        public string time {get; set;}
-        public string date {get; set;}
-        public int duration {get; set;}
-        public double sales { get; set; }
-        public bool paid { get; set; }
-        public int seatId {get; set;}
-        public string row {get; set;}
-        public int startseat {get; set;}
-        public int amountseats {get; set;}
-        public string currenttime { get; set; }
+        public int TicketId {get; set;}
+        public int MovieId {get; set;}
+        public int RoomId {get; set;}
+        public string Customer {get; set;}
+        public int CustomerId {get; set;}
+        public string Time {get; set;}
+        public string Date {get; set;}
+        public int Duration {get; set;}
+        public double Sales { get; set; }
+        public bool Paid { get; set; }
+        public int SeatId {get; set;}
+        public int Row {get; set;}
+        public int StartSeat {get; set;}
+        public int AmountSeats {get; set;}
+        public string CurrentTime { get; set; }
         
-        
-        public static void addReservation()
+        public static void AddReservation()
         {
             Reservation reservation = new Reservation();
             int choosenMovieId = 0;
             string choosenMovie, back = "";
-            string row = "";
-            string rowString, whereRowString = "";
+            string startSeatString = "";
             string chooseAmountSeatString = "";
-            int chooseAmountSeat, whereRow = 0; 
-            int maxSeats = 15;
+            int chooseAmountSeat, startSeat = 0; 
             
+            int newId;
             string reservationsDetails = File.ReadAllText("reservation.json");
             List<Reservation> reservationDetail = JsonSerializer.Deserialize<List<Reservation>>(reservationsDetails);
-            var item = reservationDetail[reservationDetail.Count-1];
-            var newId = item.Id+1;
+            if(reservationDetail != null && reservationDetail.Count > 0){
+                var item = reservationDetail[reservationDetail.Count-1];
+                newId = item.Id+1;
+            }else{
+                newId = 1;
+            }
+            
             reservation.Id = newId;
-            var seatItem = reservationDetail[reservationDetail.Count-1];
-            var newSeatId = seatItem.Id+1;
-            reservation.seatId = newSeatId;
 
             string movieDetails = File.ReadAllText("movies.json");
             List<Movie> movieDetail = JsonSerializer.Deserialize<List<Movie>>(movieDetails);            
@@ -83,18 +82,17 @@ namespace cinema
                             Console.Clear();
                             Console.WriteLine($"\nMovie: {movieDetail[choosenMovieId-1].Name}, it will start at {movieDetail[choosenMovieId-1].Time}\n");
                             // Information about the movie and customer will be put into a JSON file      
-                            reservation.movieId = choosenMovieId;
-                            reservation.ticketId = +1;
-                            reservation.roomId = movieDetail[choosenMovieId-1].Room;
-                            reservation.customer = currentLogin.UserEmail;
-                            reservation.customerId = currentLogin.UserId;
-                            reservation.time = movieDetail[choosenMovieId-1].Time;
-                            reservation.date = movieDetail[choosenMovieId-1].Date;
-                            reservation.duration = 0;
-                            reservation.sales = movieDetail[choosenMovieId-1].Price;
-                            reservation.currenttime = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
-                              
-
+                            reservation.MovieId = choosenMovieId;
+                            reservation.TicketId = +1;
+                            reservation.RoomId = movieDetail[choosenMovieId-1].Room;
+                            reservation.Customer = currentLogin.UserEmail;
+                            reservation.CustomerId = currentLogin.UserId;
+                            reservation.Time = movieDetail[choosenMovieId-1].Time;
+                            reservation.Date = movieDetail[choosenMovieId-1].Date;
+                            reservation.Duration = 0;
+                            reservation.Sales = movieDetail[choosenMovieId-1].Price;
+                            reservation.CurrentTime = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+                            var room = Room.GetRoom(reservation.RoomId);
                             
                             Console.Write($"\nYou choose the movie {movieDetail[choosenMovieId-1].Name}, Press S to choose your seat or B to choose a different movie: ");
                             back = Console.ReadLine();
@@ -110,48 +108,59 @@ namespace cinema
                                     beginError2:                           
                                     try
                                     {
-                                        Console.Write($"\nChoose your row between: A-B-C-D-E, A is the row closest to the screen and E is the furthest away, Row: ");
-                                        row = Console.ReadLine();
-                                        if(row.ToUpper() == "A" || row.ToUpper() == "B" || row.ToUpper() == "C" || row.ToUpper() == "D" || row.ToUpper() == "E") 
+                                        reservation.GenerateGrid();
+                                        Console.Write($"\nChoose your row between: 1 - {room.RowCount}, 1 is the row closest to the screen and {room.RowCount} is the furthest away, Row: ");
+                                        if(!int.TryParse(Console.ReadLine(), out var row)){
+                                            Console.WriteLine("That's not a valid row!\n");
+                                            goto beginError2;
+                                        }
+                                        if(row > 0 && row <= room.RowCount) 
                                         {
-                                            rowString = row;  
-                                            Console.Write($"You have chosen row : {rowString}, are you sure: Y or N?\n");
+                                            reservation.Row = row;
+                                         
+                                            Console.Write($"You have chosen row : {reservation.Row}, are you sure: Y or N?\n");
 
                                             back = Console.ReadLine();
                                             if(back.ToUpper() == "N")
                                             {
-                                                rowString = "";
+                                                reservation.Row = 0;
                                                 goto beginError2;
                                             }
                                             if(back.ToUpper() == "Y")
                                             {
                                                 beginError3:
-                                                Console.Write($"Please choose how many seats you want, you have to choose atleast 1 and the row has a maximum of 15 seats. Please type 1 - 15: ");
+                                                Console.Write($"Please choose how many seats you want, you have to choose atleast 1 and the row has a maximum of {room.ChairsPerRow} seats. Please type 1 - {room.ChairsPerRow}: ");
                                                 try
                                                 {
                                                     chooseAmountSeatString = Console.ReadLine();
                                                     chooseAmountSeat = Convert.ToInt32(chooseAmountSeatString);
-                                                    if(chooseAmountSeat <= 15 && chooseAmountSeat > 0)
+                                                    if(chooseAmountSeat <= room.ChairsPerRow && chooseAmountSeat > 0)
                                                     {
                                                         beginError4:
                                                         Console.WriteLine($"You choose : {chooseAmountSeat} seat(s)\n");
-                                                        Console.Write("Please choose where in the row you want to sit, Please choose between 1-15:");                                                
+                                                        Console.Write($"Please choose where in the row you want to sit, Please choose between 1 - {room.ChairsPerRow}:");                                                
                                                         try
                                                         {
-                                                            whereRowString = Console.ReadLine();
-                                                            whereRow = Convert.ToInt32(whereRowString);
-                                                            if(whereRow > 0 && whereRow <= 15) 
+                                                            startSeatString = Console.ReadLine();
+                                                            startSeat = Convert.ToInt32(startSeatString);
+
+                                                            if(!reservation.checkSeatAvailability(startSeat, chooseAmountSeat, row, out var message)){
+                                                                Console.Clear();
+                                                                Console.WriteLine(message + "\n");
+                                                                goto beginError2;
+                                                            }
+                                                            
+                                                            if(startSeat > 0 && startSeat <= room.ChairsPerRow) 
                                                             {
-                                                                while(chooseAmountSeat > (maxSeats - whereRow + 1))
+                                                                while(chooseAmountSeat > (room.ChairsPerRow - startSeat + 1))
                                                                 {
-                                                                    whereRow = whereRow - 1; 
+                                                                    startSeat = startSeat - 1; 
                                                                 }
                                                                 Console.Clear();
-                                                                Console.Write($"\nYou have chosen to sit at row {rowString.ToUpper()} - the amount of seats is {chooseAmountSeat} - the placement in the row is {whereRow}.\n");
-                                                                reservation.row = rowString.ToUpper();
-                                                                reservation.startseat = whereRow;
-                                                                reservation.amountseats = chooseAmountSeat;
-                                                                reservation.customer =  Login.getLoginName();
+                                                                Console.Write($"\nYou have chosen to sit at row {reservation.Row} - the amount of seats is {chooseAmountSeat} - the placement in the row is {startSeat}.\n");
+                                                                reservation.StartSeat = startSeat;
+                                                                reservation.AmountSeats = chooseAmountSeat;
+                                                                reservation.Customer =  Login.getLoginName();
                                                                 
                                                                 reservationDetail.Add(reservation);
                                                                 string resultJson1 = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
@@ -213,8 +222,7 @@ namespace cinema
                Console.WriteLine("Error beginning: Input not valid try again");
                goto beginning; 
             }
-        }
-        
+        }        
         public static void PayReservation()
         {
             // Variables
@@ -247,9 +255,9 @@ namespace cinema
             Console.WriteLine($"The rented movies of the current user {currentuser} are:");
 
             for(int i = 0;i<reservationDetail.Count;i++){
-                if(reservationDetail[i].customer == currentuser && reservationDetail[i].paid == false){
+                if(reservationDetail[i].Customer == currentuser && reservationDetail[i].Paid == false){
                     for(int j = 0;j<movieDetail.Count;j++){
-                        if(movieDetail[j].Id == reservationDetail[i].movieId){
+                        if(movieDetail[j].Id == reservationDetail[i].MovieId){
                             Console.WriteLine($"ID {movieDetail[j].Id}: {movieDetail[j].Name}");
                             found3 = true;
                         }
@@ -263,7 +271,7 @@ namespace cinema
 
                 try{
                     if(input3 == "R" || input3 == "r"){
-                        Reservation.addReservation();
+                        Reservation.AddReservation();
                     }
                 }
 
@@ -295,15 +303,15 @@ namespace cinema
             begin3:
 
             for(int i = 0; i<reservationDetail.Count;i++){
-                if(reservationDetail[i].movieId == movieid){
-                    totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].amountseats;
+                if(reservationDetail[i].MovieId == movieid){
+                    totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].AmountSeats;
                     Console.WriteLine($"Do you want to pay for your reservation for {movieDetail[movieid-1].Name} at {movieDetail[movieid-1].Time}?\nTotal price to pay is {totalPrice} \nPress Y to pay, Or B to pick another movie.");
                     input4 = Console.ReadLine();
                     if(input4 == "b" || input4 == "B"){
                         goto begin;
                     }
                     found = true;
-                    reservationDetail[i].paid = true;
+                    reservationDetail[i].Paid = true;
                     
                     string resultJson1 = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
                     File.WriteAllText("reservation.json", resultJson1);
@@ -331,8 +339,8 @@ namespace cinema
                 goto begin3;
             }
         }
-        public static void ViewReservation(){
-
+        public static void ViewReservation()
+        {
             // Variables
             string currentuser, input1, input2;
             int value, movieid;
@@ -359,9 +367,9 @@ namespace cinema
             //System.Console.WriteLine("Below are past reservations.\n");
 
             for(int i = 0;i<reservationDetail.Count;i++){
-                if(reservationDetail[i].customer == currentuser){
+                if(reservationDetail[i].Customer == currentuser){
                     for(int j = 0;j<movieDetail.Count;j++){
-                        if(movieDetail[j].Id == reservationDetail[i].movieId){
+                        if(movieDetail[j].Id == reservationDetail[i].MovieId){
                             Console.WriteLine($"ID {movieDetail[j].Id}: {movieDetail[j].Name}");
                             found = true;
                         }
@@ -391,9 +399,9 @@ namespace cinema
                 movieid = Convert.ToInt32(input1);
 
                 for(int i = 0; i<reservationDetail.Count;i++){
-                    if(reservationDetail[i].movieId == movieid && reservationDetail[i].customer == currentuser){
-                        totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].amountseats;
-                        Console.WriteLine($"Name movie: {movieDetail[movieid-1].Name}\nDate and Time: {movieDetail[movieid-1].Date}, {movieDetail[movieid-1].Time}\nRoom: {movieDetail[movieid-1].Room}\nAmount of seats: {reservationDetail[i].amountseats}\nTotal price paid: {totalPrice} dollars\nTime of reservation: {reservationDetail[i].currenttime}\n");
+                    if(reservationDetail[i].MovieId == movieid && reservationDetail[i].Customer == currentuser){
+                        totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].AmountSeats;
+                        Console.WriteLine($"Name movie: {movieDetail[movieid-1].Name}\nDate and Time: {movieDetail[movieid-1].Date}, {movieDetail[movieid-1].Time}\nRoom: {movieDetail[movieid-1].Room}\nAmount of seats: {reservationDetail[i].AmountSeats}\nTotal price paid: {totalPrice} dollars\nTime of reservation: {reservationDetail[i].CurrentTime}\n");
                    }
                 }
             }
@@ -407,7 +415,7 @@ namespace cinema
                 {
                     case "r": case "R":
                         Console.Clear();
-                        Reservation.addReservation();
+                        Reservation.AddReservation();
                         break;
                     case "b": case "B":
                         break;
@@ -426,6 +434,45 @@ namespace cinema
 
             //Console.Clear();
         }
+        private bool checkSeatAvailability(int startSeat, int amount, int row, out string message){
+            var room = Room.GetRoom(RoomId);
+            var endSeat = startSeat + (amount - 1);
 
+            if(endSeat > room.ChairsPerRow){
+                message = "The amount exceeds, the rooms horizontal amount of chairs, from the given position";
+                return false;
+            }
+
+            var reservations = JsonSerializer.Deserialize<List<Reservation>>(File.ReadAllText("reservation.json"));
+        
+            foreach (var reservation in reservations.FindAll(r => r.Row == row && r.MovieId == MovieId))
+            {
+                var reservationEndSeat = reservation.StartSeat + (reservation.AmountSeats -1);
+
+                    for(var i = startSeat; i <= endSeat; i++){
+                        if(i >= reservation.StartSeat && i <= reservationEndSeat){
+                            message = "Chair is occupied..";
+                            return false;
+                        }
+                    }
+            }
+            message = "Chair is available";
+            return true;
+        }
+
+        public void GenerateGrid(){
+            var movie = Movie.GetMovie(MovieId);
+            var room = Room.GetRoom(movie.Room);
+            for(var i = 1; i <= room.RowCount; i++){
+                for(var j = 1; j <= room.ChairsPerRow; j++){
+                    if(checkSeatAvailability(j, 1, i, out  _)){
+                        Console.Write("[o]");
+                    }else{
+                        Console.Write("[x]");
+                    }
+                }
+                Console.Write("\n");
+            }
+        }
     }
 }

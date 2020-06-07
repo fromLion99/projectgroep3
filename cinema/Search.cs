@@ -118,7 +118,7 @@ namespace cinema
                         Program.shutDown();
                         break;
                     case "r": case "R":
-                        Reservation.addReservation();
+                        Reservation.AddReservation();
                         break;
                     case "t": case "T":
                         goto begin;
