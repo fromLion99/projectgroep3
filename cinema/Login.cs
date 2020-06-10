@@ -33,9 +33,6 @@ namespace cinema
             Console.WriteLine("\nPlease enter your E-mail: ");
 
             email = Console.ReadLine();
-            
-            //var customer = customerDetail.FirstOrDefault(c => c.Email == email);
-            //var employee = employeeDetail.FirstOrDefault(c => c.Email == email);
 
             begin_password:
 
@@ -93,49 +90,6 @@ namespace cinema
             }
         }
 
-            // beginLogin:          
-            // Console.WriteLine("\nPlease enter your E-mail: ");
-
-            // email = Console.ReadLine();
-            
-            // var customer = customerDetail.FirstOrDefault(c => c.Email == email);
-            
-
-            // try{
-            //     if(customer.Email == email)
-            //     {
-            //         Console.WriteLine("\nPlease enter Your password: ");
-            //         password = Console.ReadLine();
-
-            //         if(customer.Password == password)
-            //         {
-            //             currentLogin.UserId = customer.Id;
-            //             currentLogin.UserEmail = customer.Email;
-            //             currentLogin.CustomerLogin = true;
-
-            //             string Resultjson = JsonSerializer.Serialize<Login>(currentLogin);
-            //             File.WriteAllText("Login.json", Resultjson);
-            //             Console.Clear();
-
-            //             Console.WriteLine("Login successful!");
-            //         }
-
-            //         else
-            //         {
-            //             Console.WriteLine("The password You entered is incorrect! Please try again.");
-            //         }
-            //     }
-
-            //     else
-            //     {
-            //         Console.WriteLine("This username is unknown! Please check for typo's or create an account.");
-            //     }
-            // }
-            // catch{
-            //     Console.WriteLine("This E-mail is unknown! Please check for typo's or create an account.");
-            //     goto beginLogin;
-            // }
-        
         public static void LoginOrCreate()
         {
             Console.Write("\nTo login press L\n\nTo create an account press C\n");
