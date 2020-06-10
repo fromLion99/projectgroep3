@@ -167,11 +167,8 @@ namespace cinema
                                                                 reservationDetail.Add(reservation);
                                                                 string resultJson1 = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
                                                                 File.WriteAllText("reservation.json", resultJson1);
-<<<<<<< HEAD
                                                                 reservation.GenerateGrid();
-=======
                                                                 Reservation.PayReservation();
->>>>>>> 9da205b7f3d191981a3a82f518b40af998f93d4a
                                                                 Console.WriteLine("\nReservation is succesfully added\n\nYou are now being redirected to the main menu\n\n********************************************************************************\n");
                                                                 return;
                                                             }
