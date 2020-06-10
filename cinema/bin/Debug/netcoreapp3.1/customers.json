@@ -1,1 +1,38 @@
-[{"Id":0,"FirstName":null,"LastName":null,"Email":null,"Age":0,"Password":null,"subscriptionId":0},{"Id":1,"FirstName":"Roby","LastName":"Rodriquez","Email":"Roby010@outlook.com","Age":18,"Password":"123","subscriptionId":0},{"Id":2,"FirstName":"test","LastName":"user1","Email":"test@123.nl","Age":18,"Password":"123","subscriptionId":0},{"Id":3,"FirstName":"Niels","LastName":"Krommenhoek","Email":"123","Age":18,"Password":"123","subscriptionId":1}]
+[
+    {
+        "Id": 0,
+        "FirstName": null,
+        "LastName": null,
+        "Email": null,
+        "Age": 0,
+        "Password": null,
+        "subscriptionId": 0
+    },
+    {
+        "Id": 1,
+        "FirstName": "Roby",
+        "LastName": "Rodriquez",
+        "Email": "Roby010@outlook.com",
+        "Age": 18,
+        "Password": "123",
+        "subscriptionId": 0
+    },
+    {
+        "Id": 2,
+        "FirstName": "test",
+        "LastName": "user1",
+        "Email": "test@123.nl",
+        "Age": 18,
+        "Password": "123",
+        "subscriptionId": 0
+    },
+    {
+        "Id": 3,
+        "FirstName": "Niels",
+        "LastName": "Krommenhoek",
+        "Email": "123",
+        "Age": 18,
+        "Password": "123",
+        "subscriptionId": 1
+    }
+]
