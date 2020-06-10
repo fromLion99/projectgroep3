@@ -94,7 +94,7 @@ namespace cinema
                             reservation.CurrentTime = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
                             var room = Room.GetRoom(reservation.RoomId);
                             
-                            Console.Write($"\nYou choose the movie {movieDetail[choosenMovieId-1].Name}, Press S to choose your seat or B to choose a different movie: ");
+                            Console.Write($"\nYou chose the movie {movieDetail[choosenMovieId-1].Name}, Press S to choose your seat or B to choose a different movie: ");
                             back = Console.ReadLine();
                             Console.Clear();
                             try
@@ -108,6 +108,7 @@ namespace cinema
                                     beginError2:                           
                                     try
                                     {
+                                        Console.WriteLine($"Floor plan of the seats for the movie: {movieDetail[choosenMovieId-1].Name}\nTip: [x] means the seat is already taken, [NUMBER] means it is still available\n");
                                         reservation.GenerateGrid();
                                         Console.Write($"\nChoose your row between: 1 - {room.RowCount}, 1 is the row closest to the screen and {room.RowCount} is the furthest away, Row: ");
                                         if(!int.TryParse(Console.ReadLine(), out var row)){
@@ -118,18 +119,19 @@ namespace cinema
                                         {
                                             reservation.Row = row;
                                          
-                                            Console.Write($"You have chosen row : {reservation.Row}, are you sure: Y or N?\n");
+                                            Console.Write($"You have chosen row : {reservation.Row}, are you sure? Type Y for Yes or N for No:");
 
                                             back = Console.ReadLine();
                                             if(back.ToUpper() == "N")
                                             {
                                                 reservation.Row = 0;
+                                                Console.Clear();
                                                 goto beginError2;
                                             }
                                             if(back.ToUpper() == "Y")
                                             {
                                                 beginError3:
-                                                Console.Write($"Please choose how many seats you want, you have to choose atleast 1 and the row has a maximum of {room.ChairsPerRow} seats. Please type 1 - {room.ChairsPerRow}: ");
+                                                Console.Write($"\nPlease choose how many seats you want, you have to choose atleast 1 and the row has a maximum of {room.ChairsPerRow} seats. Please type 1 - {room.ChairsPerRow}: ");
                                                 try
                                                 {
                                                     chooseAmountSeatString = Console.ReadLine();
@@ -137,7 +139,7 @@ namespace cinema
                                                     if(chooseAmountSeat <= room.ChairsPerRow && chooseAmountSeat > 0)
                                                     {
                                                         beginError4:
-                                                        Console.WriteLine($"You choose : {chooseAmountSeat} seat(s)\n");
+                                                        Console.WriteLine($"You chose : {chooseAmountSeat} seat(s)\n");
                                                         Console.Write($"Please choose where in the row you want to sit, Please choose between 1 - {room.ChairsPerRow}:");                                                
                                                         try
                                                         {
@@ -157,7 +159,7 @@ namespace cinema
                                                                     startSeat = startSeat - 1; 
                                                                 }
                                                                 Console.Clear();
-                                                                Console.Write($"\nYou have chosen to sit at row {reservation.Row} - the amount of seats is {chooseAmountSeat} - the placement in the row is {startSeat}.\n");
+                                                                Console.Write($"\nYou have chosen to sit at row {reservation.Row} - the amount of seats is {chooseAmountSeat} - the placement in the row starts at {startSeat}.\n\n");
                                                                 reservation.StartSeat = startSeat;
                                                                 reservation.AmountSeats = chooseAmountSeat;
                                                                 reservation.Customer =  Login.getLoginName();
@@ -165,6 +167,7 @@ namespace cinema
                                                                 reservationDetail.Add(reservation);
                                                                 string resultJson1 = JsonSerializer.Serialize<List<Reservation>>(reservationDetail);
                                                                 File.WriteAllText("reservation.json", resultJson1);
+                                                                reservation.GenerateGrid();
                                                                 Reservation.PayReservation();
                                                                 Console.WriteLine("\nReservation is succesfully added\n\nYou are now being redirected to the main menu\n\n********************************************************************************\n");
                                                                 return;
@@ -432,8 +435,6 @@ namespace cinema
                 }
 
             }
-
-            //Console.Clear();
         }
         private bool checkSeatAvailability(int startSeat, int amount, int row, out string message){
             var room = Room.GetRoom(RoomId);
@@ -464,12 +465,31 @@ namespace cinema
         public void GenerateGrid(){
             var movie = Movie.GetMovie(MovieId);
             var room = Room.GetRoom(movie.Room);
+            string screen = new string ('=', room.ChairsPerRow*2);
+            Console.WriteLine($"   {screen}SCREEN{screen}");    
+            Console.WriteLine("Row | Seats");
             for(var i = 1; i <= room.RowCount; i++){
-                for(var j = 1; j <= room.ChairsPerRow; j++){
-                    if(checkSeatAvailability(j, 1, i, out  _)){
-                        Console.Write("[o]");
-                    }else{
-                        Console.Write("[x]");
+                if(i<10)
+                {
+                    Console.Write($"{i}:  | ");
+                }
+                else
+                {
+                    Console.Write($"{i}: | ");
+                }    
+                for(var j = 1; j <= room.ChairsPerRow; j++)
+                {
+                    if(checkSeatAvailability(j, 1, i, out  _))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write($"[{j}] ");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;  
+                        Console.Write("[x] ");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                     }
                 }
                 Console.Write("\n");
