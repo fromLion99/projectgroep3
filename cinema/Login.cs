@@ -39,7 +39,7 @@ namespace cinema
             for(int i =0; i<customerDetail.Count;i++){
 
                 if(customerDetail[i].Email == email){
-                    Console.WriteLine("\nPlease enter Your password: \ncustomer password");
+                    Console.WriteLine("\nPlease enter Your password: \n");
                     password = Console.ReadLine();
 
                     if(customerDetail[i].Password == password)
@@ -66,7 +66,7 @@ namespace cinema
             for(int i =0; i<employeeDetail.Count;i++){
 
                 if(employeeDetail[i].Email == email){
-                    Console.WriteLine("\nPlease enter Your password: \nemployee password");
+                    Console.WriteLine("\nPlease enter Your password: \n");
                     password = Console.ReadLine();
 
                     if(employeeDetail[i].Password == password)
