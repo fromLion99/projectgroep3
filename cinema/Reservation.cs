@@ -369,7 +369,7 @@ namespace cinema
             begin:
 
             //System.Console.WriteLine("Below are past reservations.\n");
-
+            
             for(int i = 0;i<reservationDetail.Count;i++){
                 if(reservationDetail[i].Customer == currentuser){
                     for(int j = 0;j<movieDetail.Count;j++){

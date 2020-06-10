@@ -17,6 +17,8 @@ namespace cinema
 
         public static void addEmployee()
         {
+            string email;
+
             //This function adds a new employee to the JSON
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
@@ -30,7 +32,20 @@ namespace cinema
             Console.WriteLine("Please enter your last name here: ");
             employee.LastName = Console.ReadLine();
             Console.WriteLine("Please enter your E-mail here: ");
-            employee.Email = Console.ReadLine();
+
+            begin:
+
+            email = Console.ReadLine();
+
+            for(int i = 0; i<employeeDetail.Count;i++){
+                if(employeeDetail[i].Email == email ){
+                    Console.WriteLine("Email already taken, try again.");
+                    goto begin;
+                }
+            }
+
+            employee.Email = email;
+
             Console.WriteLine("Please enter your password here: ");
             employee.Password = Console.ReadLine();
             employeeDetail.Add(employee);
