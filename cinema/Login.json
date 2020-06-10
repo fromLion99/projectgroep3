@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 {"UserId":0,"UserEmail":"","CustomerLogin":false,"EmployeeLogin":false}
+=======
+
+{"UserId":3,"UserEmail":"123","CustomerLogin":true,"EmployeeLogin":false}
+
+>>>>>>> 9da205b7f3d191981a3a82f518b40af998f93d4a
