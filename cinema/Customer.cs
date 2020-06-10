@@ -20,11 +20,14 @@ namespace cinema
         public static void addCustomer()
         {
             //This function adds a customer to the JSON
-            string subscription, valSubscription = "";
+            string subscription, valSubscription, email = "";
             int idSubscription = 0;
+            bool found = true;
 
             string customerDetails = File.ReadAllText("customers.json");
             var customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
+
+            
 
             var customer = new Customer();
             var item = customerDetail[customerDetail.Count-1];
@@ -39,8 +42,19 @@ namespace cinema
 
             customer.askAge();
 
+            begin:
+
             Console.WriteLine("Please enter your E-mail: ");
-            customer.Email = Console.ReadLine();
+            email = Console.ReadLine();
+
+            for(int i = 0; i<customerDetail.Count;i++){
+                if(customerDetail[i].Email == email ){
+                    Console.WriteLine("Email already taken, try again.");
+                    goto begin;
+                }
+            }
+            
+            customer.Email = email;
 
             Console.WriteLine("Please enter your password: ");
             customer.Password = Console.ReadLine();
