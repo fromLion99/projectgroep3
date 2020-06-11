@@ -22,8 +22,9 @@
         "Description": "A group of twelve total strangers wake up in a forest clearing, not knowing how they got there. But what they do know is that they have been chosen for 'The Hunt'. Meanwhile elsewhere a group of rich people that had connected through the dark web, meet up for the first time to hunt humans together for the rush. The plan of these elite backfires completely as Crystal (Betty Gilpin, Glow), one of the people they're hunting, turns out to be far more suited for playing this harsh and merciless game than the hunters are. She reverses the rolls and incapacitates the murderers one by one, while she gets closer and closer to the mysterious woman (two time Oscar® winner Hilary Swank) who is the linchpin of everything that's happening. This new mysterious society critical thriller was made by Jason Blum, producer of Get Out and the Purge movies, and Damon Lindelof, co-creator of the TV series The Leftovers and Lost. The Hunt was written by Lindelof and Nick Cuse, with whom he previously worked on the series The Leftovers. The movie was directed by Craig Zobel (Z for Zachariah, The Leftovers). Blum produced the movie on behalf of Blumhouse Productions together with Lindelof. Zobel, Cuse, and Steven R. Molen functioned as executive producers.",
         "Room": 5,
         "Imax": true,
-        "ThreeD": true,
+        "ThreeD": false,
         "Price": 10.90,
+        "Duration": "90 minutes",
         "RecommendedAge": 16
     },
     {

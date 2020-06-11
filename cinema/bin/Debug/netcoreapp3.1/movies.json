@@ -3,7 +3,7 @@
         "Id": 1,
         "Name": "James Bond No Time To Die",
         "Genre": "Action",
-        "Date": "13 June 2020",
+        "Date": "13 06 2020",
         "Time": "20.15 hour",
         "Description": "In the 25th James Bond movie No Time to Die James Bond has left his turbulent life as a secret agent behind him and he's living a peaceful life on the paradisical Jamaica. This peace is abruptly disturbed when his old friend CIA agent Felix Leiter asks him to help free an abducted scientist. This mission turns out to be more treacherous than expected and brings Bond on the tracks of a mysterious villain armed with new life-threatening technology. Daniel Craig returns in No Time to Die for his fifth movie as Ian Fleming's James Bond, 007. The cast further consists of Rami Malek, Léa Seydoux, Lashana Lynch, Ben Whishaw, Naomie Harris, Billy Magnussen, Ana de Armas, Rory Kinnear, David Dencik, Dali Benssalah, Jeffrey Wright and Ralph Fiennes. This co-production of Albert R. Broccoli’s EON Productions, Metro Goldwyn Mayer Studios (MGM) and Universal Pictures International is directed by Cary Joji Fukunaga (Beasts of No Nation, True Detective). The script has been written by Neal Purvis & Robert Wade (Spectre, Skyfall), Cary Joji Fukunaga, Scott Z. Burns (Contagion, The Bourne Ultimatum) and Phoebe Waller-Bridge (Killing Eve, Fleabag).",
         "Room": 2,
@@ -23,6 +23,7 @@
         "Room": 1,
         "Imax": true,
         "ThreeD": true,
+        "Duration": "120 minutes",
         "Price": 10.45,
         "RecommendedAge": 16
     },
