@@ -250,8 +250,8 @@ namespace cinema
             string signinDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(signinDetails);
 
-            string seatDetails = File.ReadAllText("seats.json");
-            List<Reservation> seatDetail = JsonSerializer.Deserialize<List<Reservation>>(seatDetails);
+            // string seatDetails = File.ReadAllText("seats.json");
+            // List<Reservation> seatDetail = JsonSerializer.Deserialize<List<Reservation>>(seatDetails);
 
             begin:          
 
@@ -307,7 +307,7 @@ namespace cinema
             begin3:
 
             for(int i = 0; i<reservationDetail.Count;i++){
-                if(reservationDetail[i].MovieId == movieid){
+                if(reservationDetail[i].MovieId == movieid && reservationDetail[i].Paid == false){
                     totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].AmountSeats;
                     Console.WriteLine($"Do you want to pay for your reservation for {movieDetail[movieid-1].Name} at {movieDetail[movieid-1].Time}?\nTotal price to pay is {totalPrice} \nPress Y to pay, Or B to pick another movie.");
                     input4 = Console.ReadLine();
