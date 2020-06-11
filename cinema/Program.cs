@@ -7,11 +7,7 @@ namespace cinema
         static void Main()
         {
             Console.BackgroundColor = ConsoleColor.Black;
-            //This functions checks if there is someone logedin and executes the program
-            
             startScreen();
-            //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
-            
             begin:
 
             if (Login.checkCustomerLogin())
@@ -235,7 +231,7 @@ namespace cinema
                 case "E": case "e":
                     employeeManage:
 
-                    Console.WriteLine("\nA: add a employee\nV: view all employees\nE: edit a employee\nD: delete a employee\n");
+                    Console.WriteLine("\nA: add an employee\nV: view all employees\nE: edit an employee\nD: delete an employee\n");
                     employeeAction = Console.ReadLine();
 
                     Console.Clear();
@@ -287,7 +283,7 @@ namespace cinema
                 case "W": case "w":
                     reservationEmployee:
 
-                    Console.WriteLine("A: add a reservation, ");
+                    Console.WriteLine("A: add a reservation");
                     employeeAction = Console.ReadLine();
 
                     switch (employeeAction)
@@ -295,14 +291,6 @@ namespace cinema
                         case "A": case "a":
                             Reservation.AddReservation();
                             goto startEmployee;
-                        case "V": case "v":
-                            //View all reservations
-                            goto startEmployee;
-                        case "E": case "e":
-                            //Edit a reservation
-                            goto startEmployee;
-                        case "D": case "d":
-                            //Delets a reservation
                         default:
                             Console.WriteLine("Unknown command.");
                             goto reservationEmployee;
@@ -374,7 +362,7 @@ namespace cinema
 
         public static void shutDown()
         {
-            //This function logs the user automaticly out
+            //This function logs the user automatically out
             if (Login.checkCustomerLogin() || Login.checkEmployeeLogin())
             {
                 string login = "";

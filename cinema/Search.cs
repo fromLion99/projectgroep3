@@ -37,8 +37,10 @@ namespace cinema
             if(!int.TryParse(input1, out value))
             {  
                 Console.Clear();
-                for(int i = 0; i<movieDetail.Count; i++){
-                    if(movieDetail[i].Genre.ToUpper() == input1.ToUpper()){
+                for(int i = 0; i<movieDetail.Count; i++)
+                {
+                    if(movieDetail[i].Genre.ToUpper() == input1.ToUpper())
+                    {
                         Console.WriteLine($"\nThe movies with Genre {input1.ToUpper()} are:\n");
                         for(int j=0;j<movieDetail.Count;j++)
                         {
@@ -73,7 +75,8 @@ namespace cinema
                 Console.WriteLine("\nError, please input a correct room number or genre.\n");
                 goto begin;
             }
-            if(found3){
+            if(found3)
+            {
                 begin2:
 
                 Console.WriteLine("Press the given movie id to get more information:");

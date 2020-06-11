@@ -11,14 +11,17 @@ namespace cinema
         //Properties Room
         public int Id {get; set;}
         public int RoomNumber {get; set;}
-        public int ChairCount {
-            get{
+        public int ChairCount 
+        {
+            get
+            {
                 return RowCount * ChairsPerRow;
             } 
             set{}
         }
         public int RowCount {get; set;}
         public int ChairsPerRow {get; set;}
+        
         public static void addRoom()
         {
             //This function adds a room to the JSON
@@ -155,7 +158,8 @@ namespace cinema
             Console.WriteLine("Room with ID: " + id + " is successfully deleted.");
         }
 
-        public static Room GetRoom(int id){
+        public static Room GetRoom(int id)
+        {
             var rooms = JsonSerializer.Deserialize<List<Room>>(File.ReadAllText("rooms.json"));
             return rooms.Find(r => r.Id == id);
         }
