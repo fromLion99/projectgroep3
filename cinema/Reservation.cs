@@ -234,6 +234,7 @@ namespace cinema
         }        
         public static void PayReservation()
         {
+            // This function lets you pay for your reservation.
             // Variables
             string currentuser,input1,input3,input4 = "";
             int movieid,value;
@@ -340,6 +341,7 @@ namespace cinema
                 System.Console.WriteLine("Movie ID not found, please try again:");
                 goto begin2;
             }
+
             switch (input4)
             {
                 case "Q": case "q":
@@ -350,6 +352,7 @@ namespace cinema
                     found2 = true;
                     break;
             }
+
             if(!found2)
             {
                 System.Console.WriteLine("Wrong input, please try again:");
@@ -358,6 +361,8 @@ namespace cinema
         }
         public static void ViewReservation()
         {
+            // This function shows the past reservations
+
             // Variables
             string currentuser, input1, input2;
             int value, movieid;

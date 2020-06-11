@@ -8,6 +8,7 @@ namespace cinema
         {
             Console.BackgroundColor = ConsoleColor.Black;
             startScreen();
+
             begin:
 
             if (Login.checkCustomerLogin())
@@ -49,10 +50,9 @@ namespace cinema
                               @"*  \_/ \_/ |_| |_| \___|  \_/\_/    \___|/_/\_\| .__/  \___||_|   |_| \___||_| |_| \___| \___|  \___/ |_|   |_| |_| |_| \___/   \_/  |_| \___||___/    *",
                               @"*                                              |_|                                                                                                     *",
                               @"********************************************************************************************************************************************************",
-                                        
-                                         
 
                       };
+                      
             Console.WriteLine("\n\n");
             foreach(string line in arr )
                 Console.WriteLine(line);

@@ -17,9 +17,9 @@ namespace cinema
 
         public static void addEmployee()
         {
+             // This function adds a new employee to the JSON
             string email;
 
-            //This function adds a new employee to the JSON
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
 
@@ -47,14 +47,13 @@ namespace cinema
             }
 
             employee.Email = email;
-
             Console.WriteLine("Please enter your password here: ");
             employee.Password = Console.ReadLine();
             employeeDetail.Add(employee);
 
             string resultJson = JsonSerializer.Serialize<List<Employee>>(employeeDetail);
             File.WriteAllText("employees.json", resultJson);
-
+            
             Console.WriteLine("Employee added");
         }
 
@@ -78,6 +77,7 @@ namespace cinema
         public static void editEmployee()
         {
             //This function edit an employee
+            
             int id = 0;
             string valId = "";
 
@@ -114,6 +114,7 @@ namespace cinema
         public static void deleteEmployee()
         {
             //This function deleted an employee
+
             int id = 0;
             string valId = "";
 
@@ -141,6 +142,7 @@ namespace cinema
         public static void viewSalesEmployee()
         {
             //This function displays the sales of the cinema
+
             bool found = false;
             double countMoney = 0;
             double countMoney2 = 0;

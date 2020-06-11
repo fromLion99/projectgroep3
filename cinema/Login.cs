@@ -17,6 +17,7 @@ namespace cinema
         public static void signIn()
         {
             //A customer can log in with this function
+
             string email, password = "";
 
             string signinDetails = File.ReadAllText("Login.json");
@@ -55,6 +56,7 @@ namespace cinema
 
                         Console.WriteLine("Login successful!");
                     }
+
                     else{
                         System.Console.WriteLine("Wrong password, please try again.");
                         goto begin_password;
@@ -83,6 +85,7 @@ namespace cinema
 
                         Console.WriteLine("Login successful!");
                     }
+
                     else{
                         System.Console.WriteLine("Wrong password, please try again.");
                         goto begin_password2;
@@ -93,6 +96,8 @@ namespace cinema
 
         public static void LoginOrCreate()
         {
+            // This function checks if you want to login or create an account.
+
             Console.Write("\nTo login press L\n\nTo create an account press C\n");
             string loginAction = Console.ReadLine();
 
@@ -109,6 +114,7 @@ namespace cinema
         public static void signinEmployee()
         {
             //A employee can login with this function
+
             string email, password = "";
 
             string signinDetails = File.ReadAllText("Login.json");
@@ -123,7 +129,8 @@ namespace cinema
             
             var employee = employeeDetail.FirstOrDefault(c => c.Email == email);
 
-            try{
+            try
+            {
                 if (employee.Email == email)
                 {
                     Console.WriteLine("Please enter your password: ");
@@ -155,7 +162,9 @@ namespace cinema
                     Console.WriteLine("The Email you entered is unknown! Please check for typo's and try again.");
                 }
             }
-            catch{
+
+            catch
+            {
                 Console.WriteLine("The Email you entered is unknown! Please check for typo's and try again.");
                 goto beginLogin;
             }
@@ -164,6 +173,7 @@ namespace cinema
         public static void logOut()
         {
             //Users and customers can logout with this function
+
             string loginDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(loginDetails);
 
@@ -188,6 +198,7 @@ namespace cinema
             {
                 return true;
             }
+
             else
             {
                 return false;
@@ -197,6 +208,7 @@ namespace cinema
         public static bool checkEmployeeLogin()
         {
             //This functiob checks if there is an employee signed in
+
             string loginDetails = File.ReadAllText("Login.json");
             Login currentLogin = JsonSerializer.Deserialize<Login>(loginDetails);
 
@@ -204,6 +216,7 @@ namespace cinema
             {
                 return true;
             }
+
             else
             {
                 return false;
@@ -213,6 +226,7 @@ namespace cinema
         public static string getLoginName()
         {
             //This function get the full name of the signde in user
+            
             int id = 0;
 
             string loginDetails = File.ReadAllText("Login.json");
