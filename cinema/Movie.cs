@@ -41,7 +41,7 @@ namespace cinema
             movie.Name = Console.ReadLine();
             Console.WriteLine("Please enter the genre of the movie: ");
             movie.Genre = Console.ReadLine();
-            Console.WriteLine("Please enter the date of the movie (DD MM YYYY): ");
+            Console.WriteLine("Please enter the date of the movie (DD Month YYYY): ");
             movie.Date = Console.ReadLine();
             Console.WriteLine("Please enter the starting time of the movie (HH:MM hour): ");
             movie.Time = Console.ReadLine();
