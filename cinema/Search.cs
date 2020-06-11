@@ -41,7 +41,6 @@ namespace cinema
                 for(int i = 0; i<movieDetail.Count; i++){
                     if(movieDetail[i].Genre.ToUpper() == input1.ToUpper()){
                         Console.WriteLine($"ID {movieDetail[i].Id}: {movieDetail[i].Name}");
-                        //Console.WriteLine($"\nThe movies with Genre {input1.ToUpper()} are:\n");
                         for(int j=0;j<movieDetail.Count;j++)
                         {
                             if(movieDetail[j].Genre.ToUpper() == input1.ToUpper())
@@ -74,6 +73,7 @@ namespace cinema
                 Console.WriteLine("\nError, please input a correct room number or genre.\n");
                 goto begin;
             }
+            
             if(found3)
             {
                 begin2:
