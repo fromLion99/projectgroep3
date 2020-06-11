@@ -429,10 +429,11 @@ namespace cinema
                     if(reservationDetail[i].MovieId == movieid && reservationDetail[i].Customer == currentuser)
                     {
                         totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].AmountSeats;
-                        Console.WriteLine($"Name movie: {movieDetail[movieid-1].Name}\nDuration: {reservationDetail[i].Duration}\nDate and Time: {movieDetail[movieid-1].Date}, {movieDetail[movieid-1].Time}\nRoom: {movieDetail[movieid-1].Room}\nAmount of seats: {reservationDetail[i].AmountSeats}\nTotal price paid: {totalPrice} dollars\nTime of reservation: {reservationDetail[i].CurrentTime}\n");
+                        Console.WriteLine($"Name movie: {movieDetail[movieid-1].Name}\nDuration: {movieDetail[movieid-1].Duration}\nDate and Time: {movieDetail[movieid-1].Date}, {movieDetail[movieid-1].Time}\nRoom: {movieDetail[movieid-1].Room}\nAmount of seats: {reservationDetail[i].AmountSeats}\nTotal price paid: {totalPrice} dollars\nTime of reservation: {reservationDetail[i].CurrentTime}\n");
                         found2 = true;
                     }
                 }
+
                 if(!found2)
                 {
                     Console.WriteLine($"There are no past reservations.\n\nTo make a reservation press R\n\nTo go back to menu press B\n\n");
