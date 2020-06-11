@@ -27,8 +27,6 @@ namespace cinema
             string customerDetails = File.ReadAllText("customers.json");
             var customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 
-            
-
             var customer = new Customer();
             var item = customerDetail[customerDetail.Count-1];
             var newId = item.Id +1;
@@ -82,7 +80,8 @@ namespace cinema
             File.WriteAllText("customers.json", resultJson);
             Console.WriteLine("\nYou've succesfully created an account, Press L to login!");
         }
-                private void askAge()
+        private void askAge()
+            // This function adds the age to the JSON.
         {
             var repeatQuestion = true;
 
@@ -94,6 +93,7 @@ namespace cinema
                     Age = parsedAge;
                     repeatQuestion = false;
                 }
+
                 else
                 {
                     Console.WriteLine("Something went wrong, your input is incorrect try again.");
@@ -170,7 +170,6 @@ namespace cinema
 
             string resultJson = JsonSerializer.Serialize<List<Customer>>(customerDetail);
             File.WriteAllText("customers.json", resultJson);
-
             Console.WriteLine("Your details have been edited.");   
         }
 
@@ -197,7 +196,6 @@ namespace cinema
             
             string resultJson = JsonSerializer.Serialize<List<Customer>>(customerDetail);
             File.WriteAllText("customers.json", resultJson);
-            
             Console.WriteLine("Account succesfully deleted, goodbye");
         }
     }

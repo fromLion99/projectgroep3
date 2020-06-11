@@ -6,11 +6,10 @@ namespace cinema
     {
         static void Main()
         {
-            Console.BackgroundColor = ConsoleColor.Black;
             //This functions checks if there is someone logedin and executes the program
-            
+            Console.BackgroundColor = ConsoleColor.Black;
+        
             startScreen();
-            //OP DEZE REGEL KUNNEN JULLIE JE FUNCTIE TESTEN
             
             begin:
 
@@ -53,10 +52,9 @@ namespace cinema
                               @"*  \_/ \_/ |_| |_| \___|  \_/\_/    \___|/_/\_\| .__/  \___||_|   |_| \___||_| |_| \___| \___|  \___/ |_|   |_| |_| |_| \___/   \_/  |_| \___||___/    *",
                               @"*                                              |_|                                                                                                     *",
                               @"********************************************************************************************************************************************************",
-                                        
-                                         
 
                       };
+                      
             Console.WriteLine("\n\n");
             foreach(string line in arr )
                 Console.WriteLine(line);
