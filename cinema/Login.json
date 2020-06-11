@@ -1,3 +1,1 @@
-
-{"UserId":3,"UserEmail":"123","CustomerLogin":true,"EmployeeLogin":false}
-
+{"UserId":1,"UserEmail":"employee@zienema.com","CustomerLogin":false,"EmployeeLogin":true}
