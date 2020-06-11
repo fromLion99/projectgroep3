@@ -127,9 +127,9 @@ namespace cinema
                     threeD = "No";
                 }
 
-                Console.WriteLine($"Movie ID: {movieDetail[i].Id} || Name: {movieDetail[i].Name}");
+                Console.WriteLine($"Movie ID: {movieDetail[i].Id} || Name: {movieDetail[i].Name}\ngenre: {movieDetail[i].Genre}");
                 Console.WriteLine($"Date and time: {movieDetail[i].Date}, {movieDetail[i].Time}");
-                Console.WriteLine($"Description: {movieDetail[i].Description} || 3D: {threeD} - IMAX: {imax} || genre: {movieDetail[i].Genre}");
+                Console.WriteLine($"\nDescription: {movieDetail[i].Description}\n\n3D: {threeD} - IMAX: {imax}");
                 Console.WriteLine($"Duration: {movieDetail[i].Duration}");
                 Console.WriteLine($"Ticket price: €{movieDetail[i].Price}");
                 Console.WriteLine($"Recommended minimum age: " + movieDetail[i].RecommendedAge);
