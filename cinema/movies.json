@@ -93,7 +93,7 @@
         "Room": 2,
         "Imax": true,
         "ThreeD": true,
-        "Duration": "",
+        "Duration": "120 minutes",
         "Price": 13,
         "RecommendedAge": 16
     }
