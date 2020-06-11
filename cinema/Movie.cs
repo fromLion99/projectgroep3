@@ -79,7 +79,7 @@ namespace cinema
 
             Console.WriteLine("Please enter the duration of the movie in minutes (MMM minutes): ");
             movie.Duration = Console.ReadLine();
-            Console.WriteLine("Please enter the price for the movie in euros: ");
+            Console.WriteLine("Please enter the ticket price for the movie in euros: ");
             valPrice = Console.ReadLine();
             replace = valPrice.Replace(".",",");
             priceDouble = Convert.ToDouble(replace);
@@ -127,11 +127,11 @@ namespace cinema
                     threeD = "No";
                 }
 
-                Console.WriteLine($"ID: {movieDetail[i].Id} || Name: {movieDetail[i].Name}");
+                Console.WriteLine($"Movie ID: {movieDetail[i].Id} || Name: {movieDetail[i].Name}");
                 Console.WriteLine($"Date and time: {movieDetail[i].Date}, {movieDetail[i].Time}");
                 Console.WriteLine($"Description: {movieDetail[i].Description} || 3D: {threeD} - IMAX: {imax} || genre: {movieDetail[i].Genre}");
                 Console.WriteLine($"Duration: {movieDetail[i].Duration}");
-                Console.WriteLine($"Price ticket: €{movieDetail[i].Price}");
+                Console.WriteLine($"Ticket price: €{movieDetail[i].Price}");
                 Console.WriteLine($"Recommended minimum age: " + movieDetail[i].RecommendedAge);
                 Console.WriteLine("\n===================================================================================\n");
             }
@@ -188,9 +188,10 @@ namespace cinema
             Console.WriteLine("Movie genre: " + searchedMovie.Genre);
             Console.WriteLine("Movie date and time: " + searchedMovie.Date + " " + searchedMovie.Time);
             Console.WriteLine("Movie description: " + searchedMovie.Description);
-            Console.WriteLine("Movie room: " + searchedMovie.Room);
+            Console.WriteLine("Room: " + searchedMovie.Room);
             Console.WriteLine("3D: " + threeD + " IMAX: " + imax);
             Console.WriteLine($"Duration: {searchedMovie.Duration}");
+            Console.WriteLine($"Ticket price: € {searchedMovie.Price}");
             Console.WriteLine("\n===================================================================================\n");
 
             Console.WriteLine("Please enter the new name of the movie: ");
@@ -233,7 +234,9 @@ namespace cinema
                 searchedMovie.ThreeD = false;
             }
 
-            Console.WriteLine("Please enter the price for the movie: ");
+            Console.WriteLine("Please enter the new duration of the movie: ");
+            searchedMovie.Duration = Console.ReadLine();
+            Console.WriteLine("Please enter the new ticket price for the movie: ");
             valPrice = Console.ReadLine();
             replace = valPrice.Replace(".",",");
             priceDouble = Convert.ToDouble(replace);
