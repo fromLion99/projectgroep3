@@ -169,7 +169,7 @@ namespace cinema
                                                                 File.WriteAllText("reservation.json", resultJson1);
                                                                 reservation.GenerateGrid();
                                                                 Reservation.PayReservation();
-                                                                Console.WriteLine("\nReservation is succesfully added\n\nYou are now being redirected to the main menu\n\n********************************************************************************\n");
+                                                                Console.WriteLine("\n\nReservation is succesfully added\n\nYou are now being redirected to the main menu\n\n********************************************************************************\n");
                                                                 return;
                                                             }
                                                             {
@@ -256,7 +256,7 @@ namespace cinema
             begin:          
 
             currentuser = Login.getLoginName();
-            Console.WriteLine($"The rented movies of the current user {currentuser} are:");
+            Console.WriteLine($"\nThe rented movies of the current user {currentuser} are:");
 
             for(int i = 0;i<reservationDetail.Count;i++){
                 if(reservationDetail[i].Customer == currentuser && reservationDetail[i].Paid == false){
@@ -286,7 +286,7 @@ namespace cinema
 
             begin2:
 
-            Console.WriteLine($"Type the given movie ID to pay for that movie:");
+            Console.WriteLine($"\nType the given movie ID to pay for that movie:");
             input1 = Console.ReadLine();
 
             switch (input1)
@@ -374,7 +374,7 @@ namespace cinema
                 if(reservationDetail[i].Customer == currentuser){
                     for(int j = 0;j<movieDetail.Count;j++){
                         if(movieDetail[j].Id == reservationDetail[i].MovieId){
-                            Console.WriteLine($"ID {movieDetail[j].Id}: {movieDetail[j].Name}");
+                            Console.WriteLine($"\nID {movieDetail[j].Id}: {movieDetail[j].Name}");
                             found = true;
                         }
                     }

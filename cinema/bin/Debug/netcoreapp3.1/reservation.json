@@ -1,1 +1,8 @@
-[{"Id":0,"TicketId":0,"MovieId":0,"RoomId":0,"Customer":null,"CustomerId":0,"Time":null,"Date":null,"Duration":0,"Sales":0,"Paid":false,"SeatId":0,"Row":0,"StartSeat":0,"AmountSeats":0,"CurrentTime":null},{"Id":1,"TicketId":1,"MovieId":4,"RoomId":1,"Customer":"Niels Krommenhoek","CustomerId":3,"Time":"19:00 hour","Date":"20 April 2020","Duration":0,"Sales":12.3,"Paid":true,"SeatId":0,"Row":1,"StartSeat":1,"AmountSeats":1,"CurrentTime":"06-11-2020 15:14"}]
+
+
+[
+    {
+        
+    }
+]
+
