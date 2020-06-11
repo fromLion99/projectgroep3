@@ -191,7 +191,7 @@ namespace cinema
             Console.WriteLine("Room: " + searchedMovie.Room);
             Console.WriteLine("3D: " + threeD + " IMAX: " + imax);
             Console.WriteLine($"Duration: {searchedMovie.Duration}");
-            Console.WriteLine($"Ticket price: € {searchedMovie.Price}")
+            Console.WriteLine($"Ticket price: € {searchedMovie.Price}");
             Console.WriteLine("\n===================================================================================\n");
 
             Console.WriteLine("Please enter the new name of the movie: ");
