@@ -350,6 +350,7 @@ namespace cinema
             int value, movieid;
             double totalPrice;
             bool found = false;
+            bool found2 = false;
 
             // JSON
             string reservationsDetails = File.ReadAllText("reservation.json");
@@ -373,15 +374,16 @@ namespace cinema
             for(int i = 0;i<reservationDetail.Count;i++){
                 if(reservationDetail[i].Customer == currentuser){
                     for(int j = 0;j<movieDetail.Count;j++){
-                        if(movieDetail[j].Id == reservationDetail[i].MovieId){
-                            Console.WriteLine($"\nID {movieDetail[j].Id}: {movieDetail[j].Name}");
                             found = true;
-                        }
                     }
                 }
+                
             }
 
             if(found){
+                for(int k = 0;k<movieDetail.Count;k++){
+                Console.WriteLine($"\nID {movieDetail[k].Id}: {movieDetail[k].Name}");
+                }   
                 Console.WriteLine("\nPress the given movie ID to see more details.\n");
 
                 input1 = Console.ReadLine();
@@ -406,8 +408,34 @@ namespace cinema
                     if(reservationDetail[i].MovieId == movieid && reservationDetail[i].Customer == currentuser){
                         totalPrice = movieDetail[movieid-1].Price * reservationDetail[i].AmountSeats;
                         Console.WriteLine($"Name movie: {movieDetail[movieid-1].Name}\nDate and Time: {movieDetail[movieid-1].Date}, {movieDetail[movieid-1].Time}\nRoom: {movieDetail[movieid-1].Room}\nAmount of seats: {reservationDetail[i].AmountSeats}\nTotal price paid: {totalPrice} dollars\nTime of reservation: {reservationDetail[i].CurrentTime}\n");
+                        found2 = true;
                    }
                 }
+                if(!found2){
+                    Console.WriteLine($"There are no past reservations.\n\nTo make a reservation press R\n\nTo go back to menu press B\n\n");
+                    begin2:
+                    input2 = Console.ReadLine();
+
+                    switch (input2)
+                    {
+                        case "r": case "R":
+                            Console.Clear();
+                            Reservation.AddReservation();
+                            break;
+                        case "b": case "B":
+                            break;
+                        default:
+                            System.Console.WriteLine("\nError, try again.\n");
+                            goto begin2;
+                    }
+
+                    if(int.TryParse(input2, out value))
+                    {
+                        Console.WriteLine("\nError, try again\n");
+                        goto begin2;
+                    }
+
+                    }
             }
 
             else{
