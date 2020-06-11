@@ -36,11 +36,11 @@ namespace cinema
             {  
                 Console.Clear();
                 for(int i = 0; i<movieDetail.Count; i++){
-                    if(movieDetail[i].Genre == input1){
-                        Console.WriteLine($"\nThe movies with Genre {input1} are:\n");
+                    if(movieDetail[i].Genre.ToUpper() == input1.ToUpper()){
+                        Console.WriteLine($"\nThe movies with Genre {input1.ToUpper()} are:\n");
                         for(int j=0;j<movieDetail.Count;j++)
                         {
-                            if(movieDetail[j].Genre == input1)
+                            if(movieDetail[j].Genre.ToUpper() == input1.ToUpper())
                             {       
                                 Console.WriteLine($"ID {movieDetail[j].Id}: {movieDetail[j].Name}");
                                 found = true;
