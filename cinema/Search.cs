@@ -22,7 +22,7 @@ namespace cinema
             
             begin:
 
-            Console.WriteLine("Input a genre or room number (1,2,3).\n");
+            Console.WriteLine("Input a genre or room number (1,2,3).\nPress B to go back to main menu\n");
             input1 = Console.ReadLine();
 
             switch (input1)
@@ -30,6 +30,8 @@ namespace cinema
                 case "Q": case "q":
                 Program.shutDown();
                 break;
+                case "b": case "B":
+                return;
             }
 
             if(!int.TryParse(input1, out value))
@@ -83,6 +85,8 @@ namespace cinema
                     case "Q": case "q":
                     Program.shutDown();
                     break;
+                    case "b": case "B":
+                    return;
                 }
 
                 if(!int.TryParse(pressedkey, out value))
@@ -122,6 +126,8 @@ namespace cinema
                         break;
                     case "t": case "T":
                         goto begin;
+                    case "b": case "B":
+                        return;
                     default:
                         Console.WriteLine("\nUnknown command.\n");
                         goto begin2;

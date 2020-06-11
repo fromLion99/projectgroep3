@@ -41,9 +41,9 @@ namespace cinema
             movie.Name = Console.ReadLine();
             Console.WriteLine("Please enter the genre of the movie: ");
             movie.Genre = Console.ReadLine();
-            Console.WriteLine("Please enter the date of the movie (DD MM YYYY): ");
+            Console.WriteLine("Please enter the date of the movie (DD Month YYYY): ");
             movie.Date = Console.ReadLine();
-            Console.WriteLine("Please enter the start time of the movie (HH:MM hour): ");
+            Console.WriteLine("Please enter the starting time of the movie (HH:MM hour): ");
             movie.Time = Console.ReadLine();
             Console.WriteLine("Please enter a movie description: ");
             movie.Description = Console.ReadLine();
@@ -51,7 +51,7 @@ namespace cinema
             valRoom = Console.ReadLine();
             room = Convert.ToInt32(valRoom);
             movie.Room = room;
-            Console.WriteLine("Is it a Imax movie (Y/N): ");
+            Console.WriteLine("Is it an Imax movie (Y/N): ");
             valImax = Console.ReadLine();
 
             if(valImax == "Y" || valImax == "y")
@@ -79,7 +79,7 @@ namespace cinema
 
             Console.WriteLine("Please enter the duration of the movie in minutes (MMM minutes): ");
             movie.Duration = Console.ReadLine();
-            Console.WriteLine("Please enter the price for the movie in euros: ");
+            Console.WriteLine("Please enter the ticket price for the movie in euros: ");
             valPrice = Console.ReadLine();
             replace = valPrice.Replace(".",",");
             priceDouble = Convert.ToDouble(replace);
@@ -92,7 +92,7 @@ namespace cinema
 
             string resultJson = JsonSerializer.Serialize<List<Movie>>(movieDetail);
             File.WriteAllText("movies.json", resultJson);
-            Console.WriteLine("Movie successfully added.");
+            Console.WriteLine("The movie has been successfully added.");
         }
 
         public static void viewMovie()
@@ -127,11 +127,11 @@ namespace cinema
                     threeD = "No";
                 }
 
-                Console.WriteLine($"ID: {movieDetail[i].Id} || Name: {movieDetail[i].Name}");
+                Console.WriteLine($"Movie ID: {movieDetail[i].Id} || Name: {movieDetail[i].Name}\ngenre: {movieDetail[i].Genre}");
                 Console.WriteLine($"Date and time: {movieDetail[i].Date}, {movieDetail[i].Time}");
-                Console.WriteLine($"Description: {movieDetail[i].Description} || 3D: {threeD} - IMAX: {imax} || genre: {movieDetail[i].Genre}");
+                Console.WriteLine($"\nDescription: {movieDetail[i].Description}\n\n3D: {threeD} - IMAX: {imax}");
                 Console.WriteLine($"Duration: {movieDetail[i].Duration}");
-                Console.WriteLine($"Price ticket: €{movieDetail[i].Price}");
+                Console.WriteLine($"Ticket price: €{movieDetail[i].Price}");
                 Console.WriteLine($"Recommended minimum age: " + movieDetail[i].RecommendedAge);
                 Console.WriteLine("\n===================================================================================\n");
             }
@@ -152,7 +152,7 @@ namespace cinema
             for(int i = 0; i < movieDetail.Count; i++)
             {
                 Console.WriteLine("Movie ID: " + movieDetail[i].Id);
-                Console.WriteLine("Movie name: " + movieDetail[i].Name);
+                Console.WriteLine("Name: " + movieDetail[i].Name);
                 Console.WriteLine("\n===================================================================================\n");
             }
             
@@ -184,13 +184,14 @@ namespace cinema
             }
 
             Console.WriteLine("Movie ID: " + searchedMovie.Id);
-            Console.WriteLine("Movie name: " + searchedMovie.Name);
-            Console.WriteLine("Movie genre: " + searchedMovie.Genre);
-            Console.WriteLine("Movie date and time: " + searchedMovie.Date + " " + searchedMovie.Time);
-            Console.WriteLine("Movie description: " + searchedMovie.Description);
-            Console.WriteLine("Movie room: " + searchedMovie.Room);
+            Console.WriteLine("Name: " + searchedMovie.Name);
+            Console.WriteLine("Genre: " + searchedMovie.Genre);
+            Console.WriteLine("Date and time: " + searchedMovie.Date + " " + searchedMovie.Time);
+            Console.WriteLine("Description: " + searchedMovie.Description);
+            Console.WriteLine("Room: " + searchedMovie.Room);
             Console.WriteLine("3D: " + threeD + " IMAX: " + imax);
             Console.WriteLine($"Duration: {searchedMovie.Duration}");
+            Console.WriteLine($"Ticket price: € {searchedMovie.Price}");
             Console.WriteLine("\n===================================================================================\n");
 
             Console.WriteLine("Please enter the new name of the movie: ");
@@ -233,7 +234,9 @@ namespace cinema
                 searchedMovie.ThreeD = false;
             }
 
-            Console.WriteLine("Please enter the price for the movie: ");
+            Console.WriteLine("Please enter the new duration of the movie: ");
+            searchedMovie.Duration = Console.ReadLine();
+            Console.WriteLine("Please enter the new ticket price for the movie: ");
             valPrice = Console.ReadLine();
             replace = valPrice.Replace(".",",");
             priceDouble = Convert.ToDouble(replace);
