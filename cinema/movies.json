@@ -23,20 +23,21 @@
         "Room": 5,
         "Imax": true,
         "ThreeD": false,
+        "Duration":"90 minutes",
         "Price": 10.90,
-        "Duration": "90 minutes",
         "RecommendedAge": 16
     },
     {
         "Id": 3,
-        "Name": "The Comedy Show",
-        "Genre": "Comedy",
+        "Name": "Vicky the Viking and the magical sword",
+        "Genre": "Animation",
         "Description": "The funniest comedy show of the year. Seeing it is a must!",
         "Time": "12.00 hour",
         "Date": "1 April 2020",
         "Room": 0,
         "Imax": false,
         "ThreeD": false,
+        "Duration": "",
         "Price": 9.5,
         "RecommendedAge": 12
     },
@@ -50,6 +51,7 @@
         "Room": 1,
         "Imax": true,
         "ThreeD": true,
+        "Duration": "",
         "Price": 12.3,
         "RecommendedAge": 16
     },
@@ -63,6 +65,7 @@
         "Room": 3,
         "Imax": false,
         "ThreeD": true,
+        "Duration": "",
         "Price": 10,
         "RecommendedAge": 12
     },
@@ -76,6 +79,7 @@
         "Room": 3,
         "Imax": true,
         "ThreeD": true,
+        "Duration": "",
         "Price": 9,
         "RecommendedAge": 18
     },
@@ -89,6 +93,7 @@
         "Room": 2,
         "Imax": true,
         "ThreeD": true,
+        "Duration": "",
         "Price": 13,
         "RecommendedAge": 16
     }
