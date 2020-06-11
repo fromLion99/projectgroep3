@@ -16,5 +16,17 @@
         "RoomNumber": 3,
         "RowCount": 5,
         "ChairsPerRow": 10
+    },
+    {
+        "Id": 4,
+        "RoomNumber": 4,
+        "RowCount": 14,
+        "ChairsPerRow": 22
+    },
+    {
+        "Id": 5,
+        "RoomNumber": 5,
+        "RowCount" : 25,
+        "ChairsPerRow": 19
     }
 ]
