@@ -2,19 +2,22 @@
     {
         "Id": 1,
         "Name": "Starter",
-        "MonthPrice": 10.5,
-        "YearSubscription": false
+        "MonthPrice": 14.95,
+        "YearSubscription": false,
+        "Discount":15
     },
     {
         "Id": 2,
         "Name": "Medium",
         "MonthPrice": 24.95,
-        "YearSubscription": false
+        "YearSubscription": false,
+        "Discount":30
     },
     {
         "Id": 3,
         "Name": "Pro",
-        "MonthPrice": 44.95,
-        "YearSubscription": false
+        "MonthPrice":34.95,
+        "YearSubscription": false,
+        "Discount":50
     }
 ]

@@ -37,8 +37,10 @@ namespace cinema
 
             email = Console.ReadLine();
 
-            for(int i = 0; i<employeeDetail.Count;i++){
-                if(employeeDetail[i].Email == email ){
+            for(int i = 0; i<employeeDetail.Count;i++)
+            {
+                if(employeeDetail[i].Email == email )
+                {
                     Console.WriteLine("Email already taken, try again.");
                     goto begin;
                 }

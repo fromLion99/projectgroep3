@@ -22,8 +22,6 @@ namespace cinema
             //This function adds a customer to the JSON
             string subscription, valSubscription, email = "";
             int idSubscription = 0;
-            bool found = true;
-
             string customerDetails = File.ReadAllText("customers.json");
             var customerDetail = JsonSerializer.Deserialize<List<Customer>>(customerDetails);
 

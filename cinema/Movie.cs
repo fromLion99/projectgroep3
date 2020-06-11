@@ -277,7 +277,8 @@ namespace cinema
 
             Console.WriteLine("The movie with ID " + id + " is successfully deleted.");
         }
-        public static Movie GetMovie(int id){
+        public static Movie GetMovie(int id)
+        {
             var movies = JsonSerializer.Deserialize<List<Movie>>(File.ReadAllText("movies.json"));
             return movies.Find(m => m.Id == id);
         }

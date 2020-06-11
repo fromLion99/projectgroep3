@@ -13,12 +13,14 @@ namespace cinema
         public string Name {get;set;}
         public double MonthPrice {get;set;}
         public bool YearSubscription {get;set;}
+        public int Discount {get;set;}
 
         public static void addSubscription()
         {
             //This function adds a new subscription to the JSON
-            string valMonthPrice, valYearSubscription, replace = "";
+            string valMonthPrice, valYearSubscription, replace, discount = "";
             double dMonthPrice = 0.0;
+            int discountInt = 0;
 
             string subscriptionDetails = File.ReadAllText("subscriptions.json");
             List<Subscription> subscriptionDetail = JsonSerializer.Deserialize<List<Subscription>>(subscriptionDetails);
@@ -35,6 +37,11 @@ namespace cinema
             replace = valMonthPrice.Replace(".",",");
             dMonthPrice = Convert.ToDouble(replace);
             subscription.MonthPrice = dMonthPrice;
+            Console.WriteLine("Enter the discount: ");
+            discount = Console.ReadLine();
+            discountInt = Convert.ToInt32(discount);
+            subscription.Discount = discountInt;
+            // Subscription is not complete, Year subscription doesn't add anything. We still left it in for future updates
             Console.WriteLine("Year subscription: Yes: Y or No: N");
             valYearSubscription = Console.ReadLine();
 
@@ -59,6 +66,7 @@ namespace cinema
         public static void viewSubscription()
         {
             //This function displays all the subscriptions
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             string subscriptionDetails = File.ReadAllText("subscriptions.json");
             List<Subscription> subscriptionDetail = JsonSerializer.Deserialize<List<Subscription>>(subscriptionDetails);
 
@@ -67,7 +75,8 @@ namespace cinema
                 Console.WriteLine("ID: " + subscriptionDetail[i].Id);
                 Console.WriteLine("Name: " + subscriptionDetail[i].Name);
                 Console.WriteLine("Price per month: " + subscriptionDetail[i].MonthPrice);
-
+                Console.WriteLine($"Discount: {subscriptionDetail[i].Discount}% Discount per ticket");
+            
                 if(subscriptionDetail[i].YearSubscription)
                 {
                     Console.WriteLine("Year subscription: Yes");

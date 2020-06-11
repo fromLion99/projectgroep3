@@ -21,12 +21,12 @@
         "Id": 4,
         "RoomNumber": 4,
         "RowCount": 14,
-        "ChairsPerRow": 22
+        "ChairsPerRow": 10
     },
     {
         "Id": 5,
         "RoomNumber": 5,
         "RowCount" : 25,
-        "ChairsPerRow": 19
+        "ChairsPerRow": 10
     }
 ]

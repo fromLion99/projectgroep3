@@ -26,6 +26,7 @@ namespace cinema
         
         public static void AddReservation()
         {
+            // AddReservation() lets the customer add a reservation, if everything is finished it is saved in reservation.json
             Reservation reservation = new Reservation();
             int choosenMovieId, chooseAmountSeat, startSeat = 0;
             string choosenMovie, back, startSeatString, chooseAmountSeatString = "";
@@ -487,6 +488,8 @@ namespace cinema
         }
         private bool checkSeatAvailability(int startSeat, int amount, int row, out string message)
         {
+            // checkSeatAvailability() is used to make sure the seat(s) is available when a customer is adding a reservation,
+            // Gets access to Room Class
             var room = Room.GetRoom(RoomId);
             var endSeat = startSeat + (amount - 1);
 
@@ -516,6 +519,7 @@ namespace cinema
 
         public void GenerateGrid()
         {
+            // Creates visual Floor plan with taken and available seats, different movie means different floor plan 
             var movie = Movie.GetMovie(MovieId);
             var room = Room.GetRoom(movie.Room);
             string screen = new string ('=', room.ChairsPerRow*2);

@@ -29,7 +29,6 @@ namespace cinema
             string employeeDetails = File.ReadAllText("employees.json");
             List<Employee> employeeDetail = JsonSerializer.Deserialize<List<Employee>>(employeeDetails);
 
-            beginLogin:
 
             Console.WriteLine("\nPlease enter your E-mail: ");
 
@@ -37,10 +36,12 @@ namespace cinema
 
             begin_password:
 
-            for(int i =0; i<customerDetail.Count;i++){
+            for(int i =0; i<customerDetail.Count;i++)
+            {
 
-                if(customerDetail[i].Email == email){
-                    Console.WriteLine("\nPlease enter Your password: \n");
+                if(customerDetail[i].Email == email)
+                {
+                    Console.WriteLine("\nPlease enter your password: \n");
                     password = Console.ReadLine();
 
                     if(customerDetail[i].Password == password)
@@ -57,7 +58,7 @@ namespace cinema
                     }
 
                     else{
-                        System.Console.WriteLine("Wrong password, try again.");
+                        System.Console.WriteLine("Wrong password, please try again.");
                         goto begin_password;
                     }
                 }
@@ -68,7 +69,7 @@ namespace cinema
             for(int i =0; i<employeeDetail.Count;i++){
 
                 if(employeeDetail[i].Email == email){
-                    Console.WriteLine("\nPlease enter Your password: \n");
+                    Console.WriteLine("\nPlease enter your password: \n");
                     password = Console.ReadLine();
 
                     if(employeeDetail[i].Password == password)
@@ -86,7 +87,7 @@ namespace cinema
                     }
 
                     else{
-                        System.Console.WriteLine("Wrong password, try again.");
+                        System.Console.WriteLine("Wrong password, please try again.");
                         goto begin_password2;
                     }
                 }
@@ -145,7 +146,7 @@ namespace cinema
                         File.WriteAllText("Login.json", Resultjson);
                         Console.Clear();
 
-                        Console.WriteLine("Login successful!");
+                        Console.WriteLine("Login successfull!");
                         Login.getLoginName();
 
                     }

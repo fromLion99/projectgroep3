@@ -74,7 +74,8 @@ namespace cinema
                 Console.WriteLine("\nError, please input a correct room number or genre.\n");
                 goto begin;
             }
-            if(found3){
+            if(found3)
+            {
                 begin2:
 
                 Console.WriteLine("Press the given movie id to get more information:");

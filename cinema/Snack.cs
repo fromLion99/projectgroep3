@@ -1,3 +1,5 @@
+// Snacks is gemaakt door Dennis. Omdat hij uit de projectgroep is gezet wordt deze code niet meer gebruikt, wel hebben we het nog in de code staan omdat wessel ook heeft meegeholpen aan deze functie.
+
 using System;
 using System.Text.Json;
 using System.IO;
