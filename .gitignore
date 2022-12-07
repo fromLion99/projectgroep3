@@ -39,3 +39,6 @@ cinema/obj/Release/netcoreapp3.1/cinema.assets.cache
 cinema/obj/Release/netcoreapp3.1/cinema.AssemblyInfo.cs
 cinema/.vs/slnx.sqlite
 cinema/.vs/VSWorkspaceState.json
+
+.fake
+.ionide
